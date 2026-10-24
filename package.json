@@ -13,7 +13,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint-staged": "lint-staged --config infra/lint-staged.config.js",
+    "lint-staged": "lint-staged --config infra/lint-staged.config.js --concurrent false",
     "prepare": "husky"
   },
   "dependencies": {
