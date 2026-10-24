@@ -1,0 +1,108 @@
+import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import prettierConfig from 'eslint-config-prettier';
+import checkFile from 'eslint-plugin-check-file';
+import importPlugin from 'eslint-plugin-import';
+import prettier from 'eslint-plugin-prettier';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+import { importRules } from './infra/eslint-import-rules.js';
+
+export default defineConfig([
+  {
+    ignores: ['.react-router/**', 'build/**', 'coverage/**'],
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.es2022,
+        ...globals.node,
+      },
+    },
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      prettier,
+      import: importPlugin,
+      'check-file': checkFile,
+    },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      ...prettierConfig.rules,
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      'no-empty': 'off',
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+      'import/no-cycle': ['error', { maxDepth: Infinity }],
+      'import/no-restricted-paths': ['error', { zones: importRules }],
+      'check-file/filename-naming-convention': [
+        'error',
+        { '**/*.{js,jsx,ts,tsx}': 'KEBAB_CASE' },
+        { ignoreMiddleExtensions: true },
+      ],
+    },
+    settings: {
+      react: { version: 'detect' },
+      'import/resolver': {
+        typescript: { project: './tsconfig.json' },
+      },
+    },
+  },
+  {
+    // Motor ve içerik React'e bağımlı olamaz.
+    files: ['src/engine/**/*.ts', 'src/content/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['react', 'react-dom', 'react-router', 'zustand*'],
+              message: 'Engine/content must stay framework-agnostic.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/**/*.test.{ts,tsx}'],
+    languageOptions: {
+      globals: { ...globals.vitest },
+    },
+  },
+]);
