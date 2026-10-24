@@ -16,12 +16,12 @@
 | ---------------- | ----- | ------ |
 | A. Altyapı       | 2     | 5      |
 | B. Harita        | 2     | 5      |
-| C. Mekanikler    | 1     | 10     |
+| C. Mekanikler    | 2     | 10     |
 | D. Tarih öğrenme | 0     | 7      |
 | E. Arayüz        | 0     | 5      |
 | F. Kalite        | 0     | 5      |
 | G. İleride       | 0     | 4      |
-| **Toplam**       | **5** | **41** |
+| **Toplam**       | **6** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -33,7 +33,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C2 (senaryo sistemi, ilk senaryo: 1299 Kuruluş)
+**Sıradaki madde:** C4 + C5 (askeri sistem ve savaş çözümü)
 
 ---
 
@@ -58,7 +58,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 - [x] **C1. Oyun döngüsü kararı:** tur bazlı, her tur bir mevsim (önerilen). Sefer mevsimi ve kışlak (Kasım'da orduyu çekmek) gibi tarihi gerçekler doğrudan kurala dönüşür.
   - _Karar: her tur bir mevsim (ilkbahar–sonbahar sefer, kış kışlak). Kışın ordu yalnızca kendi toprağına çekilebilir; kış başında yabancı toprakta kalan ordu %10 asker kaybeder (`RULES.winterAttritionRate`)._
-- [ ] **C2. Senaryo sistemi:** 1299 Kuruluş, 1326 Bursa, 1402 Ankara ve Fetret, 1453 İstanbul, 1514 Çaldıran, 1526 Mohaç, 1683 Viyana, 1768–1774 Rus Savaşı gibi.
+- [x] **C2. Senaryo sistemi:** 1299 Kuruluş, 1326 Bursa, 1402 Ankara ve Fetret, 1453 İstanbul, 1514 Çaldıran, 1526 Mohaç, 1683 Viyana, 1768–1774 Rus Savaşı gibi.
+  - _Sistem hazır (`src/content/scenarios`: Zod şeması, `buildScenario`, kayıt defteri). MVP için tek senaryo yazıldı: **1299 Kuruluş**. Diğer senaryolar (1326, 1402, 1453 …) aynı biçimde eklenecek; sahiplik verileri `TODO(kaynak)` ile doğrulanmayı bekliyor._
 - [ ] **C3. Zafer ve yenilgi koşulları:** senaryo hedefleri, zaman sınırı ve devletin yıkılması. Ayrıca "tarihî sonuca göre" bir puan: tarihten daha iyi mi, daha kötü mü yaptın?
 - [ ] **C4. Askeri sistem:** yeniçeri, tımarlı sipahi, akıncı, topçu ve donanma. İkmal, moral, arazi ve kuşatma.
 - [ ] **C5. Savaş çözümü:** önce otomatik ve olasılık tabanlı, ileride taktik savaş ekranı.
