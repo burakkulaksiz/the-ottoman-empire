@@ -13,14 +13,15 @@ npm run dev
 
 ## Komutlar
 
-| Komut               | Açıklama                                   |
-| ------------------- | ------------------------------------------ |
-| `npm run dev`       | Geliştirme sunucusu                        |
-| `npm run build`     | Üretim derlemesi (`build/client`)          |
-| `npm run preview`   | Derlemeyi yerelde sunar                    |
-| `npm run typecheck` | Route tiplerini üretir ve `tsc` çalıştırır |
-| `npm run lint`      | ESLint (mimari sınırlar dahil)             |
-| `npm test`          | Vitest birim testleri                      |
+| Komut                    | Açıklama                                   |
+| ------------------------ | ------------------------------------------ |
+| `npm run dev`            | Geliştirme sunucusu                        |
+| `npm run build`          | Üretim derlemesi (`build/client`)          |
+| `npm run preview`        | Derlemeyi yerelde sunar                    |
+| `npm run typecheck`      | Route tiplerini üretir ve `tsc` çalıştırır |
+| `npm run lint`           | ESLint (mimari sınırlar dahil)             |
+| `npm test`               | Vitest birim testleri                      |
+| `npm run data:provinces` | Bölge haritası ve komşuluk verisini üretir |
 
 ## Mimari
 
