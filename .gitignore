@@ -6,3 +6,6 @@
 # React Router
 /.react-router/
 /build/
+
+# Ham harita verisi (scripts/build-provinces.mjs indirir)
+/data-src/

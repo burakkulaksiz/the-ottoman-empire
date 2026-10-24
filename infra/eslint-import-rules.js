@@ -53,7 +53,7 @@ function generateImportRules() {
   });
 
   // Feature bağımlılık tablosu: yeni feature eklendikçe buraya yazılır.
-  const features = [];
+  const features = [{ name: 'map', allowedFeatures: [] }];
 
   features.forEach((feature) => {
     const forbiddenFeatures = features

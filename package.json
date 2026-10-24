@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint-staged": "lint-staged --config infra/lint-staged.config.js --concurrent false",
+    "data:provinces": "node scripts/build-provinces.mjs",
     "prepare": "husky"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "immer": "^11.2.9",
     "isbot": "^5.2.2",
     "lucide-react": "^1.61.0",
+    "maplibre-gl": "^6.15.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router": "^7.18.4",
@@ -57,6 +59,7 @@
     "husky": "^9.1.7",
     "jsdom": "^27.4.0",
     "lint-staged": "^16.4.0",
+    "mapshaper": "^0.7.98",
     "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9.0",

@@ -1,0 +1,6150 @@
+{
+  "alb-berat": {
+    "name": "Berat ili",
+    "country": "Arnavutluk",
+    "neighbors": ["alb-elbasan", "alb-fier", "alb-gjirokaster", "alb-korce"]
+  },
+  "alb-diber": {
+    "name": "Debre ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-durres",
+      "alb-elbasan",
+      "alb-kukes",
+      "alb-lezhe",
+      "alb-tirana",
+      "mkd"
+    ]
+  },
+  "alb-durres": {
+    "name": "Dıraç ili",
+    "country": "Arnavutluk",
+    "neighbors": ["alb-diber", "alb-lezhe", "alb-tirana"]
+  },
+  "alb-elbasan": {
+    "name": "Elbasan ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-berat",
+      "alb-diber",
+      "alb-fier",
+      "alb-korce",
+      "alb-tirana",
+      "mkd"
+    ]
+  },
+  "alb-fier": {
+    "name": "Fier ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-berat",
+      "alb-elbasan",
+      "alb-gjirokaster",
+      "alb-tirana",
+      "alb-vlore"
+    ]
+  },
+  "alb-gjirokaster": {
+    "name": "Ergiri ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-berat",
+      "alb-fier",
+      "alb-korce",
+      "alb-vlore",
+      "grc-epirus"
+    ]
+  },
+  "alb-korce": {
+    "name": "Görice ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-berat",
+      "alb-elbasan",
+      "alb-gjirokaster",
+      "grc-epirus",
+      "grc-west-macedonia",
+      "mkd"
+    ]
+  },
+  "alb-kukes": {
+    "name": "Kukës ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-diber",
+      "alb-lezhe",
+      "alb-shkoder",
+      "kos",
+      "mkd",
+      "mne-plav"
+    ]
+  },
+  "alb-lezhe": {
+    "name": "Leç ili",
+    "country": "Arnavutluk",
+    "neighbors": ["alb-diber", "alb-durres", "alb-kukes", "alb-shkoder"]
+  },
+  "alb-shkoder": {
+    "name": "İşkodra ili",
+    "country": "Arnavutluk",
+    "neighbors": [
+      "alb-kukes",
+      "alb-lezhe",
+      "mne-andrijevica",
+      "mne-bar",
+      "mne-plav",
+      "mne-podgorica",
+      "mne-ulcinj"
+    ]
+  },
+  "alb-tirana": {
+    "name": "Tiran ili",
+    "country": "Arnavutluk",
+    "neighbors": ["alb-diber", "alb-durres", "alb-elbasan", "alb-fier"]
+  },
+  "alb-vlore": {
+    "name": "Avlonya ili",
+    "country": "Arnavutluk",
+    "neighbors": ["alb-fier", "alb-gjirokaster", "grc-epirus"]
+  },
+  "arm-aragatsotn": {
+    "name": "Aragatsotn",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-armavir",
+      "arm-kotayk",
+      "arm-lori",
+      "arm-shirak",
+      "arm-yerevan",
+      "tur-kars"
+    ]
+  },
+  "arm-ararat": {
+    "name": "Ararat İli",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-armavir",
+      "arm-gegharkunik",
+      "arm-kotayk",
+      "arm-vayots-dzor",
+      "arm-yerevan",
+      "tur-igdir"
+    ]
+  },
+  "arm-armavir": {
+    "name": "Armavir İdari Bölgesi",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-aragatsotn",
+      "arm-ararat",
+      "arm-yerevan",
+      "tur-igdir",
+      "tur-kars"
+    ]
+  },
+  "arm-gegharkunik": {
+    "name": "Geğarkunik",
+    "country": "Ermenistan",
+    "neighbors": ["arm-ararat", "arm-kotayk", "arm-tavush", "arm-vayots-dzor"]
+  },
+  "arm-kotayk": {
+    "name": "Kotayk",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-aragatsotn",
+      "arm-ararat",
+      "arm-gegharkunik",
+      "arm-lori",
+      "arm-tavush",
+      "arm-yerevan"
+    ]
+  },
+  "arm-lori": {
+    "name": "Lori",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-aragatsotn",
+      "arm-kotayk",
+      "arm-shirak",
+      "arm-tavush",
+      "geo-kvemo-kartli"
+    ]
+  },
+  "arm-shirak": {
+    "name": "Şirak İdari Bölgesi",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-aragatsotn",
+      "arm-lori",
+      "geo-samtskhe-javakheti",
+      "tur-kars"
+    ]
+  },
+  "arm-syunik": {
+    "name": "Syunik ili",
+    "country": "Ermenistan",
+    "neighbors": ["arm-vayots-dzor", "irn-east-azerbaijan"]
+  },
+  "arm-tavush": {
+    "name": "Tavuş",
+    "country": "Ermenistan",
+    "neighbors": [
+      "arm-gegharkunik",
+      "arm-kotayk",
+      "arm-lori",
+      "geo-kvemo-kartli"
+    ]
+  },
+  "arm-vayots-dzor": {
+    "name": "Vayots Dzor",
+    "country": "Ermenistan",
+    "neighbors": ["arm-ararat", "arm-gegharkunik", "arm-syunik"]
+  },
+  "arm-yerevan": {
+    "name": "Erivan",
+    "country": "Ermenistan",
+    "neighbors": ["arm-aragatsotn", "arm-ararat", "arm-armavir", "arm-kotayk"]
+  },
+  "bgr-blagoevgrad": {
+    "name": "Yukarı Cuma ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-kyustendil",
+      "bgr-pazardzhik",
+      "bgr-smolyan",
+      "bgr-sofia",
+      "grc-centre-macedonia",
+      "grc-east-macedonia-and-thrace",
+      "mkd"
+    ]
+  },
+  "bgr-burgas": {
+    "name": "Burgaz ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-shumen",
+      "bgr-sliven",
+      "bgr-varna",
+      "bgr-yambol",
+      "tur-kirklareli"
+    ]
+  },
+  "bgr-dobrich": {
+    "name": "Dobriç ili",
+    "country": "Bulgaristan",
+    "neighbors": ["bgr-shumen", "bgr-silistra", "bgr-varna", "rou-constanta"]
+  },
+  "bgr-gabrovo": {
+    "name": "Gabrova ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-lovech",
+      "bgr-plovdiv",
+      "bgr-stara-zagora",
+      "bgr-veliko-tarnovo"
+    ]
+  },
+  "bgr-haskovo": {
+    "name": "Hasköy ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-kardzhali",
+      "bgr-plovdiv",
+      "bgr-stara-zagora",
+      "bgr-yambol",
+      "grc-east-macedonia-and-thrace",
+      "tur-edirne"
+    ]
+  },
+  "bgr-kardzhali": {
+    "name": "Kırcaali ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-haskovo",
+      "bgr-plovdiv",
+      "bgr-smolyan",
+      "grc-east-macedonia-and-thrace"
+    ]
+  },
+  "bgr-kyustendil": {
+    "name": "Köstendil ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-blagoevgrad",
+      "bgr-pernik",
+      "bgr-sofia",
+      "mkd",
+      "srb-pcinja"
+    ]
+  },
+  "bgr-lovech": {
+    "name": "Lofça ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-gabrovo",
+      "bgr-pleven",
+      "bgr-plovdiv",
+      "bgr-sofia",
+      "bgr-veliko-tarnovo",
+      "bgr-vratsa"
+    ]
+  },
+  "bgr-montana": {
+    "name": "Montana ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-sofia",
+      "bgr-vidin",
+      "bgr-vratsa",
+      "rou-dolj",
+      "srb-pirot"
+    ]
+  },
+  "bgr-pazardzhik": {
+    "name": "Pazarcık ili",
+    "country": "Bulgaristan",
+    "neighbors": ["bgr-blagoevgrad", "bgr-plovdiv", "bgr-smolyan", "bgr-sofia"]
+  },
+  "bgr-pernik": {
+    "name": "Pernik ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-kyustendil",
+      "bgr-sofia",
+      "bgr-sofia-2",
+      "srb-jablanica",
+      "srb-pcinja",
+      "srb-pirot"
+    ]
+  },
+  "bgr-pleven": {
+    "name": "Plevne ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-lovech",
+      "bgr-veliko-tarnovo",
+      "bgr-vratsa",
+      "rou-olt",
+      "rou-teleorman"
+    ]
+  },
+  "bgr-plovdiv": {
+    "name": "Filibe ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-gabrovo",
+      "bgr-haskovo",
+      "bgr-kardzhali",
+      "bgr-lovech",
+      "bgr-pazardzhik",
+      "bgr-smolyan",
+      "bgr-sofia",
+      "bgr-stara-zagora"
+    ]
+  },
+  "bgr-razgrad": {
+    "name": "Razgrad ili",
+    "country": "Bulgaristan",
+    "neighbors": ["bgr-ruse", "bgr-shumen", "bgr-silistra", "bgr-targovishte"]
+  },
+  "bgr-ruse": {
+    "name": "Rusçuk ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-razgrad",
+      "bgr-silistra",
+      "bgr-targovishte",
+      "bgr-veliko-tarnovo",
+      "rou-giurgiu",
+      "rou-teleorman"
+    ]
+  },
+  "bgr-shumen": {
+    "name": "Şumnu ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-burgas",
+      "bgr-dobrich",
+      "bgr-razgrad",
+      "bgr-silistra",
+      "bgr-sliven",
+      "bgr-targovishte",
+      "bgr-varna"
+    ]
+  },
+  "bgr-silistra": {
+    "name": "Silistre ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-dobrich",
+      "bgr-razgrad",
+      "bgr-ruse",
+      "bgr-shumen",
+      "rou-calarasi",
+      "rou-constanta",
+      "rou-giurgiu"
+    ]
+  },
+  "bgr-sliven": {
+    "name": "Sliven ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-burgas",
+      "bgr-shumen",
+      "bgr-stara-zagora",
+      "bgr-targovishte",
+      "bgr-veliko-tarnovo",
+      "bgr-yambol"
+    ]
+  },
+  "bgr-smolyan": {
+    "name": "Smolyan ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-blagoevgrad",
+      "bgr-kardzhali",
+      "bgr-pazardzhik",
+      "bgr-plovdiv",
+      "grc-east-macedonia-and-thrace"
+    ]
+  },
+  "bgr-sofia": {
+    "name": "Sofya ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-blagoevgrad",
+      "bgr-kyustendil",
+      "bgr-lovech",
+      "bgr-montana",
+      "bgr-pazardzhik",
+      "bgr-pernik",
+      "bgr-plovdiv",
+      "bgr-sofia-2",
+      "bgr-vratsa",
+      "srb-pirot"
+    ]
+  },
+  "bgr-sofia-2": {
+    "name": "Grad Sofiya",
+    "country": "Bulgaristan",
+    "neighbors": ["bgr-pernik", "bgr-sofia"]
+  },
+  "bgr-stara-zagora": {
+    "name": "Eski Zağra ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-gabrovo",
+      "bgr-haskovo",
+      "bgr-plovdiv",
+      "bgr-sliven",
+      "bgr-veliko-tarnovo",
+      "bgr-yambol"
+    ]
+  },
+  "bgr-targovishte": {
+    "name": "Eski Cuma ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-razgrad",
+      "bgr-ruse",
+      "bgr-shumen",
+      "bgr-sliven",
+      "bgr-veliko-tarnovo"
+    ]
+  },
+  "bgr-varna": {
+    "name": "Varna ili",
+    "country": "Bulgaristan",
+    "neighbors": ["bgr-burgas", "bgr-dobrich", "bgr-shumen"]
+  },
+  "bgr-veliko-tarnovo": {
+    "name": "Veliko Tırnovo ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-gabrovo",
+      "bgr-lovech",
+      "bgr-pleven",
+      "bgr-ruse",
+      "bgr-sliven",
+      "bgr-stara-zagora",
+      "bgr-targovishte",
+      "rou-teleorman"
+    ]
+  },
+  "bgr-vidin": {
+    "name": "Vidin ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-montana",
+      "rou-dolj",
+      "rou-mehedinti",
+      "srb-bor",
+      "srb-pirot",
+      "srb-zajecar"
+    ]
+  },
+  "bgr-vratsa": {
+    "name": "Vratsa ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-lovech",
+      "bgr-montana",
+      "bgr-pleven",
+      "bgr-sofia",
+      "rou-dolj",
+      "rou-olt"
+    ]
+  },
+  "bgr-yambol": {
+    "name": "Yambol ili",
+    "country": "Bulgaristan",
+    "neighbors": [
+      "bgr-burgas",
+      "bgr-haskovo",
+      "bgr-sliven",
+      "bgr-stara-zagora",
+      "tur-edirne",
+      "tur-kirklareli"
+    ]
+  },
+  "bih-banja-luka": {
+    "name": "Banja Luka",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-central-bosnia-canton",
+      "bih-doboj",
+      "bih-livno",
+      "bih-una-sana-canton",
+      "bih-zenica-doboj-canton",
+      "hrv-brod-posavina",
+      "hrv-sisak-moslavina"
+    ]
+  },
+  "bih-bijeljina": {
+    "name": "Bijeljina",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-brcko",
+      "bih-tuzla-canton",
+      "bih-vlasenica",
+      "hrv-vukovar-syrmia",
+      "srb-macva",
+      "srb-srem"
+    ]
+  },
+  "bih-bosnian-podrinje-canton": {
+    "name": "Bosna-Podrinje Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": ["bih-foca", "bih-sarajevo-canton", "bih-sarajevo-romanija"]
+  },
+  "bih-brcko": {
+    "name": "Brçko Bölgesi",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bijeljina",
+      "bih-doboj",
+      "bih-posavina-canton",
+      "bih-tuzla-canton",
+      "hrv-vukovar-syrmia"
+    ]
+  },
+  "bih-central-bosnia-canton": {
+    "name": "Merkez Bosna Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-herzegovina-neretva-canton",
+      "bih-livno",
+      "bih-sarajevo-canton",
+      "bih-zenica-doboj-canton"
+    ]
+  },
+  "bih-doboj": {
+    "name": "Doboj",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-brcko",
+      "bih-posavina-canton",
+      "bih-tuzla-canton",
+      "bih-zenica-doboj-canton",
+      "hrv-brod-posavina"
+    ]
+  },
+  "bih-foca": {
+    "name": "Foča",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bosnian-podrinje-canton",
+      "bih-herzegovina-neretva-canton",
+      "bih-sarajevo-canton",
+      "bih-sarajevo-romanija",
+      "bih-trebinje",
+      "bih-vlasenica",
+      "mne-pljevlja",
+      "mne-pluzine",
+      "mne-zabljak",
+      "srb-zlatibor"
+    ]
+  },
+  "bih-herzegovina-neretva-canton": {
+    "name": "Hersek-Neretva Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-central-bosnia-canton",
+      "bih-foca",
+      "bih-livno",
+      "bih-sarajevo-canton",
+      "bih-trebinje",
+      "bih-west-herzegovina-canton",
+      "hrv-dubrovnik-neretva"
+    ]
+  },
+  "bih-livno": {
+    "name": "Batı Bosna",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-central-bosnia-canton",
+      "bih-herzegovina-neretva-canton",
+      "bih-una-sana-canton",
+      "bih-west-herzegovina-canton",
+      "hrv-split-dalmatia",
+      "hrv-zadar"
+    ]
+  },
+  "bih-posavina-canton": {
+    "name": "Posavina Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-brcko",
+      "bih-doboj",
+      "hrv-brod-posavina",
+      "hrv-vukovar-syrmia"
+    ]
+  },
+  "bih-sarajevo-canton": {
+    "name": "Saraybosna Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bosnian-podrinje-canton",
+      "bih-central-bosnia-canton",
+      "bih-foca",
+      "bih-herzegovina-neretva-canton",
+      "bih-sarajevo-romanija",
+      "bih-zenica-doboj-canton"
+    ]
+  },
+  "bih-sarajevo-romanija": {
+    "name": "Sarajevo-romanija",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bosnian-podrinje-canton",
+      "bih-foca",
+      "bih-sarajevo-canton",
+      "bih-vlasenica",
+      "bih-zenica-doboj-canton"
+    ]
+  },
+  "bih-trebinje": {
+    "name": "Trebinje",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-foca",
+      "bih-herzegovina-neretva-canton",
+      "hrv-dubrovnik-neretva",
+      "mne-herceg-novi",
+      "mne-kotor",
+      "mne-niksic",
+      "mne-pluzine"
+    ]
+  },
+  "bih-tuzla-canton": {
+    "name": "Tuzla Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bijeljina",
+      "bih-brcko",
+      "bih-doboj",
+      "bih-vlasenica",
+      "bih-zenica-doboj-canton"
+    ]
+  },
+  "bih-una-sana-canton": {
+    "name": "Una-Sana Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-livno",
+      "hrv-karlovac",
+      "hrv-sisak-moslavina",
+      "hrv-zadar"
+    ]
+  },
+  "bih-vlasenica": {
+    "name": "Vlasenica",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-bijeljina",
+      "bih-foca",
+      "bih-sarajevo-romanija",
+      "bih-tuzla-canton",
+      "bih-zenica-doboj-canton",
+      "srb-macva",
+      "srb-zlatibor"
+    ]
+  },
+  "bih-west-herzegovina-canton": {
+    "name": "Batı Hersek Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-herzegovina-neretva-canton",
+      "bih-livno",
+      "hrv-dubrovnik-neretva",
+      "hrv-split-dalmatia"
+    ]
+  },
+  "bih-zenica-doboj-canton": {
+    "name": "Zenica-Doboj Kantonu",
+    "country": "Bosna-Hersek",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-central-bosnia-canton",
+      "bih-doboj",
+      "bih-sarajevo-canton",
+      "bih-sarajevo-romanija",
+      "bih-tuzla-canton",
+      "bih-vlasenica"
+    ]
+  },
+  "cyp": {
+    "name": "Kıbrıs",
+    "country": "Kıbrıs",
+    "neighbors": []
+  },
+  "dza-adrar": {
+    "name": "Adrar Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-bechar",
+      "dza-el-bayadh",
+      "dza-ghardaia",
+      "dza-tamanghasset",
+      "dza-tindouf"
+    ]
+  },
+  "dza-ain-defla": {
+    "name": "Ayn el Defla Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-blida",
+      "dza-chlef",
+      "dza-medea",
+      "dza-tipasa",
+      "dza-tissemsilt"
+    ]
+  },
+  "dza-ain-temouchent": {
+    "name": "Ayn Temuşent Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-oran", "dza-sidi-bel-abbes", "dza-tlemcen"]
+  },
+  "dza-algiers": {
+    "name": "Cezayir Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-blida", "dza-boumerdes", "dza-tipasa"]
+  },
+  "dza-annaba": {
+    "name": "Annaba Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-el-tarf", "dza-guelma", "dza-skikda"]
+  },
+  "dza-batna": {
+    "name": "Batna Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-biskra",
+      "dza-khenchela",
+      "dza-m-sila",
+      "dza-mila",
+      "dza-oum-el-bouaghi",
+      "dza-setif"
+    ]
+  },
+  "dza-bechar": {
+    "name": "Beşar Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-adrar", "dza-el-bayadh", "dza-naama", "dza-tindouf"]
+  },
+  "dza-bejaia": {
+    "name": "Becaye Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-bordj-bou-arreridj",
+      "dza-bouira",
+      "dza-jijel",
+      "dza-setif",
+      "dza-tizi-ouzou"
+    ]
+  },
+  "dza-biskra": {
+    "name": "Biskra Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-djelfa",
+      "dza-el-oued",
+      "dza-khenchela",
+      "dza-m-sila"
+    ]
+  },
+  "dza-blida": {
+    "name": "Blida Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-defla",
+      "dza-algiers",
+      "dza-bouira",
+      "dza-boumerdes",
+      "dza-medea",
+      "dza-tipasa"
+    ]
+  },
+  "dza-bordj-bou-arreridj": {
+    "name": "Burc Bu Ariric Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-bejaia", "dza-bouira", "dza-m-sila", "dza-setif"]
+  },
+  "dza-bouira": {
+    "name": "Buira Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-bejaia",
+      "dza-blida",
+      "dza-bordj-bou-arreridj",
+      "dza-boumerdes",
+      "dza-m-sila",
+      "dza-medea",
+      "dza-tizi-ouzou"
+    ]
+  },
+  "dza-boumerdes": {
+    "name": "Bumerdas Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-algiers", "dza-blida", "dza-bouira", "dza-tizi-ouzou"]
+  },
+  "dza-chlef": {
+    "name": "Şelf Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-defla",
+      "dza-mostaganem",
+      "dza-relizane",
+      "dza-tipasa",
+      "dza-tissemsilt"
+    ]
+  },
+  "dza-constantine": {
+    "name": "Konstantine Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-guelma", "dza-mila", "dza-oum-el-bouaghi", "dza-skikda"]
+  },
+  "dza-djelfa": {
+    "name": "Celfa Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-biskra",
+      "dza-el-oued",
+      "dza-ghardaia",
+      "dza-laghouat",
+      "dza-m-sila",
+      "dza-medea",
+      "dza-ouargla",
+      "dza-tiaret"
+    ]
+  },
+  "dza-el-bayadh": {
+    "name": "El Beyaz Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-adrar",
+      "dza-bechar",
+      "dza-ghardaia",
+      "dza-laghouat",
+      "dza-naama",
+      "dza-saida",
+      "dza-tiaret"
+    ]
+  },
+  "dza-el-oued": {
+    "name": "El Vadi Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-biskra",
+      "dza-djelfa",
+      "dza-khenchela",
+      "dza-ouargla",
+      "dza-tebessa",
+      "tun-kebili",
+      "tun-tataouine",
+      "tun-tozeur"
+    ]
+  },
+  "dza-el-tarf": {
+    "name": "El Tarif Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-annaba", "dza-guelma", "dza-souk-ahras", "tun-jendouba"]
+  },
+  "dza-ghardaia": {
+    "name": "Gardaye Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-adrar",
+      "dza-djelfa",
+      "dza-el-bayadh",
+      "dza-laghouat",
+      "dza-ouargla",
+      "dza-tamanghasset"
+    ]
+  },
+  "dza-guelma": {
+    "name": "Kalime Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-annaba",
+      "dza-constantine",
+      "dza-el-tarf",
+      "dza-oum-el-bouaghi",
+      "dza-skikda",
+      "dza-souk-ahras"
+    ]
+  },
+  "dza-illizi": {
+    "name": "İlizi Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ouargla",
+      "dza-tamanghasset",
+      "lby-ash-shati",
+      "lby-ghadames",
+      "lby-ghat",
+      "lby-murzuq"
+    ]
+  },
+  "dza-jijel": {
+    "name": "Cicel Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-bejaia", "dza-mila", "dza-setif", "dza-skikda"]
+  },
+  "dza-khenchela": {
+    "name": "Henşle Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-biskra",
+      "dza-el-oued",
+      "dza-oum-el-bouaghi",
+      "dza-tebessa"
+    ]
+  },
+  "dza-laghouat": {
+    "name": "Lagvat Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-djelfa", "dza-el-bayadh", "dza-ghardaia", "dza-tiaret"]
+  },
+  "dza-m-sila": {
+    "name": "M'Sila Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-biskra",
+      "dza-bordj-bou-arreridj",
+      "dza-bouira",
+      "dza-djelfa",
+      "dza-medea",
+      "dza-setif"
+    ]
+  },
+  "dza-mascara": {
+    "name": "Muaskar Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-mostaganem",
+      "dza-oran",
+      "dza-relizane",
+      "dza-saida",
+      "dza-sidi-bel-abbes",
+      "dza-tiaret"
+    ]
+  },
+  "dza-medea": {
+    "name": "Mediye Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-defla",
+      "dza-blida",
+      "dza-bouira",
+      "dza-djelfa",
+      "dza-m-sila",
+      "dza-tiaret",
+      "dza-tissemsilt"
+    ]
+  },
+  "dza-mila": {
+    "name": "Mila Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-constantine",
+      "dza-jijel",
+      "dza-oum-el-bouaghi",
+      "dza-setif",
+      "dza-skikda"
+    ]
+  },
+  "dza-mostaganem": {
+    "name": "Mostaganem Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-chlef", "dza-mascara", "dza-oran", "dza-relizane"]
+  },
+  "dza-naama": {
+    "name": "Niame Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-bechar",
+      "dza-el-bayadh",
+      "dza-saida",
+      "dza-sidi-bel-abbes",
+      "dza-tlemcen"
+    ]
+  },
+  "dza-oran": {
+    "name": "Oran Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-temouchent",
+      "dza-mascara",
+      "dza-mostaganem",
+      "dza-sidi-bel-abbes"
+    ]
+  },
+  "dza-ouargla": {
+    "name": "Vurkla Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-djelfa",
+      "dza-el-oued",
+      "dza-ghardaia",
+      "dza-illizi",
+      "dza-tamanghasset",
+      "lby-ghadames",
+      "tun-tataouine"
+    ]
+  },
+  "dza-oum-el-bouaghi": {
+    "name": "Em El Buvaki Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-constantine",
+      "dza-guelma",
+      "dza-khenchela",
+      "dza-mila",
+      "dza-souk-ahras",
+      "dza-tebessa"
+    ]
+  },
+  "dza-relizane": {
+    "name": "Relizane Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-chlef",
+      "dza-mascara",
+      "dza-mostaganem",
+      "dza-tiaret",
+      "dza-tissemsilt"
+    ]
+  },
+  "dza-saida": {
+    "name": "Saida Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-el-bayadh",
+      "dza-mascara",
+      "dza-naama",
+      "dza-sidi-bel-abbes",
+      "dza-tiaret"
+    ]
+  },
+  "dza-setif": {
+    "name": "Setif Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-batna",
+      "dza-bejaia",
+      "dza-bordj-bou-arreridj",
+      "dza-jijel",
+      "dza-m-sila",
+      "dza-mila"
+    ]
+  },
+  "dza-sidi-bel-abbes": {
+    "name": "Sidi Belabbas Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-temouchent",
+      "dza-mascara",
+      "dza-naama",
+      "dza-oran",
+      "dza-saida",
+      "dza-tlemcen"
+    ]
+  },
+  "dza-skikda": {
+    "name": "Sekikda Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-annaba",
+      "dza-constantine",
+      "dza-guelma",
+      "dza-jijel",
+      "dza-mila"
+    ]
+  },
+  "dza-souk-ahras": {
+    "name": "Sevk Ahras Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-el-tarf",
+      "dza-guelma",
+      "dza-oum-el-bouaghi",
+      "dza-tebessa",
+      "tun-jendouba",
+      "tun-kef"
+    ]
+  },
+  "dza-tamanghasset": {
+    "name": "Tamanrasset Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-adrar",
+      "dza-ghardaia",
+      "dza-illizi",
+      "dza-ouargla",
+      "lby-murzuq"
+    ]
+  },
+  "dza-tebessa": {
+    "name": "Tebesa Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-el-oued",
+      "dza-khenchela",
+      "dza-oum-el-bouaghi",
+      "dza-souk-ahras",
+      "tun-gafsa",
+      "tun-kasserine",
+      "tun-kef",
+      "tun-tozeur"
+    ]
+  },
+  "dza-tiaret": {
+    "name": "Tiyaret Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-djelfa",
+      "dza-el-bayadh",
+      "dza-laghouat",
+      "dza-mascara",
+      "dza-medea",
+      "dza-relizane",
+      "dza-saida",
+      "dza-tissemsilt"
+    ]
+  },
+  "dza-tindouf": {
+    "name": "Tinduf Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-adrar", "dza-bechar"]
+  },
+  "dza-tipasa": {
+    "name": "Tibaze Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-ain-defla", "dza-algiers", "dza-blida", "dza-chlef"]
+  },
+  "dza-tissemsilt": {
+    "name": "Tissemsilt Vilayeti",
+    "country": "Cezayir",
+    "neighbors": [
+      "dza-ain-defla",
+      "dza-chlef",
+      "dza-medea",
+      "dza-relizane",
+      "dza-tiaret"
+    ]
+  },
+  "dza-tizi-ouzou": {
+    "name": "Tizi Vuzu Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-bejaia", "dza-bouira", "dza-boumerdes"]
+  },
+  "dza-tlemcen": {
+    "name": "Tlemsan Vilayeti",
+    "country": "Cezayir",
+    "neighbors": ["dza-ain-temouchent", "dza-naama", "dza-sidi-bel-abbes"]
+  },
+  "egy-al-sharqia": {
+    "name": "Şarkiye",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-cairo",
+      "egy-dakahlia",
+      "egy-ismailia",
+      "egy-port-said",
+      "egy-qalyubia"
+    ]
+  },
+  "egy-alexandria": {
+    "name": "İskenderiye",
+    "country": "Mısır",
+    "neighbors": ["egy-beheira", "egy-matrouh"]
+  },
+  "egy-aswan": {
+    "name": "Asvan",
+    "country": "Mısır",
+    "neighbors": ["egy-new-valley", "egy-qena", "egy-red-sea"]
+  },
+  "egy-asyut": {
+    "name": "Asyut",
+    "country": "Mısır",
+    "neighbors": ["egy-minya", "egy-new-valley", "egy-red-sea", "egy-sohag"]
+  },
+  "egy-beheira": {
+    "name": "Buheyre",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-alexandria",
+      "egy-gharbia",
+      "egy-giza",
+      "egy-kafr-el-sheikh",
+      "egy-matrouh",
+      "egy-monufia"
+    ]
+  },
+  "egy-beni-suef": {
+    "name": "Beni Suveyf",
+    "country": "Mısır",
+    "neighbors": ["egy-faiyum", "egy-giza", "egy-minya", "egy-red-sea"]
+  },
+  "egy-cairo": {
+    "name": "Kahire",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-al-sharqia",
+      "egy-giza",
+      "egy-ismailia",
+      "egy-qalyubia",
+      "egy-suez"
+    ]
+  },
+  "egy-dakahlia": {
+    "name": "Dekahliye",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-al-sharqia",
+      "egy-damietta",
+      "egy-gharbia",
+      "egy-kafr-el-sheikh",
+      "egy-qalyubia"
+    ]
+  },
+  "egy-damietta": {
+    "name": "Dimyat",
+    "country": "Mısır",
+    "neighbors": ["egy-dakahlia"]
+  },
+  "egy-faiyum": {
+    "name": "Feyyum",
+    "country": "Mısır",
+    "neighbors": ["egy-beni-suef", "egy-giza"]
+  },
+  "egy-gharbia": {
+    "name": "Garbiya",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-beheira",
+      "egy-dakahlia",
+      "egy-kafr-el-sheikh",
+      "egy-monufia",
+      "egy-qalyubia"
+    ]
+  },
+  "egy-giza": {
+    "name": "Gize",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-beheira",
+      "egy-beni-suef",
+      "egy-cairo",
+      "egy-faiyum",
+      "egy-matrouh",
+      "egy-minya",
+      "egy-monufia",
+      "egy-new-valley",
+      "egy-qalyubia",
+      "egy-red-sea",
+      "egy-suez"
+    ]
+  },
+  "egy-ismailia": {
+    "name": "İsmailiye",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-al-sharqia",
+      "egy-cairo",
+      "egy-north-sinai",
+      "egy-port-said",
+      "egy-suez"
+    ]
+  },
+  "egy-kafr-el-sheikh": {
+    "name": "Kafrü'ş-Şeyh",
+    "country": "Mısır",
+    "neighbors": ["egy-beheira", "egy-dakahlia", "egy-gharbia"]
+  },
+  "egy-luxor": {
+    "name": "Luksor",
+    "country": "Mısır",
+    "neighbors": ["egy-qena"]
+  },
+  "egy-matrouh": {
+    "name": "Matruh",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-alexandria",
+      "egy-beheira",
+      "egy-giza",
+      "egy-new-valley",
+      "lby-ajdabiya",
+      "lby-butnan"
+    ]
+  },
+  "egy-minya": {
+    "name": "Minye",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-asyut",
+      "egy-beni-suef",
+      "egy-giza",
+      "egy-new-valley",
+      "egy-red-sea"
+    ]
+  },
+  "egy-monufia": {
+    "name": "Minufiye",
+    "country": "Mısır",
+    "neighbors": ["egy-beheira", "egy-gharbia", "egy-giza", "egy-qalyubia"]
+  },
+  "egy-new-valley": {
+    "name": "Yeni Vadi",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-aswan",
+      "egy-asyut",
+      "egy-giza",
+      "egy-matrouh",
+      "egy-minya",
+      "egy-qena",
+      "egy-sohag",
+      "lby-ajdabiya",
+      "lby-kufra"
+    ]
+  },
+  "egy-north-sinai": {
+    "name": "Kuzey Sina",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-ismailia",
+      "egy-port-said",
+      "egy-south-sinai",
+      "egy-suez",
+      "isr-southern"
+    ]
+  },
+  "egy-port-said": {
+    "name": "Port Said",
+    "country": "Mısır",
+    "neighbors": ["egy-al-sharqia", "egy-ismailia", "egy-north-sinai"]
+  },
+  "egy-qalyubia": {
+    "name": "Kalyubiye",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-al-sharqia",
+      "egy-cairo",
+      "egy-dakahlia",
+      "egy-gharbia",
+      "egy-giza",
+      "egy-monufia"
+    ]
+  },
+  "egy-qena": {
+    "name": "Kina",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-aswan",
+      "egy-luxor",
+      "egy-new-valley",
+      "egy-red-sea",
+      "egy-sohag"
+    ]
+  },
+  "egy-red-sea": {
+    "name": "Kızıldeniz",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-aswan",
+      "egy-asyut",
+      "egy-beni-suef",
+      "egy-giza",
+      "egy-minya",
+      "egy-qena",
+      "egy-sohag",
+      "egy-suez"
+    ]
+  },
+  "egy-sohag": {
+    "name": "Sevhac",
+    "country": "Mısır",
+    "neighbors": ["egy-asyut", "egy-new-valley", "egy-qena", "egy-red-sea"]
+  },
+  "egy-south-sinai": {
+    "name": "Güney Sina",
+    "country": "Mısır",
+    "neighbors": ["egy-north-sinai", "egy-suez"]
+  },
+  "egy-suez": {
+    "name": "Süveyş",
+    "country": "Mısır",
+    "neighbors": [
+      "egy-cairo",
+      "egy-giza",
+      "egy-ismailia",
+      "egy-north-sinai",
+      "egy-red-sea",
+      "egy-south-sinai"
+    ]
+  },
+  "geo-abkhazia": {
+    "name": "Abhazya",
+    "country": "Gürcistan",
+    "neighbors": ["geo-samegrelo-zemo-svaneti"]
+  },
+  "geo-adjara": {
+    "name": "Acara Özerk Cumhuriyeti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-guria",
+      "geo-samtskhe-javakheti",
+      "tur-ardahan",
+      "tur-artvin"
+    ]
+  },
+  "geo-guria": {
+    "name": "Guria",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-adjara",
+      "geo-imereti",
+      "geo-samegrelo-zemo-svaneti",
+      "geo-samtskhe-javakheti"
+    ]
+  },
+  "geo-imereti": {
+    "name": "İmereti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-guria",
+      "geo-racha-lechkhumi-and-kvemo-svaneti",
+      "geo-samegrelo-zemo-svaneti",
+      "geo-samtskhe-javakheti",
+      "geo-shida-kartli"
+    ]
+  },
+  "geo-kakheti": {
+    "name": "Kaheti",
+    "country": "Gürcistan",
+    "neighbors": ["geo-kvemo-kartli", "geo-mtskheta-mtianeti"]
+  },
+  "geo-kvemo-kartli": {
+    "name": "Kvemo Kartli",
+    "country": "Gürcistan",
+    "neighbors": [
+      "arm-lori",
+      "arm-tavush",
+      "geo-kakheti",
+      "geo-mtskheta-mtianeti",
+      "geo-samtskhe-javakheti",
+      "geo-shida-kartli",
+      "geo-tbilisi"
+    ]
+  },
+  "geo-mtskheta-mtianeti": {
+    "name": "Mtsheta-Mtianeti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-kakheti",
+      "geo-kvemo-kartli",
+      "geo-shida-kartli",
+      "geo-tbilisi"
+    ]
+  },
+  "geo-racha-lechkhumi-and-kvemo-svaneti": {
+    "name": "Raca-Leçhumi ve Kvemo Svaneti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-imereti",
+      "geo-samegrelo-zemo-svaneti",
+      "geo-shida-kartli"
+    ]
+  },
+  "geo-samegrelo-zemo-svaneti": {
+    "name": "Samegrelo-Zemo Svaneti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-abkhazia",
+      "geo-guria",
+      "geo-imereti",
+      "geo-racha-lechkhumi-and-kvemo-svaneti"
+    ]
+  },
+  "geo-samtskhe-javakheti": {
+    "name": "Samtshe-Cavaheti",
+    "country": "Gürcistan",
+    "neighbors": [
+      "arm-shirak",
+      "geo-adjara",
+      "geo-guria",
+      "geo-imereti",
+      "geo-kvemo-kartli",
+      "geo-shida-kartli",
+      "tur-ardahan"
+    ]
+  },
+  "geo-shida-kartli": {
+    "name": "Şida Kartli",
+    "country": "Gürcistan",
+    "neighbors": [
+      "geo-imereti",
+      "geo-kvemo-kartli",
+      "geo-mtskheta-mtianeti",
+      "geo-racha-lechkhumi-and-kvemo-svaneti",
+      "geo-samtskhe-javakheti"
+    ]
+  },
+  "geo-tbilisi": {
+    "name": "Tiflis",
+    "country": "Gürcistan",
+    "neighbors": ["geo-kvemo-kartli", "geo-mtskheta-mtianeti"]
+  },
+  "grc-attica": {
+    "name": "Attika",
+    "country": "Yunanistan",
+    "neighbors": ["grc-central-greece", "grc-peloponnese"]
+  },
+  "grc-central-greece": {
+    "name": "Orta Yunanistan",
+    "country": "Yunanistan",
+    "neighbors": ["grc-attica", "grc-thessalia", "grc-west-greece"]
+  },
+  "grc-centre-macedonia": {
+    "name": "Orta Makedonya",
+    "country": "Yunanistan",
+    "neighbors": [
+      "bgr-blagoevgrad",
+      "grc-east-macedonia-and-thrace",
+      "grc-mount-athos",
+      "grc-thessalia",
+      "grc-west-macedonia",
+      "mkd"
+    ]
+  },
+  "grc-crete": {
+    "name": "Girit",
+    "country": "Yunanistan",
+    "neighbors": []
+  },
+  "grc-east-macedonia-and-thrace": {
+    "name": "Doğu Makedonya ve Trakya",
+    "country": "Yunanistan",
+    "neighbors": [
+      "bgr-blagoevgrad",
+      "bgr-haskovo",
+      "bgr-kardzhali",
+      "bgr-smolyan",
+      "grc-centre-macedonia",
+      "tur-edirne"
+    ]
+  },
+  "grc-epirus": {
+    "name": "Epir",
+    "country": "Yunanistan",
+    "neighbors": [
+      "alb-gjirokaster",
+      "alb-korce",
+      "alb-vlore",
+      "grc-thessalia",
+      "grc-west-greece",
+      "grc-west-macedonia"
+    ]
+  },
+  "grc-ionian-islands": {
+    "name": "İyonya Adaları",
+    "country": "Yunanistan",
+    "neighbors": []
+  },
+  "grc-mount-athos": {
+    "name": "Aynoroz",
+    "country": "Yunanistan",
+    "neighbors": ["grc-centre-macedonia"]
+  },
+  "grc-north-aegean": {
+    "name": "Kuzey Ege",
+    "country": "Yunanistan",
+    "neighbors": []
+  },
+  "grc-peloponnese": {
+    "name": "Mora",
+    "country": "Yunanistan",
+    "neighbors": ["grc-attica", "grc-west-greece"]
+  },
+  "grc-south-aegean": {
+    "name": "Güney Ege",
+    "country": "Yunanistan",
+    "neighbors": []
+  },
+  "grc-thessalia": {
+    "name": "Tesalya",
+    "country": "Yunanistan",
+    "neighbors": [
+      "grc-central-greece",
+      "grc-centre-macedonia",
+      "grc-epirus",
+      "grc-west-macedonia"
+    ]
+  },
+  "grc-west-greece": {
+    "name": "Batı Yunanistan",
+    "country": "Yunanistan",
+    "neighbors": ["grc-central-greece", "grc-epirus", "grc-peloponnese"]
+  },
+  "grc-west-macedonia": {
+    "name": "Batı Makedonya",
+    "country": "Yunanistan",
+    "neighbors": [
+      "alb-korce",
+      "grc-centre-macedonia",
+      "grc-epirus",
+      "grc-thessalia",
+      "mkd"
+    ]
+  },
+  "hrv-bjelovar-bilogora": {
+    "name": "Bjelovar-Bilogora",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-koprivnica-krizevci",
+      "hrv-pozega-slavonia",
+      "hrv-sisak-moslavina",
+      "hrv-virovitica-podravina",
+      "hrv-zagreb"
+    ]
+  },
+  "hrv-brod-posavina": {
+    "name": "Brod-Posavina",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-doboj",
+      "bih-posavina-canton",
+      "hrv-osijek-baranja",
+      "hrv-pozega-slavonia",
+      "hrv-sisak-moslavina",
+      "hrv-vukovar-syrmia"
+    ]
+  },
+  "hrv-dubrovnik-neretva": {
+    "name": "Dubrovnik-Neretva",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-herzegovina-neretva-canton",
+      "bih-trebinje",
+      "bih-west-herzegovina-canton",
+      "hrv-split-dalmatia",
+      "mne-herceg-novi"
+    ]
+  },
+  "hrv-istria": {
+    "name": "İstriya",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-primorje-gorski"]
+  },
+  "hrv-karlovac": {
+    "name": "Karlovac Bölgesi",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-una-sana-canton",
+      "hrv-lika-senj",
+      "hrv-primorje-gorski",
+      "hrv-sisak-moslavina",
+      "hrv-zadar",
+      "hrv-zagreb"
+    ]
+  },
+  "hrv-koprivnica-krizevci": {
+    "name": "Koprivnica-Križevci",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-bjelovar-bilogora",
+      "hrv-me-imurje",
+      "hrv-varazdin",
+      "hrv-virovitica-podravina",
+      "hrv-zagreb",
+      "hun-somogy",
+      "hun-zala"
+    ]
+  },
+  "hrv-krapina-zagorje": {
+    "name": "Krapina-Zagorje",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-varazdin", "hrv-zagreb", "hrv-zagreb-2"]
+  },
+  "hrv-lika-senj": {
+    "name": "Lika-Senj",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-karlovac", "hrv-primorje-gorski", "hrv-zadar"]
+  },
+  "hrv-me-imurje": {
+    "name": "Međimurje",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-koprivnica-krizevci", "hrv-varazdin", "hun-zala"]
+  },
+  "hrv-osijek-baranja": {
+    "name": "Osijek-Baranya",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-brod-posavina",
+      "hrv-pozega-slavonia",
+      "hrv-virovitica-podravina",
+      "hrv-vukovar-syrmia",
+      "hun-bacs-kiskun",
+      "hun-baranya",
+      "srb-south-backa",
+      "srb-west-backa"
+    ]
+  },
+  "hrv-pozega-slavonia": {
+    "name": "Požega-Slavonija",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-bjelovar-bilogora",
+      "hrv-brod-posavina",
+      "hrv-osijek-baranja",
+      "hrv-sisak-moslavina",
+      "hrv-virovitica-podravina"
+    ]
+  },
+  "hrv-primorje-gorski": {
+    "name": "Primorje-Gorski",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-istria", "hrv-karlovac", "hrv-lika-senj"]
+  },
+  "hrv-sibenik-knin": {
+    "name": "Šibenik-Knin",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-split-dalmatia", "hrv-zadar"]
+  },
+  "hrv-sisak-moslavina": {
+    "name": "Sisak-Moslavina",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-banja-luka",
+      "bih-una-sana-canton",
+      "hrv-bjelovar-bilogora",
+      "hrv-brod-posavina",
+      "hrv-karlovac",
+      "hrv-pozega-slavonia",
+      "hrv-zagreb"
+    ]
+  },
+  "hrv-split-dalmatia": {
+    "name": "Split-Dalmaçya",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-livno",
+      "bih-west-herzegovina-canton",
+      "hrv-dubrovnik-neretva",
+      "hrv-sibenik-knin",
+      "hrv-zadar"
+    ]
+  },
+  "hrv-varazdin": {
+    "name": "Varaždin Bölgesi",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-koprivnica-krizevci",
+      "hrv-krapina-zagorje",
+      "hrv-me-imurje",
+      "hrv-zagreb"
+    ]
+  },
+  "hrv-virovitica-podravina": {
+    "name": "Virovitica-Podravina",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-bjelovar-bilogora",
+      "hrv-koprivnica-krizevci",
+      "hrv-osijek-baranja",
+      "hrv-pozega-slavonia",
+      "hun-baranya",
+      "hun-somogy"
+    ]
+  },
+  "hrv-vukovar-syrmia": {
+    "name": "Vukovar-Syrmia",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-bijeljina",
+      "bih-brcko",
+      "bih-posavina-canton",
+      "hrv-brod-posavina",
+      "hrv-osijek-baranja",
+      "srb-south-backa",
+      "srb-srem"
+    ]
+  },
+  "hrv-zadar": {
+    "name": "Zadar Bölgesi",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "bih-livno",
+      "bih-una-sana-canton",
+      "hrv-karlovac",
+      "hrv-lika-senj",
+      "hrv-sibenik-knin",
+      "hrv-split-dalmatia"
+    ]
+  },
+  "hrv-zagreb": {
+    "name": "Zagreb Bölgesi",
+    "country": "Hırvatistan",
+    "neighbors": [
+      "hrv-bjelovar-bilogora",
+      "hrv-karlovac",
+      "hrv-koprivnica-krizevci",
+      "hrv-krapina-zagorje",
+      "hrv-sisak-moslavina",
+      "hrv-varazdin",
+      "hrv-zagreb-2"
+    ]
+  },
+  "hrv-zagreb-2": {
+    "name": "Zagreb",
+    "country": "Hırvatistan",
+    "neighbors": ["hrv-krapina-zagorje", "hrv-zagreb"]
+  },
+  "hun-bacs-kiskun": {
+    "name": "Bács-Kiskun ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hrv-osijek-baranja",
+      "hun-baranya",
+      "hun-csongrad-csanad",
+      "hun-dunaujvaros",
+      "hun-fejer",
+      "hun-jasz-nagykun-szolnok",
+      "hun-kecskemet",
+      "hun-pest",
+      "hun-tolna",
+      "srb-north-backa",
+      "srb-west-backa"
+    ]
+  },
+  "hun-baranya": {
+    "name": "Baranya ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hrv-osijek-baranja",
+      "hrv-virovitica-podravina",
+      "hun-bacs-kiskun",
+      "hun-pecs",
+      "hun-somogy",
+      "hun-tolna"
+    ]
+  },
+  "hun-bekes": {
+    "name": "Békés ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bekescsaba",
+      "hun-csongrad-csanad",
+      "hun-hajdu-bihar",
+      "hun-hodmezovasarhely",
+      "hun-jasz-nagykun-szolnok",
+      "rou-arad",
+      "rou-bihor"
+    ]
+  },
+  "hun-bekescsaba": {
+    "name": "Békéscsaba",
+    "country": "Macaristan",
+    "neighbors": ["hun-bekes"]
+  },
+  "hun-borsod-abauj-zemplen": {
+    "name": "Borsod-Abaúj-Zemplén ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-eger",
+      "hun-hajdu-bihar",
+      "hun-heves",
+      "hun-jasz-nagykun-szolnok",
+      "hun-miskolc",
+      "hun-nograd",
+      "hun-szabolcs-szatmar-bereg",
+      "ukr-zakarpattia"
+    ]
+  },
+  "hun-budapest": {
+    "name": "Budapeşte",
+    "country": "Macaristan",
+    "neighbors": ["hun-erd", "hun-pest"]
+  },
+  "hun-csongrad-csanad": {
+    "name": "Csongrád-Csanád ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-bekes",
+      "hun-hodmezovasarhely",
+      "hun-jasz-nagykun-szolnok",
+      "hun-szeged",
+      "rou-arad",
+      "rou-timis",
+      "srb-north-backa",
+      "srb-north-banat"
+    ]
+  },
+  "hun-debrecen": {
+    "name": "Debrecen",
+    "country": "Macaristan",
+    "neighbors": ["hun-hajdu-bihar"]
+  },
+  "hun-dunaujvaros": {
+    "name": "Dunaújváros",
+    "country": "Macaristan",
+    "neighbors": ["hun-bacs-kiskun", "hun-fejer"]
+  },
+  "hun-eger": {
+    "name": "Eger",
+    "country": "Macaristan",
+    "neighbors": ["hun-borsod-abauj-zemplen", "hun-heves"]
+  },
+  "hun-erd": {
+    "name": "Érd",
+    "country": "Macaristan",
+    "neighbors": ["hun-budapest", "hun-fejer", "hun-pest"]
+  },
+  "hun-fejer": {
+    "name": "Fejér ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-dunaujvaros",
+      "hun-erd",
+      "hun-komarom-esztergom",
+      "hun-pest",
+      "hun-somogy",
+      "hun-szekesfehervar",
+      "hun-tatabanya",
+      "hun-tolna",
+      "hun-veszprem"
+    ]
+  },
+  "hun-gyor": {
+    "name": "Győr",
+    "country": "Macaristan",
+    "neighbors": ["hun-gyor-moson-sopron"]
+  },
+  "hun-gyor-moson-sopron": {
+    "name": "Győr-Moson-Sopron ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-gyor",
+      "hun-komarom-esztergom",
+      "hun-sopron",
+      "hun-vas",
+      "hun-veszprem"
+    ]
+  },
+  "hun-hajdu-bihar": {
+    "name": "Hajdú-Bihar ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bekes",
+      "hun-borsod-abauj-zemplen",
+      "hun-debrecen",
+      "hun-jasz-nagykun-szolnok",
+      "hun-szabolcs-szatmar-bereg",
+      "rou-bihor"
+    ]
+  },
+  "hun-heves": {
+    "name": "Heves ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-borsod-abauj-zemplen",
+      "hun-eger",
+      "hun-jasz-nagykun-szolnok",
+      "hun-miskolc",
+      "hun-nograd",
+      "hun-pest"
+    ]
+  },
+  "hun-hodmezovasarhely": {
+    "name": "Hódmezővásárhely",
+    "country": "Macaristan",
+    "neighbors": ["hun-bekes", "hun-csongrad-csanad", "hun-szeged"]
+  },
+  "hun-jasz-nagykun-szolnok": {
+    "name": "Jász-Nagykun-Szolnok ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-bekes",
+      "hun-borsod-abauj-zemplen",
+      "hun-csongrad-csanad",
+      "hun-hajdu-bihar",
+      "hun-heves",
+      "hun-pest",
+      "hun-szolnok"
+    ]
+  },
+  "hun-kaposvar": {
+    "name": "Kaposvár",
+    "country": "Macaristan",
+    "neighbors": ["hun-somogy"]
+  },
+  "hun-kecskemet": {
+    "name": "Kecskemét",
+    "country": "Macaristan",
+    "neighbors": ["hun-bacs-kiskun", "hun-pest"]
+  },
+  "hun-komarom-esztergom": {
+    "name": "Komárom-Esztergom ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-fejer",
+      "hun-gyor-moson-sopron",
+      "hun-pest",
+      "hun-tatabanya",
+      "hun-veszprem"
+    ]
+  },
+  "hun-miskolc": {
+    "name": "Miskolc",
+    "country": "Macaristan",
+    "neighbors": ["hun-borsod-abauj-zemplen", "hun-heves"]
+  },
+  "hun-nagykanizsa": {
+    "name": "Nagykanizsa",
+    "country": "Macaristan",
+    "neighbors": ["hun-somogy", "hun-zala"]
+  },
+  "hun-nograd": {
+    "name": "Nógrád ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-borsod-abauj-zemplen",
+      "hun-heves",
+      "hun-pest",
+      "hun-salgotarjan"
+    ]
+  },
+  "hun-nyiregyhaza": {
+    "name": "Nyíregyháza",
+    "country": "Macaristan",
+    "neighbors": ["hun-szabolcs-szatmar-bereg"]
+  },
+  "hun-pecs": {
+    "name": "Pécs",
+    "country": "Macaristan",
+    "neighbors": ["hun-baranya"]
+  },
+  "hun-pest": {
+    "name": "Pest ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-budapest",
+      "hun-erd",
+      "hun-fejer",
+      "hun-heves",
+      "hun-jasz-nagykun-szolnok",
+      "hun-kecskemet",
+      "hun-komarom-esztergom",
+      "hun-nograd",
+      "hun-szolnok"
+    ]
+  },
+  "hun-salgotarjan": {
+    "name": "Salgótarján",
+    "country": "Macaristan",
+    "neighbors": ["hun-nograd"]
+  },
+  "hun-somogy": {
+    "name": "Somogy ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hrv-koprivnica-krizevci",
+      "hrv-virovitica-podravina",
+      "hun-baranya",
+      "hun-fejer",
+      "hun-kaposvar",
+      "hun-nagykanizsa",
+      "hun-tolna",
+      "hun-veszprem",
+      "hun-zala"
+    ]
+  },
+  "hun-sopron": {
+    "name": "Sopron",
+    "country": "Macaristan",
+    "neighbors": ["hun-gyor-moson-sopron"]
+  },
+  "hun-szabolcs-szatmar-bereg": {
+    "name": "Szabolcs-Szatmár-Bereg ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-borsod-abauj-zemplen",
+      "hun-hajdu-bihar",
+      "hun-nyiregyhaza",
+      "rou-bihor",
+      "rou-satu-mare",
+      "ukr-zakarpattia"
+    ]
+  },
+  "hun-szeged": {
+    "name": "Szeged",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-csongrad-csanad",
+      "hun-hodmezovasarhely",
+      "srb-north-banat"
+    ]
+  },
+  "hun-szekesfehervar": {
+    "name": "Székesfehérvár",
+    "country": "Macaristan",
+    "neighbors": ["hun-fejer"]
+  },
+  "hun-szekszard": {
+    "name": "Szekszárd",
+    "country": "Macaristan",
+    "neighbors": ["hun-tolna"]
+  },
+  "hun-szolnok": {
+    "name": "Szolnok",
+    "country": "Macaristan",
+    "neighbors": ["hun-jasz-nagykun-szolnok", "hun-pest"]
+  },
+  "hun-szombathely": {
+    "name": "Szombathely",
+    "country": "Macaristan",
+    "neighbors": ["hun-vas"]
+  },
+  "hun-tatabanya": {
+    "name": "Tatabánya",
+    "country": "Macaristan",
+    "neighbors": ["hun-fejer", "hun-komarom-esztergom"]
+  },
+  "hun-tolna": {
+    "name": "Tolna ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-baranya",
+      "hun-fejer",
+      "hun-somogy",
+      "hun-szekszard"
+    ]
+  },
+  "hun-vas": {
+    "name": "Vas ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-gyor-moson-sopron",
+      "hun-szombathely",
+      "hun-veszprem",
+      "hun-zala"
+    ]
+  },
+  "hun-veszprem": {
+    "name": "Veszprém ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hun-fejer",
+      "hun-gyor-moson-sopron",
+      "hun-komarom-esztergom",
+      "hun-somogy",
+      "hun-vas",
+      "hun-veszprem-2",
+      "hun-zala"
+    ]
+  },
+  "hun-veszprem-2": {
+    "name": "Veszprém",
+    "country": "Macaristan",
+    "neighbors": ["hun-veszprem"]
+  },
+  "hun-zala": {
+    "name": "Zala ili",
+    "country": "Macaristan",
+    "neighbors": [
+      "hrv-koprivnica-krizevci",
+      "hrv-me-imurje",
+      "hun-nagykanizsa",
+      "hun-somogy",
+      "hun-vas",
+      "hun-veszprem",
+      "hun-zalaegerszeg"
+    ]
+  },
+  "hun-zalaegerszeg": {
+    "name": "Zalaegerszeg",
+    "country": "Macaristan",
+    "neighbors": ["hun-zala"]
+  },
+  "irn-alborz": {
+    "name": "Elburz Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-markazi", "irn-mazandaran", "irn-qazvin", "irn-tehran"]
+  },
+  "irn-ardabil": {
+    "name": "Erdebil Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-east-azerbaijan", "irn-gilan", "irn-zanjan"]
+  },
+  "irn-bushehr": {
+    "name": "Buşehr Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-fars",
+      "irn-hormozgan",
+      "irn-khuzestan",
+      "irn-kohgiluyeh-and-boyer-ahmad"
+    ]
+  },
+  "irn-chaharmahal-and-bakhtiari": {
+    "name": "Çaharmahal ve Bahtiyari Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-isfahan",
+      "irn-khuzestan",
+      "irn-kohgiluyeh-and-boyer-ahmad"
+    ]
+  },
+  "irn-east-azerbaijan": {
+    "name": "Doğu Azerbaycan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "arm-syunik",
+      "irn-ardabil",
+      "irn-west-azerbaijan",
+      "irn-zanjan"
+    ]
+  },
+  "irn-fars": {
+    "name": "Fars Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-bushehr",
+      "irn-hormozgan",
+      "irn-isfahan",
+      "irn-kerman",
+      "irn-kohgiluyeh-and-boyer-ahmad",
+      "irn-yazd"
+    ]
+  },
+  "irn-gilan": {
+    "name": "Gilan Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-ardabil", "irn-mazandaran", "irn-qazvin", "irn-zanjan"]
+  },
+  "irn-golestan": {
+    "name": "Gülistan Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-mazandaran", "irn-north-khorasan", "irn-semnan"]
+  },
+  "irn-hamadan": {
+    "name": "Hamedan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-kermanshah",
+      "irn-kurdistan",
+      "irn-lorestan",
+      "irn-markazi",
+      "irn-qazvin",
+      "irn-zanjan"
+    ]
+  },
+  "irn-hormozgan": {
+    "name": "Hürmüzgan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-bushehr",
+      "irn-fars",
+      "irn-kerman",
+      "irn-sistan-and-baluchestan"
+    ]
+  },
+  "irn-ilam": {
+    "name": "İlam Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-kermanshah",
+      "irn-khuzestan",
+      "irn-lorestan",
+      "irq-diyala",
+      "irq-maysan",
+      "irq-wasit"
+    ]
+  },
+  "irn-isfahan": {
+    "name": "İsfahan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-chaharmahal-and-bakhtiari",
+      "irn-fars",
+      "irn-khuzestan",
+      "irn-kohgiluyeh-and-boyer-ahmad",
+      "irn-lorestan",
+      "irn-markazi",
+      "irn-qom",
+      "irn-semnan",
+      "irn-yazd"
+    ]
+  },
+  "irn-kerman": {
+    "name": "Kirman Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-fars",
+      "irn-hormozgan",
+      "irn-sistan-and-baluchestan",
+      "irn-south-khorasan",
+      "irn-yazd"
+    ]
+  },
+  "irn-kermanshah": {
+    "name": "Kirmanşah Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-hamadan",
+      "irn-ilam",
+      "irn-kurdistan",
+      "irn-lorestan",
+      "irq-diyala",
+      "irq-sulaymaniyah"
+    ]
+  },
+  "irn-khuzestan": {
+    "name": "Huzistan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-bushehr",
+      "irn-chaharmahal-and-bakhtiari",
+      "irn-ilam",
+      "irn-isfahan",
+      "irn-kohgiluyeh-and-boyer-ahmad",
+      "irn-lorestan",
+      "irq-basra",
+      "irq-maysan"
+    ]
+  },
+  "irn-kohgiluyeh-and-boyer-ahmad": {
+    "name": "Kohgiluye ve Buyer Ahmed Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-bushehr",
+      "irn-chaharmahal-and-bakhtiari",
+      "irn-fars",
+      "irn-isfahan",
+      "irn-khuzestan"
+    ]
+  },
+  "irn-kurdistan": {
+    "name": "Kürdistan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-hamadan",
+      "irn-kermanshah",
+      "irn-west-azerbaijan",
+      "irn-zanjan",
+      "irq-sulaymaniyah"
+    ]
+  },
+  "irn-lorestan": {
+    "name": "Luristan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-hamadan",
+      "irn-ilam",
+      "irn-isfahan",
+      "irn-kermanshah",
+      "irn-khuzestan",
+      "irn-markazi"
+    ]
+  },
+  "irn-markazi": {
+    "name": "Merkezi Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-alborz",
+      "irn-hamadan",
+      "irn-isfahan",
+      "irn-lorestan",
+      "irn-qazvin",
+      "irn-qom",
+      "irn-tehran"
+    ]
+  },
+  "irn-mazandaran": {
+    "name": "Mazenderan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-alborz",
+      "irn-gilan",
+      "irn-golestan",
+      "irn-qazvin",
+      "irn-semnan",
+      "irn-tehran"
+    ]
+  },
+  "irn-north-khorasan": {
+    "name": "Kuzey Horasan Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-golestan", "irn-razavi-khorasan", "irn-semnan"]
+  },
+  "irn-qazvin": {
+    "name": "Kazvin Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-alborz",
+      "irn-gilan",
+      "irn-hamadan",
+      "irn-markazi",
+      "irn-mazandaran",
+      "irn-zanjan"
+    ]
+  },
+  "irn-qom": {
+    "name": "Kum Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-isfahan", "irn-markazi", "irn-semnan", "irn-tehran"]
+  },
+  "irn-razavi-khorasan": {
+    "name": "Razavi Horasan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-north-khorasan",
+      "irn-semnan",
+      "irn-south-khorasan",
+      "irn-yazd"
+    ]
+  },
+  "irn-semnan": {
+    "name": "Simnan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-golestan",
+      "irn-isfahan",
+      "irn-mazandaran",
+      "irn-north-khorasan",
+      "irn-qom",
+      "irn-razavi-khorasan",
+      "irn-tehran",
+      "irn-yazd"
+    ]
+  },
+  "irn-sistan-and-baluchestan": {
+    "name": "Sistan ve Belucistan Eyaleti",
+    "country": "İran",
+    "neighbors": ["irn-hormozgan", "irn-kerman", "irn-south-khorasan"]
+  },
+  "irn-south-khorasan": {
+    "name": "Güney Horasan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-kerman",
+      "irn-razavi-khorasan",
+      "irn-sistan-and-baluchestan",
+      "irn-yazd"
+    ]
+  },
+  "irn-tehran": {
+    "name": "Tahran Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-alborz",
+      "irn-markazi",
+      "irn-mazandaran",
+      "irn-qom",
+      "irn-semnan"
+    ]
+  },
+  "irn-west-azerbaijan": {
+    "name": "Batı Azerbaycan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-east-azerbaijan",
+      "irn-kurdistan",
+      "irn-zanjan",
+      "irq-erbil",
+      "irq-sulaymaniyah",
+      "tur-agri",
+      "tur-hakkari",
+      "tur-igdir",
+      "tur-van"
+    ]
+  },
+  "irn-yazd": {
+    "name": "Yezd Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-fars",
+      "irn-isfahan",
+      "irn-kerman",
+      "irn-razavi-khorasan",
+      "irn-semnan",
+      "irn-south-khorasan"
+    ]
+  },
+  "irn-zanjan": {
+    "name": "Zencan Eyaleti",
+    "country": "İran",
+    "neighbors": [
+      "irn-ardabil",
+      "irn-east-azerbaijan",
+      "irn-gilan",
+      "irn-hamadan",
+      "irn-kurdistan",
+      "irn-qazvin",
+      "irn-west-azerbaijan"
+    ]
+  },
+  "irq-al-anbar": {
+    "name": "Anbar ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-babylon",
+      "irq-baghdad",
+      "irq-diyala",
+      "irq-karbala",
+      "irq-najaf",
+      "irq-nineveh",
+      "irq-saladin",
+      "jor-mafraq",
+      "sau-northern-borders",
+      "syr-deir-ez-zor",
+      "syr-homs"
+    ]
+  },
+  "irq-al-muthanna": {
+    "name": "Mutanna ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-qadisiyyah",
+      "irq-basra",
+      "irq-dhi-qar",
+      "irq-najaf",
+      "kwt-al-jahra",
+      "sau-eastern",
+      "sau-northern-borders"
+    ]
+  },
+  "irq-al-qadisiyyah": {
+    "name": "Kadisiye ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-muthanna",
+      "irq-babylon",
+      "irq-dhi-qar",
+      "irq-najaf",
+      "irq-wasit"
+    ]
+  },
+  "irq-babylon": {
+    "name": "Babil ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-al-qadisiyyah",
+      "irq-baghdad",
+      "irq-diyala",
+      "irq-karbala",
+      "irq-najaf",
+      "irq-wasit"
+    ]
+  },
+  "irq-baghdad": {
+    "name": "Bağdat ili",
+    "country": "Irak",
+    "neighbors": ["irq-al-anbar", "irq-babylon", "irq-diyala"]
+  },
+  "irq-basra": {
+    "name": "Basra ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-khuzestan",
+      "irq-al-muthanna",
+      "irq-dhi-qar",
+      "irq-maysan",
+      "kwt-al-jahra"
+    ]
+  },
+  "irq-dhi-qar": {
+    "name": "Zi Kar İli",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-muthanna",
+      "irq-al-qadisiyyah",
+      "irq-basra",
+      "irq-maysan",
+      "irq-wasit"
+    ]
+  },
+  "irq-diyala": {
+    "name": "Diyala ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-ilam",
+      "irn-kermanshah",
+      "irq-al-anbar",
+      "irq-babylon",
+      "irq-baghdad",
+      "irq-saladin",
+      "irq-sulaymaniyah",
+      "irq-wasit"
+    ]
+  },
+  "irq-duhok": {
+    "name": "Duhok ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-erbil",
+      "irq-nineveh",
+      "syr-al-hasakah",
+      "tur-hakkari",
+      "tur-sirnak"
+    ]
+  },
+  "irq-erbil": {
+    "name": "Erbil ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-west-azerbaijan",
+      "irq-duhok",
+      "irq-kirkuk",
+      "irq-nineveh",
+      "irq-saladin",
+      "irq-sulaymaniyah",
+      "tur-hakkari"
+    ]
+  },
+  "irq-karbala": {
+    "name": "Kerbela ili",
+    "country": "Irak",
+    "neighbors": ["irq-al-anbar", "irq-babylon", "irq-najaf"]
+  },
+  "irq-kirkuk": {
+    "name": "Kerkük ili",
+    "country": "Irak",
+    "neighbors": ["irq-erbil", "irq-saladin", "irq-sulaymaniyah"]
+  },
+  "irq-maysan": {
+    "name": "Maysan ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-ilam",
+      "irn-khuzestan",
+      "irq-basra",
+      "irq-dhi-qar",
+      "irq-wasit"
+    ]
+  },
+  "irq-najaf": {
+    "name": "Necef ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-al-muthanna",
+      "irq-al-qadisiyyah",
+      "irq-babylon",
+      "irq-karbala",
+      "sau-northern-borders"
+    ]
+  },
+  "irq-nineveh": {
+    "name": "Nineve ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-duhok",
+      "irq-erbil",
+      "irq-saladin",
+      "syr-al-hasakah",
+      "syr-deir-ez-zor"
+    ]
+  },
+  "irq-saladin": {
+    "name": "Selahaddin ili",
+    "country": "Irak",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-diyala",
+      "irq-erbil",
+      "irq-kirkuk",
+      "irq-nineveh",
+      "irq-sulaymaniyah"
+    ]
+  },
+  "irq-sulaymaniyah": {
+    "name": "Süleymaniye ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-kermanshah",
+      "irn-kurdistan",
+      "irn-west-azerbaijan",
+      "irq-diyala",
+      "irq-erbil",
+      "irq-kirkuk",
+      "irq-saladin"
+    ]
+  },
+  "irq-wasit": {
+    "name": "Vasit ili",
+    "country": "Irak",
+    "neighbors": [
+      "irn-ilam",
+      "irq-al-qadisiyyah",
+      "irq-babylon",
+      "irq-dhi-qar",
+      "irq-diyala",
+      "irq-maysan"
+    ]
+  },
+  "isr-central": {
+    "name": "Merkez Bölge",
+    "country": "İsrail",
+    "neighbors": ["isr-haifa", "isr-jerusalem", "isr-southern", "isr-tel-aviv"]
+  },
+  "isr-haifa": {
+    "name": "Hayfa Bölgesi",
+    "country": "İsrail",
+    "neighbors": ["isr-central", "isr-northern"]
+  },
+  "isr-jerusalem": {
+    "name": "Kudüs Bölgesi",
+    "country": "İsrail",
+    "neighbors": ["isr-central", "isr-southern"]
+  },
+  "isr-northern": {
+    "name": "Kuzey Bölgesi",
+    "country": "İsrail",
+    "neighbors": [
+      "isr-haifa",
+      "jor-irbid",
+      "lbn-nabatieh",
+      "lbn-south",
+      "syr-western-al-samadania"
+    ]
+  },
+  "isr-southern": {
+    "name": "Güney Bölgesi",
+    "country": "İsrail",
+    "neighbors": [
+      "egy-north-sinai",
+      "isr-central",
+      "isr-jerusalem",
+      "jor-aqaba",
+      "jor-karak",
+      "jor-madaba",
+      "jor-tafilah"
+    ]
+  },
+  "isr-tel-aviv": {
+    "name": "Tel Aviv Bölgesi",
+    "country": "İsrail",
+    "neighbors": ["isr-central"]
+  },
+  "jor-ajloun": {
+    "name": "Ajloun Yönetimi",
+    "country": "Ürdün",
+    "neighbors": ["jor-balqa", "jor-irbid", "jor-jerash"]
+  },
+  "jor-amman": {
+    "name": "Amman ili",
+    "country": "Ürdün",
+    "neighbors": [
+      "jor-balqa",
+      "jor-karak",
+      "jor-ma-an",
+      "jor-madaba",
+      "jor-zarqa",
+      "sau-al-jowf"
+    ]
+  },
+  "jor-aqaba": {
+    "name": "Aqaba Yönetimi",
+    "country": "Ürdün",
+    "neighbors": ["isr-southern", "jor-ma-an", "jor-tafilah", "sau-al-jowf"]
+  },
+  "jor-balqa": {
+    "name": "Balqa Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "jor-ajloun",
+      "jor-amman",
+      "jor-irbid",
+      "jor-jerash",
+      "jor-madaba",
+      "jor-zarqa"
+    ]
+  },
+  "jor-irbid": {
+    "name": "Irbid Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "isr-northern",
+      "jor-ajloun",
+      "jor-balqa",
+      "jor-jerash",
+      "jor-mafraq",
+      "syr-daraa",
+      "syr-western-al-samadania"
+    ]
+  },
+  "jor-jerash": {
+    "name": "Jerash Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "jor-ajloun",
+      "jor-balqa",
+      "jor-irbid",
+      "jor-mafraq",
+      "jor-zarqa"
+    ]
+  },
+  "jor-karak": {
+    "name": "Karak Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "isr-southern",
+      "jor-amman",
+      "jor-ma-an",
+      "jor-madaba",
+      "jor-tafilah"
+    ]
+  },
+  "jor-ma-an": {
+    "name": "Ma'an Valiliği",
+    "country": "Ürdün",
+    "neighbors": [
+      "jor-amman",
+      "jor-aqaba",
+      "jor-karak",
+      "jor-tafilah",
+      "sau-al-jowf"
+    ]
+  },
+  "jor-madaba": {
+    "name": "Madaba Yönetimi",
+    "country": "Ürdün",
+    "neighbors": ["isr-southern", "jor-amman", "jor-balqa", "jor-karak"]
+  },
+  "jor-mafraq": {
+    "name": "Mafraq Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "irq-al-anbar",
+      "jor-irbid",
+      "jor-jerash",
+      "jor-zarqa",
+      "sau-al-jowf",
+      "sau-northern-borders",
+      "syr-as-suwayda",
+      "syr-daraa",
+      "syr-homs",
+      "syr-rif-dimashq"
+    ]
+  },
+  "jor-tafilah": {
+    "name": "Tafilah Yönetimi",
+    "country": "Ürdün",
+    "neighbors": ["isr-southern", "jor-aqaba", "jor-karak", "jor-ma-an"]
+  },
+  "jor-zarqa": {
+    "name": "Zarqa Yönetimi",
+    "country": "Ürdün",
+    "neighbors": [
+      "jor-amman",
+      "jor-balqa",
+      "jor-jerash",
+      "jor-mafraq",
+      "sau-al-jowf"
+    ]
+  },
+  "kos": {
+    "name": "Kosova",
+    "country": "Kosova",
+    "neighbors": [
+      "alb-kukes",
+      "mkd",
+      "mne-berane",
+      "mne-plav",
+      "mne-rozaje",
+      "srb-jablanica",
+      "srb-pcinja",
+      "srb-rasina",
+      "srb-raska",
+      "srb-toplica"
+    ]
+  },
+  "kwt-al-ahmadi": {
+    "name": "El Ahmedî Valiliği",
+    "country": "Kuveyt",
+    "neighbors": [
+      "kwt-al-farwaniyah",
+      "kwt-al-jahra",
+      "kwt-mubarak-al-kabeer",
+      "sau-eastern"
+    ]
+  },
+  "kwt-al-farwaniyah": {
+    "name": "El Fervaniye Valiliği",
+    "country": "Kuveyt",
+    "neighbors": [
+      "kwt-al-ahmadi",
+      "kwt-al-jahra",
+      "kwt-capital",
+      "kwt-hawally",
+      "kwt-mubarak-al-kabeer"
+    ]
+  },
+  "kwt-al-jahra": {
+    "name": "El Cehrâ",
+    "country": "Kuveyt",
+    "neighbors": [
+      "irq-al-muthanna",
+      "irq-basra",
+      "kwt-al-ahmadi",
+      "kwt-al-farwaniyah",
+      "kwt-capital",
+      "sau-eastern"
+    ]
+  },
+  "kwt-capital": {
+    "name": "El Asime Valiliği",
+    "country": "Kuveyt",
+    "neighbors": ["kwt-al-farwaniyah", "kwt-al-jahra", "kwt-hawally"]
+  },
+  "kwt-hawally": {
+    "name": "Hawalli Yönetimi",
+    "country": "Kuveyt",
+    "neighbors": ["kwt-al-farwaniyah", "kwt-capital", "kwt-mubarak-al-kabeer"]
+  },
+  "kwt-mubarak-al-kabeer": {
+    "name": "Mübarek El Kebir Valiliği",
+    "country": "Kuveyt",
+    "neighbors": ["kwt-al-ahmadi", "kwt-al-farwaniyah", "kwt-hawally"]
+  },
+  "lbn-beirut": {
+    "name": "Beyrut ili",
+    "country": "Lübnan",
+    "neighbors": ["lbn-mount-lebanon"]
+  },
+  "lbn-beqaa": {
+    "name": "Bekaa ili",
+    "country": "Lübnan",
+    "neighbors": [
+      "lbn-mount-lebanon",
+      "lbn-nabatieh",
+      "lbn-north",
+      "lbn-south",
+      "syr-homs",
+      "syr-rif-dimashq",
+      "syr-western-al-samadania"
+    ]
+  },
+  "lbn-mount-lebanon": {
+    "name": "Cebel-i Lübnan İli",
+    "country": "Lübnan",
+    "neighbors": ["lbn-beirut", "lbn-beqaa", "lbn-north", "lbn-south"]
+  },
+  "lbn-nabatieh": {
+    "name": "Nebatiye ili",
+    "country": "Lübnan",
+    "neighbors": [
+      "isr-northern",
+      "lbn-beqaa",
+      "lbn-south",
+      "syr-western-al-samadania"
+    ]
+  },
+  "lbn-north": {
+    "name": "Şimal İli",
+    "country": "Lübnan",
+    "neighbors": ["lbn-beqaa", "lbn-mount-lebanon", "syr-homs", "syr-tartus"]
+  },
+  "lbn-south": {
+    "name": "Cenub ili",
+    "country": "Lübnan",
+    "neighbors": [
+      "isr-northern",
+      "lbn-beqaa",
+      "lbn-mount-lebanon",
+      "lbn-nabatieh"
+    ]
+  },
+  "lby-ajdabiya": {
+    "name": "Ajdabiya",
+    "country": "Libya",
+    "neighbors": [
+      "egy-matrouh",
+      "egy-new-valley",
+      "lby-al-qubbah",
+      "lby-benghazi",
+      "lby-butnan",
+      "lby-jabal-al-akhdar",
+      "lby-jufra",
+      "lby-kufra",
+      "lby-marj",
+      "lby-sirte"
+    ]
+  },
+  "lby-al-qubbah": {
+    "name": "Al Qubbah",
+    "country": "Libya",
+    "neighbors": ["lby-ajdabiya", "lby-butnan", "lby-jabal-al-akhdar"]
+  },
+  "lby-ash-shati": {
+    "name": "Ash Shati'",
+    "country": "Libya",
+    "neighbors": [
+      "dza-illizi",
+      "lby-ghadames",
+      "lby-ghat",
+      "lby-jufra",
+      "lby-mizdah",
+      "lby-sabha",
+      "lby-wadi-al-hayaa"
+    ]
+  },
+  "lby-benghazi": {
+    "name": "Bingazi",
+    "country": "Libya",
+    "neighbors": ["lby-ajdabiya", "lby-marj"]
+  },
+  "lby-butnan": {
+    "name": "El Butnan ili",
+    "country": "Libya",
+    "neighbors": ["egy-matrouh", "lby-ajdabiya", "lby-al-qubbah"]
+  },
+  "lby-ghadames": {
+    "name": "Ghadamis",
+    "country": "Libya",
+    "neighbors": [
+      "dza-illizi",
+      "dza-ouargla",
+      "lby-ash-shati",
+      "lby-mizdah",
+      "lby-nuqat-al-khams",
+      "tun-medenine",
+      "tun-tataouine"
+    ]
+  },
+  "lby-ghat": {
+    "name": "Ghat",
+    "country": "Libya",
+    "neighbors": [
+      "dza-illizi",
+      "lby-ash-shati",
+      "lby-murzuq",
+      "lby-wadi-al-hayaa"
+    ]
+  },
+  "lby-jabal-al-akhdar": {
+    "name": "Jabak Al Akhdar",
+    "country": "Libya",
+    "neighbors": ["lby-ajdabiya", "lby-al-qubbah", "lby-marj"]
+  },
+  "lby-jafara": {
+    "name": "El Cfara ili",
+    "country": "Libya",
+    "neighbors": [
+      "lby-mizdah",
+      "lby-murqub",
+      "lby-tripoli-district",
+      "lby-zawiya"
+    ]
+  },
+  "lby-jufra": {
+    "name": "El Cufra ili",
+    "country": "Libya",
+    "neighbors": [
+      "lby-ajdabiya",
+      "lby-ash-shati",
+      "lby-kufra",
+      "lby-misrata",
+      "lby-mizdah",
+      "lby-murzuq",
+      "lby-sabha",
+      "lby-sirte"
+    ]
+  },
+  "lby-kufra": {
+    "name": "El Kufra ili",
+    "country": "Libya",
+    "neighbors": ["egy-new-valley", "lby-ajdabiya", "lby-jufra", "lby-murzuq"]
+  },
+  "lby-marj": {
+    "name": "Marj",
+    "country": "Libya",
+    "neighbors": ["lby-ajdabiya", "lby-benghazi", "lby-jabal-al-akhdar"]
+  },
+  "lby-misrata": {
+    "name": "Misrata",
+    "country": "Libya",
+    "neighbors": ["lby-jufra", "lby-mizdah", "lby-murqub", "lby-sirte"]
+  },
+  "lby-mizdah": {
+    "name": "Mizdah",
+    "country": "Libya",
+    "neighbors": [
+      "lby-ash-shati",
+      "lby-ghadames",
+      "lby-jafara",
+      "lby-jufra",
+      "lby-misrata",
+      "lby-murqub",
+      "lby-zawiya"
+    ]
+  },
+  "lby-murqub": {
+    "name": "Murqup Belediyesi",
+    "country": "Libya",
+    "neighbors": [
+      "lby-jafara",
+      "lby-misrata",
+      "lby-mizdah",
+      "lby-tripoli-district"
+    ]
+  },
+  "lby-murzuq": {
+    "name": "Murzuq",
+    "country": "Libya",
+    "neighbors": [
+      "dza-illizi",
+      "dza-tamanghasset",
+      "lby-ghat",
+      "lby-jufra",
+      "lby-kufra",
+      "lby-sabha",
+      "lby-wadi-al-hayaa"
+    ]
+  },
+  "lby-nuqat-al-khams": {
+    "name": "Nuqat Al Khams",
+    "country": "Libya",
+    "neighbors": ["lby-ghadames", "lby-zawiya", "tun-medenine"]
+  },
+  "lby-sabha": {
+    "name": "Sabha",
+    "country": "Libya",
+    "neighbors": [
+      "lby-ash-shati",
+      "lby-jufra",
+      "lby-murzuq",
+      "lby-wadi-al-hayaa"
+    ]
+  },
+  "lby-sirte": {
+    "name": "Surt",
+    "country": "Libya",
+    "neighbors": ["lby-ajdabiya", "lby-jufra", "lby-misrata"]
+  },
+  "lby-tripoli-district": {
+    "name": "Tajura' wa an Nawahi al Arba",
+    "country": "Libya",
+    "neighbors": ["lby-jafara", "lby-murqub", "lby-zawiya"]
+  },
+  "lby-wadi-al-hayaa": {
+    "name": "Wadi Al Hayaa",
+    "country": "Libya",
+    "neighbors": ["lby-ash-shati", "lby-ghat", "lby-murzuq", "lby-sabha"]
+  },
+  "lby-zawiya": {
+    "name": "Zawaiya",
+    "country": "Libya",
+    "neighbors": [
+      "lby-jafara",
+      "lby-mizdah",
+      "lby-nuqat-al-khams",
+      "lby-tripoli-district"
+    ]
+  },
+  "mda-anenii-noi": {
+    "name": "Anenii Noi",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-bender",
+      "mda-causeni",
+      "mda-chisinau",
+      "mda-criuleni",
+      "mda-grigoriopol",
+      "mda-ialoveni"
+    ]
+  },
+  "mda-balti": {
+    "name": "Bălţi",
+    "country": "Moldova",
+    "neighbors": ["mda-falesti", "mda-glodeni", "mda-riscani", "mda-singerei"]
+  },
+  "mda-basarabeasca": {
+    "name": "Basarabeasca",
+    "country": "Moldova",
+    "neighbors": ["mda-cimislia", "mda-comrat", "mda-taraclia", "ukr-odessa"]
+  },
+  "mda-bender": {
+    "name": "Bender",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-causeni",
+      "mda-grigoriopol",
+      "mda-stefan-voda",
+      "ukr-odessa"
+    ]
+  },
+  "mda-briceni": {
+    "name": "Briceni",
+    "country": "Moldova",
+    "neighbors": ["mda-edinet", "mda-ocnita", "rou-botosani", "ukr-chernivtsi"]
+  },
+  "mda-cahul": {
+    "name": "Cahul",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-cantemir",
+      "mda-comrat",
+      "mda-taraclia",
+      "rou-galati",
+      "rou-vaslui",
+      "ukr-odessa"
+    ]
+  },
+  "mda-calarasi": {
+    "name": "Călărași ili",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-nisporeni",
+      "mda-orhei",
+      "mda-straseni",
+      "mda-telenesti",
+      "mda-ungheni"
+    ]
+  },
+  "mda-camenca": {
+    "name": "Camenca",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-floresti",
+      "mda-rezina",
+      "mda-soldanesti",
+      "mda-soroca",
+      "ukr-odessa",
+      "ukr-vinnytsia"
+    ]
+  },
+  "mda-cantemir": {
+    "name": "Cantemir",
+    "country": "Moldova",
+    "neighbors": ["mda-cahul", "mda-comrat", "mda-leova", "rou-vaslui"]
+  },
+  "mda-causeni": {
+    "name": "Causeni Distict",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-bender",
+      "mda-cimislia",
+      "mda-ialoveni",
+      "mda-stefan-voda",
+      "ukr-odessa"
+    ]
+  },
+  "mda-chisinau": {
+    "name": "Kişinev",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-criuleni",
+      "mda-ialoveni",
+      "mda-straseni"
+    ]
+  },
+  "mda-cimislia": {
+    "name": "Cimislia",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-basarabeasca",
+      "mda-causeni",
+      "mda-comrat",
+      "mda-hincesti",
+      "mda-ialoveni",
+      "mda-leova",
+      "ukr-odessa"
+    ]
+  },
+  "mda-comrat": {
+    "name": "Comrat",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-basarabeasca",
+      "mda-cahul",
+      "mda-cantemir",
+      "mda-cimislia",
+      "mda-leova",
+      "mda-taraclia",
+      "ukr-odessa"
+    ]
+  },
+  "mda-criuleni": {
+    "name": "Criuelni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-chisinau",
+      "mda-orhei",
+      "mda-straseni",
+      "mda-transnistria",
+      "mda-transnistria-2"
+    ]
+  },
+  "mda-donduseni": {
+    "name": "Donduseni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-drochia",
+      "mda-edinet",
+      "mda-ocnita",
+      "mda-riscani",
+      "mda-soroca",
+      "ukr-vinnytsia"
+    ]
+  },
+  "mda-drochia": {
+    "name": "Drochia",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-donduseni",
+      "mda-floresti",
+      "mda-riscani",
+      "mda-singerei",
+      "mda-soroca"
+    ]
+  },
+  "mda-edinet": {
+    "name": "Edinet",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-briceni",
+      "mda-donduseni",
+      "mda-ocnita",
+      "mda-riscani",
+      "rou-botosani"
+    ]
+  },
+  "mda-falesti": {
+    "name": "Falesti",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-balti",
+      "mda-glodeni",
+      "mda-singerei",
+      "mda-ungheni",
+      "rou-botosani",
+      "rou-iasi"
+    ]
+  },
+  "mda-floresti": {
+    "name": "Floresti",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-camenca",
+      "mda-drochia",
+      "mda-singerei",
+      "mda-soldanesti",
+      "mda-soroca",
+      "mda-telenesti"
+    ]
+  },
+  "mda-glodeni": {
+    "name": "Glodeni",
+    "country": "Moldova",
+    "neighbors": ["mda-balti", "mda-falesti", "mda-riscani", "rou-botosani"]
+  },
+  "mda-grigoriopol": {
+    "name": "Grigoriopol",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-bender",
+      "mda-transnistria",
+      "ukr-odessa"
+    ]
+  },
+  "mda-hincesti": {
+    "name": "Hinceşti",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-cimislia",
+      "mda-ialoveni",
+      "mda-leova",
+      "mda-nisporeni",
+      "rou-iasi",
+      "rou-vaslui"
+    ]
+  },
+  "mda-ialoveni": {
+    "name": "ialoveni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-anenii-noi",
+      "mda-causeni",
+      "mda-chisinau",
+      "mda-cimislia",
+      "mda-hincesti",
+      "mda-nisporeni",
+      "mda-straseni"
+    ]
+  },
+  "mda-leova": {
+    "name": "Leova",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-cantemir",
+      "mda-cimislia",
+      "mda-comrat",
+      "mda-hincesti",
+      "rou-vaslui"
+    ]
+  },
+  "mda-nisporeni": {
+    "name": "Nisporeni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-calarasi",
+      "mda-hincesti",
+      "mda-ialoveni",
+      "mda-straseni",
+      "mda-ungheni",
+      "rou-iasi"
+    ]
+  },
+  "mda-ocnita": {
+    "name": "Ornita",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-briceni",
+      "mda-donduseni",
+      "mda-edinet",
+      "ukr-chernivtsi",
+      "ukr-vinnytsia"
+    ]
+  },
+  "mda-orhei": {
+    "name": "Orhei",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-calarasi",
+      "mda-criuleni",
+      "mda-rezina",
+      "mda-rezina-2",
+      "mda-straseni",
+      "mda-telenesti",
+      "mda-transnistria"
+    ]
+  },
+  "mda-rezina": {
+    "name": "Rezina",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-camenca",
+      "mda-orhei",
+      "mda-rezina-2",
+      "mda-transnistria",
+      "ukr-odessa"
+    ]
+  },
+  "mda-rezina-2": {
+    "name": "Rezina",
+    "country": "Moldova",
+    "neighbors": ["mda-orhei", "mda-rezina", "mda-soldanesti", "mda-telenesti"]
+  },
+  "mda-riscani": {
+    "name": "Riscani",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-balti",
+      "mda-donduseni",
+      "mda-drochia",
+      "mda-edinet",
+      "mda-glodeni",
+      "mda-singerei",
+      "rou-botosani"
+    ]
+  },
+  "mda-singerei": {
+    "name": "Singerei",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-balti",
+      "mda-drochia",
+      "mda-falesti",
+      "mda-floresti",
+      "mda-riscani",
+      "mda-telenesti",
+      "mda-ungheni"
+    ]
+  },
+  "mda-soldanesti": {
+    "name": "Soldanesti Dstric",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-camenca",
+      "mda-floresti",
+      "mda-rezina-2",
+      "mda-telenesti"
+    ]
+  },
+  "mda-soroca": {
+    "name": "Soroco",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-camenca",
+      "mda-donduseni",
+      "mda-drochia",
+      "mda-floresti",
+      "ukr-vinnytsia"
+    ]
+  },
+  "mda-stefan-voda": {
+    "name": "Stefan Voda",
+    "country": "Moldova",
+    "neighbors": ["mda-bender", "mda-causeni", "ukr-odessa"]
+  },
+  "mda-straseni": {
+    "name": "Straseni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-calarasi",
+      "mda-chisinau",
+      "mda-criuleni",
+      "mda-ialoveni",
+      "mda-nisporeni",
+      "mda-orhei"
+    ]
+  },
+  "mda-taraclia": {
+    "name": "Taraclia",
+    "country": "Moldova",
+    "neighbors": ["mda-basarabeasca", "mda-cahul", "mda-comrat", "ukr-odessa"]
+  },
+  "mda-telenesti": {
+    "name": "Teleneşti",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-calarasi",
+      "mda-floresti",
+      "mda-orhei",
+      "mda-rezina-2",
+      "mda-singerei",
+      "mda-soldanesti",
+      "mda-ungheni"
+    ]
+  },
+  "mda-transnistria": {
+    "name": "Stîngă Nistrului",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-criuleni",
+      "mda-grigoriopol",
+      "mda-orhei",
+      "mda-rezina",
+      "mda-transnistria-2",
+      "ukr-odessa"
+    ]
+  },
+  "mda-transnistria-2": {
+    "name": "Transnistria",
+    "country": "Moldova",
+    "neighbors": ["mda-criuleni", "mda-transnistria"]
+  },
+  "mda-ungheni": {
+    "name": "Ungheni",
+    "country": "Moldova",
+    "neighbors": [
+      "mda-calarasi",
+      "mda-falesti",
+      "mda-nisporeni",
+      "mda-singerei",
+      "mda-telenesti",
+      "rou-iasi"
+    ]
+  },
+  "mkd": {
+    "name": "Makedonya",
+    "country": "Kuzey Makedonya",
+    "neighbors": [
+      "alb-diber",
+      "alb-elbasan",
+      "alb-korce",
+      "alb-kukes",
+      "bgr-blagoevgrad",
+      "bgr-kyustendil",
+      "grc-centre-macedonia",
+      "grc-west-macedonia",
+      "kos",
+      "srb-pcinja"
+    ]
+  },
+  "mne-andrijevica": {
+    "name": "Andrijevica Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "alb-shkoder",
+      "mne-berane",
+      "mne-kolasin",
+      "mne-plav",
+      "mne-podgorica"
+    ]
+  },
+  "mne-bar": {
+    "name": "Bar Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "alb-shkoder",
+      "mne-budva",
+      "mne-cetinje",
+      "mne-podgorica",
+      "mne-ulcinj"
+    ]
+  },
+  "mne-berane": {
+    "name": "Berane",
+    "country": "Karadağ",
+    "neighbors": [
+      "kos",
+      "mne-andrijevica",
+      "mne-bijelo-polje",
+      "mne-kolasin",
+      "mne-mojkovac",
+      "mne-plav",
+      "mne-rozaje",
+      "srb-raska"
+    ]
+  },
+  "mne-bijelo-polje": {
+    "name": "Bijelo Polje Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "mne-berane",
+      "mne-mojkovac",
+      "mne-pljevlja",
+      "srb-raska",
+      "srb-zlatibor"
+    ]
+  },
+  "mne-budva": {
+    "name": "Budva Belediyesi",
+    "country": "Karadağ",
+    "neighbors": ["mne-bar", "mne-cetinje", "mne-kotor"]
+  },
+  "mne-cetinje": {
+    "name": "Cetinje Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "mne-bar",
+      "mne-budva",
+      "mne-danilovgrad",
+      "mne-kotor",
+      "mne-niksic",
+      "mne-podgorica"
+    ]
+  },
+  "mne-danilovgrad": {
+    "name": "Danilovgrad Belediyesi",
+    "country": "Karadağ",
+    "neighbors": ["mne-cetinje", "mne-kolasin", "mne-niksic", "mne-podgorica"]
+  },
+  "mne-herceg-novi": {
+    "name": "Herceg Novi Belediye",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-trebinje",
+      "hrv-dubrovnik-neretva",
+      "mne-kotor",
+      "mne-tivat"
+    ]
+  },
+  "mne-kolasin": {
+    "name": "Kolasin Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "mne-andrijevica",
+      "mne-berane",
+      "mne-danilovgrad",
+      "mne-mojkovac",
+      "mne-niksic",
+      "mne-podgorica",
+      "mne-savnik"
+    ]
+  },
+  "mne-kotor": {
+    "name": "Kotor",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-trebinje",
+      "mne-budva",
+      "mne-cetinje",
+      "mne-herceg-novi",
+      "mne-niksic",
+      "mne-tivat"
+    ]
+  },
+  "mne-mojkovac": {
+    "name": "Mojkovac Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "mne-berane",
+      "mne-bijelo-polje",
+      "mne-kolasin",
+      "mne-pljevlja",
+      "mne-savnik",
+      "mne-zabljak"
+    ]
+  },
+  "mne-niksic": {
+    "name": "Niksic Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-trebinje",
+      "mne-cetinje",
+      "mne-danilovgrad",
+      "mne-kolasin",
+      "mne-kotor",
+      "mne-pluzine",
+      "mne-savnik"
+    ]
+  },
+  "mne-plav": {
+    "name": "Plav",
+    "country": "Karadağ",
+    "neighbors": [
+      "alb-kukes",
+      "alb-shkoder",
+      "kos",
+      "mne-andrijevica",
+      "mne-berane"
+    ]
+  },
+  "mne-pljevlja": {
+    "name": "Pljevlja Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-foca",
+      "mne-bijelo-polje",
+      "mne-mojkovac",
+      "mne-zabljak",
+      "srb-zlatibor"
+    ]
+  },
+  "mne-pluzine": {
+    "name": "Pluzine Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-foca",
+      "bih-trebinje",
+      "mne-niksic",
+      "mne-savnik",
+      "mne-zabljak"
+    ]
+  },
+  "mne-podgorica": {
+    "name": "Podgorica",
+    "country": "Karadağ",
+    "neighbors": [
+      "alb-shkoder",
+      "mne-andrijevica",
+      "mne-bar",
+      "mne-cetinje",
+      "mne-danilovgrad",
+      "mne-kolasin"
+    ]
+  },
+  "mne-rozaje": {
+    "name": "Rožaje",
+    "country": "Karadağ",
+    "neighbors": ["kos", "mne-berane", "srb-raska"]
+  },
+  "mne-savnik": {
+    "name": "Savnik Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "mne-kolasin",
+      "mne-mojkovac",
+      "mne-niksic",
+      "mne-pluzine",
+      "mne-zabljak"
+    ]
+  },
+  "mne-tivat": {
+    "name": "Tivat",
+    "country": "Karadağ",
+    "neighbors": ["mne-herceg-novi", "mne-kotor"]
+  },
+  "mne-ulcinj": {
+    "name": "Ulcinj Belediyesi",
+    "country": "Karadağ",
+    "neighbors": ["alb-shkoder", "mne-bar"]
+  },
+  "mne-zabljak": {
+    "name": "Zabljak Belediyesi",
+    "country": "Karadağ",
+    "neighbors": [
+      "bih-foca",
+      "mne-mojkovac",
+      "mne-pljevlja",
+      "mne-pluzine",
+      "mne-savnik"
+    ]
+  },
+  "rou-alba": {
+    "name": "Alba ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-arad",
+      "rou-bihor",
+      "rou-cluj",
+      "rou-hunedoara",
+      "rou-mures",
+      "rou-sibiu",
+      "rou-valcea"
+    ]
+  },
+  "rou-arad": {
+    "name": "Arad ili",
+    "country": "Romanya",
+    "neighbors": [
+      "hun-bekes",
+      "hun-csongrad-csanad",
+      "rou-alba",
+      "rou-bihor",
+      "rou-hunedoara",
+      "rou-timis"
+    ]
+  },
+  "rou-arges": {
+    "name": "Argeș ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-brasov",
+      "rou-dambovita",
+      "rou-olt",
+      "rou-sibiu",
+      "rou-teleorman",
+      "rou-valcea"
+    ]
+  },
+  "rou-bacau": {
+    "name": "Bacău ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-covasna",
+      "rou-harghita",
+      "rou-neamt",
+      "rou-vaslui",
+      "rou-vrancea"
+    ]
+  },
+  "rou-bihor": {
+    "name": "Bihor ili",
+    "country": "Romanya",
+    "neighbors": [
+      "hun-bekes",
+      "hun-hajdu-bihar",
+      "hun-szabolcs-szatmar-bereg",
+      "rou-alba",
+      "rou-arad",
+      "rou-cluj",
+      "rou-salaj",
+      "rou-satu-mare"
+    ]
+  },
+  "rou-bistrita-nasaud": {
+    "name": "Bistrița-Năsăud ili",
+    "country": "Romanya",
+    "neighbors": ["rou-cluj", "rou-maramures", "rou-mures", "rou-suceava"]
+  },
+  "rou-botosani": {
+    "name": "Botoșani ili",
+    "country": "Romanya",
+    "neighbors": [
+      "mda-briceni",
+      "mda-edinet",
+      "mda-falesti",
+      "mda-glodeni",
+      "mda-riscani",
+      "rou-iasi",
+      "rou-suceava",
+      "ukr-chernivtsi"
+    ]
+  },
+  "rou-braila": {
+    "name": "Brăila ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-buzau",
+      "rou-constanta",
+      "rou-galati",
+      "rou-ialomita",
+      "rou-tulcea",
+      "rou-vrancea"
+    ]
+  },
+  "rou-brasov": {
+    "name": "Brașov ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-arges",
+      "rou-buzau",
+      "rou-covasna",
+      "rou-dambovita",
+      "rou-harghita",
+      "rou-mures",
+      "rou-prahova",
+      "rou-sibiu"
+    ]
+  },
+  "rou-bucharest": {
+    "name": "Bükreș",
+    "country": "Romanya",
+    "neighbors": ["rou-ilfov"]
+  },
+  "rou-buzau": {
+    "name": "Buzău ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-braila",
+      "rou-brasov",
+      "rou-covasna",
+      "rou-ialomita",
+      "rou-prahova",
+      "rou-vrancea"
+    ]
+  },
+  "rou-calarasi": {
+    "name": "Călărași ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-silistra",
+      "rou-constanta",
+      "rou-giurgiu",
+      "rou-ialomita",
+      "rou-ilfov"
+    ]
+  },
+  "rou-caras-severin": {
+    "name": "Caraș-Severin ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-gorj",
+      "rou-hunedoara",
+      "rou-mehedinti",
+      "rou-timis",
+      "srb-branicevo",
+      "srb-south-banat"
+    ]
+  },
+  "rou-cluj": {
+    "name": "Cluj",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-alba",
+      "rou-bihor",
+      "rou-bistrita-nasaud",
+      "rou-maramures",
+      "rou-mures",
+      "rou-salaj"
+    ]
+  },
+  "rou-constanta": {
+    "name": "Köstence ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-dobrich",
+      "bgr-silistra",
+      "rou-braila",
+      "rou-calarasi",
+      "rou-ialomita",
+      "rou-tulcea"
+    ]
+  },
+  "rou-covasna": {
+    "name": "Covasna ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bacau",
+      "rou-brasov",
+      "rou-buzau",
+      "rou-harghita",
+      "rou-vrancea"
+    ]
+  },
+  "rou-dambovita": {
+    "name": "Dâmbovița ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-arges",
+      "rou-brasov",
+      "rou-giurgiu",
+      "rou-ilfov",
+      "rou-prahova",
+      "rou-teleorman"
+    ]
+  },
+  "rou-dolj": {
+    "name": "Dolj ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-montana",
+      "bgr-vidin",
+      "bgr-vratsa",
+      "rou-gorj",
+      "rou-mehedinti",
+      "rou-olt",
+      "rou-valcea"
+    ]
+  },
+  "rou-galati": {
+    "name": "Galați ili",
+    "country": "Romanya",
+    "neighbors": [
+      "mda-cahul",
+      "rou-braila",
+      "rou-tulcea",
+      "rou-vaslui",
+      "rou-vrancea",
+      "ukr-odessa"
+    ]
+  },
+  "rou-giurgiu": {
+    "name": "Yergöğü ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-ruse",
+      "bgr-silistra",
+      "rou-calarasi",
+      "rou-dambovita",
+      "rou-ilfov",
+      "rou-teleorman"
+    ]
+  },
+  "rou-gorj": {
+    "name": "Gorj ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-caras-severin",
+      "rou-dolj",
+      "rou-hunedoara",
+      "rou-mehedinti",
+      "rou-valcea"
+    ]
+  },
+  "rou-harghita": {
+    "name": "Harghita ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bacau",
+      "rou-brasov",
+      "rou-covasna",
+      "rou-mures",
+      "rou-neamt",
+      "rou-suceava"
+    ]
+  },
+  "rou-hunedoara": {
+    "name": "Hunedoara ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-alba",
+      "rou-arad",
+      "rou-caras-severin",
+      "rou-gorj",
+      "rou-timis",
+      "rou-valcea"
+    ]
+  },
+  "rou-ialomita": {
+    "name": "Ialomița ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-braila",
+      "rou-buzau",
+      "rou-calarasi",
+      "rou-constanta",
+      "rou-ilfov",
+      "rou-prahova"
+    ]
+  },
+  "rou-iasi": {
+    "name": "Yaș ili",
+    "country": "Romanya",
+    "neighbors": [
+      "mda-falesti",
+      "mda-hincesti",
+      "mda-nisporeni",
+      "mda-ungheni",
+      "rou-botosani",
+      "rou-neamt",
+      "rou-suceava",
+      "rou-vaslui"
+    ]
+  },
+  "rou-ilfov": {
+    "name": "Ilfov ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bucharest",
+      "rou-calarasi",
+      "rou-dambovita",
+      "rou-giurgiu",
+      "rou-ialomita",
+      "rou-prahova"
+    ]
+  },
+  "rou-maramures": {
+    "name": "Maramureș ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bistrita-nasaud",
+      "rou-cluj",
+      "rou-salaj",
+      "rou-satu-mare",
+      "rou-suceava",
+      "ukr-chernivtsi",
+      "ukr-ivano-frankivsk",
+      "ukr-zakarpattia"
+    ]
+  },
+  "rou-mehedinti": {
+    "name": "Mehedinți ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-vidin",
+      "rou-caras-severin",
+      "rou-dolj",
+      "rou-gorj",
+      "srb-bor",
+      "srb-branicevo"
+    ]
+  },
+  "rou-mures": {
+    "name": "Mureș ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-alba",
+      "rou-bistrita-nasaud",
+      "rou-brasov",
+      "rou-cluj",
+      "rou-harghita",
+      "rou-sibiu",
+      "rou-suceava"
+    ]
+  },
+  "rou-neamt": {
+    "name": "Neamț ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bacau",
+      "rou-harghita",
+      "rou-iasi",
+      "rou-suceava",
+      "rou-vaslui"
+    ]
+  },
+  "rou-olt": {
+    "name": "Olt ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-pleven",
+      "bgr-vratsa",
+      "rou-arges",
+      "rou-dolj",
+      "rou-teleorman",
+      "rou-valcea"
+    ]
+  },
+  "rou-prahova": {
+    "name": "Prahova ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-brasov",
+      "rou-buzau",
+      "rou-dambovita",
+      "rou-ialomita",
+      "rou-ilfov"
+    ]
+  },
+  "rou-salaj": {
+    "name": "Sălaj ili",
+    "country": "Romanya",
+    "neighbors": ["rou-bihor", "rou-cluj", "rou-maramures", "rou-satu-mare"]
+  },
+  "rou-satu-mare": {
+    "name": "Satu Mare ili",
+    "country": "Romanya",
+    "neighbors": [
+      "hun-szabolcs-szatmar-bereg",
+      "rou-bihor",
+      "rou-maramures",
+      "rou-salaj",
+      "ukr-zakarpattia"
+    ]
+  },
+  "rou-sibiu": {
+    "name": "Sibiu ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-alba",
+      "rou-arges",
+      "rou-brasov",
+      "rou-mures",
+      "rou-valcea"
+    ]
+  },
+  "rou-suceava": {
+    "name": "Suceava ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bistrita-nasaud",
+      "rou-botosani",
+      "rou-harghita",
+      "rou-iasi",
+      "rou-maramures",
+      "rou-mures",
+      "rou-neamt",
+      "ukr-chernivtsi"
+    ]
+  },
+  "rou-teleorman": {
+    "name": "Teleorman ili",
+    "country": "Romanya",
+    "neighbors": [
+      "bgr-pleven",
+      "bgr-ruse",
+      "bgr-veliko-tarnovo",
+      "rou-arges",
+      "rou-dambovita",
+      "rou-giurgiu",
+      "rou-olt"
+    ]
+  },
+  "rou-timis": {
+    "name": "Timiș ili",
+    "country": "Romanya",
+    "neighbors": [
+      "hun-csongrad-csanad",
+      "rou-arad",
+      "rou-caras-severin",
+      "rou-hunedoara",
+      "srb-central-banat",
+      "srb-north-banat",
+      "srb-south-banat"
+    ]
+  },
+  "rou-tulcea": {
+    "name": "Tulcea ili",
+    "country": "Romanya",
+    "neighbors": ["rou-braila", "rou-constanta", "rou-galati", "ukr-odessa"]
+  },
+  "rou-valcea": {
+    "name": "Vâlcea ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-alba",
+      "rou-arges",
+      "rou-dolj",
+      "rou-gorj",
+      "rou-hunedoara",
+      "rou-olt",
+      "rou-sibiu"
+    ]
+  },
+  "rou-vaslui": {
+    "name": "Vaslui ili",
+    "country": "Romanya",
+    "neighbors": [
+      "mda-cahul",
+      "mda-cantemir",
+      "mda-hincesti",
+      "mda-leova",
+      "rou-bacau",
+      "rou-galati",
+      "rou-iasi",
+      "rou-neamt",
+      "rou-vrancea"
+    ]
+  },
+  "rou-vrancea": {
+    "name": "Vrancea ili",
+    "country": "Romanya",
+    "neighbors": [
+      "rou-bacau",
+      "rou-braila",
+      "rou-buzau",
+      "rou-covasna",
+      "rou-galati",
+      "rou-vaslui"
+    ]
+  },
+  "sau-al-baha": {
+    "name": "El Baha Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": ["sau-asir", "sau-makkah"]
+  },
+  "sau-al-jowf": {
+    "name": "Cevf Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "jor-amman",
+      "jor-aqaba",
+      "jor-ma-an",
+      "jor-mafraq",
+      "jor-zarqa",
+      "sau-ha-il",
+      "sau-northern-borders",
+      "sau-tabuk"
+    ]
+  },
+  "sau-al-madinah": {
+    "name": "Medine Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "sau-al-qassim",
+      "sau-ha-il",
+      "sau-makkah",
+      "sau-riyadh",
+      "sau-tabuk"
+    ]
+  },
+  "sau-al-qassim": {
+    "name": "El Kasım Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": ["sau-al-madinah", "sau-ha-il", "sau-riyadh"]
+  },
+  "sau-asir": {
+    "name": "Asir Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "sau-al-baha",
+      "sau-jazan",
+      "sau-makkah",
+      "sau-najran",
+      "sau-riyadh"
+    ]
+  },
+  "sau-eastern": {
+    "name": "Doğu Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "irq-al-muthanna",
+      "kwt-al-ahmadi",
+      "kwt-al-jahra",
+      "sau-najran",
+      "sau-northern-borders",
+      "sau-riyadh"
+    ]
+  },
+  "sau-ha-il": {
+    "name": "Hail Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "sau-al-jowf",
+      "sau-al-madinah",
+      "sau-al-qassim",
+      "sau-northern-borders",
+      "sau-riyadh",
+      "sau-tabuk"
+    ]
+  },
+  "sau-jazan": {
+    "name": "Cizan Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": ["sau-asir", "sau-makkah"]
+  },
+  "sau-makkah": {
+    "name": "Mekke Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "sau-al-baha",
+      "sau-al-madinah",
+      "sau-asir",
+      "sau-jazan",
+      "sau-riyadh"
+    ]
+  },
+  "sau-najran": {
+    "name": "Necran Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": ["sau-asir", "sau-eastern", "sau-riyadh"]
+  },
+  "sau-northern-borders": {
+    "name": "Kuzey Sınır Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-al-muthanna",
+      "irq-najaf",
+      "jor-mafraq",
+      "sau-al-jowf",
+      "sau-eastern",
+      "sau-ha-il",
+      "sau-riyadh"
+    ]
+  },
+  "sau-riyadh": {
+    "name": "Riyad Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": [
+      "sau-al-madinah",
+      "sau-al-qassim",
+      "sau-asir",
+      "sau-eastern",
+      "sau-ha-il",
+      "sau-makkah",
+      "sau-najran",
+      "sau-northern-borders"
+    ]
+  },
+  "sau-tabuk": {
+    "name": "Tebük Bölgesi",
+    "country": "Suudi Arabistan",
+    "neighbors": ["sau-al-jowf", "sau-al-madinah", "sau-ha-il"]
+  },
+  "srb-belgrade": {
+    "name": "Belgrad",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-central-banat",
+      "srb-kolubara",
+      "srb-macva",
+      "srb-podunavlje",
+      "srb-south-banat",
+      "srb-srem",
+      "srb-sumadija"
+    ]
+  },
+  "srb-bor": {
+    "name": "Bor İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bgr-vidin",
+      "rou-mehedinti",
+      "srb-branicevo",
+      "srb-pomoravski",
+      "srb-zajecar"
+    ]
+  },
+  "srb-branicevo": {
+    "name": "Braniçevo İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "rou-caras-severin",
+      "rou-mehedinti",
+      "srb-bor",
+      "srb-podunavlje",
+      "srb-pomoravski",
+      "srb-south-banat"
+    ]
+  },
+  "srb-central-banat": {
+    "name": "Orta Banat İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "rou-timis",
+      "srb-belgrade",
+      "srb-north-banat",
+      "srb-south-backa",
+      "srb-south-banat",
+      "srb-srem"
+    ]
+  },
+  "srb-jablanica": {
+    "name": "Jablanica İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bgr-pernik",
+      "kos",
+      "srb-nisava",
+      "srb-pcinja",
+      "srb-pirot",
+      "srb-toplica"
+    ]
+  },
+  "srb-kolubara": {
+    "name": "Kolubara İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-belgrade",
+      "srb-macva",
+      "srb-moravica",
+      "srb-sumadija",
+      "srb-zlatibor"
+    ]
+  },
+  "srb-macva": {
+    "name": "Maçva İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bih-bijeljina",
+      "bih-vlasenica",
+      "srb-belgrade",
+      "srb-kolubara",
+      "srb-srem",
+      "srb-zlatibor"
+    ]
+  },
+  "srb-moravica": {
+    "name": "Moravica",
+    "country": "Sırbistan",
+    "neighbors": ["srb-kolubara", "srb-raska", "srb-sumadija", "srb-zlatibor"]
+  },
+  "srb-nisava": {
+    "name": "Nišava İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-jablanica",
+      "srb-pirot",
+      "srb-pomoravski",
+      "srb-rasina",
+      "srb-toplica",
+      "srb-zajecar"
+    ]
+  },
+  "srb-north-backa": {
+    "name": "Kuzey Bačka İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "hun-bacs-kiskun",
+      "hun-csongrad-csanad",
+      "srb-north-banat",
+      "srb-south-backa",
+      "srb-west-backa"
+    ]
+  },
+  "srb-north-banat": {
+    "name": "Kuzey Banat İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "hun-csongrad-csanad",
+      "hun-szeged",
+      "rou-timis",
+      "srb-central-banat",
+      "srb-north-backa",
+      "srb-south-backa"
+    ]
+  },
+  "srb-pcinja": {
+    "name": "Pčinja İlçesi",
+    "country": "Sırbistan",
+    "neighbors": ["bgr-kyustendil", "bgr-pernik", "kos", "mkd", "srb-jablanica"]
+  },
+  "srb-pirot": {
+    "name": "Pirot İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bgr-montana",
+      "bgr-pernik",
+      "bgr-sofia",
+      "bgr-vidin",
+      "srb-jablanica",
+      "srb-nisava",
+      "srb-zajecar"
+    ]
+  },
+  "srb-podunavlje": {
+    "name": "Podunavlye İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-belgrade",
+      "srb-branicevo",
+      "srb-pomoravski",
+      "srb-south-banat",
+      "srb-sumadija"
+    ]
+  },
+  "srb-pomoravski": {
+    "name": "Pomoravski",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-bor",
+      "srb-branicevo",
+      "srb-nisava",
+      "srb-podunavlje",
+      "srb-rasina",
+      "srb-raska",
+      "srb-sumadija",
+      "srb-zajecar"
+    ]
+  },
+  "srb-rasina": {
+    "name": "Rasina",
+    "country": "Sırbistan",
+    "neighbors": [
+      "kos",
+      "srb-nisava",
+      "srb-pomoravski",
+      "srb-raska",
+      "srb-toplica"
+    ]
+  },
+  "srb-raska": {
+    "name": "Raska",
+    "country": "Sırbistan",
+    "neighbors": [
+      "kos",
+      "mne-berane",
+      "mne-bijelo-polje",
+      "mne-rozaje",
+      "srb-moravica",
+      "srb-pomoravski",
+      "srb-rasina",
+      "srb-sumadija",
+      "srb-zlatibor"
+    ]
+  },
+  "srb-south-backa": {
+    "name": "Güney Bačka İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "hrv-osijek-baranja",
+      "hrv-vukovar-syrmia",
+      "srb-central-banat",
+      "srb-north-backa",
+      "srb-north-banat",
+      "srb-srem",
+      "srb-west-backa"
+    ]
+  },
+  "srb-south-banat": {
+    "name": "Güney Banat İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "rou-caras-severin",
+      "rou-timis",
+      "srb-belgrade",
+      "srb-branicevo",
+      "srb-central-banat",
+      "srb-podunavlje"
+    ]
+  },
+  "srb-srem": {
+    "name": "Srem İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bih-bijeljina",
+      "hrv-vukovar-syrmia",
+      "srb-belgrade",
+      "srb-central-banat",
+      "srb-macva",
+      "srb-south-backa"
+    ]
+  },
+  "srb-sumadija": {
+    "name": "Šumadija İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "srb-belgrade",
+      "srb-kolubara",
+      "srb-moravica",
+      "srb-podunavlje",
+      "srb-pomoravski",
+      "srb-raska"
+    ]
+  },
+  "srb-toplica": {
+    "name": "Toplica Dstrict",
+    "country": "Sırbistan",
+    "neighbors": ["kos", "srb-jablanica", "srb-nisava", "srb-rasina"]
+  },
+  "srb-west-backa": {
+    "name": "Batı Bačka İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "hrv-osijek-baranja",
+      "hun-bacs-kiskun",
+      "srb-north-backa",
+      "srb-south-backa"
+    ]
+  },
+  "srb-zajecar": {
+    "name": "Zayeçar İlçesi",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bgr-vidin",
+      "srb-bor",
+      "srb-nisava",
+      "srb-pirot",
+      "srb-pomoravski"
+    ]
+  },
+  "srb-zlatibor": {
+    "name": "Zlatibor",
+    "country": "Sırbistan",
+    "neighbors": [
+      "bih-foca",
+      "bih-vlasenica",
+      "mne-bijelo-polje",
+      "mne-pljevlja",
+      "srb-kolubara",
+      "srb-macva",
+      "srb-moravica",
+      "srb-raska"
+    ]
+  },
+  "syr-al-hasakah": {
+    "name": "Hasiçi",
+    "country": "Suriye",
+    "neighbors": [
+      "irq-duhok",
+      "irq-nineveh",
+      "syr-al-raqqah",
+      "syr-deir-ez-zor",
+      "tur-mardin",
+      "tur-sanliurfa",
+      "tur-sirnak"
+    ]
+  },
+  "syr-al-raqqah": {
+    "name": "Rakka",
+    "country": "Suriye",
+    "neighbors": [
+      "syr-al-hasakah",
+      "syr-aleppo",
+      "syr-deir-ez-zor",
+      "syr-hama",
+      "syr-homs",
+      "tur-sanliurfa"
+    ]
+  },
+  "syr-aleppo": {
+    "name": "Halep",
+    "country": "Suriye",
+    "neighbors": [
+      "syr-al-raqqah",
+      "syr-hama",
+      "syr-idlib",
+      "tur-gaziantep",
+      "tur-hatay",
+      "tur-kilis",
+      "tur-sanliurfa"
+    ]
+  },
+  "syr-as-suwayda": {
+    "name": "Süveyde",
+    "country": "Suriye",
+    "neighbors": ["jor-mafraq", "syr-daraa", "syr-rif-dimashq"]
+  },
+  "syr-damascus": {
+    "name": "Şam",
+    "country": "Suriye",
+    "neighbors": ["syr-rif-dimashq"]
+  },
+  "syr-daraa": {
+    "name": "Dera",
+    "country": "Suriye",
+    "neighbors": [
+      "jor-irbid",
+      "jor-mafraq",
+      "syr-as-suwayda",
+      "syr-quneitra",
+      "syr-rif-dimashq",
+      "syr-western-al-samadania"
+    ]
+  },
+  "syr-deir-ez-zor": {
+    "name": "Deyrizor",
+    "country": "Suriye",
+    "neighbors": [
+      "irq-al-anbar",
+      "irq-nineveh",
+      "syr-al-hasakah",
+      "syr-al-raqqah",
+      "syr-homs"
+    ]
+  },
+  "syr-hama": {
+    "name": "Hama",
+    "country": "Suriye",
+    "neighbors": [
+      "syr-al-raqqah",
+      "syr-aleppo",
+      "syr-homs",
+      "syr-idlib",
+      "syr-latakia",
+      "syr-tartus"
+    ]
+  },
+  "syr-homs": {
+    "name": "Humus",
+    "country": "Suriye",
+    "neighbors": [
+      "irq-al-anbar",
+      "jor-mafraq",
+      "lbn-beqaa",
+      "lbn-north",
+      "syr-al-raqqah",
+      "syr-deir-ez-zor",
+      "syr-hama",
+      "syr-rif-dimashq",
+      "syr-tartus"
+    ]
+  },
+  "syr-idlib": {
+    "name": "İdlip",
+    "country": "Suriye",
+    "neighbors": ["syr-aleppo", "syr-hama", "syr-latakia", "tur-hatay"]
+  },
+  "syr-latakia": {
+    "name": "Lazkiye",
+    "country": "Suriye",
+    "neighbors": ["syr-hama", "syr-idlib", "syr-tartus", "tur-hatay"]
+  },
+  "syr-quneitra": {
+    "name": "Kuneytire",
+    "country": "Suriye",
+    "neighbors": ["syr-daraa", "syr-rif-dimashq", "syr-western-al-samadania"]
+  },
+  "syr-rif-dimashq": {
+    "name": "Rif Şam",
+    "country": "Suriye",
+    "neighbors": [
+      "jor-mafraq",
+      "lbn-beqaa",
+      "syr-as-suwayda",
+      "syr-damascus",
+      "syr-daraa",
+      "syr-homs",
+      "syr-quneitra",
+      "syr-western-al-samadania"
+    ]
+  },
+  "syr-tartus": {
+    "name": "Tartus",
+    "country": "Suriye",
+    "neighbors": ["lbn-north", "syr-hama", "syr-homs", "syr-latakia"]
+  },
+  "syr-western-al-samadania": {
+    "name": "UNDOF",
+    "country": "Suriye",
+    "neighbors": [
+      "isr-northern",
+      "jor-irbid",
+      "lbn-beqaa",
+      "lbn-nabatieh",
+      "syr-daraa",
+      "syr-quneitra",
+      "syr-rif-dimashq"
+    ]
+  },
+  "tun-beja": {
+    "name": "Bace ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-bizerte",
+      "tun-jendouba",
+      "tun-manouba",
+      "tun-siliana",
+      "tun-zaghouan"
+    ]
+  },
+  "tun-ben-arous": {
+    "name": "Ben Arus ili",
+    "country": "Tunus",
+    "neighbors": ["tun-manouba", "tun-nabeul", "tun-tunis", "tun-zaghouan"]
+  },
+  "tun-bizerte": {
+    "name": "Binzert ili",
+    "country": "Tunus",
+    "neighbors": ["tun-beja", "tun-manouba"]
+  },
+  "tun-gabes": {
+    "name": "Gabes",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-gafsa",
+      "tun-kebili",
+      "tun-medenine",
+      "tun-sfax",
+      "tun-sidi-bouzid"
+    ]
+  },
+  "tun-gafsa": {
+    "name": "Kafsa ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-tebessa",
+      "tun-gabes",
+      "tun-kasserine",
+      "tun-kebili",
+      "tun-sidi-bouzid",
+      "tun-tozeur"
+    ]
+  },
+  "tun-jendouba": {
+    "name": "Cendube ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-el-tarf",
+      "dza-souk-ahras",
+      "tun-beja",
+      "tun-kef",
+      "tun-siliana"
+    ]
+  },
+  "tun-kairouan": {
+    "name": "Kayravan",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-mahdia",
+      "tun-sfax",
+      "tun-sidi-bouzid",
+      "tun-siliana",
+      "tun-sousse",
+      "tun-zaghouan"
+    ]
+  },
+  "tun-kasserine": {
+    "name": "Kassarin ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-tebessa",
+      "tun-gafsa",
+      "tun-kef",
+      "tun-sidi-bouzid",
+      "tun-siliana"
+    ]
+  },
+  "tun-kebili": {
+    "name": "Kabili ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-el-oued",
+      "tun-gabes",
+      "tun-gafsa",
+      "tun-medenine",
+      "tun-tataouine",
+      "tun-tozeur"
+    ]
+  },
+  "tun-kef": {
+    "name": "Kâf ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-souk-ahras",
+      "dza-tebessa",
+      "tun-jendouba",
+      "tun-kasserine",
+      "tun-siliana"
+    ]
+  },
+  "tun-mahdia": {
+    "name": "Mehdiye ili",
+    "country": "Tunus",
+    "neighbors": ["tun-kairouan", "tun-monastir", "tun-sfax", "tun-sousse"]
+  },
+  "tun-manouba": {
+    "name": "Manuba ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-beja",
+      "tun-ben-arous",
+      "tun-bizerte",
+      "tun-tunis",
+      "tun-zaghouan"
+    ]
+  },
+  "tun-medenine": {
+    "name": "Medenin ili",
+    "country": "Tunus",
+    "neighbors": [
+      "lby-ghadames",
+      "lby-nuqat-al-khams",
+      "tun-gabes",
+      "tun-kebili",
+      "tun-tataouine"
+    ]
+  },
+  "tun-monastir": {
+    "name": "Munastır",
+    "country": "Tunus",
+    "neighbors": ["tun-mahdia", "tun-sousse"]
+  },
+  "tun-nabeul": {
+    "name": "Nabil ili",
+    "country": "Tunus",
+    "neighbors": ["tun-ben-arous", "tun-sousse", "tun-zaghouan"]
+  },
+  "tun-sfax": {
+    "name": "Sfaks ili",
+    "country": "Tunus",
+    "neighbors": ["tun-gabes", "tun-kairouan", "tun-mahdia", "tun-sidi-bouzid"]
+  },
+  "tun-sidi-bouzid": {
+    "name": "Sidi Bu Zeyd ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-gabes",
+      "tun-gafsa",
+      "tun-kairouan",
+      "tun-kasserine",
+      "tun-sfax",
+      "tun-siliana"
+    ]
+  },
+  "tun-siliana": {
+    "name": "Silyana ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-beja",
+      "tun-jendouba",
+      "tun-kairouan",
+      "tun-kasserine",
+      "tun-kef",
+      "tun-sidi-bouzid",
+      "tun-zaghouan"
+    ]
+  },
+  "tun-sousse": {
+    "name": "Susa ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-kairouan",
+      "tun-mahdia",
+      "tun-monastir",
+      "tun-nabeul",
+      "tun-zaghouan"
+    ]
+  },
+  "tun-tataouine": {
+    "name": "Tatavin ili",
+    "country": "Tunus",
+    "neighbors": [
+      "dza-el-oued",
+      "dza-ouargla",
+      "lby-ghadames",
+      "tun-kebili",
+      "tun-medenine"
+    ]
+  },
+  "tun-tozeur": {
+    "name": "Tuzer ili",
+    "country": "Tunus",
+    "neighbors": ["dza-el-oued", "dza-tebessa", "tun-gafsa", "tun-kebili"]
+  },
+  "tun-tunis": {
+    "name": "Tunus ili",
+    "country": "Tunus",
+    "neighbors": ["tun-ben-arous", "tun-manouba"]
+  },
+  "tun-zaghouan": {
+    "name": "Zağvan ili",
+    "country": "Tunus",
+    "neighbors": [
+      "tun-beja",
+      "tun-ben-arous",
+      "tun-kairouan",
+      "tun-manouba",
+      "tun-nabeul",
+      "tun-siliana",
+      "tun-sousse"
+    ]
+  },
+  "tur-adana": {
+    "name": "Adana",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-hatay",
+      "tur-kahramanmaras",
+      "tur-kayseri",
+      "tur-mersin",
+      "tur-nigde",
+      "tur-osmaniye"
+    ]
+  },
+  "tur-adiyaman": {
+    "name": "Adıyaman",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-diyarbakir",
+      "tur-gaziantep",
+      "tur-kahramanmaras",
+      "tur-malatya",
+      "tur-sanliurfa"
+    ]
+  },
+  "tur-afyonkarahisar": {
+    "name": "Afyonkarahisar",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-burdur",
+      "tur-denizli",
+      "tur-eskisehir",
+      "tur-isparta",
+      "tur-konya",
+      "tur-kutahya",
+      "tur-usak"
+    ]
+  },
+  "tur-agri": {
+    "name": "Ağrı",
+    "country": "Türkiye",
+    "neighbors": [
+      "irn-west-azerbaijan",
+      "tur-bitlis",
+      "tur-erzurum",
+      "tur-igdir",
+      "tur-kars",
+      "tur-mus",
+      "tur-van"
+    ]
+  },
+  "tur-aksaray": {
+    "name": "Aksaray",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-ankara",
+      "tur-kirsehir",
+      "tur-konya",
+      "tur-nevsehir",
+      "tur-nigde"
+    ]
+  },
+  "tur-amasya": {
+    "name": "Amasya",
+    "country": "Türkiye",
+    "neighbors": ["tur-corum", "tur-samsun", "tur-tokat", "tur-yozgat"]
+  },
+  "tur-ankara": {
+    "name": "Ankara",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-aksaray",
+      "tur-bolu",
+      "tur-cankiri",
+      "tur-eskisehir",
+      "tur-kirikkale",
+      "tur-kirsehir",
+      "tur-konya"
+    ]
+  },
+  "tur-antalya": {
+    "name": "Antalya",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-burdur",
+      "tur-isparta",
+      "tur-karaman",
+      "tur-konya",
+      "tur-mersin",
+      "tur-mugla"
+    ]
+  },
+  "tur-ardahan": {
+    "name": "Ardahan",
+    "country": "Türkiye",
+    "neighbors": [
+      "geo-adjara",
+      "geo-samtskhe-javakheti",
+      "tur-artvin",
+      "tur-erzurum",
+      "tur-kars"
+    ]
+  },
+  "tur-artvin": {
+    "name": "Artvin",
+    "country": "Türkiye",
+    "neighbors": ["geo-adjara", "tur-ardahan", "tur-erzurum", "tur-rize"]
+  },
+  "tur-aydin": {
+    "name": "Aydın",
+    "country": "Türkiye",
+    "neighbors": ["tur-denizli", "tur-izmir", "tur-manisa", "tur-mugla"]
+  },
+  "tur-balikesir": {
+    "name": "Balıkesir",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bursa",
+      "tur-canakkale",
+      "tur-izmir",
+      "tur-kutahya",
+      "tur-manisa"
+    ]
+  },
+  "tur-bartin": {
+    "name": "Bartın",
+    "country": "Türkiye",
+    "neighbors": ["tur-karabuk", "tur-kastamonu", "tur-zonguldak"]
+  },
+  "tur-batman": {
+    "name": "Batman",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bitlis",
+      "tur-diyarbakir",
+      "tur-mardin",
+      "tur-mus",
+      "tur-siirt"
+    ]
+  },
+  "tur-bayburt": {
+    "name": "Bayburt",
+    "country": "Türkiye",
+    "neighbors": ["tur-erzincan", "tur-erzurum", "tur-gumushane", "tur-trabzon"]
+  },
+  "tur-bilecik": {
+    "name": "Bilecik",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bolu",
+      "tur-bursa",
+      "tur-eskisehir",
+      "tur-kutahya",
+      "tur-sakarya"
+    ]
+  },
+  "tur-bingol": {
+    "name": "Bingöl",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-diyarbakir",
+      "tur-elazig",
+      "tur-erzincan",
+      "tur-erzurum",
+      "tur-mus",
+      "tur-tunceli"
+    ]
+  },
+  "tur-bitlis": {
+    "name": "Bitlis",
+    "country": "Türkiye",
+    "neighbors": ["tur-agri", "tur-batman", "tur-mus", "tur-siirt", "tur-van"]
+  },
+  "tur-bolu": {
+    "name": "Bolu",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-ankara",
+      "tur-bilecik",
+      "tur-cankiri",
+      "tur-duzce",
+      "tur-eskisehir",
+      "tur-karabuk",
+      "tur-sakarya",
+      "tur-zonguldak"
+    ]
+  },
+  "tur-burdur": {
+    "name": "Burdur",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-antalya",
+      "tur-denizli",
+      "tur-isparta",
+      "tur-mugla"
+    ]
+  },
+  "tur-bursa": {
+    "name": "Bursa",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-balikesir",
+      "tur-bilecik",
+      "tur-kocaeli",
+      "tur-kutahya",
+      "tur-sakarya",
+      "tur-yalova"
+    ]
+  },
+  "tur-canakkale": {
+    "name": "Çanakkale",
+    "country": "Türkiye",
+    "neighbors": ["tur-balikesir", "tur-edirne", "tur-tekirdag"]
+  },
+  "tur-cankiri": {
+    "name": "Çankırı",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-ankara",
+      "tur-bolu",
+      "tur-corum",
+      "tur-karabuk",
+      "tur-kastamonu",
+      "tur-kirikkale"
+    ]
+  },
+  "tur-corum": {
+    "name": "Çorum",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-amasya",
+      "tur-cankiri",
+      "tur-kastamonu",
+      "tur-kirikkale",
+      "tur-samsun",
+      "tur-sinop",
+      "tur-yozgat"
+    ]
+  },
+  "tur-denizli": {
+    "name": "Denizli",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-aydin",
+      "tur-burdur",
+      "tur-manisa",
+      "tur-mugla",
+      "tur-usak"
+    ]
+  },
+  "tur-diyarbakir": {
+    "name": "Diyarbakır",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adiyaman",
+      "tur-batman",
+      "tur-bingol",
+      "tur-elazig",
+      "tur-malatya",
+      "tur-mardin",
+      "tur-mus",
+      "tur-sanliurfa"
+    ]
+  },
+  "tur-duzce": {
+    "name": "Düzce",
+    "country": "Türkiye",
+    "neighbors": ["tur-bolu", "tur-sakarya", "tur-zonguldak"]
+  },
+  "tur-edirne": {
+    "name": "Edirne",
+    "country": "Türkiye",
+    "neighbors": [
+      "bgr-haskovo",
+      "bgr-yambol",
+      "grc-east-macedonia-and-thrace",
+      "tur-canakkale",
+      "tur-kirklareli",
+      "tur-tekirdag"
+    ]
+  },
+  "tur-elazig": {
+    "name": "Elâzığ",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bingol",
+      "tur-diyarbakir",
+      "tur-erzincan",
+      "tur-malatya",
+      "tur-tunceli"
+    ]
+  },
+  "tur-erzincan": {
+    "name": "Erzincan",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bayburt",
+      "tur-bingol",
+      "tur-elazig",
+      "tur-erzurum",
+      "tur-giresun",
+      "tur-gumushane",
+      "tur-malatya",
+      "tur-sivas",
+      "tur-tunceli"
+    ]
+  },
+  "tur-erzurum": {
+    "name": "Erzurum",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-agri",
+      "tur-ardahan",
+      "tur-artvin",
+      "tur-bayburt",
+      "tur-bingol",
+      "tur-erzincan",
+      "tur-kars",
+      "tur-mus",
+      "tur-rize"
+    ]
+  },
+  "tur-eskisehir": {
+    "name": "Eskişehir",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-ankara",
+      "tur-bilecik",
+      "tur-bolu",
+      "tur-konya",
+      "tur-kutahya"
+    ]
+  },
+  "tur-gaziantep": {
+    "name": "Gaziantep",
+    "country": "Türkiye",
+    "neighbors": [
+      "syr-aleppo",
+      "tur-adiyaman",
+      "tur-hatay",
+      "tur-kahramanmaras",
+      "tur-kilis",
+      "tur-osmaniye",
+      "tur-sanliurfa"
+    ]
+  },
+  "tur-giresun": {
+    "name": "Giresun",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-erzincan",
+      "tur-gumushane",
+      "tur-ordu",
+      "tur-sivas",
+      "tur-trabzon"
+    ]
+  },
+  "tur-gumushane": {
+    "name": "Gümüşhane",
+    "country": "Türkiye",
+    "neighbors": ["tur-bayburt", "tur-erzincan", "tur-giresun", "tur-trabzon"]
+  },
+  "tur-hakkari": {
+    "name": "Hakkâri",
+    "country": "Türkiye",
+    "neighbors": [
+      "irn-west-azerbaijan",
+      "irq-duhok",
+      "irq-erbil",
+      "tur-sirnak",
+      "tur-van"
+    ]
+  },
+  "tur-hatay": {
+    "name": "Hatay",
+    "country": "Türkiye",
+    "neighbors": [
+      "syr-aleppo",
+      "syr-idlib",
+      "syr-latakia",
+      "tur-adana",
+      "tur-gaziantep",
+      "tur-osmaniye"
+    ]
+  },
+  "tur-igdir": {
+    "name": "Iğdır",
+    "country": "Türkiye",
+    "neighbors": [
+      "arm-ararat",
+      "arm-armavir",
+      "irn-west-azerbaijan",
+      "tur-agri",
+      "tur-kars"
+    ]
+  },
+  "tur-isparta": {
+    "name": "Isparta",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-antalya",
+      "tur-burdur",
+      "tur-konya"
+    ]
+  },
+  "tur-istanbul": {
+    "name": "İstanbul",
+    "country": "Türkiye",
+    "neighbors": ["tur-kirklareli", "tur-kocaeli", "tur-tekirdag"]
+  },
+  "tur-izmir": {
+    "name": "İzmir",
+    "country": "Türkiye",
+    "neighbors": ["tur-aydin", "tur-balikesir", "tur-manisa"]
+  },
+  "tur-kahramanmaras": {
+    "name": "Kahramanmaraş",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adana",
+      "tur-adiyaman",
+      "tur-gaziantep",
+      "tur-kayseri",
+      "tur-malatya",
+      "tur-osmaniye",
+      "tur-sivas"
+    ]
+  },
+  "tur-karabuk": {
+    "name": "Karabük",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bartin",
+      "tur-bolu",
+      "tur-cankiri",
+      "tur-kastamonu",
+      "tur-zonguldak"
+    ]
+  },
+  "tur-karaman": {
+    "name": "Karaman",
+    "country": "Türkiye",
+    "neighbors": ["tur-antalya", "tur-konya", "tur-mersin"]
+  },
+  "tur-kars": {
+    "name": "Kars",
+    "country": "Türkiye",
+    "neighbors": [
+      "arm-aragatsotn",
+      "arm-armavir",
+      "arm-shirak",
+      "tur-agri",
+      "tur-ardahan",
+      "tur-erzurum",
+      "tur-igdir"
+    ]
+  },
+  "tur-kastamonu": {
+    "name": "Kastamonu",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bartin",
+      "tur-cankiri",
+      "tur-corum",
+      "tur-karabuk",
+      "tur-sinop"
+    ]
+  },
+  "tur-kayseri": {
+    "name": "Kayseri",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adana",
+      "tur-kahramanmaras",
+      "tur-nevsehir",
+      "tur-nigde",
+      "tur-sivas",
+      "tur-yozgat"
+    ]
+  },
+  "tur-kilis": {
+    "name": "Kilis",
+    "country": "Türkiye",
+    "neighbors": ["syr-aleppo", "tur-gaziantep"]
+  },
+  "tur-kirikkale": {
+    "name": "Kırıkkale",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-ankara",
+      "tur-cankiri",
+      "tur-corum",
+      "tur-kirsehir",
+      "tur-yozgat"
+    ]
+  },
+  "tur-kirklareli": {
+    "name": "Kırklareli",
+    "country": "Türkiye",
+    "neighbors": [
+      "bgr-burgas",
+      "bgr-yambol",
+      "tur-edirne",
+      "tur-istanbul",
+      "tur-tekirdag"
+    ]
+  },
+  "tur-kirsehir": {
+    "name": "Kırşehir",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-aksaray",
+      "tur-ankara",
+      "tur-kirikkale",
+      "tur-nevsehir",
+      "tur-yozgat"
+    ]
+  },
+  "tur-kocaeli": {
+    "name": "Kocaeli",
+    "country": "Türkiye",
+    "neighbors": ["tur-bursa", "tur-istanbul", "tur-sakarya", "tur-yalova"]
+  },
+  "tur-konya": {
+    "name": "Konya",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-aksaray",
+      "tur-ankara",
+      "tur-antalya",
+      "tur-eskisehir",
+      "tur-isparta",
+      "tur-karaman",
+      "tur-mersin",
+      "tur-nigde"
+    ]
+  },
+  "tur-kutahya": {
+    "name": "Kütahya",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-balikesir",
+      "tur-bilecik",
+      "tur-bursa",
+      "tur-eskisehir",
+      "tur-manisa",
+      "tur-usak"
+    ]
+  },
+  "tur-malatya": {
+    "name": "Malatya",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adiyaman",
+      "tur-diyarbakir",
+      "tur-elazig",
+      "tur-erzincan",
+      "tur-kahramanmaras",
+      "tur-sivas"
+    ]
+  },
+  "tur-manisa": {
+    "name": "Manisa",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-aydin",
+      "tur-balikesir",
+      "tur-denizli",
+      "tur-izmir",
+      "tur-kutahya",
+      "tur-usak"
+    ]
+  },
+  "tur-mardin": {
+    "name": "Mardin",
+    "country": "Türkiye",
+    "neighbors": [
+      "syr-al-hasakah",
+      "tur-batman",
+      "tur-diyarbakir",
+      "tur-sanliurfa",
+      "tur-sirnak"
+    ]
+  },
+  "tur-mersin": {
+    "name": "Mersin",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adana",
+      "tur-antalya",
+      "tur-karaman",
+      "tur-konya",
+      "tur-nigde"
+    ]
+  },
+  "tur-mugla": {
+    "name": "Muğla",
+    "country": "Türkiye",
+    "neighbors": ["tur-antalya", "tur-aydin", "tur-burdur", "tur-denizli"]
+  },
+  "tur-mus": {
+    "name": "Muş",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-agri",
+      "tur-batman",
+      "tur-bingol",
+      "tur-bitlis",
+      "tur-diyarbakir",
+      "tur-erzurum"
+    ]
+  },
+  "tur-nevsehir": {
+    "name": "Nevşehir",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-aksaray",
+      "tur-kayseri",
+      "tur-kirsehir",
+      "tur-nigde",
+      "tur-yozgat"
+    ]
+  },
+  "tur-nigde": {
+    "name": "Niğde",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adana",
+      "tur-aksaray",
+      "tur-kayseri",
+      "tur-konya",
+      "tur-mersin",
+      "tur-nevsehir"
+    ]
+  },
+  "tur-ordu": {
+    "name": "Ordu",
+    "country": "Türkiye",
+    "neighbors": ["tur-giresun", "tur-samsun", "tur-sivas", "tur-tokat"]
+  },
+  "tur-osmaniye": {
+    "name": "Osmaniye",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-adana",
+      "tur-gaziantep",
+      "tur-hatay",
+      "tur-kahramanmaras"
+    ]
+  },
+  "tur-rize": {
+    "name": "Rize",
+    "country": "Türkiye",
+    "neighbors": ["tur-artvin", "tur-erzurum", "tur-trabzon"]
+  },
+  "tur-sakarya": {
+    "name": "Sakarya",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-bilecik",
+      "tur-bolu",
+      "tur-bursa",
+      "tur-duzce",
+      "tur-kocaeli"
+    ]
+  },
+  "tur-samsun": {
+    "name": "Samsun",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-amasya",
+      "tur-corum",
+      "tur-ordu",
+      "tur-sinop",
+      "tur-tokat"
+    ]
+  },
+  "tur-sanliurfa": {
+    "name": "Şanlıurfa",
+    "country": "Türkiye",
+    "neighbors": [
+      "syr-al-hasakah",
+      "syr-al-raqqah",
+      "syr-aleppo",
+      "tur-adiyaman",
+      "tur-diyarbakir",
+      "tur-gaziantep",
+      "tur-mardin"
+    ]
+  },
+  "tur-siirt": {
+    "name": "Siirt",
+    "country": "Türkiye",
+    "neighbors": ["tur-batman", "tur-bitlis", "tur-sirnak", "tur-van"]
+  },
+  "tur-sinop": {
+    "name": "Sinop",
+    "country": "Türkiye",
+    "neighbors": ["tur-corum", "tur-kastamonu", "tur-samsun"]
+  },
+  "tur-sirnak": {
+    "name": "Şırnak",
+    "country": "Türkiye",
+    "neighbors": [
+      "irq-duhok",
+      "syr-al-hasakah",
+      "tur-hakkari",
+      "tur-mardin",
+      "tur-siirt",
+      "tur-van"
+    ]
+  },
+  "tur-sivas": {
+    "name": "Sivas",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-erzincan",
+      "tur-giresun",
+      "tur-kahramanmaras",
+      "tur-kayseri",
+      "tur-malatya",
+      "tur-ordu",
+      "tur-tokat",
+      "tur-yozgat"
+    ]
+  },
+  "tur-tekirdag": {
+    "name": "Tekirdağ",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-canakkale",
+      "tur-edirne",
+      "tur-istanbul",
+      "tur-kirklareli"
+    ]
+  },
+  "tur-tokat": {
+    "name": "Tokat",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-amasya",
+      "tur-ordu",
+      "tur-samsun",
+      "tur-sivas",
+      "tur-yozgat"
+    ]
+  },
+  "tur-trabzon": {
+    "name": "Trabzon",
+    "country": "Türkiye",
+    "neighbors": ["tur-bayburt", "tur-giresun", "tur-gumushane", "tur-rize"]
+  },
+  "tur-tunceli": {
+    "name": "Tunceli",
+    "country": "Türkiye",
+    "neighbors": ["tur-bingol", "tur-elazig", "tur-erzincan"]
+  },
+  "tur-usak": {
+    "name": "Uşak",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-afyonkarahisar",
+      "tur-denizli",
+      "tur-kutahya",
+      "tur-manisa"
+    ]
+  },
+  "tur-van": {
+    "name": "Van",
+    "country": "Türkiye",
+    "neighbors": [
+      "irn-west-azerbaijan",
+      "tur-agri",
+      "tur-bitlis",
+      "tur-hakkari",
+      "tur-siirt",
+      "tur-sirnak"
+    ]
+  },
+  "tur-yalova": {
+    "name": "Yalova",
+    "country": "Türkiye",
+    "neighbors": ["tur-bursa", "tur-kocaeli"]
+  },
+  "tur-yozgat": {
+    "name": "Yozgat",
+    "country": "Türkiye",
+    "neighbors": [
+      "tur-amasya",
+      "tur-corum",
+      "tur-kayseri",
+      "tur-kirikkale",
+      "tur-kirsehir",
+      "tur-nevsehir",
+      "tur-sivas",
+      "tur-tokat"
+    ]
+  },
+  "tur-zonguldak": {
+    "name": "Zonguldak",
+    "country": "Türkiye",
+    "neighbors": ["tur-bartin", "tur-bolu", "tur-duzce", "tur-karabuk"]
+  },
+  "ukr-cherkasy": {
+    "name": "Çerkası Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-kirovohrad", "ukr-kyiv", "ukr-poltava", "ukr-vinnytsia"]
+  },
+  "ukr-chernihiv": {
+    "name": "Çernigov Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-kyiv", "ukr-poltava", "ukr-sumy"]
+  },
+  "ukr-chernivtsi": {
+    "name": "Çernovtsi Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "mda-briceni",
+      "mda-ocnita",
+      "rou-botosani",
+      "rou-maramures",
+      "rou-suceava",
+      "ukr-ivano-frankivsk",
+      "ukr-khmelnytskyi",
+      "ukr-ternopil",
+      "ukr-vinnytsia"
+    ]
+  },
+  "ukr-dnipropetrovsk": {
+    "name": "Dnipropetrovsk Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-donetsk",
+      "ukr-kharkiv",
+      "ukr-kherson",
+      "ukr-kirovohrad",
+      "ukr-mykolaiv",
+      "ukr-poltava",
+      "ukr-zaporizhzhia"
+    ]
+  },
+  "ukr-donetsk": {
+    "name": "Donetsk Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-dnipropetrovsk",
+      "ukr-kharkiv",
+      "ukr-luhansk",
+      "ukr-zaporizhzhia"
+    ]
+  },
+  "ukr-ivano-frankivsk": {
+    "name": "İvano-Frankivsk Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "rou-maramures",
+      "ukr-chernivtsi",
+      "ukr-lviv",
+      "ukr-ternopil",
+      "ukr-zakarpattia"
+    ]
+  },
+  "ukr-kharkiv": {
+    "name": "Harkiv Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-dnipropetrovsk",
+      "ukr-donetsk",
+      "ukr-luhansk",
+      "ukr-poltava",
+      "ukr-sumy"
+    ]
+  },
+  "ukr-kherson": {
+    "name": "Herson Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-dnipropetrovsk", "ukr-mykolaiv", "ukr-zaporizhzhia"]
+  },
+  "ukr-khmelnytskyi": {
+    "name": "Hmelnitski Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-chernivtsi",
+      "ukr-rivne",
+      "ukr-ternopil",
+      "ukr-vinnytsia",
+      "ukr-zhytomyr"
+    ]
+  },
+  "ukr-kirovohrad": {
+    "name": "Kirovograd Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-cherkasy",
+      "ukr-dnipropetrovsk",
+      "ukr-mykolaiv",
+      "ukr-odessa",
+      "ukr-poltava",
+      "ukr-vinnytsia"
+    ]
+  },
+  "ukr-kyiv": {
+    "name": "Kiev",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-cherkasy",
+      "ukr-chernihiv",
+      "ukr-kyiv-2",
+      "ukr-poltava",
+      "ukr-vinnytsia",
+      "ukr-zhytomyr"
+    ]
+  },
+  "ukr-kyiv-2": {
+    "name": "Kiev",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-kyiv"]
+  },
+  "ukr-luhansk": {
+    "name": "Luhansk Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-donetsk", "ukr-kharkiv"]
+  },
+  "ukr-lviv": {
+    "name": "Lviv Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-ivano-frankivsk",
+      "ukr-rivne",
+      "ukr-ternopil",
+      "ukr-volyn",
+      "ukr-zakarpattia"
+    ]
+  },
+  "ukr-mykolaiv": {
+    "name": "Mıkolayiv Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-dnipropetrovsk",
+      "ukr-kherson",
+      "ukr-kirovohrad",
+      "ukr-odessa"
+    ]
+  },
+  "ukr-odessa": {
+    "name": "Odessa Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "mda-basarabeasca",
+      "mda-bender",
+      "mda-cahul",
+      "mda-camenca",
+      "mda-causeni",
+      "mda-cimislia",
+      "mda-comrat",
+      "mda-grigoriopol",
+      "mda-rezina",
+      "mda-stefan-voda",
+      "mda-taraclia",
+      "mda-transnistria",
+      "rou-galati",
+      "rou-tulcea",
+      "ukr-kirovohrad",
+      "ukr-mykolaiv",
+      "ukr-vinnytsia"
+    ]
+  },
+  "ukr-poltava": {
+    "name": "Poltava Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-cherkasy",
+      "ukr-chernihiv",
+      "ukr-dnipropetrovsk",
+      "ukr-kharkiv",
+      "ukr-kirovohrad",
+      "ukr-kyiv",
+      "ukr-sumy"
+    ]
+  },
+  "ukr-rivne": {
+    "name": "Rivne Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-khmelnytskyi",
+      "ukr-lviv",
+      "ukr-ternopil",
+      "ukr-volyn",
+      "ukr-zhytomyr"
+    ]
+  },
+  "ukr-sumy": {
+    "name": "Sumi Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-chernihiv", "ukr-kharkiv", "ukr-poltava"]
+  },
+  "ukr-ternopil": {
+    "name": "Ternopil Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "ukr-chernivtsi",
+      "ukr-ivano-frankivsk",
+      "ukr-khmelnytskyi",
+      "ukr-lviv",
+      "ukr-rivne"
+    ]
+  },
+  "ukr-vinnytsia": {
+    "name": "Vinnitsa Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "mda-camenca",
+      "mda-donduseni",
+      "mda-ocnita",
+      "mda-soroca",
+      "ukr-cherkasy",
+      "ukr-chernivtsi",
+      "ukr-khmelnytskyi",
+      "ukr-kirovohrad",
+      "ukr-kyiv",
+      "ukr-odessa",
+      "ukr-zhytomyr"
+    ]
+  },
+  "ukr-volyn": {
+    "name": "Volın Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-lviv", "ukr-rivne"]
+  },
+  "ukr-zakarpattia": {
+    "name": "Zakarpatya Oblastı",
+    "country": "Ukrayna",
+    "neighbors": [
+      "hun-borsod-abauj-zemplen",
+      "hun-szabolcs-szatmar-bereg",
+      "rou-maramures",
+      "rou-satu-mare",
+      "ukr-ivano-frankivsk",
+      "ukr-lviv"
+    ]
+  },
+  "ukr-zaporizhzhia": {
+    "name": "Zaporijya Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-dnipropetrovsk", "ukr-donetsk", "ukr-kherson"]
+  },
+  "ukr-zhytomyr": {
+    "name": "Jitomir Oblastı",
+    "country": "Ukrayna",
+    "neighbors": ["ukr-khmelnytskyi", "ukr-kyiv", "ukr-rivne", "ukr-vinnytsia"]
+  }
+}
