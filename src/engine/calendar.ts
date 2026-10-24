@@ -21,3 +21,11 @@ export function compareDates(a: GameDate, b: GameDate): number {
     a.year - b.year || SEASONS.indexOf(a.season) - SEASONS.indexOf(b.season)
   );
 }
+
+/**
+ * Her tur bir mevsimdir. İlkbahar–sonbahar sefer mevsimi, kış kışlak
+ * dönemidir: ordular yalnızca kendi topraklarına çekilebilir.
+ */
+export function isWinter(season: Season): boolean {
+  return season === 'winter';
+}

@@ -1,4 +1,4 @@
-import { nextDate } from '../calendar';
+import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
 import { RULES } from '../rules';
 
@@ -14,6 +14,24 @@ export const advanceCalendar: TurnPhase = ({ state, emit }) => {
 export const resetArmies: TurnPhase = ({ state }) => {
   for (const army of Object.values(state.armies)) {
     army.movesLeft = RULES.armyMovesPerTurn;
+  }
+};
+
+/** Kış başında yabancı toprakta kalan ordular asker kaybeder (C1). */
+export const winterAttrition: TurnPhase = ({ state, emit }) => {
+  if (!isWinter(state.date.season)) return;
+
+  for (const army of Object.values(state.armies)) {
+    if (state.provinces[army.provinceId]?.ownerId === army.ownerId) continue;
+    const lost = Math.floor(army.troops * RULES.winterAttritionRate);
+    if (lost === 0) continue;
+    army.troops -= lost;
+    emit({
+      type: 'winterAttrition',
+      armyId: army.id,
+      provinceId: army.provinceId,
+      lost,
+    });
   }
 };
 
@@ -73,6 +91,7 @@ export const checkGameOver: TurnPhase = ({ state, emit }) => {
 export const TURN_PHASES: TurnPhase[] = [
   advanceCalendar,
   resetArmies,
+  winterAttrition,
   collectIncome,
   eliminateFactions,
   checkGameOver,

@@ -24,6 +24,10 @@ if (result.ok) state = result.state;
 else console.warn(result.error); // 'notAdjacent', 'noMovesLeft', ...
 ```
 
+## Mevsimler ve kışlak (C1)
+
+Her tur bir mevsimdir (ilkbahar → yaz → sonbahar → kış). İlkbahar–sonbahar sefer mevsimidir; kışın ordu yalnızca kendi toprağına çekilebilir (`winterQuarters` hatası) ve kış başında yabancı toprakta kalan ordu `RULES.winterAttritionRate` oranında asker kaybeder (`winterAttrition` günlük kaydı).
+
 ## Yeni mekanik eklemek
 
 - **Yeni emir**: `commands/types.ts` içindeki `ActionCommand` birleşimine ekle, `commands/<emir>.ts` içinde `validate…` / `execute…` yaz, `commands/index.ts` içindeki `switch`'lere bağla.

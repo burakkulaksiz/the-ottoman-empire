@@ -17,7 +17,9 @@ export type CommandError =
   | 'notOwner'
   | 'noMovesLeft'
   | 'unknownProvince'
-  | 'notAdjacent';
+  | 'notAdjacent'
+  /** Kışın ordu yalnızca kendi toprağına çekilebilir. */
+  | 'winterQuarters';
 
 export interface ValidationArgs<C> {
   world: World;

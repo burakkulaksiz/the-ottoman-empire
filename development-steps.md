@@ -16,12 +16,12 @@
 | ---------------- | ----- | ------ |
 | A. Altyapı       | 2     | 5      |
 | B. Harita        | 2     | 5      |
-| C. Mekanikler    | 0     | 10     |
+| C. Mekanikler    | 1     | 10     |
 | D. Tarih öğrenme | 0     | 7      |
 | E. Arayüz        | 0     | 5      |
 | F. Kalite        | 0     | 5      |
 | G. İleride       | 0     | 4      |
-| **Toplam**       | **4** | **41** |
+| **Toplam**       | **5** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -33,7 +33,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C1 (oyun döngüsü kararı: tur = mevsim)
+**Sıradaki madde:** C2 (senaryo sistemi, ilk senaryo: 1299 Kuruluş)
 
 ---
 
@@ -56,7 +56,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 ## C. Oyun mekanikleri (kazanma ve kaybetme)
 
-- [ ] **C1. Oyun döngüsü kararı:** tur bazlı, her tur bir mevsim (önerilen). Sefer mevsimi ve kışlak (Kasım'da orduyu çekmek) gibi tarihi gerçekler doğrudan kurala dönüşür.
+- [x] **C1. Oyun döngüsü kararı:** tur bazlı, her tur bir mevsim (önerilen). Sefer mevsimi ve kışlak (Kasım'da orduyu çekmek) gibi tarihi gerçekler doğrudan kurala dönüşür.
+  - _Karar: her tur bir mevsim (ilkbahar–sonbahar sefer, kış kışlak). Kışın ordu yalnızca kendi toprağına çekilebilir; kış başında yabancı toprakta kalan ordu %10 asker kaybeder (`RULES.winterAttritionRate`)._
 - [ ] **C2. Senaryo sistemi:** 1299 Kuruluş, 1326 Bursa, 1402 Ankara ve Fetret, 1453 İstanbul, 1514 Çaldıran, 1526 Mohaç, 1683 Viyana, 1768–1774 Rus Savaşı gibi.
 - [ ] **C3. Zafer ve yenilgi koşulları:** senaryo hedefleri, zaman sınırı ve devletin yıkılması. Ayrıca "tarihî sonuca göre" bir puan: tarihten daha iyi mi, daha kötü mü yaptın?
 - [ ] **C4. Askeri sistem:** yeniçeri, tımarlı sipahi, akıncı, topçu ve donanma. İkmal, moral, arazi ve kuşatma.

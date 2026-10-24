@@ -61,6 +61,12 @@ export type LogPayload =
       from: ProvinceId;
       to: ProvinceId;
     }
+  | {
+      type: 'winterAttrition';
+      armyId: ArmyId;
+      provinceId: ProvinceId;
+      lost: number;
+    }
   | { type: 'incomeCollected'; factionId: FactionId; amount: number }
   | { type: 'factionEliminated'; factionId: FactionId }
   | { type: 'gameEnded'; status: Extract<GameStatus, { phase: 'ended' }> };

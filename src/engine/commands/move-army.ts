@@ -1,3 +1,4 @@
+import { isWinter } from '../calendar';
 import type { ExecuteContext } from '../context';
 import type { FactionId } from '../types';
 import { areAdjacent } from '../world';
@@ -18,6 +19,12 @@ export function validateMoveArmy({
   if (army.movesLeft <= 0) return 'noMovesLeft';
   if (!world.provinces[command.to]) return 'unknownProvince';
   if (!areAdjacent(world, army.provinceId, command.to)) return 'notAdjacent';
+  if (
+    isWinter(state.date.season) &&
+    state.provinces[command.to]?.ownerId !== factionId
+  ) {
+    return 'winterQuarters';
+  }
   return null;
 }
 
