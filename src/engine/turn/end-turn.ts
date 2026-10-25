@@ -14,6 +14,7 @@ export function validateEndTurn(
 ): CommandError | null {
   if (state.status.phase === 'ended') return 'gameOver';
   if (factionId !== state.playerFactionId) return 'notPlayer';
+  if (state.events.pending.length > 0) return 'eventPending';
   return null;
 }
 

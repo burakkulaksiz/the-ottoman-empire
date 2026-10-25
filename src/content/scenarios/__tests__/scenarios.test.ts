@@ -81,6 +81,48 @@ describe('kurulus-1299 goals', () => {
   });
 });
 
+describe.each(SCENARIOS.map((s) => [s.id, s.events ?? []] as const))(
+  '%s event cards',
+  (_id, events) => {
+    it('name a historical choice that exists', () => {
+      for (const event of events) {
+        expect(event.choices.map((c) => c.id)).toContain(
+          event.historical.choiceId,
+        );
+      }
+    });
+  },
+);
+
+describe('kurulus-1299 events', () => {
+  const setup = loadScenario('kurulus-1299');
+
+  it('hands only ids, triggers and effects to the engine', () => {
+    expect(setup.world.events?.map((e) => e.id)).toEqual([
+      'koyunhisar',
+      'bursa-dususu',
+    ]);
+    expect(JSON.stringify(setup.world.events)).not.toContain('Bizans');
+  });
+
+  it('stops the player at the Koyunhisar card in summer 1302', () => {
+    let state = createGame(setup, { seed: 1 });
+    while (state.events.pending.length === 0) {
+      const result = dispatch(setup.world, state, 'osmanli', {
+        type: 'endTurn',
+      });
+      if (!result.ok) throw new Error(result.error);
+      state = result.state;
+    }
+
+    expect(state.events.pending).toEqual(['koyunhisar']);
+    expect(state.date).toEqual({ year: 1302, season: 'summer' });
+    expect(
+      dispatch(setup.world, state, 'osmanli', { type: 'endTurn' }),
+    ).toEqual({ ok: false, error: 'eventPending' });
+  });
+});
+
 describe('buildScenario', () => {
   it('rejects a province given to two factions', () => {
     const broken = structuredClone(kurulus1299);

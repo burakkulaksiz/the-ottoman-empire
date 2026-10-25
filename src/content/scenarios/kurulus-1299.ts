@@ -34,6 +34,70 @@ export const kurulus1299: ScenarioDefinition = {
       provinces: ['tur-bursa'],
     },
   ],
+  // TODO(kaynak): Olay metinleri (tarihler, komutan adı, Bursa'nın teslimi ve
+  // ilk akçe) birincil kaynaklarla doğrulanmalı (D6).
+  events: [
+    {
+      id: 'koyunhisar',
+      title: 'Koyunhisar Savaşı',
+      description:
+        "Bizans, Osman Bey'in akınlarını durdurmak için İzmit (Nikomedia) yönünden bir ordu gönderiyor. Çevredeki gaziler çağrına hazır. Bizans ordusunu savaş meydanında mı karşılarsın, yoksa kalelere mi çekilirsin?",
+      trigger: { type: 'date', date: { year: 1302, season: 'summer' } },
+      choices: [
+        {
+          id: 'savas',
+          label: 'Meydanda karşıla',
+          outcome:
+            'Gaziler cesaretle savaşıyor, Bizans ordusu dağılıyor. Ganimet ve itibar kazandın.',
+          effects: [
+            { type: 'morale', amount: 15 },
+            { type: 'treasury', amount: 10 },
+          ],
+        },
+        {
+          id: 'cekil',
+          label: 'Kalelere çekil',
+          outcome:
+            'Askerler isteksiz. Bizans ordusu bölgede serbestçe dolaşıyor, ordunun morali düşüyor.',
+          effects: [{ type: 'morale', amount: -10 }],
+        },
+      ],
+      historical: {
+        choiceId: 'savas',
+        note: "Temmuz 1302'de Osman Bey'in kuvvetleri, Bizans'ın Nikomedia (İzmit) yönünden gönderdiği orduyla Koyunhisar (Bafeus) yakınlarında karşılaştı ve onu yendi. Bu zafer, Osman'ın itibarını artırdı ve Bizans'ı bölgede savunmaya itti.",
+      },
+    },
+    {
+      id: 'bursa-dususu',
+      title: "Bursa'nın Düşüşü",
+      description:
+        "Uzun süren kuşatmanın ardından Bursa'nın kapıları açılıyor. Şehir halkı kaderini senden bekliyor. Bursa'yı ne yapacaksın?",
+      trigger: { type: 'ownsProvince', provinceId: 'tur-bursa' },
+      choices: [
+        {
+          id: 'koru',
+          label: 'Halka aman ver, şehri beyliğin merkezi yap',
+          outcome:
+            'Halk sana bağlanıyor, çarşılar canlanıyor ve hazine düzenli gelir sağlıyor. Ordu da düzenli maaşla memnun.',
+          effects: [
+            { type: 'treasury', amount: 20 },
+            { type: 'morale', amount: 5 },
+          ],
+        },
+        {
+          id: 'yagma',
+          label: 'Askerlere yağma izni ver',
+          outcome:
+            'Hazine hemen doluyor ama şehir harap oluyor; yeni tebaanın güvenini kazanmak zorlaşıyor.',
+          effects: [{ type: 'treasury', amount: 35 }],
+        },
+      ],
+      historical: {
+        choiceId: 'koru',
+        note: "Bursa, uzun bir kuşatmadan sonra 1326'da Orhan Bey'e teslim oldu ve şehir halkına dokunulmadı. Bursa ilk Osmanlı başkenti oldu; ilk Osmanlı gümüş sikkesi akçenin de Orhan döneminde basıldığı kabul edilir.",
+      },
+    },
+  ],
   // TODO(kaynak): 1330'da Osmanlı elindeki yerler ve fetih tarihleri doğrulanmalı (D6).
   historical: {
     provinces: ['tur-bilecik', 'tur-eskisehir', 'tur-bursa'],

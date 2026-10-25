@@ -38,6 +38,26 @@ export interface HistoricalBenchmark {
   provinces: ProvinceId[];
 }
 
+/** Olayı tetikleyen koşul (D1). Olay oyuncu için ve en fazla bir kez tetiklenir. */
+export type EventTrigger =
+  | { type: 'date'; date: GameDate }
+  | { type: 'ownsProvince'; provinceId: ProvinceId };
+
+/** Oyuncunun seçiminin oyuna etkisi. Metinler içerik katmanındadır. */
+export type EventEffect =
+  { type: 'treasury'; amount: number } | { type: 'morale'; amount: number };
+
+export interface EventChoiceDef {
+  id: string;
+  effects: EventEffect[];
+}
+
+export interface EventDef {
+  id: string;
+  trigger: EventTrigger;
+  choices: EventChoiceDef[];
+}
+
 export interface World {
   provinces: Record<ProvinceId, ProvinceDef>;
   factions: Record<FactionId, FactionDef>;
@@ -46,6 +66,8 @@ export interface World {
   /** Oyun bu tarihe gelindiğinde biter (zaman sınırı). */
   endDate?: GameDate;
   historical?: HistoricalBenchmark;
+  /** Tarihî olay kartları (D1). */
+  events?: EventDef[];
 }
 
 // --- Oyun durumu: her hamlede değişir, düz JSON olarak kaydedilir ---
@@ -130,11 +152,23 @@ export type LogPayload =
       by: FactionId;
       from: FactionId | null;
     }
+  | { type: 'eventTriggered'; eventId: string }
+  | { type: 'eventResolved'; eventId: string; choiceId: string }
   | { type: 'incomeCollected'; factionId: FactionId; amount: number }
   | { type: 'factionEliminated'; factionId: FactionId }
   | { type: 'gameEnded'; status: Extract<GameStatus, { phase: 'ended' }> };
 
 export type LogEntry = LogPayload & { turn: number };
+
+/** Olay kartlarının durumu (D1). */
+export interface EventsState {
+  /** Tetiklenmiş (bekleyen veya çözülmüş) olaylar. */
+  fired: string[];
+  /** Oyuncunun karar vermesini bekleyen olaylar. */
+  pending: string[];
+  /** Olay → seçilen seçenek. */
+  choices: Record<string, string>;
+}
 
 export interface GameState {
   /** Kayıt formatı sürümü; format değişince artırılır (A4). */
@@ -150,6 +184,7 @@ export interface GameState {
   factions: Record<FactionId, FactionState>;
   provinces: Record<ProvinceId, ProvinceState>;
   armies: Record<ArmyId, ArmyState>;
+  events: EventsState;
   log: LogEntry[];
   /** Deterministik id üretimi için sayaç. */
   nextId: number;

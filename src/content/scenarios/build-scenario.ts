@@ -43,6 +43,14 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
       objectives: scenario.objectives.map(
         ({ title: _title, ...objective }) => objective,
       ),
+      events: scenario.events.map((event) => ({
+        id: event.id,
+        trigger: event.trigger,
+        choices: event.choices.map((choice) => ({
+          id: choice.id,
+          effects: choice.effects,
+        })),
+      })),
       endDate: scenario.endDate,
       historical: scenario.historical && {
         provinces: scenario.historical.provinces,

@@ -74,6 +74,31 @@ export function validateSetup(setup: ScenarioSetup): string[] {
     if (!hasProvince(id))
       errors.push(`Historical benchmark: unknown province "${id}"`);
   }
+  const seenEvents = new Set<string>();
+  for (const event of world.events ?? []) {
+    if (seenEvents.has(event.id)) {
+      errors.push(`Event "${event.id}": duplicate id`);
+    }
+    seenEvents.add(event.id);
+    if (
+      event.trigger.type === 'ownsProvince' &&
+      !hasProvince(event.trigger.provinceId)
+    ) {
+      errors.push(
+        `Event "${event.id}": unknown province "${event.trigger.provinceId}"`,
+      );
+    }
+    if (event.choices.length === 0) {
+      errors.push(`Event "${event.id}": needs at least one choice`);
+    }
+    const seenChoices = new Set<string>();
+    for (const choice of event.choices) {
+      if (seenChoices.has(choice.id)) {
+        errors.push(`Event "${event.id}": duplicate choice "${choice.id}"`);
+      }
+      seenChoices.add(choice.id);
+    }
+  }
   if (endDate && compareDates(endDate, setup.startDate) <= 0) {
     errors.push('endDate must be after startDate');
   }
@@ -128,6 +153,7 @@ export function createGame(
     factions,
     provinces,
     armies,
+    events: { fired: [], pending: [], choices: {} },
     log: [{ type: 'turnStarted', date: setup.startDate, turn: 1 }],
     nextId,
   };

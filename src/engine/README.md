@@ -47,6 +47,14 @@ Her tur bir mevsimdir (ilkbahar → yaz → sonbahar → kış). İlkbahar–son
 
 Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 = tarihle aynı, `verdict` ±%10 toleransla `better | same | worse` (`RULES.historicalTolerance`). Hedef ilerlemesi için `objectiveProgress(world, state)`.
 
+## Tarihî olay kartları (D1)
+
+`World.events` olayları tanımlar: `id`, `trigger` (`date` ya da `ownsProvince`) ve `choices` (her seçeneğin `effects` listesi: `treasury`, `morale`). Metinler (başlık, açıklama, "Tarihte gerçekte ne oldu?") içerik katmanındadır; motor yalnızca kimlikleri bilir.
+
+- `triggerEvents` tur aşaması koşulu gerçekleşen olayı `state.events.pending` listesine koyar (her olay en fazla bir kez).
+- Bekleyen olay varken `endTurn` `eventPending` hatası verir; oyuncu `{ type: 'chooseEvent', eventId, choiceId }` ile karar verir.
+- Seçimler `state.events.choices` içinde saklanır (D2'de tarihle karşılaştırılacak).
+
 ## Yeni mekanik eklemek
 
 - **Yeni emir**: `commands/types.ts` içindeki `ActionCommand` birleşimine ekle, `commands/<emir>.ts` içinde `validate…` / `execute…` yaz, `commands/index.ts` içindeki `switch`'lere bağla.

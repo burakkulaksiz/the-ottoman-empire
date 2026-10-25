@@ -1,5 +1,6 @@
 import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
+import { triggerEvents } from '../events';
 import { RULES } from '../rules';
 import { advanceSieges } from '../siege';
 import type { EndReason } from '../types';
@@ -135,4 +136,5 @@ export const TURN_PHASES: TurnPhase[] = [
   collectIncome,
   eliminateFactions,
   checkGameOver,
+  triggerEvents,
 ];

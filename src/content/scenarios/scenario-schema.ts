@@ -27,6 +27,41 @@ const objectiveSchema = z.discriminatedUnion('type', [
   }),
 ]);
 
+const effectSchema = z.discriminatedUnion('type', [
+  z.object({ type: z.literal('treasury'), amount: z.number().int() }),
+  z.object({ type: z.literal('morale'), amount: z.number().int() }),
+]);
+
+/** Tarihî olay kartı: motorun bildiği kısım (tetikleyici, etki) + metinler. */
+const eventSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  trigger: z.discriminatedUnion('type', [
+    z.object({ type: z.literal('date'), date: dateSchema }),
+    z.object({ type: z.literal('ownsProvince'), provinceId: z.string() }),
+  ]),
+  choices: z
+    .array(
+      z.object({
+        id: z.string().min(1),
+        label: z.string().min(1),
+        /** Seçimin oyundaki sonucunu anlatan metin. */
+        outcome: z.string().min(1),
+        effects: z.array(effectSchema).default([]),
+      }),
+    )
+    .min(1),
+  /** "Tarihte gerçekte ne oldu?" bölümü. */
+  historical: z.object({
+    note: z.string().min(1),
+    /** Tarihte gerçekleşene en yakın seçenek (D2'de karşılaştırılır). */
+    choiceId: z.string().min(1),
+  }),
+});
+
+export type ScenarioEvent = z.input<typeof eventSchema>;
+
 export const scenarioSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
@@ -37,6 +72,7 @@ export const scenarioSchema = z.object({
   endDate: dateSchema.optional(),
   /** Hepsi tamamlanınca oyuncu kazanır; boşsa hayatta kalmak yeter. */
   objectives: z.array(objectiveSchema).default([]),
+  events: z.array(eventSchema).default([]),
   /** Oyuncunun sonucunun kıyaslandığı tarihî sonuç. */
   historical: z
     .object({

@@ -7,7 +7,10 @@ export type ActionCommand = {
   to: ProvinceId;
 };
 
-export type Command = ActionCommand | { type: 'endTurn' };
+export type Command =
+  | ActionCommand
+  | { type: 'endTurn' }
+  | { type: 'chooseEvent'; eventId: string; choiceId: string };
 
 /** Hata kodları; kullanıcıya gösterilecek metinler arayüz katmanında. */
 export type CommandError =
@@ -19,7 +22,11 @@ export type CommandError =
   | 'unknownProvince'
   | 'notAdjacent'
   /** Kışın ordu yalnızca kendi toprağına çekilebilir. */
-  | 'winterQuarters';
+  | 'winterQuarters'
+  /** Bekleyen bir olay kartı çözülmeden tur bitirilemez. */
+  | 'eventPending'
+  | 'noSuchPendingEvent'
+  | 'unknownChoice';
 
 export interface ValidationArgs<C> {
   world: World;
