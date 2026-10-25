@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** B4 (şehirler, kaleler, boğazlar, nehirler; arazi ve kale verisini sağlar, kuşatma ve savunma bonusu gerçek bölgelerde çalışmaya başlar)
+**Sıradaki madde:** D2 (karar anları: seçimin gerçek tarihle karşılaştırılması; olay kartı altyapısı hazır) veya C6 (ekonomi; ordu devşirme olmadan oyuncu güçlenemiyor)
 
 ---
 
@@ -56,6 +56,12 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - _Not: Tarihî sancak verisi açık kaynakta yok; şimdilik Natural Earth modern idari bölümleri (623 bölge) yer tutucu olarak kullanılıyor, komşuluk ortak kenarlardan otomatik üretiliyor (`npm run data:provinces`). Boğaz/ada bağlantıları B4'te, tarihî sınırlar B3'te gelecek._
 - [ ] **B3. Yıla göre tarihi sınırlar:** açık veri kullanılabilir, örneğin historical-basemaps GeoJSON setleri.
 - [ ] **B4. Şehirler, kaleler, boğazlar, nehirler ve ticaret yolları:** hem görsel hem de oyun kurallarına etki edecek.
+  - [x] Şehirler ve kaleler: 28 yer (`content/world/places.ts`), haritada işaretli; bir bölgenin kale seviyesi içindeki yerlerin en yükseğidir ve savunma bonusu + kuşatma süresi olarak çalışır
+  - [x] Arazi: bölge düzeyinde ova/engebeli/dağlık (`content/world/terrain.ts`), savunana çarpan verir
+  - [x] Nehirler: büyük nehirler haritada çizilir (`npm run data:rivers`); henüz oyun kuralına etkisi yok
+  - [x] Ticaret yolları: 3 şematik yol haritada çizilir; kural/gelir C6'da
+  - [ ] Boğazlar: İstanbul ve Çanakkale boğazları haritada işaretli, ama modern il sınırları iki yakayı tek bölgede tuttuğu için geçiş kuralı yok (donanma ve deniz bölgeleri gelince)
+  - [ ] Nehir geçişi kuralı
 - [ ] **B5. Birlik ikonları, hareket okları, savaş animasyonları ve sis perdesi (fog of war).**
   - [x] Ordu ikonları (devlet renginde, asker sayılı işaretler; aynı bölgedekiler yan yana)
   - [x] Hareket vurgusu: seçili ordunun gidebileceği komşu bölgeler işaretlenir

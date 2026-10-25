@@ -19,6 +19,12 @@ type ProvincePanelProps = {
   country: string;
   ownerName: string | null;
   neighborNames: string[];
+  /** "Ova", "Dağlık" gibi; savunana bonus verir. */
+  terrainLabel?: string;
+  /** Kale seviyesi (0 = yok): savunana bonus verir, kuşatmayı uzatır. */
+  fortification?: number;
+  /** Bölgedeki şehir ve kalelerin adları. */
+  placeNames?: string[];
   armies: ProvinceArmyRow[];
   onSelectArmy: (armyId: string) => void;
 };
@@ -29,6 +35,9 @@ export function ProvincePanel({
   country,
   ownerName,
   neighborNames,
+  terrainLabel,
+  fortification = 0,
+  placeNames = [],
   armies,
   onSelectArmy,
 }: ProvincePanelProps) {
@@ -37,6 +46,29 @@ export function ProvincePanel({
       <p className="text-muted-foreground">
         {country} · {ownerName ?? 'Sahipsiz'}
       </p>
+      {(terrainLabel || fortification > 0) && (
+        <p className="mt-2">
+          {terrainLabel && (
+            <>
+              <span className="font-medium">Arazi: </span>
+              {terrainLabel}
+            </>
+          )}
+          {terrainLabel && fortification > 0 && ' · '}
+          {fortification > 0 && (
+            <>
+              <span className="font-medium">Kale seviyesi: </span>
+              {fortification}
+            </>
+          )}
+        </p>
+      )}
+      {placeNames.length > 0 && (
+        <p className="mt-2">
+          <span className="font-medium">Şehirler: </span>
+          {placeNames.join(', ')}
+        </p>
+      )}
       <p className="mt-2">
         <span className="font-medium">Komşular: </span>
         {neighborNames.join(', ') || 'yok (ada)'}

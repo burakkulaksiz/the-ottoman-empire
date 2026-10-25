@@ -123,6 +123,21 @@ describe('kurulus-1299 events', () => {
   });
 });
 
+describe('kurulus-1299 map features', () => {
+  const { provinces } = loadScenario('kurulus-1299').world;
+
+  it('gives the walled cities of the region a fortification', () => {
+    expect(provinces['tur-bursa']?.fortification).toBe(1);
+    expect(provinces['tur-bilecik']?.fortification).toBe(1);
+    expect(provinces['tur-istanbul']?.fortification).toBe(3);
+  });
+
+  it('makes the siege of Bursa last longer than taking open land', () => {
+    expect(provinces['tur-balikesir']?.fortification).toBeUndefined();
+    expect(provinces['tur-bursa']?.fortification).toBeGreaterThan(0);
+  });
+});
+
 describe('buildScenario', () => {
   it('rejects a province given to two factions', () => {
     const broken = structuredClone(kurulus1299);

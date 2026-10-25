@@ -25,6 +25,7 @@ Devlet-i Âliyye: gerçek dünya haritası üzerinde oynanan, Osmanlı tarihini 
 | `npm run format`         | Prettier                                           |
 | `npm test`               | Vitest (`vitest run`)                              |
 | `npm run data:provinces` | Bölge GeoJSON'u ve komşuluk grafını yeniden üretir |
+| `npm run data:rivers`    | Nehir GeoJSON'unu yeniden üretir                   |
 
 Bir işi bitmiş saymadan önce **`npm run typecheck`, `npm run lint` ve `npm test`** geçmeli. Husky pre-commit `lint-staged` + `npm test` çalıştırır; `--no-verify` kullanma.
 

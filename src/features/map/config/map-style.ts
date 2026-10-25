@@ -22,7 +22,12 @@ export const MAP_COLORS = {
   provinceLine: '#6b4f2a',
   highlight: '#3b2412',
   reachable: '#b8860b',
+  river: '#5b84a1',
+  tradeRoute: '#b8860b',
 } as const;
+
+/** Ticaret yollarının çizgileri `GameMap` tarafından bu kaynağa yazılır. */
+export const TRADE_ROUTES_SOURCE = 'trade-routes';
 
 const sourceUrl = (file: string) =>
   `${import.meta.env.BASE_URL}data/${file}`.replace(/\/{2,}/g, '/');
@@ -69,6 +74,11 @@ export function createMapStyle(): StyleSpecification {
       land: { type: 'geojson', data: sourceUrl('land-region.geojson') },
       lakes: { type: 'geojson', data: sourceUrl('lakes-region.geojson') },
       graticule: { type: 'geojson', data: graticule() },
+      rivers: { type: 'geojson', data: sourceUrl('rivers.geojson') },
+      [TRADE_ROUTES_SOURCE]: {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] },
+      },
       [PROVINCE_SOURCE]: {
         type: 'geojson',
         data: sourceUrl('provinces.geojson'),
@@ -124,6 +134,16 @@ export function createMapStyle(): StyleSpecification {
             0.14,
             0,
           ],
+        },
+      },
+      {
+        id: 'rivers',
+        type: 'line',
+        source: 'rivers',
+        paint: {
+          'line-color': MAP_COLORS.river,
+          'line-opacity': 0.85,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.8, 8, 2.4],
         },
       },
       {
@@ -187,6 +207,17 @@ export function createMapStyle(): StyleSpecification {
           'line-color': MAP_COLORS.coast,
           'line-opacity': 0.7,
           'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.6, 8, 1.6],
+        },
+      },
+      {
+        id: 'trade-routes',
+        type: 'line',
+        source: TRADE_ROUTES_SOURCE,
+        paint: {
+          'line-color': MAP_COLORS.tradeRoute,
+          'line-opacity': 0.9,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 3, 1.5, 8, 3],
+          'line-dasharray': [1, 2],
         },
       },
     ],

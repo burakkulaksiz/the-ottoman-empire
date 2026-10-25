@@ -15,6 +15,7 @@
     "test:watch": "vitest",
     "lint-staged": "lint-staged --config infra/lint-staged.config.js --concurrent false",
     "data:provinces": "node scripts/build-provinces.mjs",
+    "data:rivers": "node scripts/build-rivers.mjs",
     "prepare": "husky"
   },
   "dependencies": {

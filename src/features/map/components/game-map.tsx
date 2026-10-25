@@ -1,4 +1,5 @@
-import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
+import type { FeatureCollection } from 'geojson';
+import type { GeoJSONSource, Map as MapLibreMap, Marker } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 // MapLibre kendi Worker dosyasını import.meta.url'e göre arar; Vite bağımlılığı
 // ön-paketleyince bu yol bozulur ("Worker failed to load"). Adres açıkça verilir.
@@ -7,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import {
   createMapStyle,
+  TRADE_ROUTES_SOURCE,
   MAP_BOUNDS,
   MAP_CENTER,
   MAP_INITIAL_ZOOM,
@@ -23,6 +25,10 @@ import {
   markerOffset,
   type ArmyMarker,
 } from '../lib/create-army-marker';
+import {
+  createPlaceMarkerElement,
+  type PlaceMarker,
+} from '../lib/create-place-marker';
 
 type GameMapProps = {
   className?: string;
@@ -31,6 +37,10 @@ type GameMapProps = {
   /** Devlet kimliği → harita rengi. */
   factionColors?: Record<string, string>;
   selectedProvinceId?: string | null;
+  /** Şehir, kale ve boğaz işaretleri. */
+  places?: PlaceMarker[];
+  /** Ticaret yolları (çizgi nesneleri). */
+  tradeRoutes?: FeatureCollection;
   /** Haritada gösterilecek ordular. */
   armies?: ArmyMarker[];
   selectedArmyId?: string | null;
@@ -45,6 +55,7 @@ type GameMapProps = {
 const NO_OWNERS: Record<string, string | null> = {};
 const NO_COLORS: Record<string, string> = {};
 const NO_ARMIES: ArmyMarker[] = [];
+const NO_PLACES: PlaceMarker[] = [];
 const NO_IDS: string[] = [];
 
 function provinceIdAt(map: MapLibreMap, point: { x: number; y: number }) {
@@ -60,6 +71,8 @@ export function GameMap({
   owners = NO_OWNERS,
   factionColors = NO_COLORS,
   selectedProvinceId = null,
+  places = NO_PLACES,
+  tradeRoutes,
   armies = NO_ARMIES,
   selectedArmyId = null,
   onArmySelect,
@@ -186,6 +199,27 @@ export function GameMap({
       }
     };
   }, [map, reachableProvinceIds]);
+
+  useEffect(() => {
+    if (!map || !tradeRoutes) return;
+    (map.getSource(TRADE_ROUTES_SOURCE) as GeoJSONSource | undefined)?.setData(
+      tradeRoutes,
+    );
+  }, [map, tradeRoutes]);
+
+  // Şehir/kale/boğaz işaretleri ordu işaretlerinden önce eklenir (altta kalır).
+  useEffect(() => {
+    const MarkerClass = markerClass.current;
+    if (!map || !MarkerClass) return;
+    const markers = places.map((place) =>
+      new MarkerClass({ element: createPlaceMarkerElement(place) })
+        .setLngLat(place.position)
+        .addTo(map),
+    );
+    return () => {
+      for (const marker of markers) marker.remove();
+    };
+  }, [map, places]);
 
   // Ordu işaretleri: HTML öğeleri, her değişiklikte baştan kurulur (az sayıda).
   useEffect(() => {

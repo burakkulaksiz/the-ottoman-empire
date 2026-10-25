@@ -132,7 +132,7 @@ export const kurulus1299: ScenarioDefinition = {
         'grc-centre-macedonia',
       ],
       armies: [
-        { provinceId: 'tur-bursa', units: { sipahi: 600, akinci: 400 } },
+        { provinceId: 'tur-bursa', units: { sipahi: 700, akinci: 500 } },
         { provinceId: 'tur-kocaeli', units: { sipahi: 500, akinci: 300 } },
       ],
     },

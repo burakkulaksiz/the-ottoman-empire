@@ -22,6 +22,7 @@ npm run dev
 | `npm run lint`           | ESLint (mimari sınırlar dahil)             |
 | `npm test`               | Vitest birim testleri                      |
 | `npm run data:provinces` | Bölge haritası ve komşuluk verisini üretir |
+| `npm run data:rivers`    | Nehir katmanını üretir                     |
 
 ## Sayfalar
 

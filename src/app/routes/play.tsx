@@ -1,10 +1,14 @@
+import type { FeatureCollection } from 'geojson';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
 import { buttonVariants } from '@/components/ui/button';
 import { APP_NAME } from '@/config/app';
 import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
+import { PLACES, placesIn } from '@/content/world/places';
 import { PROVINCE_META } from '@/content/world/provinces';
+import { TERRAIN_LABELS, terrainOf } from '@/content/world/terrain';
+import { routePath, TRADE_ROUTES } from '@/content/world/trade-routes';
 import { legalMoves, objectiveProgress, type GameState } from '@/engine';
 import { EventCard } from '@/features/events/components/event-card';
 import { ArmyPanel } from '@/features/game/components/army-panel';
@@ -142,6 +146,30 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
     [game.armies, game.playerFactionId, setup],
   );
 
+  // Şehir/kale/boğaz işaretleri ve ticaret yolları (değişmez içerik).
+  const placeMarkers = useMemo(
+    () =>
+      PLACES.map((p) => ({
+        id: p.id,
+        name: p.name,
+        position: p.position,
+        kind: p.kind,
+        fortification: p.fortification ?? 0,
+      })),
+    [],
+  );
+  const tradeRoutes = useMemo<FeatureCollection>(
+    () => ({
+      type: 'FeatureCollection',
+      features: TRADE_ROUTES.map((route) => ({
+        type: 'Feature',
+        properties: { id: route.id, name: route.name },
+        geometry: { type: 'LineString', coordinates: routePath(route) },
+      })),
+    }),
+    [],
+  );
+
   // --- Emir verme: ordu seç, vurgulanan komşuya tıkla ---
   const selectedArmy = selectedArmyId ? game.armies[selectedArmyId] : undefined;
   const destinations = useMemo(
@@ -237,6 +265,8 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           factionColors={factionColors}
           selectedProvinceId={selectedId}
           onProvinceSelect={handleProvinceSelect}
+          places={placeMarkers}
+          tradeRoutes={tradeRoutes}
           armies={armyMarkers}
           selectedArmyId={selectedArmyId}
           onArmySelect={handleArmySelect}
@@ -294,6 +324,15 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 country={selected.country}
                 ownerName={ownerId ? names.faction(ownerId) : null}
                 neighborNames={selected.neighbors.map(names.province)}
+                terrainLabel={
+                  selectedId ? TERRAIN_LABELS[terrainOf(selectedId)] : undefined
+                }
+                fortification={
+                  setup.world.provinces[selectedId!]?.fortification ?? 0
+                }
+                placeNames={
+                  selectedId ? placesIn(selectedId).map((p) => p.name) : []
+                }
                 armies={armiesHere}
                 onSelectArmy={handleArmySelect}
               />

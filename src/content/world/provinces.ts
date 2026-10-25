@@ -2,7 +2,9 @@ import { z } from 'zod';
 
 import type { ProvinceDef, ProvinceId } from '@/engine';
 
+import { fortificationOf } from './places';
 import adjacencyData from './province-adjacency.json';
+import { terrainOf } from './terrain';
 
 /**
  * Bölge listesi `scripts/build-provinces.mjs` ile üretilir (`npm run
@@ -37,6 +39,9 @@ export function createProvinceDefs(): Record<ProvinceId, ProvinceDef> {
         name: meta.name,
         neighbors: meta.neighbors,
         baseTax: DEFAULT_BASE_TAX,
+        // Ova ve kalesiz bölgeler için alan hiç yazılmaz (motor varsayılanı).
+        ...(terrainOf(id) !== 'plain' && { terrain: terrainOf(id) }),
+        ...(fortificationOf(id) > 0 && { fortification: fortificationOf(id) }),
       },
     ]),
   );

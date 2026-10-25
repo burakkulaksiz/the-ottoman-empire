@@ -93,6 +93,33 @@ describe('ProvincePanel', () => {
     expect(onSelectArmy).toHaveBeenCalledWith('army-1');
   });
 
+  it('shows terrain, fortification and the cities of the province', () => {
+    render(
+      <ProvincePanel
+        {...base}
+        terrainLabel="Engebeli"
+        fortification={2}
+        placeNames={['Bursa (Prusa)', 'İznik (Nikaia)']}
+        armies={[]}
+        onSelectArmy={() => {}}
+      />,
+    );
+
+    expect(screen.getByText(/Engebeli/)).toBeInTheDocument();
+    expect(screen.getByText('Kale seviyesi:')).toBeInTheDocument();
+    expect(
+      screen.getByText('Bursa (Prusa), İznik (Nikaia)'),
+    ).toBeInTheDocument();
+  });
+
+  it('leaves out the terrain and fortress lines when there is nothing to say', () => {
+    render(<ProvincePanel {...base} armies={[]} onSelectArmy={() => {}} />);
+
+    expect(screen.queryByText('Arazi:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Kale seviyesi:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Şehirler:')).not.toBeInTheDocument();
+  });
+
   it('says so when no army is there', () => {
     render(<ProvincePanel {...base} armies={[]} onSelectArmy={() => {}} />);
     expect(screen.getByText('Bu bölgede ordu yok.')).toBeInTheDocument();
