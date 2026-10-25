@@ -23,6 +23,14 @@ export interface UnitDef {
   defense: number;
   /** Bu yıldan önce kurulamaz; senaryo doğrulaması denetler. */
   minYear: number;
+  /** 100 askeri devşirmenin bir seferlik bedeli (akçe). */
+  cost: number;
+  /**
+   * 100 askerin tur başına maaşı (akçe). Tımarlı sipahi ve akıncı toprak
+   * geliriyle geçindiği için hazineden maaş almaz; kapıkulu (yaya, yeniçeri,
+   * topçu) nakit maaşla beslenir.
+   */
+  upkeep: number;
 }
 
 /**
@@ -30,11 +38,11 @@ export interface UnitDef {
  * (I. Murad dönemi) ve topçu için kaynaklarla doğrulanmalı (D6).
  */
 export const UNIT_DEFS: Record<UnitType, UnitDef> = {
-  akinci: { attack: 1.2, defense: 0.6, minYear: 1299 },
-  sipahi: { attack: 2, defense: 1.4, minYear: 1299 },
-  yaya: { attack: 1, defense: 1.2, minYear: 1330 },
-  yeniceri: { attack: 2, defense: 2.2, minYear: 1363 },
-  topcu: { attack: 3, defense: 1, minYear: 1400 },
+  akinci: { attack: 1.2, defense: 0.6, minYear: 1299, cost: 4, upkeep: 0 },
+  sipahi: { attack: 2, defense: 1.4, minYear: 1299, cost: 10, upkeep: 0 },
+  yaya: { attack: 1, defense: 1.2, minYear: 1330, cost: 6, upkeep: 1 },
+  yeniceri: { attack: 2, defense: 2.2, minYear: 1363, cost: 15, upkeep: 3 },
+  topcu: { attack: 3, defense: 1, minYear: 1400, cost: 25, upkeep: 4 },
 };
 
 export function unitEntries(units: Units): [UnitType, number][] {

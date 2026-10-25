@@ -1,10 +1,11 @@
 import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
+import { upkeepOf } from '../economy';
 import { triggerEvents } from '../events';
 import { RULES } from '../rules';
 import { advanceSieges } from '../siege';
 import type { EndReason } from '../types';
-import { armySize, unitEntries, type Units } from '../units';
+import { armySize, UNIT_DEFS, unitEntries, type Units } from '../units';
 import { allObjectivesMet, historicalScore, isTimeUp } from '../victory';
 
 /** Tur sonunda sırayla çalışan adımlar. Yeni mekanikler buraya eklenir. */
@@ -19,6 +20,9 @@ export const advanceCalendar: TurnPhase = ({ state, emit }) => {
 export const resetArmies: TurnPhase = ({ state }) => {
   for (const army of Object.values(state.armies)) {
     army.movesLeft = RULES.armyMovesPerTurn;
+  }
+  for (const province of Object.values(state.provinces)) {
+    delete province.recruited;
   }
 };
 
@@ -72,6 +76,43 @@ export const collectIncome: TurnPhase = ({ world, state, emit }) => {
     if (!faction.alive || amount === 0) continue;
     faction.treasury += amount;
     emit({ type: 'incomeCollected', factionId: faction.id, amount });
+  }
+};
+
+/**
+ * Kapıkulu maaşları (C6): ödenemezse ordunun morali düşer ve maaşlı
+ * birlikten asker kaçar. Tımarlı sipahi ve akıncı hazineden maaş almaz.
+ */
+export const payUpkeep: TurnPhase = ({ state, emit }) => {
+  for (const faction of Object.values(state.factions)) {
+    if (!faction.alive) continue;
+    const due = upkeepOf(state, faction.id);
+    if (due === 0) continue;
+
+    const paid = Math.min(faction.treasury, due);
+    faction.treasury -= paid;
+    if (paid > 0)
+      emit({ type: 'upkeepPaid', factionId: faction.id, amount: paid });
+    if (paid === due) continue;
+
+    emit({
+      type: 'troopsUnpaid',
+      factionId: faction.id,
+      shortfall: due - paid,
+    });
+    for (const army of Object.values(state.armies)) {
+      if (army.ownerId !== faction.id) continue;
+      const kept: Units = { ...army.units };
+      let salaried = false;
+      for (const [type, count] of unitEntries(army.units)) {
+        if (UNIT_DEFS[type].upkeep === 0) continue;
+        salaried = true;
+        kept[type] = count - Math.floor(count * RULES.unpaidDesertionRate);
+      }
+      if (!salaried) continue;
+      army.units = kept;
+      army.morale = Math.max(0, army.morale - RULES.unpaidMoraleLoss);
+    }
   }
 };
 
@@ -134,6 +175,7 @@ export const TURN_PHASES: TurnPhase[] = [
   winterAttrition,
   resolveSieges,
   collectIncome,
+  payUpkeep,
   eliminateFactions,
   checkGameOver,
   triggerEvents,

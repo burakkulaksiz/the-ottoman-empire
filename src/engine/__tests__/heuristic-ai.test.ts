@@ -2,6 +2,7 @@ import { testScenario, testWorld } from 'testing/fixtures/test-scenario';
 
 import type { AiContext } from '../ai';
 import type { Season } from '../calendar';
+import type { ActionCommand } from '../commands/types';
 import { createGame } from '../create-game';
 import { dispatch } from '../dispatch';
 import { createHeuristicAi, heuristicAi } from '../heuristic-ai';
@@ -52,6 +53,11 @@ const decide = (state: GameState, factionId: string, ai = heuristicAi) =>
     random: () => 0.5,
   } satisfies AiContext);
 
+const moves = (commands: ActionCommand[]) =>
+  commands.filter((c) => c.type === 'moveArmy');
+const recruits = (commands: ActionCommand[]) =>
+  commands.filter((c) => c.type === 'recruit');
+
 describe('heuristic AI', () => {
   it('captures an undefended enemy province next to its army', () => {
     const state = gameWith([['a1', 'osmanli', 'sogut', { sipahi: 500 }]]);
@@ -79,7 +85,7 @@ describe('heuristic AI', () => {
       ],
       { owners: { inegol: 'osmanli', kutahya: 'osmanli' } },
     );
-    expect(decide(state, 'osmanli')).toEqual([
+    expect(moves(decide(state, 'osmanli'))).toEqual([
       { type: 'moveArmy', armyId: 'a1', to: 'bilecik' },
     ]);
   });
@@ -152,7 +158,7 @@ describe('heuristic AI', () => {
     };
 
     expect(decide(spent, 'osmanli')).toEqual([]);
-    for (const command of decide(base, 'bizans')) {
+    for (const command of moves(decide(base, 'bizans'))) {
       expect(command).toMatchObject({ armyId: 'a2' });
     }
   });
@@ -161,6 +167,7 @@ describe('heuristic AI', () => {
     let state = createGame(testScenario, { seed: 5 });
     for (let turn = 0; turn < 12; turn++) {
       for (const faction of ['osmanli', 'bizans', 'germiyan']) {
+        if (state.status.phase === 'ended') return;
         for (const command of decide(state, faction)) {
           const result = dispatch(testWorld, state, faction, command);
           expect(result.ok).toBe(true);
@@ -170,6 +177,91 @@ describe('heuristic AI', () => {
       const next = dispatch(testWorld, state, 'osmanli', { type: 'endTurn' });
       if (!next.ok) break;
       state = next.state;
+    }
+  });
+});
+
+describe('heuristic AI recruitment', () => {
+  /** Bizans'ın hazinesi bol; Bilecik ve İnegöl düşman sınırında, Bursa'da ordusu var. */
+  const rich = (extra: Partial<GameState> = {}): GameState => ({
+    ...gameWith([['a2', 'bizans', 'bursa', { sipahi: 500 }]]),
+    ...extra,
+  });
+
+  it('spends a share of its income on soldiers where the frontier is', () => {
+    // Gelir: Bilecik 3 + İnegöl 2 + Bursa 8 = 13 → bütçe 6 (yarısı).
+    const commands = recruits(
+      decide(rich(), 'bizans', createHeuristicAi({ recruitShare: 0.5 })),
+    );
+
+    expect(commands).toEqual([
+      { type: 'recruit', provinceId: 'bilecik', unit: 'akinci' },
+    ]);
+  });
+
+  it('prefers the strongest unit it can afford and keep paying', () => {
+    const commands = recruits(
+      decide(rich(), 'bizans', createHeuristicAi({ recruitShare: 1 })),
+    );
+
+    // Bütçe 13: bir sipahi (10) alınır, kalan 3 akıncıya yetmez.
+    expect(commands).toEqual([
+      { type: 'recruit', provinceId: 'bilecik', unit: 'sipahi' },
+    ]);
+  });
+
+  it('never orders more than the province limit allows', () => {
+    const state = rich();
+    const wealthy: GameState = {
+      ...state,
+      factions: {
+        ...state.factions,
+        bizans: { ...state.factions.bizans!, treasury: 1000 },
+      },
+    };
+    const commands = recruits(
+      decide(wealthy, 'bizans', createHeuristicAi({ recruitShare: 10 })),
+    );
+    expect(commands.length).toBeLessThanOrEqual(3);
+  });
+
+  it('does not recruit when it cannot spend anything', () => {
+    const state = rich();
+    const broke: GameState = {
+      ...state,
+      factions: {
+        ...state.factions,
+        bizans: { ...state.factions.bizans!, treasury: 0 },
+      },
+    };
+    expect(recruits(decide(broke, 'bizans'))).toEqual([]);
+  });
+
+  it('skips provinces under siege', () => {
+    const state = rich();
+    const besieged: GameState = {
+      ...state,
+      provinces: {
+        ...state.provinces,
+        bursa: {
+          ...state.provinces.bursa!,
+          siege: { attackerId: 'osmanli', turns: 1 },
+        },
+      },
+    };
+    for (const command of recruits(decide(besieged, 'bizans'))) {
+      expect(command).not.toMatchObject({ provinceId: 'bursa' });
+    }
+  });
+
+  it('only recruits units that exist in that year', () => {
+    const early = recruits(
+      decide(rich(), 'bizans', createHeuristicAi({ recruitShare: 1 })),
+    );
+    for (const command of early) {
+      expect(['akinci', 'sipahi']).toContain(
+        (command as { unit: string }).unit,
+      );
     }
   });
 });

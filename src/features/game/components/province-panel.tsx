@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import type { Units } from '@/engine';
 
 import { formatUnits } from '../config/unit-labels';
@@ -27,6 +28,20 @@ type ProvincePanelProps = {
   placeNames?: string[];
   armies: ProvinceArmyRow[];
   onSelectArmy: (armyId: string) => void;
+  /** Oyuncunun bölgesinde devşirme seçenekleri (yoksa bölüm görünmez). */
+  recruit?: {
+    options: RecruitRow[];
+    onRecruit: (unit: string) => void;
+  };
+};
+
+export type RecruitRow = {
+  unit: string;
+  label: string;
+  /** 100 askerin bedeli (akçe). */
+  cost: number;
+  /** Devşirilemiyorsa nedeni (düğme pasif olur). */
+  disabledReason?: string;
 };
 
 /** Seçilen bölgenin özeti ve içindeki ordular. Şehir ayrıntıları B4'te. */
@@ -40,6 +55,7 @@ export function ProvincePanel({
   placeNames = [],
   armies,
   onSelectArmy,
+  recruit,
 }: ProvincePanelProps) {
   return (
     <Panel title={name}>
@@ -98,6 +114,26 @@ export function ProvincePanel({
             </li>
           ))}
         </ul>
+      )}
+      {recruit && recruit.options.length > 0 && (
+        <>
+          <h3 className="mt-3 font-display text-base">Devşirme</h3>
+          <ul className="mt-1 space-y-1">
+            {recruit.options.map((option) => (
+              <li key={option.unit}>
+                <Button
+                  size="xs"
+                  variant="outline"
+                  disabled={Boolean(option.disabledReason)}
+                  title={option.disabledReason}
+                  onClick={() => recruit.onRecruit(option.unit)}
+                >
+                  {option.label} +100 ({option.cost} akçe)
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </Panel>
   );

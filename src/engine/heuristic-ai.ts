@@ -2,6 +2,8 @@ import type { AiContext, AiController } from './ai';
 import { battleOdds, hostileArmiesIn } from './combat';
 import { legalMoves } from './commands';
 import type { ActionCommand } from './commands/types';
+import { incomeOf, upkeepOf } from './economy';
+import { RULES } from './rules';
 import type {
   ArmyState,
   FactionId,
@@ -9,6 +11,7 @@ import type {
   ProvinceId,
   World,
 } from './types';
+import { UNIT_DEFS, UNIT_TYPES, type UnitType } from './units';
 
 export interface HeuristicAiOptions {
   /**
@@ -16,6 +19,11 @@ export interface HeuristicAiOptions {
    * daha atak, yüksek değer daha temkinli yapay zekâ demektir (C10).
    */
   aggression?: number;
+  /**
+   * Tur gelirinin ne kadarı devşirmeye harcanır (0–1). Yapay zekâ hazinesini
+   * tüketmeden orduyu yavaş yavaş büyütür (C10'da zorluğa göre ayarlanır).
+   */
+  recruitShare?: number;
 }
 
 /** Skorlar: büyük olan seçilir; "olduğu yerde kal" 0 sayılır. */
@@ -147,14 +155,96 @@ function scoreStay(
  * savunmasız toprağı alır, kazanabileceği savaşa girer, zayıf kalacağı
  * savaştan kaçınır, kışın eve döner, aksi hâlde hedefe doğru ilerler.
  */
+/**
+ * Devşirme planı (C6): bütçe tur gelirinin `recruitShare` oranıdır. En güçlü
+ * (saldırı + savunma) uygun birlik seçilir; maaşı gelirle ödenemeyecek birlik
+ * seçilmez. Önce düşman sınırındaki ve ordusu olan bölgeler güçlendirilir.
+ */
+function planRecruitment(
+  { world, state, factionId }: AiContext,
+  recruitShare: number,
+): ActionCommand[] {
+  const faction = state.factions[factionId];
+  if (!faction) return [];
+
+  const income = incomeOf(world, state, factionId);
+  const upkeep = upkeepOf(state, factionId);
+  let budget = Math.min(faction.treasury, Math.floor(income * recruitShare));
+  let freeUpkeep = income - upkeep;
+
+  const owned = Object.values(state.provinces)
+    .filter((p) => p.ownerId === factionId && !p.siege)
+    .map((p) => p.id);
+  const isFrontier = (id: ProvinceId) =>
+    (world.provinces[id]?.neighbors ?? []).some((n) => {
+      const owner = state.provinces[n]?.ownerId;
+      return owner !== null && owner !== factionId;
+    });
+  const hasArmy = (id: ProvinceId) =>
+    Object.values(state.armies).some(
+      (a) => a.ownerId === factionId && a.provinceId === id,
+    );
+  const ranked = owned
+    .map((id) => ({
+      id,
+      priority: (isFrontier(id) ? 2 : 0) + (hasArmy(id) ? 1 : 0),
+    }))
+    .sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1));
+  if (ranked.length === 0 || ranked[0]!.priority === 0) return [];
+
+  const commands: ActionCommand[] = [];
+  const orders = new Map<ProvinceId, number>();
+  const target = ranked[0]!.id;
+
+  for (;;) {
+    const recruited =
+      (state.provinces[target]?.recruited ?? 0) + (orders.get(target) ?? 0);
+    if (recruited >= RULES.recruitOrdersPerProvince) break;
+
+    const unit = bestAffordableUnit(state.date.year, budget, freeUpkeep);
+    if (!unit) break;
+    commands.push({ type: 'recruit', provinceId: target, unit });
+    orders.set(target, (orders.get(target) ?? 0) + 1);
+    budget -= UNIT_DEFS[unit].cost;
+    freeUpkeep -= UNIT_DEFS[unit].upkeep;
+  }
+  return commands;
+}
+
+function bestAffordableUnit(
+  year: number,
+  budget: number,
+  freeUpkeep: number,
+): UnitType | null {
+  let best: UnitType | null = null;
+  for (const unit of UNIT_TYPES) {
+    const def = UNIT_DEFS[unit];
+    if (def.minYear > year || def.cost > budget || def.upkeep > freeUpkeep) {
+      continue;
+    }
+    const power = def.attack + def.defense;
+    if (!best || power > UNIT_DEFS[best].attack + UNIT_DEFS[best].defense) {
+      best = unit;
+    }
+  }
+  return best;
+}
+
 export function createHeuristicAi(
   options: HeuristicAiOptions = {},
 ): AiController {
-  const aggression = options.aggression ?? 1.6;
+  const defaults = {
+    aggression: options.aggression ?? 1.6,
+    recruitShare: options.recruitShare ?? 0.3,
+  };
 
   return {
     decide(context) {
       const { world, state, factionId, random } = context;
+      // Devletin kendi kişiliği (senaryodan) varsayılanı ezer.
+      const personality = world.factions[factionId]?.ai;
+      const aggression = personality?.aggression ?? defaults.aggression;
+      const recruitShare = personality?.recruitShare ?? defaults.recruitShare;
       const dist = distancesToTargets(world, state, factionId);
       const commands: ActionCommand[] = [];
 
@@ -174,6 +264,7 @@ export function createHeuristicAi(
           commands.push({ type: 'moveArmy', armyId: army.id, to: best.to });
         }
       }
+      commands.push(...planRecruitment(context, recruitShare));
       return commands;
     },
   };

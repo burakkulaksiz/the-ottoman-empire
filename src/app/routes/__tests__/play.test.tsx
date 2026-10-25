@@ -40,6 +40,9 @@ vi.mock('@/features/map/components/game-map', () => ({
       <button onClick={() => onProvinceSelect?.('tur-bursa')}>
         bölge tur-bursa
       </button>
+      <button onClick={() => onProvinceSelect?.('tur-bilecik')}>
+        bölge tur-bilecik
+      </button>
       <button onClick={() => onProvinceSelect?.(null)}>boş yer</button>
     </div>
   ),
@@ -192,5 +195,65 @@ describe('Play', () => {
     expect(
       await screen.findByText(/Oyun yüklenemedi: Bu yuvada kayıt yok/),
     ).toBeInTheDocument();
+  });
+
+  it('shows the income of the state in the top bar', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    // Bilecik (5) + Eskişehir (3); Osmanlı'nın başlangıç hazinesi 20.
+    expect(await screen.findByTitle('Hazine (akçe)')).toHaveTextContent(
+      '20 (+8)',
+    );
+  });
+
+  it('recruits soldiers in an own province and pays for them', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'bölge tur-bilecik' }),
+    );
+    fireEvent.click(
+      await screen.findByRole('button', { name: /Akıncı \+100 \(4 akçe\)/ }),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTitle('Hazine (akçe)')).toHaveTextContent('16 (+8)'),
+    );
+    expect(gameStore.getState().game?.armies['army-1']?.units).toEqual({
+      sipahi: 600,
+      akinci: 500,
+    });
+  });
+
+  it('offers no recruitment in foreign provinces', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'bölge tur-bursa' }),
+    );
+
+    expect(await screen.findByText('Ordular')).toBeInTheDocument();
+    expect(screen.queryByText('Devşirme')).not.toBeInTheDocument();
+  });
+
+  it('disables a recruitment the treasury cannot pay', async () => {
+    renderPlay('/play/kurulus-1299');
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'bölge tur-bilecik' }),
+    );
+
+    // 20 akçe: iki sipahi (10 + 10) alınır, üçüncüsü için akçe kalmaz.
+    for (let i = 0; i < 2; i++) {
+      fireEvent.click(
+        await screen.findByRole('button', { name: /Sipahi \+100/ }),
+      );
+      await waitFor(() =>
+        expect(gameStore.getState().game?.factions.osmanli?.treasury).toBe(
+          20 - 10 * (i + 1),
+        ),
+      );
+    }
+
+    expect(screen.getByRole('button', { name: /Sipahi \+100/ })).toBeDisabled();
   });
 });

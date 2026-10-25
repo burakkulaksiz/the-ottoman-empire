@@ -120,6 +120,41 @@ describe('ProvincePanel', () => {
     expect(screen.queryByText('Şehirler:')).not.toBeInTheDocument();
   });
 
+  it('offers recruitment and explains the options that are not possible', () => {
+    const onRecruit = vi.fn();
+    render(
+      <ProvincePanel
+        {...base}
+        armies={[]}
+        onSelectArmy={() => {}}
+        recruit={{
+          onRecruit,
+          options: [
+            { unit: 'akinci', label: 'Akıncı', cost: 4 },
+            {
+              unit: 'sipahi',
+              label: 'Sipahi',
+              cost: 10,
+              disabledReason: 'Yeterli akçe yok',
+            },
+          ],
+        }}
+      />,
+    );
+
+    expect(screen.getByText('Devşirme')).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Akıncı +100 (4 akçe)' }),
+    );
+    expect(onRecruit).toHaveBeenCalledWith('akinci');
+
+    const blocked = screen.getByRole('button', {
+      name: 'Sipahi +100 (10 akçe)',
+    });
+    expect(blocked).toBeDisabled();
+    expect(blocked).toHaveAttribute('title', 'Yeterli akçe yok');
+  });
+
   it('says so when no army is there', () => {
     render(<ProvincePanel {...base} armies={[]} onSelectArmy={() => {}} />);
     expect(screen.getByText('Bu bölgede ordu yok.')).toBeInTheDocument();

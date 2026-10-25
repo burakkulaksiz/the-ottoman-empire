@@ -18,7 +18,12 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
   const armies: ScenarioSetup['armies'] = [];
 
   for (const [id, faction] of Object.entries(scenario.factions)) {
-    factions[id] = { id, name: faction.name, color: faction.color };
+    factions[id] = {
+      id,
+      name: faction.name,
+      color: faction.color,
+      ...(faction.ai && { ai: faction.ai }),
+    };
     treasuries[id] = { treasury: faction.treasury };
 
     for (const provinceId of faction.provinces) {

@@ -40,6 +40,16 @@ export const RULES = {
   loserLossSpread: 0.35,
   /** Kazananın zayiat oranı: bu oran × güç oranı. */
   winnerLossMax: 0.25,
+  // --- Ekonomi (C6) ---
+  /** Tek devşirme emriyle gelen asker sayısı. */
+  recruitBatch: 100,
+  /** Bir bölgede tur başına en fazla kaç devşirme emri verilebilir. */
+  recruitOrdersPerProvince: 3,
+  /** Maaşı ödenmeyen ordunun tur başına moral kaybı. */
+  unpaidMoraleLoss: 15,
+  /** Maaşı ödenmeyen ordudan tur başına kaçan asker oranı. */
+  unpaidDesertionRate: 0.05,
+
   // --- Zafer ve tarihe göre puan (C3) ---
   /** Tarihî sonucun bu oranı içindeki sonuç "tarihle aynı" sayılır. */
   historicalTolerance: 0.1,

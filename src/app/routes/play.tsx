@@ -9,7 +9,16 @@ import { PLACES, placesIn } from '@/content/world/places';
 import { PROVINCE_META } from '@/content/world/provinces';
 import { TERRAIN_LABELS, terrainOf } from '@/content/world/terrain';
 import { routePath, TRADE_ROUTES } from '@/content/world/trade-routes';
-import { legalMoves, objectiveProgress, type GameState } from '@/engine';
+import {
+  incomeOf,
+  legalMoves,
+  objectiveProgress,
+  recruitOptions,
+  upkeepOf,
+  type CommandError,
+  type GameState,
+  type UnitType,
+} from '@/engine';
 import { EventCard } from '@/features/events/components/event-card';
 import { ArmyPanel } from '@/features/game/components/army-panel';
 import { DecisionsPanel } from '@/features/game/components/decisions-panel';
@@ -21,6 +30,7 @@ import { Panel } from '@/features/game/components/panel';
 import { ProvincePanel } from '@/features/game/components/province-panel';
 import { END_REASON_LABELS } from '@/features/game/config/end-reasons';
 import { formatDate } from '@/features/game/config/season-labels';
+import { UNIT_LABELS } from '@/features/game/config/unit-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
 import { SaveSlotList } from '@/features/saves/components/save-slot-list';
@@ -38,6 +48,15 @@ import { summarizeDecisions } from '../lib/decisions';
 import { buildSlotRows } from '../lib/slot-rows';
 
 import type { Route } from './+types/play';
+
+/** Devşirme düğmesi pasifken gösterilen neden. */
+const RECRUIT_ERRORS: Partial<Record<CommandError, string>> = {
+  notEnoughGold: 'Yeterli akçe yok',
+  recruitLimit: 'Bu bölgede bu tur daha fazla devşirilemez',
+  besieged: 'Kuşatma altında devşirme yapılamaz',
+  notOwner: 'Bu bölge sana ait değil',
+  eventPending: 'Önce olay kartına karar ver',
+};
 
 export function meta(_: Route.MetaArgs) {
   return [{ title: `Oyun · ${APP_NAME}` }];
@@ -233,6 +252,32 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
       selected: a.id === selectedArmyId,
     }));
 
+  // --- Devşirme: yalnızca oyuncunun kendi bölgelerinde ---
+  const recruit =
+    selectedId &&
+    ownerId === game.playerFactionId &&
+    game.status.phase !== 'ended'
+      ? {
+          options: recruitOptions(
+            setup.world,
+            game,
+            game.playerFactionId,
+            selectedId,
+          ).map((o) => ({
+            unit: o.unit,
+            label: UNIT_LABELS[o.unit],
+            cost: o.cost,
+            disabledReason: o.error ? RECRUIT_ERRORS[o.error] : undefined,
+          })),
+          onRecruit: (unit: string) =>
+            void send({
+              type: 'recruit',
+              provinceId: selectedId,
+              unit: unit as UnitType,
+            }),
+        }
+      : undefined;
+
   // --- Olay kartı: bekleyen ilk olay; karardan sonra sonucu gösterilir ---
   const [resolved, setResolved] = useState<{
     eventId: string;
@@ -257,6 +302,8 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
         dateLabel={formatDate(game.date)}
         turn={game.turn}
         treasury={game.factions[game.playerFactionId]?.treasury ?? 0}
+        income={incomeOf(setup.world, game, game.playerFactionId)}
+        upkeep={upkeepOf(game, game.playerFactionId)}
         resultLabel={
           game.status.phase === 'ended'
             ? game.status.result === 'victory'
@@ -349,6 +396,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 }
                 armies={armiesHere}
                 onSelectArmy={handleArmySelect}
+                recruit={recruit}
               />
             )}
           </div>

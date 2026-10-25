@@ -4,7 +4,7 @@ import path from 'node:path';
 import { validateWorld } from '@/engine';
 
 import { fortificationOf, PLACES, placesIn } from '../places';
-import { createProvinceDefs, PROVINCE_META } from '../provinces';
+import { baseTaxOf, createProvinceDefs, PROVINCE_META } from '../provinces';
 import { terrainOf, TERRAIN_PROVINCE_IDS } from '../terrain';
 
 type Ring = number[][];
@@ -102,6 +102,23 @@ describe('terrain', () => {
     expect(terrainOf('bih-sarajevo')).toBe('mountains');
     expect(terrainOf('egy-cairo')).toBe('plain');
     expect(terrainOf('tur-edirne')).toBe('plain');
+  });
+});
+
+describe('tax income', () => {
+  it('is farmland plus cities plus customs on trade routes', () => {
+    // Tarım 1; Bilecik ve Söğüt iki şehir (+4).
+    expect(baseTaxOf('tur-bilecik')).toBe(5);
+    // Şehri olmayan bölge yalnızca tarım getirir.
+    expect(baseTaxOf('tur-yalova')).toBe(1);
+    // Edirne: tarım 1 + şehir 2 + Büyük Rumeli Yolu gümrüğü 1.
+    expect(baseTaxOf('tur-edirne')).toBe(4);
+  });
+
+  it('is what the engine collects from each province', () => {
+    const defs = createProvinceDefs();
+    expect(defs['tur-bursa']?.baseTax).toBe(baseTaxOf('tur-bursa'));
+    expect(defs['tur-bursa']?.baseTax).toBe(5);
   });
 });
 

@@ -57,9 +57,15 @@ Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 =
 - Bekleyen olay varken `endTurn` `eventPending` hatası verir; oyuncu `{ type: 'chooseEvent', eventId, choiceId }` ile karar verir.
 - Seçimler `state.events.choices` içinde saklanır (D2'de tarihle karşılaştırılacak).
 
+## Ekonomi (C6)
+
+- **Gelir**: her tur sahip olunan bölgelerin `baseTax`ı hazineye eklenir (`incomeOf`). İçerik katmanı `baseTax`ı tarım + şehirler + ticaret yolu gümrüğü olarak hesaplar.
+- **Devşirme**: `{ type: 'recruit', provinceId, unit }` bölgede `RULES.recruitBatch` (100) asker getirir, `UNIT_DEFS[unit].cost` akçe öder, bölgede ordu varsa ona katılır yoksa yeni ordu kurulur (o tur yürümez). Bölge başına tur başı `recruitOrdersPerProvince` emir; kuşatılan bölgede, başkasının bölgesinde ve henüz açılmamış birlikte yapılamaz. Arayüz için `recruitOptions`.
+- **Maaş**: tımarlı sipahi ve akıncı (`upkeep: 0`) toprak gelirinden geçinir; yaya, yeniçeri, topçu nakit maaş alır (`upkeepOf`). `payUpkeep` aşaması tur sonunda öder; ödenemezse ordunun morali düşer ve maaşlı birliklerden asker kaçar.
+
 ## Yapay zekâ (C9)
 
-`dispatch`'e `{ ai }` verilir; varsayılan `passiveAi` hiçbir şey yapmaz, uygulama `heuristicAi` kullanır (`engine-api.ts`). `createHeuristicAi({ aggression })` her ordunun komşu bölgelerini puanlar: savunmasız düşman toprağı, kazanılabilir savaş (güç oranı ≥ `aggression`, `battleOdds` ile zarsız hesaplanır), kışın eve dönüş ve düşman sınırına yaklaşma. Sahipsiz bölgelere yayılmaz. Rastgelelik yalnızca verilen `random()` ile (deterministik).
+`dispatch`'e `{ ai }` verilir; varsayılan `passiveAi` hiçbir şey yapmaz, uygulama `heuristicAi` kullanır (`engine-api.ts`). `createHeuristicAi({ aggression })` her ordunun komşu bölgelerini puanlar: savunmasız düşman toprağı, kazanılabilir savaş (güç oranı ≥ `aggression`, `battleOdds` ile zarsız hesaplanır), kışın eve dönüş ve düşman sınırına yaklaşma. Sahipsiz bölgelere yayılmaz. Devşirme bütçesi tur gelirinin `recruitShare` oranıdır; devlet başına `FactionDef.ai` (`aggression`, `recruitShare`) kişilik verir (1299'da Bizans temkinli ve az devşirir). Rastgelelik yalnızca verilen `random()` ile (deterministik).
 
 ## Yeni mekanik eklemek
 

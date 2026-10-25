@@ -2,6 +2,7 @@ import type { ExecuteContext } from '../context';
 import type { FactionId, GameState, ProvinceId, World } from '../types';
 
 import { executeMoveArmy, validateMoveArmy } from './move-army';
+import { executeRecruit, validateRecruit } from './recruit';
 import type { ActionCommand, CommandError } from './types';
 
 export function validateAction(
@@ -15,6 +16,8 @@ export function validateAction(
   switch (command.type) {
     case 'moveArmy':
       return validateMoveArmy({ world, state, factionId, command });
+    case 'recruit':
+      return validateRecruit({ world, state, factionId, command });
   }
 }
 
@@ -26,6 +29,8 @@ export function executeAction(
   switch (command.type) {
     case 'moveArmy':
       return executeMoveArmy(context, factionId, command);
+    case 'recruit':
+      return executeRecruit(context, factionId, command);
   }
 }
 

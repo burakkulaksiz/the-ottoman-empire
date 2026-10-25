@@ -1,11 +1,19 @@
 import type { ArmyId, FactionId, GameState, ProvinceId, World } from '../types';
+import type { UnitType } from '../units';
 
 /** Bir devletin tur içinde verdiği emirler (oyuncu veya yapay zekâ). */
-export type ActionCommand = {
-  type: 'moveArmy';
-  armyId: ArmyId;
-  to: ProvinceId;
-};
+export type ActionCommand =
+  | {
+      type: 'moveArmy';
+      armyId: ArmyId;
+      to: ProvinceId;
+    }
+  | {
+      /** Bölgede `RULES.recruitBatch` asker devşirir (akçe öder). */
+      type: 'recruit';
+      provinceId: ProvinceId;
+      unit: UnitType;
+    };
 
 export type Command =
   | ActionCommand
@@ -26,7 +34,14 @@ export type CommandError =
   /** Bekleyen bir olay kartı çözülmeden tur bitirilemez. */
   | 'eventPending'
   | 'noSuchPendingEvent'
-  | 'unknownChoice';
+  | 'unknownChoice'
+  /** Devşirme: birlik bu yılda henüz yok. */
+  | 'unitUnavailable'
+  | 'notEnoughGold'
+  /** Bu bölgede bu tur daha fazla devşirme yapılamaz. */
+  | 'recruitLimit'
+  /** Kuşatılan bölgede devşirme yapılamaz. */
+  | 'besieged';
 
 export interface ValidationArgs<C> {
   world: World;

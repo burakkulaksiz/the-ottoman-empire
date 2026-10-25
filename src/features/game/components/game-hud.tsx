@@ -8,6 +8,9 @@ type GameHudProps = {
   dateLabel: string;
   turn: number;
   treasury: number;
+  /** Bu tur beklenen vergi geliri ve ordu maaşı gideri (akçe). */
+  income: number;
+  upkeep: number;
   /** Oyun bittiyse sonucu; sürüyorsa `null`. */
   resultLabel: string | null;
   canEndTurn: boolean;
@@ -22,6 +25,8 @@ export function GameHud({
   dateLabel,
   turn,
   treasury,
+  income,
+  upkeep,
   resultLabel,
   canEndTurn,
   onEndTurn,
@@ -38,7 +43,16 @@ export function GameHud({
         <div className="flex items-center gap-1" title="Hazine (akçe)">
           <dt className="sr-only">Hazine</dt>
           <Coins className="size-4 text-gold" aria-hidden />
-          <dd>{treasury}</dd>
+          <dd>
+            {treasury}{' '}
+            <span
+              className="text-xs text-muted-foreground"
+              title="Tur başına gelir / ordu maaşı"
+            >
+              (+{income}
+              {upkeep > 0 && ` / −${upkeep}`})
+            </span>
+          </dd>
         </div>
         <div>
           <dt className="sr-only">Tarih</dt>

@@ -118,6 +118,8 @@ export const kurulus1299: ScenarioDefinition = {
     bizans: {
       name: 'Bizans İmparatorluğu',
       color: '#7e22ce',
+      // Gerileme dönemindeki Bizans: temkinli, az devşirir (tarihî seyir).
+      ai: { aggression: 2, recruitShare: 0.1 },
       treasury: 120,
       provinces: [
         'tur-bursa',

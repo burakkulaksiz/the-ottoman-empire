@@ -1,5 +1,5 @@
 import type { GameDate } from './calendar';
-import type { Units } from './units';
+import type { Units, UnitType } from './units';
 
 export type FactionId = string;
 export type ProvinceId = string;
@@ -25,6 +25,8 @@ export interface FactionDef {
   id: FactionId;
   name: string;
   color: string;
+  /** Yapay zekâ kişiliği; yazılmazsa varsayılanlar kullanılır (C10). */
+  ai?: { aggression?: number; recruitShare?: number };
 }
 
 /** Oyuncunun zafer için tamamlaması gereken hedef (C3). */
@@ -83,6 +85,8 @@ export interface ProvinceState {
   ownerId: FactionId | null;
   /** Kuşatma sürüyorsa kuşatan devlet ve geçen tur sayısı. */
   siege?: { attackerId: FactionId; turns: number };
+  /** Bu tur verilen devşirme emri sayısı (her tur sıfırlanır). */
+  recruited?: number;
 }
 
 export interface ArmyState {
@@ -154,6 +158,16 @@ export type LogPayload =
     }
   | { type: 'eventTriggered'; eventId: string }
   | { type: 'eventResolved'; eventId: string; choiceId: string }
+  | {
+      type: 'recruited';
+      factionId: FactionId;
+      provinceId: ProvinceId;
+      unit: UnitType;
+      amount: number;
+      cost: number;
+    }
+  | { type: 'upkeepPaid'; factionId: FactionId; amount: number }
+  | { type: 'troopsUnpaid'; factionId: FactionId; shortfall: number }
   | { type: 'incomeCollected'; factionId: FactionId; amount: number }
   | { type: 'factionEliminated'; factionId: FactionId }
   | { type: 'gameEnded'; status: Extract<GameStatus, { phase: 'ended' }> };

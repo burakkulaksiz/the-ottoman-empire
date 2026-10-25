@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** D2 (karar anları: seçimin gerçek tarihle karşılaştırılması; olay kartı altyapısı hazır) veya C6 (ekonomi; ordu devşirme olmadan oyuncu güçlenemiyor)
+**Sıradaki madde:** C7 (diplomasi: savaş/barış/ittifak; şimdi farklı her devlet düşman) veya C10 (zorluk seviyeleri ve tarihe sadık mod, yapay zekâ kişilikleri hazır)
 
 ---
 
@@ -82,6 +82,13 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [x] **C5. Savaş çözümü:** önce otomatik ve olasılık tabanlı, ileride taktik savaş ekranı.
   - _Yapıldı: otomatik, tohumlu olasılık tabanlı savaş (güç = birlik × moral × arazi/kale × zar), geri çekilme/dağılma, fetih. Taktik savaş ekranı ileride._
 - [ ] **C6. Ekonomi:** akçe, tımar sistemi, vergi (cizye, öşür), ticaret yolları ve enflasyon. Enflasyon geç dönem için önemli.
+  - [x] Akçe ve vergi geliri: bölge geliri = tarım + şehirler + ticaret yolu gümrüğü (`baseTaxOf`); HUD'da hazine ve tur geliri/gideri
+  - [x] Ordu devşirme (bölgede 100 asker, akçe karşılığı, tur başına bölge sınırı, yıla göre birlik) ve arayüzde bölge panelinden devşirme
+  - [x] Tımar: tımarlı sipahi ve akıncı hazineden maaş almaz; kapıkulu (yaya, yeniçeri, topçu) nakit maaş alır, ödenmezse moral düşer ve asker kaçar
+  - [x] Yapay zekâ devşirir (devlet başına `ai.recruitShare` ve `aggression` kişiliği)
+  - [ ] Cizye ve öşür ayrımı (nüfus/din verisi gerekir)
+  - [ ] Ticaret yolu gelirinin gerçek akışı ve ablukası
+  - [ ] Enflasyon (akçenin ayarı düşer, geç dönem)
 - [ ] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
 - [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
 - [x] **C9. Rakip devletler için yapay zekâ.**

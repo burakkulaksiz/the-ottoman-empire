@@ -1,6 +1,7 @@
 import type { LogEntry } from '@/engine';
 
 import { formatDate } from '../config/season-labels';
+import { UNIT_LABELS } from '../config/unit-labels';
 
 /** Günlük metinlerinde kullanılacak adlar; içerik katmanından gelir. */
 export interface LogNames {
@@ -39,6 +40,11 @@ export function formatLogEntry(
       return `${names.faction(entry.factionId)} tarih sahnesinden çekildi`;
     case 'gameEnded':
       return `Oyun bitti: ${entry.status.result === 'victory' ? 'Zafer' : 'Yenilgi'}`;
+    case 'recruited':
+      return `${names.faction(entry.factionId)}: ${names.province(entry.provinceId)} bölgesinde ${entry.amount} ${UNIT_LABELS[entry.unit]} devşirildi (${entry.cost} akçe)`;
+    case 'troopsUnpaid':
+      return `${names.faction(entry.factionId)}: maaşlar ödenemedi (eksik ${entry.shortfall} akçe), kapıkulu kaçıyor ve morali düşüyor`;
+    case 'upkeepPaid':
     case 'incomeCollected':
     case 'eventResolved':
       return null;

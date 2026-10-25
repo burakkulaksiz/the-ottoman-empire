@@ -88,6 +88,13 @@ export const scenarioSchema = z.object({
     z.object({
       name: z.string().min(1),
       color: z.string().regex(/^#[0-9a-f]{6}$/i),
+      /** Yapay zekâ kişiliği (oyuncu olmayan devletler için). */
+      ai: z
+        .object({
+          aggression: z.number().positive().optional(),
+          recruitShare: z.number().min(0).max(1).optional(),
+        })
+        .optional(),
       treasury: z.number().int().nonnegative(),
       provinces: z.array(z.string()),
       armies: z
