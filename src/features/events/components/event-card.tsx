@@ -20,6 +20,8 @@ type EventCardProps = {
   event: EventCardContent;
   /** Oyuncu seçtiyse seçilen seçenek; sonuç ve tarihî bilgi gösterilir. */
   chosenId: string | null;
+  /** Tarihe sadık mod: tarihte seçilen seçenek önceden gösterilir (C10). */
+  revealHistorical?: boolean;
   onChoose: (choiceId: string) => void;
   onClose: () => void;
 };
@@ -28,6 +30,7 @@ type EventCardProps = {
 export function EventCard({
   event,
   chosenId,
+  revealHistorical = false,
   onChoose,
   onClose,
 }: EventCardProps) {
@@ -89,6 +92,12 @@ export function EventCard({
                 onClick={() => onChoose(choice.id)}
               >
                 {choice.label}
+                {revealHistorical &&
+                  choice.id === event.historical.choiceId && (
+                    <span className="ml-auto rounded bg-primary/10 px-1.5 text-xs text-primary">
+                      Tarihte seçilen
+                    </span>
+                  )}
               </Button>
             ))}
           </CardContent>

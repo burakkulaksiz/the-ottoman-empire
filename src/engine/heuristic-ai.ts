@@ -297,9 +297,24 @@ export function createHeuristicAi(
       const { world, state, factionId, random } = context;
       // Devletin kendi kişiliği (senaryodan) varsayılanı ezer.
       const personality = world.factions[factionId]?.ai;
-      const aggression = personality?.aggression ?? defaults.aggression;
-      const recruitShare = personality?.recruitShare ?? defaults.recruitShare;
-      const warlike = personality?.warlike ?? defaults.warlike;
+      // Zorluk kişiliği ölçekler; tarihe sadık modda rakip saldırmaz (C10).
+      const level = RULES.difficulty[state.settings.difficulty];
+      const historical = state.settings.historicalMode;
+      const aggression = historical
+        ? Infinity
+        : (personality?.aggression ?? defaults.aggression) +
+          level.aiAggressionBonus;
+      const recruitShare = Math.min(
+        1,
+        (personality?.recruitShare ?? defaults.recruitShare) *
+          level.aiRecruitScale,
+      );
+      const warlike = historical
+        ? 0
+        : Math.min(
+            1,
+            (personality?.warlike ?? defaults.warlike) * level.aiWarlikeScale,
+          );
       const dist = distancesToTargets(world, state, factionId);
       const commands: ActionCommand[] = planDiplomacy(context, warlike);
 
@@ -310,6 +325,9 @@ export function createHeuristicAi(
       for (const army of armies) {
         let best: { to: ProvinceId; score: number } | null = null;
         for (const to of legalMoves(world, state, army.id)) {
+          // Tarihe sadık modda yalnızca kendi topraklarında hareket eder.
+          if (historical && state.provinces[to]?.ownerId !== factionId)
+            continue;
           const score =
             scoreMove(context, army, to, dist, aggression) +
             random() * SCORE.jitter;

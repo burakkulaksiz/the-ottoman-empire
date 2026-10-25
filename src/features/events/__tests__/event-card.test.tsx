@@ -99,4 +99,29 @@ describe('EventCard', () => {
       'Tarihte farklı oldu: "Meydanda karşıla" seçildi.',
     );
   });
+
+  it('marks the historical choice in historical mode only', () => {
+    const { rerender } = render(
+      <EventCard
+        event={event}
+        chosenId={null}
+        onChoose={() => {}}
+        onClose={() => {}}
+      />,
+    );
+    expect(screen.queryByText('Tarihte seçilen')).not.toBeInTheDocument();
+
+    rerender(
+      <EventCard
+        event={event}
+        chosenId={null}
+        revealHistorical
+        onChoose={() => {}}
+        onClose={() => {}}
+      />,
+    );
+    expect(
+      screen.getByRole('button', { name: /Meydanda karşıla/ }),
+    ).toHaveTextContent('Tarihte seçilen');
+  });
 });

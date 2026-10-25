@@ -16,12 +16,12 @@
 | ---------------- | ------ | ------ |
 | A. Altyapı       | 4      | 5      |
 | B. Harita        | 2      | 5      |
-| C. Mekanikler    | 7      | 10     |
+| C. Mekanikler    | 8      | 10     |
 | D. Tarih öğrenme | 2      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **16** | **41** |
+| **Toplam**       | **17** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C7 (diplomasi: savaş/barış/ittifak; şimdi farklı her devlet düşman) veya C10 (zorluk seviyeleri ve tarihe sadık mod, yapay zekâ kişilikleri hazır)
+**Sıradaki madde:** C8 (iç siyaset: padişah, şehzadeler, divan, isyanlar) veya D3 (ansiklopedi; yer notları ve olay metinleri hazır)
 
 ---
 
@@ -94,7 +94,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
 - [x] **C9. Rakip devletler için yapay zekâ.**
   - _Yapıldı: sezgisel yapay zekâ (`heuristic-ai.ts`): savunmasız düşman toprağını alır, güç oranı yeterliyse (`aggression`) saldırır, zayıf kalacağı savaştan kaçınır, kışın eve döner, düşman sınırına doğru ilerler. Sahipsiz bölgelere yayılmaz (diplomasi/diğer devletler modellenene kadar). Ordu devşirme, ekonomi ve diplomasi içermez (C6, C7); zorluk ayarı C10'da._
-- [ ] **C10. Zorluk seviyeleri ve "tarihe sadık mod" seçeneği.**
+- [x] **C10. Zorluk seviyeleri ve "tarihe sadık mod" seçeneği.**
+  - _Yapıldı: kolay/normal/zor (oyuncu geliri çarpanı; rakip yapay zekânın saldırganlık, devşirme ve savaş ilanı eğilimi) ve tarihe sadık mod (rakipler saldırmaz, toprak almaz, savaş açmaz, yalnızca savunur; olay kartında tarihte seçilen seçenek gösterilir). Senaryo seçiminde ayarlanır, `GameState.settings` olarak kayda yazılır, üst çubukta görünür._
 
 ## D. Oynarken tarih öğrenme
 

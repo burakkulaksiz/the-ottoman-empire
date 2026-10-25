@@ -2,7 +2,13 @@ import { useStore } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createStore } from 'zustand/vanilla';
 
-import type { Command, CommandError, GameState, LogEntry } from '@/engine';
+import type {
+  Command,
+  CommandError,
+  GameSettings,
+  GameState,
+  LogEntry,
+} from '@/engine';
 import {
   saveRepository,
   type SaveRepository,
@@ -36,7 +42,10 @@ export interface GameStoreState {
 
 export interface GameStoreActions {
   /** Yeni oyun başlatır. `seed` verilmezse rastgele bir tohum seçilir. */
-  start(scenarioId: string, options?: { seed?: number }): Promise<void>;
+  start(
+    scenarioId: string,
+    options?: { seed?: number; settings?: Partial<GameSettings> },
+  ): Promise<void>;
   /** Oyuncu komutu gönderir; komutlar sırayla işlenir. */
   send(command: Command): Promise<void>;
   /** Oyunu bir yuvaya kaydeder. */
@@ -125,6 +134,7 @@ export function createGameStore(
               const game = await getEngine().start(
                 scenarioId,
                 options?.seed ?? randomSeed(),
+                options?.settings,
               );
               set((s) => {
                 s.status = 'ready';

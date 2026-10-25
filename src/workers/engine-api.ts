@@ -6,6 +6,7 @@ import {
   validateSavedState,
   type Command,
   type DispatchResult,
+  type GameSettings,
   type GameState,
   type ScenarioSetup,
 } from '@/engine';
@@ -19,7 +20,11 @@ import {
  */
 export interface EngineApi {
   /** Senaryoyu yükleyip yeni bir oyun başlatır. */
-  start(scenarioId: string, seed: number): GameState;
+  start(
+    scenarioId: string,
+    seed: number,
+    settings?: Partial<GameSettings>,
+  ): GameState;
   /** Kayıttan devam: senaryonun dünyasını yükler, durumu olduğu gibi alır. */
   load(scenarioId: string, state: GameState): void;
   /** Oyuncunun komutunu motora iletir. */
@@ -31,9 +36,9 @@ export function createEngineApi(): EngineApi {
   let state: GameState | null = null;
 
   return {
-    start(scenarioId, seed) {
+    start(scenarioId, seed, settings) {
       setup = loadScenario(scenarioId);
-      state = createGame(setup, { seed });
+      state = createGame(setup, { seed, settings });
       return state;
     },
 

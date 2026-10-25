@@ -1,4 +1,4 @@
-import type { Terrain } from './types';
+import type { Difficulty, Terrain } from './types';
 
 /** Oyun dengesini belirleyen sabitler; mekanikler eklendikçe büyür. */
 export const RULES = {
@@ -63,6 +63,38 @@ export const RULES = {
   aiPeaceThreshold: 0.7,
   /** Yapay zekâ rakibinden bu kat güçlüyse savaş ilan etmeyi düşünür. */
   aiWarAdvantage: 2,
+
+  // --- Zorluk (C10) ---
+  difficulty: {
+    /** Oyuncu kolay: daha çok gelir, temkinli ve yavaş büyüyen rakipler. */
+    easy: {
+      playerIncome: 1.25,
+      aiAggressionBonus: 0.4,
+      aiRecruitScale: 0.5,
+      aiWarlikeScale: 0.5,
+    },
+    normal: {
+      playerIncome: 1,
+      aiAggressionBonus: 0,
+      aiRecruitScale: 1,
+      aiWarlikeScale: 1,
+    },
+    /** Zor: daha az gelir, daha atak, daha çok devşiren, savaşçı rakipler. */
+    hard: {
+      playerIncome: 0.9,
+      aiAggressionBonus: -0.3,
+      aiRecruitScale: 1.6,
+      aiWarlikeScale: 2,
+    },
+  } satisfies Record<
+    Difficulty,
+    {
+      playerIncome: number;
+      aiAggressionBonus: number;
+      aiRecruitScale: number;
+      aiWarlikeScale: number;
+    }
+  >,
 
   // --- Zafer ve tarihe göre puan (C3) ---
   /** Tarihî sonucun bu oranı içindeki sonuç "tarihle aynı" sayılır. */

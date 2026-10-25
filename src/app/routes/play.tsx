@@ -51,6 +51,7 @@ import {
   buildOffers,
   diplomacyCommand,
 } from '../lib/diplomacy-rows';
+import { settingsFromSearch, settingsLabel } from '../lib/game-settings';
 import { buildSlotRows } from '../lib/slot-rows';
 
 import type { Route } from './+types/play';
@@ -83,6 +84,7 @@ function PlayGame({ id }: { id: string }) {
   const [searchParams] = useSearchParams();
   const requested = searchParams.get('slot');
   const slot = isSaveSlot(requested) ? requested : null;
+  const { difficulty, historicalMode } = settingsFromSearch(searchParams);
 
   const start = useGameStore((s) => s.start);
   const load = useGameStore((s) => s.load);
@@ -92,8 +94,10 @@ function PlayGame({ id }: { id: string }) {
 
   // `?slot=` varsa kayıttan devam edilir, yoksa yeni oyun başlar.
   useEffect(() => {
-    void (slot ? load(slot) : start(id));
-  }, [id, slot, start, load]);
+    void (slot
+      ? load(slot)
+      : start(id, { settings: { difficulty, historicalMode } }));
+  }, [id, slot, start, load, difficulty, historicalMode]);
 
   if (status === 'error') {
     return (
@@ -323,6 +327,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
     <main className="flex h-dvh flex-col">
       <GameHud
         scenarioName={scenario.name}
+        settingsLabel={settingsLabel(game.settings)}
         dateLabel={formatDate(game.date)}
         turn={game.turn}
         treasury={game.factions[game.playerFactionId]?.treasury ?? 0}
@@ -454,6 +459,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           <EventCard
             event={shownEvent}
             chosenId={resolved?.choiceId ?? null}
+            revealHistorical={game.settings.historicalMode}
             onChoose={(choiceId) => {
               void send({
                 type: 'chooseEvent',

@@ -1,4 +1,5 @@
 import { ArrowLeft, Play } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 
 import { buttonVariants } from '@/components/ui/button';
@@ -12,7 +13,16 @@ import {
 } from '@/components/ui/card';
 import { APP_NAME } from '@/config/app';
 import { SCENARIOS } from '@/content/scenarios';
+import type { GameSettings } from '@/engine';
 import { formatDate } from '@/features/game/config/season-labels';
+
+import {
+  DIFFICULTIES,
+  DIFFICULTY_HINTS,
+  DIFFICULTY_LABELS,
+  HISTORICAL_MODE_HINT,
+  settingsToSearch,
+} from '../lib/game-settings';
 
 import type { Route } from './+types/scenarios';
 
@@ -21,6 +31,11 @@ export function meta(_: Route.MetaArgs) {
 }
 
 export default function Scenarios() {
+  const [settings, setSettings] = useState<GameSettings>({
+    difficulty: 'normal',
+    historicalMode: false,
+  });
+
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-6 p-4 pt-8">
       <header className="flex items-center gap-3">
@@ -33,6 +48,47 @@ export default function Scenarios() {
         </Link>
         <h1 className="text-3xl">Senaryo Seç</h1>
       </header>
+
+      <section
+        aria-label="Oyun ayarları"
+        className="grid gap-3 rounded-xl border bg-card p-4 sm:grid-cols-2"
+      >
+        <fieldset>
+          <legend className="font-display text-lg">Zorluk</legend>
+          <div className="mt-1 flex flex-wrap gap-3">
+            {DIFFICULTIES.map((difficulty) => (
+              <label key={difficulty} className="flex items-center gap-1.5">
+                <input
+                  type="radio"
+                  name="difficulty"
+                  value={difficulty}
+                  checked={settings.difficulty === difficulty}
+                  onChange={() => setSettings((s) => ({ ...s, difficulty }))}
+                />
+                {DIFFICULTY_LABELS[difficulty]}
+              </label>
+            ))}
+          </div>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {DIFFICULTY_HINTS[settings.difficulty]}
+          </p>
+        </fieldset>
+        <div>
+          <label className="flex items-center gap-1.5 font-display text-lg">
+            <input
+              type="checkbox"
+              checked={settings.historicalMode}
+              onChange={(e) =>
+                setSettings((s) => ({ ...s, historicalMode: e.target.checked }))
+              }
+            />
+            Tarihe sadık mod
+          </label>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {HISTORICAL_MODE_HINT}
+          </p>
+        </div>
+      </section>
 
       <ul className="grid gap-4">
         {SCENARIOS.map((scenario) => (
@@ -63,7 +119,7 @@ export default function Scenarios() {
               </CardContent>
               <CardFooter className="justify-end">
                 <Link
-                  to={`/play/${scenario.id}`}
+                  to={`/play/${scenario.id}${settingsToSearch(settings)}`}
                   className={buttonVariants()}
                   aria-label={`${scenario.name} senaryosunu başlat`}
                 >

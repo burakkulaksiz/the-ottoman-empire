@@ -5,6 +5,8 @@ import { Button, buttonVariants } from '@/components/ui/button';
 
 type GameHudProps = {
   scenarioName: string;
+  /** Zorluk ve mod, örn. "Zor · Tarihe sadık". */
+  settingsLabel?: string;
   dateLabel: string;
   turn: number;
   treasury: number;
@@ -22,6 +24,7 @@ type GameHudProps = {
 /** Oyun ekranının üst çubuğu: senaryo, tarih, hazine ve tur düğmesi. */
 export function GameHud({
   scenarioName,
+  settingsLabel,
   dateLabel,
   turn,
   treasury,
@@ -38,6 +41,9 @@ export function GameHud({
         <ArrowLeft /> Ana Menü
       </Link>
       <h1 className="font-display text-lg">{scenarioName}</h1>
+      {settingsLabel && (
+        <span className="text-xs text-muted-foreground">{settingsLabel}</span>
+      )}
 
       <dl className="ml-auto flex items-center gap-4 text-sm">
         <div className="flex items-center gap-1" title="Hazine (akçe)">

@@ -4,15 +4,22 @@ import { RULES } from './rules';
 import type { FactionId, GameState, ProvinceId, World } from './types';
 import { UNIT_DEFS, UNIT_TYPES, unitEntries, type UnitType } from './units';
 
-/** Bir devletin bu tur beklenen geliri (bölgelerinin vergisi). */
+/**
+ * Bir devletin bu tur beklenen geliri (bölgelerinin vergisi). Oyuncunun geliri
+ * zorluğa göre çarpılır (C10).
+ */
 export function incomeOf(
   world: World,
   state: GameState,
   factionId: FactionId,
 ): number {
-  return Object.values(state.provinces)
+  const base = Object.values(state.provinces)
     .filter((p) => p.ownerId === factionId)
     .reduce((sum, p) => sum + (world.provinces[p.id]?.baseTax ?? 0), 0);
+  if (factionId !== state.playerFactionId) return base;
+  return Math.round(
+    base * RULES.difficulty[state.settings.difficulty].playerIncome,
+  );
 }
 
 /** Bir devletin ordularının tur başına maaş gideri (kapıkulu nakit maaşı). */

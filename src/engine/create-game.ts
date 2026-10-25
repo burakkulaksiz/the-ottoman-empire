@@ -6,6 +6,7 @@ import type {
   FactionId,
   DiplomacyState,
   FactionState,
+  GameSettings,
   GameState,
   ProvinceId,
   ProvinceState,
@@ -140,7 +141,7 @@ function buildDiplomacy(setup: ScenarioSetup): DiplomacyState {
 
 export function createGame(
   setup: ScenarioSetup,
-  { seed }: { seed: number },
+  { seed, settings }: { seed: number; settings?: Partial<GameSettings> },
 ): GameState {
   const errors = validateSetup(setup);
   if (errors.length > 0) {
@@ -187,6 +188,10 @@ export function createGame(
     armies,
     events: { fired: [], pending: [], choices: {} },
     diplomacy: buildDiplomacy(setup),
+    settings: {
+      difficulty: settings?.difficulty ?? 'normal',
+      historicalMode: settings?.historicalMode ?? false,
+    },
     log: [{ type: 'turnStarted', date: setup.startDate, turn: 1 }],
     nextId,
   };

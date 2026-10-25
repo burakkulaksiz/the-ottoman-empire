@@ -226,6 +226,19 @@ export type LogPayload =
 
 export type LogEntry = LogPayload & { turn: number };
 
+export type Difficulty = 'easy' | 'normal' | 'hard';
+
+/** Oyun başında seçilen ayarlar (C10); oyun boyunca değişmez, kayda yazılır. */
+export interface GameSettings {
+  difficulty: Difficulty;
+  /**
+   * Tarihe sadık mod: rakipler tarihî rollerinin dışına çıkmaz (kendiliğinden
+   * savaş açmaz, saldırmaz, yalnızca kendini savunur); olay kartlarında
+   * tarihte seçilen seçenek gösterilir. Öğrenmeye odaklı oynanış.
+   */
+  historicalMode: boolean;
+}
+
 /** Olay kartlarının durumu (D1). */
 export interface EventsState {
   /** Tetiklenmiş (bekleyen veya çözülmüş) olaylar. */
@@ -252,6 +265,7 @@ export interface GameState {
   armies: Record<ArmyId, ArmyState>;
   events: EventsState;
   diplomacy: DiplomacyState;
+  settings: GameSettings;
   log: LogEntry[];
   /** Deterministik id üretimi için sayaç. */
   nextId: number;

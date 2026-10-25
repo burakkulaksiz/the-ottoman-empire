@@ -278,4 +278,14 @@ describe('Play', () => {
       ),
     ).not.toHaveLength(0);
   });
+
+  it('starts the game with the settings in the address', async () => {
+    renderPlay('/play/kurulus-1299?difficulty=easy&historical=1');
+
+    expect(await screen.findByText('Kolay · Tarihe sadık')).toBeInTheDocument();
+    expect(gameStore.getState().game?.settings).toEqual({
+      difficulty: 'easy',
+      historicalMode: true,
+    });
+  });
 });

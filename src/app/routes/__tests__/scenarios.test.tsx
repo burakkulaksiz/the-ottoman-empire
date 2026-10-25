@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 
 import { SCENARIOS } from '@/content/scenarios';
@@ -34,5 +34,22 @@ describe('Scenarios', () => {
     render(<Stub initialEntries={['/scenarios']} />);
 
     expect(await screen.findByText(/Bursa'yı fethet/)).toBeInTheDocument();
+  });
+
+  it('carries the chosen difficulty and mode to the game', async () => {
+    const Stub = createRoutesStub([
+      { path: '/scenarios', Component: Scenarios },
+    ]);
+    render(<Stub initialEntries={['/scenarios']} />);
+
+    fireEvent.click(await screen.findByRole('radio', { name: 'Zor' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Tarihe sadık mod' }));
+
+    expect(
+      screen.getByRole('link', { name: '1299 · Kuruluş senaryosunu başlat' }),
+    ).toHaveAttribute(
+      'href',
+      '/play/kurulus-1299?difficulty=hard&historical=1',
+    );
   });
 });

@@ -19,6 +19,7 @@ export function validateSavedState(world: World, state: GameState): string[] {
     'armies',
     'events',
     'diplomacy',
+    'settings',
     'date',
     'status',
   ] as const) {

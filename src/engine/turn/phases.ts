@@ -1,7 +1,7 @@
 import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
 import { payTributes } from '../diplomacy';
-import { upkeepOf } from '../economy';
+import { incomeOf, upkeepOf } from '../economy';
 import { triggerEvents } from '../events';
 import { RULES } from '../rules';
 import { advanceSieges } from '../siege';
@@ -66,16 +66,10 @@ export const winterAttrition: TurnPhase = ({ state, emit }) => {
 export const resolveSieges: TurnPhase = (context) => advanceSieges(context);
 
 export const collectIncome: TurnPhase = ({ world, state, emit }) => {
-  const income: Record<string, number> = {};
-  for (const province of Object.values(state.provinces)) {
-    if (!province.ownerId) continue;
-    income[province.ownerId] =
-      (income[province.ownerId] ?? 0) + world.provinces[province.id]!.baseTax;
-  }
-
   for (const faction of Object.values(state.factions)) {
-    const amount = income[faction.id] ?? 0;
-    if (!faction.alive || amount === 0) continue;
+    if (!faction.alive) continue;
+    const amount = incomeOf(world, state, faction.id);
+    if (amount === 0) continue;
     faction.treasury += amount;
     emit({ type: 'incomeCollected', factionId: faction.id, amount });
   }
