@@ -1,15 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { APP_NAME } from '@/config/app';
 import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
 import { PROVINCE_META } from '@/content/world/provinces';
-import {
-  createGame,
-  dispatch,
-  objectiveProgress,
-  seedFromString,
-  type Command,
-} from '@/engine';
+import { objectiveProgress, type GameState } from '@/engine';
 import { EventCard } from '@/features/events/components/event-card';
 import { GameHud } from '@/features/game/components/game-hud';
 import { GameLog } from '@/features/game/components/game-log';
@@ -18,6 +12,7 @@ import { ProvincePanel } from '@/features/game/components/province-panel';
 import { formatDate } from '@/features/game/config/season-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
+import { useGameStore } from '@/stores/game-store';
 
 import type { Route } from './+types/play';
 
@@ -37,17 +32,43 @@ export default function Play({ loaderData }: Route.ComponentProps) {
 }
 
 function PlayGame({ id }: { id: string }) {
-  // Geçici: motor–arayüz köprüsü (A3) gelene kadar oyun burada tutulur.
-  const scenario = getScenarioDefinition(id)!;
-  const setup = useMemo(() => loadScenario(id), [id]);
-  const [game, setGame] = useState(() =>
-    createGame(setup, { seed: seedFromString(id) }),
-  );
+  const start = useGameStore((s) => s.start);
+  const status = useGameStore((s) => s.status);
+  const game = useGameStore((s) => s.game);
+  const loadError = useGameStore((s) => s.loadError);
 
-  function send(command: Command) {
-    const result = dispatch(setup.world, game, game.playerFactionId, command);
-    if (result.ok) setGame(result.state);
+  useEffect(() => {
+    void start(id);
+  }, [id, start]);
+
+  if (status === 'error') {
+    return (
+      <main className="grid h-dvh place-items-center p-4 text-center">
+        <p>Oyun yüklenemedi: {loadError}</p>
+      </main>
+    );
   }
+  if (!game || game.scenarioId !== id) {
+    return (
+      <main className="grid h-dvh place-items-center">
+        <p className="font-display text-2xl text-muted-foreground">
+          Yükleniyor…
+        </p>
+      </main>
+    );
+  }
+  return <GameScreen id={id} game={game} />;
+}
+
+function GameScreen({ id, game }: { id: string; game: GameState }) {
+  const send = useGameStore((s) => s.send);
+  const selectedId = useGameStore((s) => s.selectedProvinceId);
+  const setSelectedId = useGameStore((s) => s.selectProvince);
+
+  const scenario = getScenarioDefinition(id)!;
+  // Statik dünya (adlar, renkler, hedefler) içerikten okunur; motor yalnızca
+  // değişen durumu gönderir.
+  const setup = useMemo(() => loadScenario(id), [id]);
 
   // --- Harita verisi ---
   const owners = useMemo(
@@ -64,7 +85,6 @@ function PlayGame({ id }: { id: string }) {
       ),
     [setup],
   );
-  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // --- Paneller ---
   const objectives = useMemo(() => {
@@ -117,7 +137,7 @@ function PlayGame({ id }: { id: string }) {
             : null
         }
         canEndTurn={!ended && game.events.pending.length === 0}
-        onEndTurn={() => send({ type: 'endTurn' })}
+        onEndTurn={() => void send({ type: 'endTurn' })}
       />
 
       <div className="relative flex-1">
@@ -158,7 +178,7 @@ function PlayGame({ id }: { id: string }) {
             event={shownEvent}
             chosenId={resolved?.choiceId ?? null}
             onChoose={(choiceId) => {
-              send({
+              void send({
                 type: 'chooseEvent',
                 eventId: shownEvent.id,
                 choiceId,

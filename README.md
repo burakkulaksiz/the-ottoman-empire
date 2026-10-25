@@ -47,6 +47,7 @@ src/
   lib/          # Yardımcılar
   stores/       # Zustand store'ları
   types/        # Paylaşılan tipler
+workers/       # Motoru Web Worker'da çalıştıran katman (Comlink)
 infra/          # ESLint import kuralları, lint-staged ayarları
 testing/        # Test kurulumu
 ```

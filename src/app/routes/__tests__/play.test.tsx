@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 
+import { gameStore } from '@/stores/game-store';
+
 import Play, { clientLoader } from '../play';
 
 // MapLibre WebGL gerektirir; jsdom'da harita yerine boş bir kutu çizilir.
@@ -21,6 +23,8 @@ function renderPlay(path: string) {
 }
 
 describe('Play', () => {
+  beforeEach(() => gameStore.getState().reset());
+
   it('lays out the HUD, goals and map for the chosen scenario', async () => {
     renderPlay('/play/kurulus-1299');
 
@@ -39,7 +43,7 @@ describe('Play', () => {
 
     fireEvent.click(await screen.findByRole('button', { name: /turu bitir/i }));
 
-    expect(screen.getByText('Yaz 1299')).toBeInTheDocument();
+    expect(await screen.findByText('Yaz 1299')).toBeInTheDocument();
   });
 
   it('shows an error for an unknown scenario', async () => {

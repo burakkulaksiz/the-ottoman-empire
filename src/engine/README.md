@@ -2,6 +2,8 @@
 
 Saf TypeScript oyun motoru. React, router veya store import edemez (ESLint ile denetlenir); bu sayede ileride Web Worker'da veya sunucuda aynen çalışır.
 
+> Arayüz motoru doğrudan çağırmaz: motor `src/workers` içinde bir Web Worker'da çalışır ve `src/stores/game-store.ts` köprüsü üzerinden kullanılır. Bu yüzden `GameState` yapısal klonlanabilir (düz JSON benzeri) kalmalıdır.
+
 ## Temel kavramlar
 
 - **`World`**: statik dünya (sancaklar, komşuluklar, devletler). İçerikten gelir, kayda yazılmaz.

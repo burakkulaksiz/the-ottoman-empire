@@ -14,14 +14,14 @@
 
 | Bölüm            | Biten  | Toplam |
 | ---------------- | ------ | ------ |
-| A. Altyapı       | 2      | 5      |
+| A. Altyapı       | 3      | 5      |
 | B. Harita        | 2      | 5      |
 | C. Mekanikler    | 5      | 10     |
 | D. Tarih öğrenme | 1      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **11** | **41** |
+| **Toplam**       | **12** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** A3 (durum yönetimi: `/play` içindeki geçici oyun durumunu Zustand store'a taşımak), ardından E2 + B5 (haritadan ordu seçip hareket ettirebilmek).
+**Sıradaki madde:** E2 + B5 (haritada ordu ikonları, ordu seçip hareket ettirme; bölge/ordu paneli)
 
 ---
 
@@ -43,7 +43,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 - [x] **A1. Projeyi kurmak:** Vite, React Router 7 (SPA), TypeScript, Tailwind ve shadcn. ESLint, Prettier ve Husky ayarları ile referans repodaki klasör yapısı.
 - [x] **A2. Oyun motorunun iskeleti:** oyun durumu modeli, komutlar (hamle ve emirler), tur döngüsü ve tohumlu rastgele sayı üreteci (RNG).
-- [ ] **A3. Durum yönetimi:** Zustand ve Immer ile motor ve arayüz arasındaki köprü, Web Worker entegrasyonu.
+- [x] **A3. Durum yönetimi:** Zustand ve Immer ile motor ve arayüz arasındaki köprü, Web Worker entegrasyonu.
+  - _Yapıldı: motor Web Worker'da çalışır (`src/workers`, Comlink); `src/stores/game-store.ts` Zustand + Immer ile anlık görüntüyü, son günlüğü, komut hatasını ve seçili bölgeyi tutar. Komutlar sırayla işlenir. Worker olmayan ortamda (test) aynı kod yerel çalışır. Kayıttan devam için `load` hazır, kayıt yuvaları A4'te._
 - [ ] **A4. Kayıt ve yükleme:** IndexedDB üzerinde, otomatik kayıt ve birden fazla kayıt yuvasıyla.
 - [ ] **A5. Çoklu dil (i18n):** Türkçe ana dil, İngilizce opsiyonel.
 

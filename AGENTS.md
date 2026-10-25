@@ -31,7 +31,7 @@ Bir işi bitmiş saymadan önce **`npm run typecheck`, `npm run lint` ve `npm te
 ## Teknoloji
 
 Vite 8 · React 19 · React Router 7 (**SPA modu**, `ssr: false`) · TypeScript ~5.9 · Tailwind 4 · shadcn/ui (Base UI) · Zustand + Immer · Zod · Vitest + Testing Library.
-Planlananlar: MapLibre GL + PMTiles (B1), Dexie/IndexedDB (A4), Comlink + Web Worker (A3).
+Ayrıca: MapLibre GL (harita), Comlink (motor Worker'da). Planlanan: Dexie/IndexedDB (A4), PMTiles.
 
 TypeScript 7, React Router 8 ve `@vitest/eslint-plugin` bilerek **kullanılmıyor**; sürüm yükseltme.
 
@@ -45,7 +45,8 @@ src/
   content/      Senaryolar, olaylar, ansiklopedi verisi (Zod ile doğrulanır)
   engine/       Saf TypeScript oyun motoru
   features/     Özellik modülleri: features/<ad>/{api,components,hooks,config}
-  hooks/ lib/ stores/ types/   Paylaşılan katmanlar
+  hooks/ lib/ stores/ types/   Paylaşılan katmanlar (stores/game-store.ts: motor köprüsü)
+  workers/      Motoru Web Worker'da çalıştıran katman (Comlink); arayüz yalnızca store üzerinden konuşur
 scripts/        Veri üretim betikleri (ör. build-provinces.mjs; ham veri data-src/, git'te yok)
 infra/          ESLint import kuralları, lint-staged
 testing/        Test kurulumu ve fixture'lar
@@ -60,6 +61,7 @@ testing/        Test kurulumu ve fixture'lar
 
 ### Oyun motoru ilkeleri (detay: [src/engine/README.md](src/engine/README.md))
 
+- Arayüz motoru doğrudan çağırmaz: `useGameStore` (`send`, `start`) → `src/workers` → motor. Motor Worker'da çalıştığı için durum her komuttan sonra yapısal kopya olarak gelir; `GameState` ve `World` yapısal klonlanabilir kalmalı (fonksiyon, sınıf örneği, `Map`/`Set` koyma — düz nesne/dizi kullan).
 - `GameState` düz JSON'dur (kaydedilebilir, karşılaştırılabilir); statik dünya (`World`) kayda yazılmaz.
 - Tek giriş noktası `dispatch(world, state, factionId, command)`; girdi durumu **asla mutasyona uğramaz**, Immer kullanılır.
 - **Determinizm:** `Math.random`, `Date.now()` ve benzeri kullanma. Rastgelelik yalnızca `GameState.rng` / `context.random` üzerinden. Aynı tohum + aynı komutlar = aynı oyun.
