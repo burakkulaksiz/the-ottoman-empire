@@ -3,8 +3,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { APP_NAME } from '@/config/app';
 import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
 import { PROVINCE_META } from '@/content/world/provinces';
-import { objectiveProgress, type GameState } from '@/engine';
+import { legalMoves, objectiveProgress, type GameState } from '@/engine';
 import { EventCard } from '@/features/events/components/event-card';
+import { ArmyPanel } from '@/features/game/components/army-panel';
 import { GameHud } from '@/features/game/components/game-hud';
 import { GameLog } from '@/features/game/components/game-log';
 import { ObjectivesPanel } from '@/features/game/components/objectives-panel';
@@ -13,6 +14,8 @@ import { formatDate } from '@/features/game/config/season-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
 import { useGameStore } from '@/stores/game-store';
+
+import { buildArmyMarkers } from '../lib/army-markers';
 
 import type { Route } from './+types/play';
 
@@ -63,7 +66,9 @@ function PlayGame({ id }: { id: string }) {
 function GameScreen({ id, game }: { id: string; game: GameState }) {
   const send = useGameStore((s) => s.send);
   const selectedId = useGameStore((s) => s.selectedProvinceId);
-  const setSelectedId = useGameStore((s) => s.selectProvince);
+  const selectProvince = useGameStore((s) => s.selectProvince);
+  const selectedArmyId = useGameStore((s) => s.selectedArmyId);
+  const selectArmy = useGameStore((s) => s.selectArmy);
 
   const scenario = getScenarioDefinition(id)!;
   // Statik dünya (adlar, renkler, hedefler) içerikten okunur; motor yalnızca
@@ -85,6 +90,38 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
       ),
     [setup],
   );
+  const armyMarkers = useMemo(
+    () =>
+      buildArmyMarkers(game.armies, {
+        center: (pid) => PROVINCE_META[pid]?.center,
+        provinceName: (pid) => PROVINCE_META[pid]?.name ?? pid,
+        faction: (fid) => setup.world.factions[fid],
+        playerFactionId: game.playerFactionId,
+      }),
+    [game.armies, game.playerFactionId, setup],
+  );
+
+  // --- Emir verme: ordu seç, vurgulanan komşuya tıkla ---
+  const selectedArmy = selectedArmyId ? game.armies[selectedArmyId] : undefined;
+  const destinations = useMemo(
+    () => (selectedArmy ? legalMoves(setup.world, game, selectedArmy.id) : []),
+    [setup, game, selectedArmy],
+  );
+
+  function handleProvinceSelect(provinceId: string | null) {
+    if (selectedArmy && provinceId && destinations.includes(provinceId)) {
+      void send({ type: 'moveArmy', armyId: selectedArmy.id, to: provinceId });
+    }
+    selectArmy(null);
+    selectProvince(provinceId);
+  }
+
+  function handleArmySelect(armyId: string) {
+    const army = game.armies[armyId];
+    if (!army) return;
+    selectProvince(army.provinceId);
+    selectArmy(army.ownerId === game.playerFactionId ? armyId : null);
+  }
 
   // --- Paneller ---
   const objectives = useMemo(() => {
@@ -111,6 +148,17 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
 
   const selected = selectedId ? PROVINCE_META[selectedId] : undefined;
   const ownerId = selectedId ? game.provinces[selectedId]?.ownerId : null;
+  const armiesHere = Object.values(game.armies)
+    .filter((a) => a.provinceId === selectedId)
+    .sort((a, b) => (a.id < b.id ? -1 : 1))
+    .map((a) => ({
+      id: a.id,
+      factionName: names.faction(a.ownerId),
+      units: a.units,
+      morale: a.morale,
+      mine: a.ownerId === game.playerFactionId,
+      selected: a.id === selectedArmyId,
+    }));
 
   // --- Olay kartı: bekleyen ilk olay; karardan sonra sonucu gösterilir ---
   const [resolved, setResolved] = useState<{
@@ -146,7 +194,11 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           owners={owners}
           factionColors={factionColors}
           selectedProvinceId={selectedId}
-          onProvinceSelect={setSelectedId}
+          onProvinceSelect={handleProvinceSelect}
+          armies={armyMarkers}
+          selectedArmyId={selectedArmyId}
+          onArmySelect={handleArmySelect}
+          reachableProvinceIds={destinations}
         />
 
         <div className="pointer-events-none absolute inset-0 flex flex-col justify-between gap-3 p-3 md:flex-row md:items-start">
@@ -161,16 +213,29 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             )}
             <GameLog lines={logLines} />
           </div>
-          {selected && (
-            <div className="md:mr-12">
+          <div className="flex flex-col gap-3 md:mr-12">
+            {selectedArmy && (
+              <ArmyPanel
+                factionName={names.faction(selectedArmy.ownerId)}
+                provinceName={names.province(selectedArmy.provinceId)}
+                units={selectedArmy.units}
+                morale={selectedArmy.morale}
+                movesLeft={selectedArmy.movesLeft}
+                destinationNames={destinations.map(names.province)}
+                onCancel={() => selectArmy(null)}
+              />
+            )}
+            {selected && (
               <ProvincePanel
                 name={selected.name}
                 country={selected.country}
                 ownerName={ownerId ? names.faction(ownerId) : null}
                 neighborNames={selected.neighbors.map(names.province)}
+                armies={armiesHere}
+                onSelectArmy={handleArmySelect}
               />
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {shownEvent && (

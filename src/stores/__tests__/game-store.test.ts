@@ -84,6 +84,16 @@ describe('game store', () => {
     expect(store.getState().selectedProvinceId).toBeNull();
   });
 
+  it('remembers the selected army', async () => {
+    const store = newStore();
+    await store.getState().start('kurulus-1299', { seed: 1 });
+    store.getState().selectArmy('army-1');
+    expect(store.getState().selectedArmyId).toBe('army-1');
+
+    await store.getState().start('kurulus-1299', { seed: 1 });
+    expect(store.getState().selectedArmyId).toBeNull();
+  });
+
   it('remembers the selected province and can be reset', async () => {
     const store = newStore();
     await store.getState().start('kurulus-1299', { seed: 1 });

@@ -12,6 +12,8 @@ import adjacencyData from './province-adjacency.json';
 const provinceMetaSchema = z.object({
   name: z.string(),
   country: z.string(),
+  /** [boylam, enlem]; bölgenin içinde kalan bir nokta (işaretler için). */
+  center: z.tuple([z.number(), z.number()]),
   neighbors: z.array(z.string()),
 });
 

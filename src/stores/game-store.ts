@@ -21,6 +21,8 @@ export interface GameStoreState {
   commandError: CommandError | null;
   loadError: string | null;
   selectedProvinceId: string | null;
+  /** Emir vermek için seçilen ordu (oyuncunun). */
+  selectedArmyId: string | null;
 }
 
 export interface GameStoreActions {
@@ -29,6 +31,7 @@ export interface GameStoreActions {
   /** Oyuncu komutu gönderir; komutlar sırayla işlenir. */
   send(command: Command): Promise<void>;
   selectProvince(provinceId: string | null): void;
+  selectArmy(armyId: string | null): void;
   reset(): void;
 }
 
@@ -42,6 +45,7 @@ const initialState: GameStoreState = {
   commandError: null,
   loadError: null,
   selectedProvinceId: null,
+  selectedArmyId: null,
 };
 
 /** Oyun kuralı değil, oyuncuya özel rastgelelik: motor dışında seçilir. */
@@ -115,6 +119,11 @@ export function createGameStore(createEngine: () => EngineClient) {
       selectProvince: (provinceId) =>
         set((s) => {
           s.selectedProvinceId = provinceId;
+        }),
+
+      selectArmy: (armyId) =>
+        set((s) => {
+          s.selectedArmyId = armyId;
         }),
 
       reset: () => set(initialState),

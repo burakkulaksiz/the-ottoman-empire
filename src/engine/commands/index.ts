@@ -1,5 +1,5 @@
 import type { ExecuteContext } from '../context';
-import type { FactionId, GameState, World } from '../types';
+import type { FactionId, GameState, ProvinceId, World } from '../types';
 
 import { executeMoveArmy, validateMoveArmy } from './move-army';
 import type { ActionCommand, CommandError } from './types';
@@ -27,6 +27,27 @@ export function executeAction(
     case 'moveArmy':
       return executeMoveArmy(context, factionId, command);
   }
+}
+
+/**
+ * Ordunun şu an gidebileceği komşu bölgeler (arayüz bunları vurgular).
+ * Her aday `moveArmy` doğrulamasından geçirilir, kurallar tek yerde kalır.
+ */
+export function legalMoves(
+  world: World,
+  state: GameState,
+  armyId: string,
+): ProvinceId[] {
+  const army = state.armies[armyId];
+  if (!army) return [];
+  return (world.provinces[army.provinceId]?.neighbors ?? []).filter(
+    (to) =>
+      validateAction(world, state, army.ownerId, {
+        type: 'moveArmy',
+        armyId,
+        to,
+      }) === null,
+  );
 }
 
 /** Doğrular ve geçerliyse uygular. Yapay zekâ hamleleri bu yoldan geçer. */

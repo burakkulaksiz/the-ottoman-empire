@@ -1,4 +1,4 @@
-import type { Map as MapLibreMap } from 'maplibre-gl';
+import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef, useState } from 'react';
 
@@ -15,6 +15,11 @@ import {
   PROVINCE_FILL_LAYER,
   PROVINCE_SOURCE,
 } from '../config/province-style';
+import {
+  createArmyMarkerElement,
+  markerOffset,
+  type ArmyMarker,
+} from '../lib/create-army-marker';
 
 type GameMapProps = {
   className?: string;
@@ -23,6 +28,12 @@ type GameMapProps = {
   /** Devlet kimliği → harita rengi. */
   factionColors?: Record<string, string>;
   selectedProvinceId?: string | null;
+  /** Haritada gösterilecek ordular. */
+  armies?: ArmyMarker[];
+  selectedArmyId?: string | null;
+  onArmySelect?: (armyId: string) => void;
+  /** Seçili ordunun gidebileceği bölgeler (vurgulanır). */
+  reachableProvinceIds?: string[];
   /** Bir bölgeye tıklanınca; boş yere tıklanınca `null`. */
   onProvinceSelect?: (provinceId: string | null) => void;
   onReady?: (map: MapLibreMap) => void;
@@ -30,6 +41,8 @@ type GameMapProps = {
 
 const NO_OWNERS: Record<string, string | null> = {};
 const NO_COLORS: Record<string, string> = {};
+const NO_ARMIES: ArmyMarker[] = [];
+const NO_IDS: string[] = [];
 
 function provinceIdAt(map: MapLibreMap, point: { x: number; y: number }) {
   const feature = map.queryRenderedFeatures([point.x, point.y], {
@@ -44,6 +57,10 @@ export function GameMap({
   owners = NO_OWNERS,
   factionColors = NO_COLORS,
   selectedProvinceId = null,
+  armies = NO_ARMIES,
+  selectedArmyId = null,
+  onArmySelect,
+  reachableProvinceIds = NO_IDS,
   onProvinceSelect,
   onReady,
 }: GameMapProps) {
@@ -51,10 +68,11 @@ export function GameMap({
   const [map, setMap] = useState<MapLibreMap | null>(null);
 
   // Olay işleyicileri harita yeniden kurulmadan güncel kalsın.
-  const callbacks = useRef({ onProvinceSelect, onReady });
+  const callbacks = useRef({ onProvinceSelect, onArmySelect, onReady });
   useEffect(() => {
-    callbacks.current = { onProvinceSelect, onReady };
-  }, [onProvinceSelect, onReady]);
+    callbacks.current = { onProvinceSelect, onArmySelect, onReady };
+  }, [onProvinceSelect, onArmySelect, onReady]);
+  const markerClass = useRef<typeof Marker | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -83,8 +101,9 @@ export function GameMap({
     };
 
     // MapLibre `window`'a bağlıdır; yalnızca tarayıcıda yüklenir.
-    void import('maplibre-gl').then(({ Map, NavigationControl }) => {
+    void import('maplibre-gl').then(({ Map, Marker, NavigationControl }) => {
       if (cancelled) return;
+      markerClass.current = Marker;
       const created = new Map({
         container,
         style: createMapStyle(),
@@ -143,6 +162,46 @@ export function GameMap({
       }
     };
   }, [map, selectedProvinceId]);
+
+  useEffect(() => {
+    if (!map || reachableProvinceIds.length === 0) return;
+    const targets = reachableProvinceIds.map((id) => ({
+      source: PROVINCE_SOURCE,
+      id,
+    }));
+    for (const target of targets)
+      map.setFeatureState(target, { reachable: true });
+    return () => {
+      try {
+        for (const target of targets) {
+          map.setFeatureState(target, { reachable: false });
+        }
+      } catch {
+        // Harita zaten kaldırılmış.
+      }
+    };
+  }, [map, reachableProvinceIds]);
+
+  // Ordu işaretleri: HTML öğeleri, her değişiklikte baştan kurulur (az sayıda).
+  useEffect(() => {
+    const MarkerClass = markerClass.current;
+    if (!map || !MarkerClass) return;
+    const markers = armies.map((army) =>
+      new MarkerClass({
+        element: createArmyMarkerElement(
+          army,
+          army.id === selectedArmyId,
+          (id) => callbacks.current.onArmySelect?.(id),
+        ),
+        offset: markerOffset(army.index, army.count),
+      })
+        .setLngLat(army.position)
+        .addTo(map),
+    );
+    return () => {
+      for (const marker of markers) marker.remove();
+    };
+  }, [map, armies, selectedArmyId]);
 
   return (
     <div

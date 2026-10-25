@@ -2,11 +2,13 @@
   "alb-berat": {
     "name": "Berat ili",
     "country": "Arnavutluk",
+    "center": [20.039, 40.644],
     "neighbors": ["alb-elbasan", "alb-fier", "alb-gjirokaster", "alb-korce"]
   },
   "alb-diber": {
     "name": "Debre ili",
     "country": "Arnavutluk",
+    "center": [20.232, 41.592],
     "neighbors": [
       "alb-durres",
       "alb-elbasan",
@@ -19,11 +21,13 @@
   "alb-durres": {
     "name": "Dıraç ili",
     "country": "Arnavutluk",
+    "center": [19.538, 41.4],
     "neighbors": ["alb-diber", "alb-lezhe", "alb-tirana"]
   },
   "alb-elbasan": {
     "name": "Elbasan ili",
     "country": "Arnavutluk",
+    "center": [20.19, 41.051],
     "neighbors": [
       "alb-berat",
       "alb-diber",
@@ -36,6 +40,7 @@
   "alb-fier": {
     "name": "Fier ili",
     "country": "Arnavutluk",
+    "center": [19.592, 40.761],
     "neighbors": [
       "alb-berat",
       "alb-elbasan",
@@ -47,6 +52,7 @@
   "alb-gjirokaster": {
     "name": "Ergiri ili",
     "country": "Arnavutluk",
+    "center": [20.164, 40.206],
     "neighbors": [
       "alb-berat",
       "alb-fier",
@@ -58,6 +64,7 @@
   "alb-korce": {
     "name": "Görice ili",
     "country": "Arnavutluk",
+    "center": [20.66, 40.63],
     "neighbors": [
       "alb-berat",
       "alb-elbasan",
@@ -70,6 +77,7 @@
   "alb-kukes": {
     "name": "Kukës ili",
     "country": "Arnavutluk",
+    "center": [20.398, 42.071],
     "neighbors": [
       "alb-diber",
       "alb-lezhe",
@@ -82,11 +90,13 @@
   "alb-lezhe": {
     "name": "Leç ili",
     "country": "Arnavutluk",
+    "center": [19.848, 41.809],
     "neighbors": ["alb-diber", "alb-durres", "alb-kukes", "alb-shkoder"]
   },
   "alb-shkoder": {
     "name": "İşkodra ili",
     "country": "Arnavutluk",
+    "center": [19.63, 42.149],
     "neighbors": [
       "alb-kukes",
       "alb-lezhe",
@@ -100,16 +110,19 @@
   "alb-tirana": {
     "name": "Tiran ili",
     "country": "Arnavutluk",
+    "center": [19.79, 41.269],
     "neighbors": ["alb-diber", "alb-durres", "alb-elbasan", "alb-fier"]
   },
   "alb-vlore": {
     "name": "Avlonya ili",
     "country": "Arnavutluk",
+    "center": [19.642, 40.287],
     "neighbors": ["alb-fier", "alb-gjirokaster", "grc-epirus"]
   },
   "arm-aragatsotn": {
     "name": "Aragatsotn",
     "country": "Ermenistan",
+    "center": [44.237, 40.374],
     "neighbors": [
       "arm-armavir",
       "arm-kotayk",
@@ -122,6 +135,7 @@
   "arm-ararat": {
     "name": "Ararat İli",
     "country": "Ermenistan",
+    "center": [44.814, 39.921],
     "neighbors": [
       "arm-armavir",
       "arm-gegharkunik",
@@ -134,6 +148,7 @@
   "arm-armavir": {
     "name": "Armavir İdari Bölgesi",
     "country": "Ermenistan",
+    "center": [43.969, 40.109],
     "neighbors": [
       "arm-aragatsotn",
       "arm-ararat",
@@ -145,11 +160,13 @@
   "arm-gegharkunik": {
     "name": "Geğarkunik",
     "country": "Ermenistan",
+    "center": [45.317, 40.277],
     "neighbors": ["arm-ararat", "arm-kotayk", "arm-tavush", "arm-vayots-dzor"]
   },
   "arm-kotayk": {
     "name": "Kotayk",
     "country": "Ermenistan",
+    "center": [44.692, 40.381],
     "neighbors": [
       "arm-aragatsotn",
       "arm-ararat",
@@ -162,6 +179,7 @@
   "arm-lori": {
     "name": "Lori",
     "country": "Ermenistan",
+    "center": [44.458, 40.962],
     "neighbors": [
       "arm-aragatsotn",
       "arm-kotayk",
@@ -173,6 +191,7 @@
   "arm-shirak": {
     "name": "Şirak İdari Bölgesi",
     "country": "Ermenistan",
+    "center": [43.849, 40.893],
     "neighbors": [
       "arm-aragatsotn",
       "arm-lori",
@@ -183,11 +202,13 @@
   "arm-syunik": {
     "name": "Syunik ili",
     "country": "Ermenistan",
+    "center": [46.143, 39.349],
     "neighbors": ["arm-vayots-dzor", "irn-east-azerbaijan"]
   },
   "arm-tavush": {
     "name": "Tavuş",
     "country": "Ermenistan",
+    "center": [45.117, 40.901],
     "neighbors": [
       "arm-gegharkunik",
       "arm-kotayk",
@@ -198,16 +219,19 @@
   "arm-vayots-dzor": {
     "name": "Vayots Dzor",
     "country": "Ermenistan",
+    "center": [45.444, 39.75],
     "neighbors": ["arm-ararat", "arm-gegharkunik", "arm-syunik"]
   },
   "arm-yerevan": {
     "name": "Erivan",
     "country": "Ermenistan",
+    "center": [44.534, 40.148],
     "neighbors": ["arm-aragatsotn", "arm-ararat", "arm-armavir", "arm-kotayk"]
   },
   "bgr-blagoevgrad": {
     "name": "Yukarı Cuma ili",
     "country": "Bulgaristan",
+    "center": [23.438, 41.723],
     "neighbors": [
       "bgr-kyustendil",
       "bgr-pazardzhik",
@@ -221,6 +245,7 @@
   "bgr-burgas": {
     "name": "Burgaz ili",
     "country": "Bulgaristan",
+    "center": [27.21, 42.6],
     "neighbors": [
       "bgr-shumen",
       "bgr-sliven",
@@ -232,11 +257,13 @@
   "bgr-dobrich": {
     "name": "Dobriç ili",
     "country": "Bulgaristan",
+    "center": [27.92, 43.633],
     "neighbors": ["bgr-shumen", "bgr-silistra", "bgr-varna", "rou-constanta"]
   },
   "bgr-gabrovo": {
     "name": "Gabrova ili",
     "country": "Bulgaristan",
+    "center": [25.216, 42.931],
     "neighbors": [
       "bgr-lovech",
       "bgr-plovdiv",
@@ -247,6 +274,7 @@
   "bgr-haskovo": {
     "name": "Hasköy ili",
     "country": "Bulgaristan",
+    "center": [25.835, 41.875],
     "neighbors": [
       "bgr-kardzhali",
       "bgr-plovdiv",
@@ -259,6 +287,7 @@
   "bgr-kardzhali": {
     "name": "Kırcaali ili",
     "country": "Bulgaristan",
+    "center": [25.432, 41.501],
     "neighbors": [
       "bgr-haskovo",
       "bgr-plovdiv",
@@ -269,6 +298,7 @@
   "bgr-kyustendil": {
     "name": "Köstendil ili",
     "country": "Bulgaristan",
+    "center": [22.789, 42.207],
     "neighbors": [
       "bgr-blagoevgrad",
       "bgr-pernik",
@@ -280,6 +310,7 @@
   "bgr-lovech": {
     "name": "Lofça ili",
     "country": "Bulgaristan",
+    "center": [24.629, 42.993],
     "neighbors": [
       "bgr-gabrovo",
       "bgr-pleven",
@@ -292,6 +323,7 @@
   "bgr-montana": {
     "name": "Montana ili",
     "country": "Bulgaristan",
+    "center": [23.21, 43.516],
     "neighbors": [
       "bgr-sofia",
       "bgr-vidin",
@@ -303,11 +335,13 @@
   "bgr-pazardzhik": {
     "name": "Pazarcık ili",
     "country": "Bulgaristan",
+    "center": [24.177, 42.133],
     "neighbors": ["bgr-blagoevgrad", "bgr-plovdiv", "bgr-smolyan", "bgr-sofia"]
   },
   "bgr-pernik": {
     "name": "Pernik ili",
     "country": "Bulgaristan",
+    "center": [22.849, 42.62],
     "neighbors": [
       "bgr-kyustendil",
       "bgr-sofia",
@@ -320,6 +354,7 @@
   "bgr-pleven": {
     "name": "Plevne ili",
     "country": "Bulgaristan",
+    "center": [24.617, 43.514],
     "neighbors": [
       "bgr-lovech",
       "bgr-veliko-tarnovo",
@@ -331,6 +366,7 @@
   "bgr-plovdiv": {
     "name": "Filibe ili",
     "country": "Bulgaristan",
+    "center": [24.806, 42.291],
     "neighbors": [
       "bgr-gabrovo",
       "bgr-haskovo",
@@ -345,11 +381,13 @@
   "bgr-razgrad": {
     "name": "Razgrad ili",
     "country": "Bulgaristan",
+    "center": [26.568, 43.657],
     "neighbors": ["bgr-ruse", "bgr-shumen", "bgr-silistra", "bgr-targovishte"]
   },
   "bgr-ruse": {
     "name": "Rusçuk ili",
     "country": "Bulgaristan",
+    "center": [25.96, 43.663],
     "neighbors": [
       "bgr-razgrad",
       "bgr-silistra",
@@ -362,6 +400,7 @@
   "bgr-shumen": {
     "name": "Şumnu ili",
     "country": "Bulgaristan",
+    "center": [26.974, 43.297],
     "neighbors": [
       "bgr-burgas",
       "bgr-dobrich",
@@ -375,6 +414,7 @@
   "bgr-silistra": {
     "name": "Silistre ili",
     "country": "Bulgaristan",
+    "center": [27.02, 43.949],
     "neighbors": [
       "bgr-dobrich",
       "bgr-razgrad",
@@ -388,6 +428,7 @@
   "bgr-sliven": {
     "name": "Sliven ili",
     "country": "Bulgaristan",
+    "center": [26.199, 42.65],
     "neighbors": [
       "bgr-burgas",
       "bgr-shumen",
@@ -400,6 +441,7 @@
   "bgr-smolyan": {
     "name": "Smolyan ili",
     "country": "Bulgaristan",
+    "center": [24.708, 41.676],
     "neighbors": [
       "bgr-blagoevgrad",
       "bgr-kardzhali",
@@ -411,6 +453,7 @@
   "bgr-sofia": {
     "name": "Sofya ili",
     "country": "Bulgaristan",
+    "center": [23.804, 42.764],
     "neighbors": [
       "bgr-blagoevgrad",
       "bgr-kyustendil",
@@ -427,11 +470,13 @@
   "bgr-sofia-2": {
     "name": "Grad Sofiya",
     "country": "Bulgaristan",
+    "center": [23.363, 42.675],
     "neighbors": ["bgr-pernik", "bgr-sofia"]
   },
   "bgr-stara-zagora": {
     "name": "Eski Zağra ili",
     "country": "Bulgaristan",
+    "center": [25.517, 42.443],
     "neighbors": [
       "bgr-gabrovo",
       "bgr-haskovo",
@@ -444,6 +489,7 @@
   "bgr-targovishte": {
     "name": "Eski Cuma ili",
     "country": "Bulgaristan",
+    "center": [26.338, 43.238],
     "neighbors": [
       "bgr-razgrad",
       "bgr-ruse",
@@ -455,11 +501,13 @@
   "bgr-varna": {
     "name": "Varna ili",
     "country": "Bulgaristan",
+    "center": [27.579, 43.186],
     "neighbors": ["bgr-burgas", "bgr-dobrich", "bgr-shumen"]
   },
   "bgr-veliko-tarnovo": {
     "name": "Veliko Tırnovo ili",
     "country": "Bulgaristan",
+    "center": [25.759, 43.145],
     "neighbors": [
       "bgr-gabrovo",
       "bgr-lovech",
@@ -474,6 +522,7 @@
   "bgr-vidin": {
     "name": "Vidin ili",
     "country": "Bulgaristan",
+    "center": [22.659, 43.795],
     "neighbors": [
       "bgr-montana",
       "rou-dolj",
@@ -486,6 +535,7 @@
   "bgr-vratsa": {
     "name": "Vratsa ili",
     "country": "Bulgaristan",
+    "center": [23.841, 43.476],
     "neighbors": [
       "bgr-lovech",
       "bgr-montana",
@@ -498,6 +548,7 @@
   "bgr-yambol": {
     "name": "Yambol ili",
     "country": "Bulgaristan",
+    "center": [26.603, 42.255],
     "neighbors": [
       "bgr-burgas",
       "bgr-haskovo",
@@ -510,6 +561,7 @@
   "bih-banja-luka": {
     "name": "Banja Luka",
     "country": "Bosna-Hersek",
+    "center": [17.174, 44.774],
     "neighbors": [
       "bih-central-bosnia-canton",
       "bih-doboj",
@@ -523,6 +575,7 @@
   "bih-bijeljina": {
     "name": "Bijeljina",
     "country": "Bosna-Hersek",
+    "center": [19.097, 44.745],
     "neighbors": [
       "bih-brcko",
       "bih-tuzla-canton",
@@ -535,11 +588,13 @@
   "bih-bosnian-podrinje-canton": {
     "name": "Bosna-Podrinje Kantonu",
     "country": "Bosna-Hersek",
+    "center": [18.823, 43.671],
     "neighbors": ["bih-foca", "bih-sarajevo-canton", "bih-sarajevo-romanija"]
   },
   "bih-brcko": {
     "name": "Brçko Bölgesi",
     "country": "Bosna-Hersek",
+    "center": [18.843, 44.818],
     "neighbors": [
       "bih-bijeljina",
       "bih-doboj",
@@ -551,6 +606,7 @@
   "bih-central-bosnia-canton": {
     "name": "Merkez Bosna Kantonu",
     "country": "Bosna-Hersek",
+    "center": [17.592, 44.099],
     "neighbors": [
       "bih-banja-luka",
       "bih-herzegovina-neretva-canton",
@@ -562,6 +618,7 @@
   "bih-doboj": {
     "name": "Doboj",
     "country": "Bosna-Hersek",
+    "center": [18.047, 44.946],
     "neighbors": [
       "bih-banja-luka",
       "bih-brcko",
@@ -574,6 +631,7 @@
   "bih-foca": {
     "name": "Foča",
     "country": "Bosna-Hersek",
+    "center": [18.705, 43.433],
     "neighbors": [
       "bih-bosnian-podrinje-canton",
       "bih-herzegovina-neretva-canton",
@@ -590,6 +648,7 @@
   "bih-herzegovina-neretva-canton": {
     "name": "Hersek-Neretva Kantonu",
     "country": "Bosna-Hersek",
+    "center": [17.861, 43.541],
     "neighbors": [
       "bih-central-bosnia-canton",
       "bih-foca",
@@ -603,6 +662,7 @@
   "bih-livno": {
     "name": "Batı Bosna",
     "country": "Bosna-Hersek",
+    "center": [16.869, 43.981],
     "neighbors": [
       "bih-banja-luka",
       "bih-central-bosnia-canton",
@@ -616,6 +676,7 @@
   "bih-posavina-canton": {
     "name": "Posavina Kantonu",
     "country": "Bosna-Hersek",
+    "center": [18.659, 45.008],
     "neighbors": [
       "bih-brcko",
       "bih-doboj",
@@ -626,6 +687,7 @@
   "bih-sarajevo-canton": {
     "name": "Saraybosna Kantonu",
     "country": "Bosna-Hersek",
+    "center": [18.262, 43.79],
     "neighbors": [
       "bih-bosnian-podrinje-canton",
       "bih-central-bosnia-canton",
@@ -638,6 +700,7 @@
   "bih-sarajevo-romanija": {
     "name": "Sarajevo-romanija",
     "country": "Bosna-Hersek",
+    "center": [18.812, 43.923],
     "neighbors": [
       "bih-bosnian-podrinje-canton",
       "bih-foca",
@@ -649,6 +712,7 @@
   "bih-trebinje": {
     "name": "Trebinje",
     "country": "Bosna-Hersek",
+    "center": [18.269, 43.073],
     "neighbors": [
       "bih-foca",
       "bih-herzegovina-neretva-canton",
@@ -662,6 +726,7 @@
   "bih-tuzla-canton": {
     "name": "Tuzla Kantonu",
     "country": "Bosna-Hersek",
+    "center": [18.568, 44.551],
     "neighbors": [
       "bih-bijeljina",
       "bih-brcko",
@@ -673,6 +738,7 @@
   "bih-una-sana-canton": {
     "name": "Una-Sana Kantonu",
     "country": "Bosna-Hersek",
+    "center": [16.25, 44.691],
     "neighbors": [
       "bih-banja-luka",
       "bih-livno",
@@ -684,6 +750,7 @@
   "bih-vlasenica": {
     "name": "Vlasenica",
     "country": "Bosna-Hersek",
+    "center": [19.007, 44.223],
     "neighbors": [
       "bih-bijeljina",
       "bih-foca",
@@ -697,6 +764,7 @@
   "bih-west-herzegovina-canton": {
     "name": "Batı Hersek Kantonu",
     "country": "Bosna-Hersek",
+    "center": [17.463, 43.381],
     "neighbors": [
       "bih-herzegovina-neretva-canton",
       "bih-livno",
@@ -707,6 +775,7 @@
   "bih-zenica-doboj-canton": {
     "name": "Zenica-Doboj Kantonu",
     "country": "Bosna-Hersek",
+    "center": [18.14, 44.281],
     "neighbors": [
       "bih-banja-luka",
       "bih-central-bosnia-canton",
@@ -720,11 +789,13 @@
   "cyp": {
     "name": "Kıbrıs",
     "country": "Kıbrıs",
+    "center": [33.224, 35.055],
     "neighbors": []
   },
   "dza-adrar": {
     "name": "Adrar Vilayeti",
     "country": "Cezayir",
+    "center": [-1.072, 25.405],
     "neighbors": [
       "dza-bechar",
       "dza-el-bayadh",
@@ -736,6 +807,7 @@
   "dza-ain-defla": {
     "name": "Ayn el Defla Vilayeti",
     "country": "Cezayir",
+    "center": [2.081, 36.176],
     "neighbors": [
       "dza-blida",
       "dza-chlef",
@@ -747,21 +819,25 @@
   "dza-ain-temouchent": {
     "name": "Ayn Temuşent Vilayeti",
     "country": "Cezayir",
+    "center": [-1.021, 35.28],
     "neighbors": ["dza-oran", "dza-sidi-bel-abbes", "dza-tlemcen"]
   },
   "dza-algiers": {
     "name": "Cezayir Vilayeti",
     "country": "Cezayir",
+    "center": [3.104, 36.709],
     "neighbors": ["dza-blida", "dza-boumerdes", "dza-tipasa"]
   },
   "dza-annaba": {
     "name": "Annaba Vilayeti",
     "country": "Cezayir",
+    "center": [7.524, 36.853],
     "neighbors": ["dza-el-tarf", "dza-guelma", "dza-skikda"]
   },
   "dza-batna": {
     "name": "Batna Vilayeti",
     "country": "Cezayir",
+    "center": [6.026, 35.557],
     "neighbors": [
       "dza-biskra",
       "dza-khenchela",
@@ -774,11 +850,13 @@
   "dza-bechar": {
     "name": "Beşar Vilayeti",
     "country": "Cezayir",
+    "center": [-2.239, 30.229],
     "neighbors": ["dza-adrar", "dza-el-bayadh", "dza-naama", "dza-tindouf"]
   },
   "dza-bejaia": {
     "name": "Becaye Vilayeti",
     "country": "Cezayir",
+    "center": [4.799, 36.614],
     "neighbors": [
       "dza-bordj-bou-arreridj",
       "dza-bouira",
@@ -790,6 +868,7 @@
   "dza-biskra": {
     "name": "Biskra Vilayeti",
     "country": "Cezayir",
+    "center": [4.791, 34.417],
     "neighbors": [
       "dza-batna",
       "dza-djelfa",
@@ -801,6 +880,7 @@
   "dza-blida": {
     "name": "Blida Vilayeti",
     "country": "Cezayir",
+    "center": [3.003, 36.522],
     "neighbors": [
       "dza-ain-defla",
       "dza-algiers",
@@ -813,11 +893,13 @@
   "dza-bordj-bou-arreridj": {
     "name": "Burc Bu Ariric Vilayeti",
     "country": "Cezayir",
+    "center": [4.732, 36.077],
     "neighbors": ["dza-bejaia", "dza-bouira", "dza-m-sila", "dza-setif"]
   },
   "dza-bouira": {
     "name": "Buira Vilayeti",
     "country": "Cezayir",
+    "center": [3.836, 36.238],
     "neighbors": [
       "dza-bejaia",
       "dza-blida",
@@ -831,11 +913,13 @@
   "dza-boumerdes": {
     "name": "Bumerdas Vilayeti",
     "country": "Cezayir",
+    "center": [3.74, 36.761],
     "neighbors": ["dza-algiers", "dza-blida", "dza-bouira", "dza-tizi-ouzou"]
   },
   "dza-chlef": {
     "name": "Şelf Vilayeti",
     "country": "Cezayir",
+    "center": [1.261, 36.232],
     "neighbors": [
       "dza-ain-defla",
       "dza-mostaganem",
@@ -847,11 +931,13 @@
   "dza-constantine": {
     "name": "Konstantine Vilayeti",
     "country": "Cezayir",
+    "center": [6.686, 36.347],
     "neighbors": ["dza-guelma", "dza-mila", "dza-oum-el-bouaghi", "dza-skikda"]
   },
   "dza-djelfa": {
     "name": "Celfa Vilayeti",
     "country": "Cezayir",
+    "center": [3.163, 34.714],
     "neighbors": [
       "dza-biskra",
       "dza-el-oued",
@@ -866,6 +952,7 @@
   "dza-el-bayadh": {
     "name": "El Beyaz Vilayeti",
     "country": "Cezayir",
+    "center": [1.004, 32.57],
     "neighbors": [
       "dza-adrar",
       "dza-bechar",
@@ -879,6 +966,7 @@
   "dza-el-oued": {
     "name": "El Vadi Vilayeti",
     "country": "Cezayir",
+    "center": [7.061, 33.263],
     "neighbors": [
       "dza-biskra",
       "dza-djelfa",
@@ -893,11 +981,13 @@
   "dza-el-tarf": {
     "name": "El Tarif Vilayeti",
     "country": "Cezayir",
+    "center": [8.12, 36.719],
     "neighbors": ["dza-annaba", "dza-guelma", "dza-souk-ahras", "tun-jendouba"]
   },
   "dza-ghardaia": {
     "name": "Gardaye Vilayeti",
     "country": "Cezayir",
+    "center": [3.117, 31.162],
     "neighbors": [
       "dza-adrar",
       "dza-djelfa",
@@ -910,6 +1000,7 @@
   "dza-guelma": {
     "name": "Kalime Vilayeti",
     "country": "Cezayir",
+    "center": [7.4, 36.403],
     "neighbors": [
       "dza-annaba",
       "dza-constantine",
@@ -922,6 +1013,7 @@
   "dza-illizi": {
     "name": "İlizi Vilayeti",
     "country": "Cezayir",
+    "center": [8.116, 26.953],
     "neighbors": [
       "dza-ouargla",
       "dza-tamanghasset",
@@ -934,11 +1026,13 @@
   "dza-jijel": {
     "name": "Cicel Vilayeti",
     "country": "Cezayir",
+    "center": [5.876, 36.687],
     "neighbors": ["dza-bejaia", "dza-mila", "dza-setif", "dza-skikda"]
   },
   "dza-khenchela": {
     "name": "Henşle Vilayeti",
     "country": "Cezayir",
+    "center": [6.911, 35.046],
     "neighbors": [
       "dza-batna",
       "dza-biskra",
@@ -950,11 +1044,13 @@
   "dza-laghouat": {
     "name": "Lagvat Vilayeti",
     "country": "Cezayir",
+    "center": [2.725, 33.392],
     "neighbors": ["dza-djelfa", "dza-el-bayadh", "dza-ghardaia", "dza-tiaret"]
   },
   "dza-m-sila": {
     "name": "M'Sila Vilayeti",
     "country": "Cezayir",
+    "center": [4.277, 35.301],
     "neighbors": [
       "dza-batna",
       "dza-biskra",
@@ -968,6 +1064,7 @@
   "dza-mascara": {
     "name": "Muaskar Vilayeti",
     "country": "Cezayir",
+    "center": [0.13, 35.376],
     "neighbors": [
       "dza-mostaganem",
       "dza-oran",
@@ -980,6 +1077,7 @@
   "dza-medea": {
     "name": "Mediye Vilayeti",
     "country": "Cezayir",
+    "center": [3.068, 36.073],
     "neighbors": [
       "dza-ain-defla",
       "dza-blida",
@@ -993,6 +1091,7 @@
   "dza-mila": {
     "name": "Mila Vilayeti",
     "country": "Cezayir",
+    "center": [6.129, 36.282],
     "neighbors": [
       "dza-batna",
       "dza-constantine",
@@ -1005,11 +1104,13 @@
   "dza-mostaganem": {
     "name": "Mostaganem Vilayeti",
     "country": "Cezayir",
+    "center": [0.296, 35.98],
     "neighbors": ["dza-chlef", "dza-mascara", "dza-oran", "dza-relizane"]
   },
   "dza-naama": {
     "name": "Niame Vilayeti",
     "country": "Cezayir",
+    "center": [-0.783, 33.274],
     "neighbors": [
       "dza-bechar",
       "dza-el-bayadh",
@@ -1021,6 +1122,7 @@
   "dza-oran": {
     "name": "Oran Vilayeti",
     "country": "Cezayir",
+    "center": [-0.621, 35.599],
     "neighbors": [
       "dza-ain-temouchent",
       "dza-mascara",
@@ -1031,6 +1133,7 @@
   "dza-ouargla": {
     "name": "Vurkla Vilayeti",
     "country": "Cezayir",
+    "center": [6.157, 30.563],
     "neighbors": [
       "dza-djelfa",
       "dza-el-oued",
@@ -1044,6 +1147,7 @@
   "dza-oum-el-bouaghi": {
     "name": "Em El Buvaki Vilayeti",
     "country": "Cezayir",
+    "center": [7.083, 35.831],
     "neighbors": [
       "dza-batna",
       "dza-constantine",
@@ -1057,6 +1161,7 @@
   "dza-relizane": {
     "name": "Relizane Vilayeti",
     "country": "Cezayir",
+    "center": [0.801, 35.793],
     "neighbors": [
       "dza-chlef",
       "dza-mascara",
@@ -1068,6 +1173,7 @@
   "dza-saida": {
     "name": "Saida Vilayeti",
     "country": "Cezayir",
+    "center": [0.287, 34.599],
     "neighbors": [
       "dza-el-bayadh",
       "dza-mascara",
@@ -1079,6 +1185,7 @@
   "dza-setif": {
     "name": "Setif Vilayeti",
     "country": "Cezayir",
+    "center": [5.528, 36.12],
     "neighbors": [
       "dza-batna",
       "dza-bejaia",
@@ -1091,6 +1198,7 @@
   "dza-sidi-bel-abbes": {
     "name": "Sidi Belabbas Vilayeti",
     "country": "Cezayir",
+    "center": [-0.5, 34.629],
     "neighbors": [
       "dza-ain-temouchent",
       "dza-mascara",
@@ -1103,6 +1211,7 @@
   "dza-skikda": {
     "name": "Sekikda Vilayeti",
     "country": "Cezayir",
+    "center": [6.799, 36.76],
     "neighbors": [
       "dza-annaba",
       "dza-constantine",
@@ -1114,6 +1223,7 @@
   "dza-souk-ahras": {
     "name": "Sevk Ahras Vilayeti",
     "country": "Cezayir",
+    "center": [7.879, 36.124],
     "neighbors": [
       "dza-el-tarf",
       "dza-guelma",
@@ -1126,6 +1236,7 @@
   "dza-tamanghasset": {
     "name": "Tamanrasset Vilayeti",
     "country": "Cezayir",
+    "center": [4.71, 23.777],
     "neighbors": [
       "dza-adrar",
       "dza-ghardaia",
@@ -1137,6 +1248,7 @@
   "dza-tebessa": {
     "name": "Tebesa Vilayeti",
     "country": "Cezayir",
+    "center": [7.811, 35.005],
     "neighbors": [
       "dza-el-oued",
       "dza-khenchela",
@@ -1151,6 +1263,7 @@
   "dza-tiaret": {
     "name": "Tiyaret Vilayeti",
     "country": "Cezayir",
+    "center": [1.516, 34.957],
     "neighbors": [
       "dza-djelfa",
       "dza-el-bayadh",
@@ -1165,16 +1278,19 @@
   "dza-tindouf": {
     "name": "Tinduf Vilayeti",
     "country": "Cezayir",
+    "center": [-6.441, 27.533],
     "neighbors": ["dza-adrar", "dza-bechar"]
   },
   "dza-tipasa": {
     "name": "Tibaze Vilayeti",
     "country": "Cezayir",
+    "center": [2.312, 36.532],
     "neighbors": ["dza-ain-defla", "dza-algiers", "dza-blida", "dza-chlef"]
   },
   "dza-tissemsilt": {
     "name": "Tissemsilt Vilayeti",
     "country": "Cezayir",
+    "center": [1.789, 35.718],
     "neighbors": [
       "dza-ain-defla",
       "dza-chlef",
@@ -1186,16 +1302,19 @@
   "dza-tizi-ouzou": {
     "name": "Tizi Vuzu Vilayeti",
     "country": "Cezayir",
+    "center": [4.223, 36.681],
     "neighbors": ["dza-bejaia", "dza-bouira", "dza-boumerdes"]
   },
   "dza-tlemcen": {
     "name": "Tlemsan Vilayeti",
     "country": "Cezayir",
+    "center": [-1.388, 34.733],
     "neighbors": ["dza-ain-temouchent", "dza-naama", "dza-sidi-bel-abbes"]
   },
   "egy-al-sharqia": {
     "name": "Şarkiye",
     "country": "Mısır",
+    "center": [31.833, 30.769],
     "neighbors": [
       "egy-cairo",
       "egy-dakahlia",
@@ -1207,21 +1326,25 @@
   "egy-alexandria": {
     "name": "İskenderiye",
     "country": "Mısır",
+    "center": [29.767, 30.775],
     "neighbors": ["egy-beheira", "egy-matrouh"]
   },
   "egy-aswan": {
     "name": "Asvan",
     "country": "Mısır",
+    "center": [32.904, 23.605],
     "neighbors": ["egy-new-valley", "egy-qena", "egy-red-sea"]
   },
   "egy-asyut": {
     "name": "Asyut",
     "country": "Mısır",
+    "center": [31.186, 27.211],
     "neighbors": ["egy-minya", "egy-new-valley", "egy-red-sea", "egy-sohag"]
   },
   "egy-beheira": {
     "name": "Buheyre",
     "country": "Mısır",
+    "center": [30.379, 30.6],
     "neighbors": [
       "egy-alexandria",
       "egy-gharbia",
@@ -1234,11 +1357,13 @@
   "egy-beni-suef": {
     "name": "Beni Suveyf",
     "country": "Mısır",
+    "center": [30.79, 28.929],
     "neighbors": ["egy-faiyum", "egy-giza", "egy-minya", "egy-red-sea"]
   },
   "egy-cairo": {
     "name": "Kahire",
     "country": "Mısır",
+    "center": [31.608, 29.992],
     "neighbors": [
       "egy-al-sharqia",
       "egy-giza",
@@ -1250,6 +1375,7 @@
   "egy-dakahlia": {
     "name": "Dekahliye",
     "country": "Mısır",
+    "center": [31.482, 31.066],
     "neighbors": [
       "egy-al-sharqia",
       "egy-damietta",
@@ -1261,16 +1387,19 @@
   "egy-damietta": {
     "name": "Dimyat",
     "country": "Mısır",
+    "center": [31.729, 31.388],
     "neighbors": ["egy-dakahlia"]
   },
   "egy-faiyum": {
     "name": "Feyyum",
     "country": "Mısır",
+    "center": [30.557, 29.331],
     "neighbors": ["egy-beni-suef", "egy-giza"]
   },
   "egy-gharbia": {
     "name": "Garbiya",
     "country": "Mısır",
+    "center": [31.047, 30.86],
     "neighbors": [
       "egy-beheira",
       "egy-dakahlia",
@@ -1282,6 +1411,7 @@
   "egy-giza": {
     "name": "Gize",
     "country": "Mısır",
+    "center": [28.538, 28.266],
     "neighbors": [
       "egy-beheira",
       "egy-beni-suef",
@@ -1299,6 +1429,7 @@
   "egy-ismailia": {
     "name": "İsmailiye",
     "country": "Mısır",
+    "center": [32.343, 30.574],
     "neighbors": [
       "egy-al-sharqia",
       "egy-cairo",
@@ -1310,16 +1441,19 @@
   "egy-kafr-el-sheikh": {
     "name": "Kafrü'ş-Şeyh",
     "country": "Mısır",
+    "center": [30.916, 31.232],
     "neighbors": ["egy-beheira", "egy-dakahlia", "egy-gharbia"]
   },
   "egy-luxor": {
     "name": "Luksor",
     "country": "Mısır",
+    "center": [32.642, 25.698],
     "neighbors": ["egy-qena"]
   },
   "egy-matrouh": {
     "name": "Matruh",
     "country": "Mısır",
+    "center": [26.897, 29.777],
     "neighbors": [
       "egy-alexandria",
       "egy-beheira",
@@ -1332,6 +1466,7 @@
   "egy-minya": {
     "name": "Minye",
     "country": "Mısır",
+    "center": [30.054, 28.163],
     "neighbors": [
       "egy-asyut",
       "egy-beni-suef",
@@ -1343,11 +1478,13 @@
   "egy-monufia": {
     "name": "Minufiye",
     "country": "Mısır",
+    "center": [30.997, 30.499],
     "neighbors": ["egy-beheira", "egy-gharbia", "egy-giza", "egy-qalyubia"]
   },
   "egy-new-valley": {
     "name": "Yeni Vadi",
     "country": "Mısır",
+    "center": [28.581, 24.771],
     "neighbors": [
       "egy-aswan",
       "egy-asyut",
@@ -1363,6 +1500,7 @@
   "egy-north-sinai": {
     "name": "Kuzey Sina",
     "country": "Mısır",
+    "center": [33.728, 30.431],
     "neighbors": [
       "egy-ismailia",
       "egy-port-said",
@@ -1374,11 +1512,13 @@
   "egy-port-said": {
     "name": "Port Said",
     "country": "Mısır",
+    "center": [32.403, 31.138],
     "neighbors": ["egy-al-sharqia", "egy-ismailia", "egy-north-sinai"]
   },
   "egy-qalyubia": {
     "name": "Kalyubiye",
     "country": "Mısır",
+    "center": [31.245, 30.291],
     "neighbors": [
       "egy-al-sharqia",
       "egy-cairo",
@@ -1391,6 +1531,7 @@
   "egy-qena": {
     "name": "Kina",
     "country": "Mısır",
+    "center": [32.794, 25.863],
     "neighbors": [
       "egy-aswan",
       "egy-luxor",
@@ -1402,6 +1543,7 @@
   "egy-red-sea": {
     "name": "Kızıldeniz",
     "country": "Mısır",
+    "center": [34.137, 24.231],
     "neighbors": [
       "egy-aswan",
       "egy-asyut",
@@ -1416,16 +1558,19 @@
   "egy-sohag": {
     "name": "Sevhac",
     "country": "Mısır",
+    "center": [31.774, 26.526],
     "neighbors": ["egy-asyut", "egy-new-valley", "egy-qena", "egy-red-sea"]
   },
   "egy-south-sinai": {
     "name": "Güney Sina",
     "country": "Mısır",
+    "center": [33.826, 29.015],
     "neighbors": ["egy-north-sinai", "egy-suez"]
   },
   "egy-suez": {
     "name": "Süveyş",
     "country": "Mısır",
+    "center": [32.2, 29.919],
     "neighbors": [
       "egy-cairo",
       "egy-giza",
@@ -1438,11 +1583,13 @@
   "geo-abkhazia": {
     "name": "Abhazya",
     "country": "Gürcistan",
+    "center": [41.264, 43.083],
     "neighbors": ["geo-samegrelo-zemo-svaneti"]
   },
   "geo-adjara": {
     "name": "Acara Özerk Cumhuriyeti",
     "country": "Gürcistan",
+    "center": [42.042, 41.65],
     "neighbors": [
       "geo-guria",
       "geo-samtskhe-javakheti",
@@ -1453,6 +1600,7 @@
   "geo-guria": {
     "name": "Guria",
     "country": "Gürcistan",
+    "center": [42.116, 41.961],
     "neighbors": [
       "geo-adjara",
       "geo-imereti",
@@ -1463,6 +1611,7 @@
   "geo-imereti": {
     "name": "İmereti",
     "country": "Gürcistan",
+    "center": [42.936, 42.108],
     "neighbors": [
       "geo-guria",
       "geo-racha-lechkhumi-and-kvemo-svaneti",
@@ -1474,11 +1623,13 @@
   "geo-kakheti": {
     "name": "Kaheti",
     "country": "Gürcistan",
+    "center": [45.748, 41.739],
     "neighbors": ["geo-kvemo-kartli", "geo-mtskheta-mtianeti"]
   },
   "geo-kvemo-kartli": {
     "name": "Kvemo Kartli",
     "country": "Gürcistan",
+    "center": [44.502, 41.486],
     "neighbors": [
       "arm-lori",
       "arm-tavush",
@@ -1492,6 +1643,7 @@
   "geo-mtskheta-mtianeti": {
     "name": "Mtsheta-Mtianeti",
     "country": "Gürcistan",
+    "center": [44.741, 42.293],
     "neighbors": [
       "geo-kakheti",
       "geo-kvemo-kartli",
@@ -1502,6 +1654,7 @@
   "geo-racha-lechkhumi-and-kvemo-svaneti": {
     "name": "Raca-Leçhumi ve Kvemo Svaneti",
     "country": "Gürcistan",
+    "center": [43.167, 42.625],
     "neighbors": [
       "geo-imereti",
       "geo-samegrelo-zemo-svaneti",
@@ -1511,6 +1664,7 @@
   "geo-samegrelo-zemo-svaneti": {
     "name": "Samegrelo-Zemo Svaneti",
     "country": "Gürcistan",
+    "center": [42.194, 42.602],
     "neighbors": [
       "geo-abkhazia",
       "geo-guria",
@@ -1521,6 +1675,7 @@
   "geo-samtskhe-javakheti": {
     "name": "Samtshe-Cavaheti",
     "country": "Gürcistan",
+    "center": [43.329, 41.541],
     "neighbors": [
       "arm-shirak",
       "geo-adjara",
@@ -1534,6 +1689,7 @@
   "geo-shida-kartli": {
     "name": "Şida Kartli",
     "country": "Gürcistan",
+    "center": [43.991, 42.109],
     "neighbors": [
       "geo-imereti",
       "geo-kvemo-kartli",
@@ -1545,21 +1701,25 @@
   "geo-tbilisi": {
     "name": "Tiflis",
     "country": "Gürcistan",
+    "center": [44.816, 41.711],
     "neighbors": ["geo-kvemo-kartli", "geo-mtskheta-mtianeti"]
   },
   "grc-attica": {
     "name": "Attika",
     "country": "Yunanistan",
+    "center": [23.773, 38.093],
     "neighbors": ["grc-central-greece", "grc-peloponnese"]
   },
   "grc-central-greece": {
     "name": "Orta Yunanistan",
     "country": "Yunanistan",
+    "center": [22.325, 38.697],
     "neighbors": ["grc-attica", "grc-thessalia", "grc-west-greece"]
   },
   "grc-centre-macedonia": {
     "name": "Orta Makedonya",
     "country": "Yunanistan",
+    "center": [23.205, 40.92],
     "neighbors": [
       "bgr-blagoevgrad",
       "grc-east-macedonia-and-thrace",
@@ -1572,11 +1732,13 @@
   "grc-crete": {
     "name": "Girit",
     "country": "Yunanistan",
+    "center": [24.879, 35.206],
     "neighbors": []
   },
   "grc-east-macedonia-and-thrace": {
     "name": "Doğu Makedonya ve Trakya",
     "country": "Yunanistan",
+    "center": [24.431, 41.219],
     "neighbors": [
       "bgr-blagoevgrad",
       "bgr-haskovo",
@@ -1589,6 +1751,7 @@
   "grc-epirus": {
     "name": "Epir",
     "country": "Yunanistan",
+    "center": [20.761, 39.591],
     "neighbors": [
       "alb-gjirokaster",
       "alb-korce",
@@ -1601,31 +1764,37 @@
   "grc-ionian-islands": {
     "name": "İyonya Adaları",
     "country": "Yunanistan",
+    "center": [19.781, 39.703],
     "neighbors": []
   },
   "grc-mount-athos": {
     "name": "Aynoroz",
     "country": "Yunanistan",
+    "center": [24.217, 40.277],
     "neighbors": ["grc-centre-macedonia"]
   },
   "grc-north-aegean": {
     "name": "Kuzey Ege",
     "country": "Yunanistan",
+    "center": [26.34, 39.091],
     "neighbors": []
   },
   "grc-peloponnese": {
     "name": "Mora",
     "country": "Yunanistan",
+    "center": [22.405, 37.344],
     "neighbors": ["grc-attica", "grc-west-greece"]
   },
   "grc-south-aegean": {
     "name": "Güney Ege",
     "country": "Yunanistan",
+    "center": [27.953, 36.187],
     "neighbors": []
   },
   "grc-thessalia": {
     "name": "Tesalya",
     "country": "Yunanistan",
+    "center": [22.165, 39.591],
     "neighbors": [
       "grc-central-greece",
       "grc-centre-macedonia",
@@ -1636,11 +1805,13 @@
   "grc-west-greece": {
     "name": "Batı Yunanistan",
     "country": "Yunanistan",
+    "center": [21.575, 37.913],
     "neighbors": ["grc-central-greece", "grc-epirus", "grc-peloponnese"]
   },
   "grc-west-macedonia": {
     "name": "Batı Makedonya",
     "country": "Yunanistan",
+    "center": [21.451, 40.339],
     "neighbors": [
       "alb-korce",
       "grc-centre-macedonia",
@@ -1652,6 +1823,7 @@
   "hrv-bjelovar-bilogora": {
     "name": "Bjelovar-Bilogora",
     "country": "Hırvatistan",
+    "center": [16.987, 45.736],
     "neighbors": [
       "hrv-koprivnica-krizevci",
       "hrv-pozega-slavonia",
@@ -1663,6 +1835,7 @@
   "hrv-brod-posavina": {
     "name": "Brod-Posavina",
     "country": "Hırvatistan",
+    "center": [17.379, 45.266],
     "neighbors": [
       "bih-banja-luka",
       "bih-doboj",
@@ -1676,6 +1849,7 @@
   "hrv-dubrovnik-neretva": {
     "name": "Dubrovnik-Neretva",
     "country": "Hırvatistan",
+    "center": [17.749, 42.845],
     "neighbors": [
       "bih-herzegovina-neretva-canton",
       "bih-trebinje",
@@ -1687,11 +1861,13 @@
   "hrv-istria": {
     "name": "İstriya",
     "country": "Hırvatistan",
+    "center": [13.922, 45.214],
     "neighbors": ["hrv-primorje-gorski"]
   },
   "hrv-karlovac": {
     "name": "Karlovac Bölgesi",
     "country": "Hırvatistan",
+    "center": [15.45, 45.284],
     "neighbors": [
       "bih-una-sana-canton",
       "hrv-lika-senj",
@@ -1704,6 +1880,7 @@
   "hrv-koprivnica-krizevci": {
     "name": "Koprivnica-Križevci",
     "country": "Hırvatistan",
+    "center": [16.634, 46.088],
     "neighbors": [
       "hrv-bjelovar-bilogora",
       "hrv-me-imurje",
@@ -1717,21 +1894,25 @@
   "hrv-krapina-zagorje": {
     "name": "Krapina-Zagorje",
     "country": "Hırvatistan",
+    "center": [15.925, 46.082],
     "neighbors": ["hrv-varazdin", "hrv-zagreb", "hrv-zagreb-2"]
   },
   "hrv-lika-senj": {
     "name": "Lika-Senj",
     "country": "Hırvatistan",
+    "center": [15.227, 44.744],
     "neighbors": ["hrv-karlovac", "hrv-primorje-gorski", "hrv-zadar"]
   },
   "hrv-me-imurje": {
     "name": "Međimurje",
     "country": "Hırvatistan",
+    "center": [16.498, 46.403],
     "neighbors": ["hrv-koprivnica-krizevci", "hrv-varazdin", "hun-zala"]
   },
   "hrv-osijek-baranja": {
     "name": "Osijek-Baranya",
     "country": "Hırvatistan",
+    "center": [18.58, 45.606],
     "neighbors": [
       "hrv-brod-posavina",
       "hrv-pozega-slavonia",
@@ -1746,6 +1927,7 @@
   "hrv-pozega-slavonia": {
     "name": "Požega-Slavonija",
     "country": "Hırvatistan",
+    "center": [17.694, 45.391],
     "neighbors": [
       "hrv-bjelovar-bilogora",
       "hrv-brod-posavina",
@@ -1757,16 +1939,19 @@
   "hrv-primorje-gorski": {
     "name": "Primorje-Gorski",
     "country": "Hırvatistan",
+    "center": [14.719, 45.34],
     "neighbors": ["hrv-istria", "hrv-karlovac", "hrv-lika-senj"]
   },
   "hrv-sibenik-knin": {
     "name": "Šibenik-Knin",
     "country": "Hırvatistan",
+    "center": [16.042, 43.797],
     "neighbors": ["hrv-split-dalmatia", "hrv-zadar"]
   },
   "hrv-sisak-moslavina": {
     "name": "Sisak-Moslavina",
     "country": "Hırvatistan",
+    "center": [16.385, 45.4],
     "neighbors": [
       "bih-banja-luka",
       "bih-una-sana-canton",
@@ -1780,6 +1965,7 @@
   "hrv-split-dalmatia": {
     "name": "Split-Dalmaçya",
     "country": "Hırvatistan",
+    "center": [16.706, 43.593],
     "neighbors": [
       "bih-livno",
       "bih-west-herzegovina-canton",
@@ -1791,6 +1977,7 @@
   "hrv-varazdin": {
     "name": "Varaždin Bölgesi",
     "country": "Hırvatistan",
+    "center": [16.32, 46.24],
     "neighbors": [
       "hrv-koprivnica-krizevci",
       "hrv-krapina-zagorje",
@@ -1801,6 +1988,7 @@
   "hrv-virovitica-podravina": {
     "name": "Virovitica-Podravina",
     "country": "Hırvatistan",
+    "center": [17.638, 45.703],
     "neighbors": [
       "hrv-bjelovar-bilogora",
       "hrv-koprivnica-krizevci",
@@ -1813,6 +2001,7 @@
   "hrv-vukovar-syrmia": {
     "name": "Vukovar-Syrmia",
     "country": "Hırvatistan",
+    "center": [18.865, 45.185],
     "neighbors": [
       "bih-bijeljina",
       "bih-brcko",
@@ -1826,6 +2015,7 @@
   "hrv-zadar": {
     "name": "Zadar Bölgesi",
     "country": "Hırvatistan",
+    "center": [15.841, 44.249],
     "neighbors": [
       "bih-livno",
       "bih-una-sana-canton",
@@ -1838,6 +2028,7 @@
   "hrv-zagreb": {
     "name": "Zagreb Bölgesi",
     "country": "Hırvatistan",
+    "center": [16.324, 45.906],
     "neighbors": [
       "hrv-bjelovar-bilogora",
       "hrv-karlovac",
@@ -1851,11 +2042,13 @@
   "hrv-zagreb-2": {
     "name": "Zagreb",
     "country": "Hırvatistan",
+    "center": [15.981, 45.821],
     "neighbors": ["hrv-krapina-zagorje", "hrv-zagreb"]
   },
   "hun-bacs-kiskun": {
     "name": "Bács-Kiskun ili",
     "country": "Macaristan",
+    "center": [19.366, 46.561],
     "neighbors": [
       "hrv-osijek-baranja",
       "hun-baranya",
@@ -1873,6 +2066,7 @@
   "hun-baranya": {
     "name": "Baranya ili",
     "country": "Macaristan",
+    "center": [17.908, 46.012],
     "neighbors": [
       "hrv-osijek-baranja",
       "hrv-virovitica-podravina",
@@ -1885,6 +2079,7 @@
   "hun-bekes": {
     "name": "Békés ili",
     "country": "Macaristan",
+    "center": [20.935, 46.466],
     "neighbors": [
       "hun-bekescsaba",
       "hun-csongrad-csanad",
@@ -1898,11 +2093,13 @@
   "hun-bekescsaba": {
     "name": "Békéscsaba",
     "country": "Macaristan",
+    "center": [21.092, 46.748],
     "neighbors": ["hun-bekes"]
   },
   "hun-borsod-abauj-zemplen": {
     "name": "Borsod-Abaúj-Zemplén ili",
     "country": "Macaristan",
+    "center": [21.051, 48.252],
     "neighbors": [
       "hun-eger",
       "hun-hajdu-bihar",
@@ -1917,11 +2114,13 @@
   "hun-budapest": {
     "name": "Budapeşte",
     "country": "Macaristan",
+    "center": [19.104, 47.481],
     "neighbors": ["hun-erd", "hun-pest"]
   },
   "hun-csongrad-csanad": {
     "name": "Csongrád-Csanád ili",
     "country": "Macaristan",
+    "center": [20.12, 46.585],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-bekes",
@@ -1937,26 +2136,31 @@
   "hun-debrecen": {
     "name": "Debrecen",
     "country": "Macaristan",
+    "center": [21.614, 47.524],
     "neighbors": ["hun-hajdu-bihar"]
   },
   "hun-dunaujvaros": {
     "name": "Dunaújváros",
     "country": "Macaristan",
+    "center": [18.901, 46.935],
     "neighbors": ["hun-bacs-kiskun", "hun-fejer"]
   },
   "hun-eger": {
     "name": "Eger",
     "country": "Macaristan",
+    "center": [20.373, 47.928],
     "neighbors": ["hun-borsod-abauj-zemplen", "hun-heves"]
   },
   "hun-erd": {
     "name": "Érd",
     "country": "Macaristan",
+    "center": [18.9, 47.377],
     "neighbors": ["hun-budapest", "hun-fejer", "hun-pest"]
   },
   "hun-fejer": {
     "name": "Fejér ili",
     "country": "Macaristan",
+    "center": [18.646, 46.946],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-dunaujvaros",
@@ -1973,11 +2177,13 @@
   "hun-gyor": {
     "name": "Győr",
     "country": "Macaristan",
+    "center": [17.659, 47.663],
     "neighbors": ["hun-gyor-moson-sopron"]
   },
   "hun-gyor-moson-sopron": {
     "name": "Győr-Moson-Sopron ili",
     "country": "Macaristan",
+    "center": [17.289, 47.65],
     "neighbors": [
       "hun-gyor",
       "hun-komarom-esztergom",
@@ -1989,6 +2195,7 @@
   "hun-hajdu-bihar": {
     "name": "Hajdú-Bihar ili",
     "country": "Macaristan",
+    "center": [21.275, 47.355],
     "neighbors": [
       "hun-bekes",
       "hun-borsod-abauj-zemplen",
@@ -2001,6 +2208,7 @@
   "hun-heves": {
     "name": "Heves ili",
     "country": "Macaristan",
+    "center": [20.144, 47.775],
     "neighbors": [
       "hun-borsod-abauj-zemplen",
       "hun-eger",
@@ -2013,11 +2221,13 @@
   "hun-hodmezovasarhely": {
     "name": "Hódmezővásárhely",
     "country": "Macaristan",
+    "center": [20.394, 46.385],
     "neighbors": ["hun-bekes", "hun-csongrad-csanad", "hun-szeged"]
   },
   "hun-jasz-nagykun-szolnok": {
     "name": "Jász-Nagykun-Szolnok ili",
     "country": "Macaristan",
+    "center": [20.511, 47.229],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-bekes",
@@ -2032,16 +2242,19 @@
   "hun-kaposvar": {
     "name": "Kaposvár",
     "country": "Macaristan",
+    "center": [17.791, 46.353],
     "neighbors": ["hun-somogy"]
   },
   "hun-kecskemet": {
     "name": "Kecskemét",
     "country": "Macaristan",
+    "center": [19.672, 46.919],
     "neighbors": ["hun-bacs-kiskun", "hun-pest"]
   },
   "hun-komarom-esztergom": {
     "name": "Komárom-Esztergom ili",
     "country": "Macaristan",
+    "center": [18.207, 47.609],
     "neighbors": [
       "hun-fejer",
       "hun-gyor-moson-sopron",
@@ -2053,16 +2266,19 @@
   "hun-miskolc": {
     "name": "Miskolc",
     "country": "Macaristan",
+    "center": [20.721, 48.12],
     "neighbors": ["hun-borsod-abauj-zemplen", "hun-heves"]
   },
   "hun-nagykanizsa": {
     "name": "Nagykanizsa",
     "country": "Macaristan",
+    "center": [16.984, 46.462],
     "neighbors": ["hun-somogy", "hun-zala"]
   },
   "hun-nograd": {
     "name": "Nógrád ili",
     "country": "Macaristan",
+    "center": [19.518, 47.949],
     "neighbors": [
       "hun-borsod-abauj-zemplen",
       "hun-heves",
@@ -2073,16 +2289,19 @@
   "hun-nyiregyhaza": {
     "name": "Nyíregyháza",
     "country": "Macaristan",
+    "center": [21.752, 47.935],
     "neighbors": ["hun-szabolcs-szatmar-bereg"]
   },
   "hun-pecs": {
     "name": "Pécs",
     "country": "Macaristan",
+    "center": [18.236, 46.086],
     "neighbors": ["hun-baranya"]
   },
   "hun-pest": {
     "name": "Pest ili",
     "country": "Macaristan",
+    "center": [19.493, 47.345],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-budapest",
@@ -2099,11 +2318,13 @@
   "hun-salgotarjan": {
     "name": "Salgótarján",
     "country": "Macaristan",
+    "center": [19.789, 48.108],
     "neighbors": ["hun-nograd"]
   },
   "hun-somogy": {
     "name": "Somogy ili",
     "country": "Macaristan",
+    "center": [17.487, 46.494],
     "neighbors": [
       "hrv-koprivnica-krizevci",
       "hrv-virovitica-podravina",
@@ -2119,11 +2340,13 @@
   "hun-sopron": {
     "name": "Sopron",
     "country": "Macaristan",
+    "center": [16.585, 47.694],
     "neighbors": ["hun-gyor-moson-sopron"]
   },
   "hun-szabolcs-szatmar-bereg": {
     "name": "Szabolcs-Szatmár-Bereg ili",
     "country": "Macaristan",
+    "center": [22.161, 47.991],
     "neighbors": [
       "hun-borsod-abauj-zemplen",
       "hun-hajdu-bihar",
@@ -2136,6 +2359,7 @@
   "hun-szeged": {
     "name": "Szeged",
     "country": "Macaristan",
+    "center": [20.132, 46.257],
     "neighbors": [
       "hun-csongrad-csanad",
       "hun-hodmezovasarhely",
@@ -2145,31 +2369,37 @@
   "hun-szekesfehervar": {
     "name": "Székesfehérvár",
     "country": "Macaristan",
+    "center": [18.466, 47.186],
     "neighbors": ["hun-fejer"]
   },
   "hun-szekszard": {
     "name": "Szekszárd",
     "country": "Macaristan",
+    "center": [18.71, 46.369],
     "neighbors": ["hun-tolna"]
   },
   "hun-szolnok": {
     "name": "Szolnok",
     "country": "Macaristan",
+    "center": [20.168, 47.212],
     "neighbors": ["hun-jasz-nagykun-szolnok", "hun-pest"]
   },
   "hun-szombathely": {
     "name": "Szombathely",
     "country": "Macaristan",
+    "center": [16.619, 47.223],
     "neighbors": ["hun-vas"]
   },
   "hun-tatabanya": {
     "name": "Tatabánya",
     "country": "Macaristan",
+    "center": [18.442, 47.569],
     "neighbors": ["hun-fejer", "hun-komarom-esztergom"]
   },
   "hun-tolna": {
     "name": "Tolna ili",
     "country": "Macaristan",
+    "center": [18.534, 46.535],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-baranya",
@@ -2181,6 +2411,7 @@
   "hun-vas": {
     "name": "Vas ili",
     "country": "Macaristan",
+    "center": [16.871, 47.159],
     "neighbors": [
       "hun-gyor-moson-sopron",
       "hun-szombathely",
@@ -2191,6 +2422,7 @@
   "hun-veszprem": {
     "name": "Veszprém ili",
     "country": "Macaristan",
+    "center": [17.551, 47.112],
     "neighbors": [
       "hun-fejer",
       "hun-gyor-moson-sopron",
@@ -2204,11 +2436,13 @@
   "hun-veszprem-2": {
     "name": "Veszprém",
     "country": "Macaristan",
+    "center": [17.915, 47.116],
     "neighbors": ["hun-veszprem"]
   },
   "hun-zala": {
     "name": "Zala ili",
     "country": "Macaristan",
+    "center": [16.769, 46.61],
     "neighbors": [
       "hrv-koprivnica-krizevci",
       "hrv-me-imurje",
@@ -2222,21 +2456,25 @@
   "hun-zalaegerszeg": {
     "name": "Zalaegerszeg",
     "country": "Macaristan",
+    "center": [16.843, 46.85],
     "neighbors": ["hun-zala"]
   },
   "irn-alborz": {
     "name": "Elburz Eyaleti",
     "country": "İran",
+    "center": [50.795, 35.964],
     "neighbors": ["irn-markazi", "irn-mazandaran", "irn-qazvin", "irn-tehran"]
   },
   "irn-ardabil": {
     "name": "Erdebil Eyaleti",
     "country": "İran",
+    "center": [48.075, 38.318],
     "neighbors": ["irn-east-azerbaijan", "irn-gilan", "irn-zanjan"]
   },
   "irn-bushehr": {
     "name": "Buşehr Eyaleti",
     "country": "İran",
+    "center": [51.432, 28.856],
     "neighbors": [
       "irn-fars",
       "irn-hormozgan",
@@ -2247,6 +2485,7 @@
   "irn-chaharmahal-and-bakhtiari": {
     "name": "Çaharmahal ve Bahtiyari Eyaleti",
     "country": "İran",
+    "center": [50.665, 31.96],
     "neighbors": [
       "irn-isfahan",
       "irn-khuzestan",
@@ -2256,6 +2495,7 @@
   "irn-east-azerbaijan": {
     "name": "Doğu Azerbaycan Eyaleti",
     "country": "İran",
+    "center": [46.542, 37.882],
     "neighbors": [
       "arm-syunik",
       "irn-ardabil",
@@ -2266,6 +2506,7 @@
   "irn-fars": {
     "name": "Fars Eyaleti",
     "country": "İran",
+    "center": [53.137, 29.252],
     "neighbors": [
       "irn-bushehr",
       "irn-hormozgan",
@@ -2278,16 +2519,19 @@
   "irn-gilan": {
     "name": "Gilan Eyaleti",
     "country": "İran",
+    "center": [49.597, 37.079],
     "neighbors": ["irn-ardabil", "irn-mazandaran", "irn-qazvin", "irn-zanjan"]
   },
   "irn-golestan": {
     "name": "Gülistan Eyaleti",
     "country": "İran",
+    "center": [55.133, 37.245],
     "neighbors": ["irn-mazandaran", "irn-north-khorasan", "irn-semnan"]
   },
   "irn-hamadan": {
     "name": "Hamedan Eyaleti",
     "country": "İran",
+    "center": [48.57, 34.923],
     "neighbors": [
       "irn-kermanshah",
       "irn-kurdistan",
@@ -2300,6 +2544,7 @@
   "irn-hormozgan": {
     "name": "Hürmüzgan Eyaleti",
     "country": "İran",
+    "center": [56.044, 27.68],
     "neighbors": [
       "irn-bushehr",
       "irn-fars",
@@ -2310,6 +2555,7 @@
   "irn-ilam": {
     "name": "İlam Eyaleti",
     "country": "İran",
+    "center": [46.75, 33.144],
     "neighbors": [
       "irn-kermanshah",
       "irn-khuzestan",
@@ -2322,6 +2568,7 @@
   "irn-isfahan": {
     "name": "İsfahan Eyaleti",
     "country": "İran",
+    "center": [52.257, 33.375],
     "neighbors": [
       "irn-chaharmahal-and-bakhtiari",
       "irn-fars",
@@ -2337,6 +2584,7 @@
   "irn-kerman": {
     "name": "Kirman Eyaleti",
     "country": "İran",
+    "center": [57.31, 29.808],
     "neighbors": [
       "irn-fars",
       "irn-hormozgan",
@@ -2348,6 +2596,7 @@
   "irn-kermanshah": {
     "name": "Kirmanşah Eyaleti",
     "country": "İran",
+    "center": [46.711, 34.284],
     "neighbors": [
       "irn-hamadan",
       "irn-ilam",
@@ -2360,6 +2609,7 @@
   "irn-khuzestan": {
     "name": "Huzistan Eyaleti",
     "country": "İran",
+    "center": [48.954, 31.504],
     "neighbors": [
       "irn-bushehr",
       "irn-chaharmahal-and-bakhtiari",
@@ -2374,6 +2624,7 @@
   "irn-kohgiluyeh-and-boyer-ahmad": {
     "name": "Kohgiluye ve Buyer Ahmed Eyaleti",
     "country": "İran",
+    "center": [50.734, 30.814],
     "neighbors": [
       "irn-bushehr",
       "irn-chaharmahal-and-bakhtiari",
@@ -2385,6 +2636,7 @@
   "irn-kurdistan": {
     "name": "Kürdistan Eyaleti",
     "country": "İran",
+    "center": [46.956, 35.719],
     "neighbors": [
       "irn-hamadan",
       "irn-kermanshah",
@@ -2396,6 +2648,7 @@
   "irn-lorestan": {
     "name": "Luristan Eyaleti",
     "country": "İran",
+    "center": [48.101, 33.538],
     "neighbors": [
       "irn-hamadan",
       "irn-ilam",
@@ -2408,6 +2661,7 @@
   "irn-markazi": {
     "name": "Merkezi Eyaleti",
     "country": "İran",
+    "center": [49.715, 34.348],
     "neighbors": [
       "irn-alborz",
       "irn-hamadan",
@@ -2421,6 +2675,7 @@
   "irn-mazandaran": {
     "name": "Mazenderan Eyaleti",
     "country": "İran",
+    "center": [52.822, 36.313],
     "neighbors": [
       "irn-alborz",
       "irn-gilan",
@@ -2433,11 +2688,13 @@
   "irn-north-khorasan": {
     "name": "Kuzey Horasan Eyaleti",
     "country": "İran",
+    "center": [57.034, 37.509],
     "neighbors": ["irn-golestan", "irn-razavi-khorasan", "irn-semnan"]
   },
   "irn-qazvin": {
     "name": "Kazvin Eyaleti",
     "country": "İran",
+    "center": [49.823, 36.08],
     "neighbors": [
       "irn-alborz",
       "irn-gilan",
@@ -2450,11 +2707,13 @@
   "irn-qom": {
     "name": "Kum Eyaleti",
     "country": "İran",
+    "center": [51.001, 34.761],
     "neighbors": ["irn-isfahan", "irn-markazi", "irn-semnan", "irn-tehran"]
   },
   "irn-razavi-khorasan": {
     "name": "Razavi Horasan Eyaleti",
     "country": "İran",
+    "center": [58.876, 35.489],
     "neighbors": [
       "irn-north-khorasan",
       "irn-semnan",
@@ -2465,6 +2724,7 @@
   "irn-semnan": {
     "name": "Simnan Eyaleti",
     "country": "İran",
+    "center": [54.66, 35.451],
     "neighbors": [
       "irn-golestan",
       "irn-isfahan",
@@ -2479,11 +2739,13 @@
   "irn-sistan-and-baluchestan": {
     "name": "Sistan ve Belucistan Eyaleti",
     "country": "İran",
+    "center": [60.532, 27.699],
     "neighbors": ["irn-hormozgan", "irn-kerman", "irn-south-khorasan"]
   },
   "irn-south-khorasan": {
     "name": "Güney Horasan Eyaleti",
     "country": "İran",
+    "center": [59.606, 32.357],
     "neighbors": [
       "irn-kerman",
       "irn-razavi-khorasan",
@@ -2494,6 +2756,7 @@
   "irn-tehran": {
     "name": "Tahran Eyaleti",
     "country": "İran",
+    "center": [51.476, 35.64],
     "neighbors": [
       "irn-alborz",
       "irn-markazi",
@@ -2505,6 +2768,7 @@
   "irn-west-azerbaijan": {
     "name": "Batı Azerbaycan Eyaleti",
     "country": "İran",
+    "center": [44.787, 38.68],
     "neighbors": [
       "irn-east-azerbaijan",
       "irn-kurdistan",
@@ -2520,6 +2784,7 @@
   "irn-yazd": {
     "name": "Yezd Eyaleti",
     "country": "İran",
+    "center": [55.71, 32.597],
     "neighbors": [
       "irn-fars",
       "irn-isfahan",
@@ -2532,6 +2797,7 @@
   "irn-zanjan": {
     "name": "Zencan Eyaleti",
     "country": "İran",
+    "center": [48.398, 36.543],
     "neighbors": [
       "irn-ardabil",
       "irn-east-azerbaijan",
@@ -2545,6 +2811,7 @@
   "irq-al-anbar": {
     "name": "Anbar ili",
     "country": "Irak",
+    "center": [41.622, 32.968],
     "neighbors": [
       "irq-babylon",
       "irq-baghdad",
@@ -2562,6 +2829,7 @@
   "irq-al-muthanna": {
     "name": "Mutanna ili",
     "country": "Irak",
+    "center": [45.324, 30.083],
     "neighbors": [
       "irq-al-qadisiyyah",
       "irq-basra",
@@ -2575,6 +2843,7 @@
   "irq-al-qadisiyyah": {
     "name": "Kadisiye ili",
     "country": "Irak",
+    "center": [45.045, 31.964],
     "neighbors": [
       "irq-al-muthanna",
       "irq-babylon",
@@ -2586,6 +2855,7 @@
   "irq-babylon": {
     "name": "Babil ili",
     "country": "Irak",
+    "center": [44.57, 32.535],
     "neighbors": [
       "irq-al-anbar",
       "irq-al-qadisiyyah",
@@ -2599,11 +2869,13 @@
   "irq-baghdad": {
     "name": "Bağdat ili",
     "country": "Irak",
+    "center": [44.392, 33.298],
     "neighbors": ["irq-al-anbar", "irq-babylon", "irq-diyala"]
   },
   "irq-basra": {
     "name": "Basra ili",
     "country": "Irak",
+    "center": [47.494, 30.51],
     "neighbors": [
       "irn-khuzestan",
       "irq-al-muthanna",
@@ -2615,6 +2887,7 @@
   "irq-dhi-qar": {
     "name": "Zi Kar İli",
     "country": "Irak",
+    "center": [46.287, 31.179],
     "neighbors": [
       "irq-al-muthanna",
       "irq-al-qadisiyyah",
@@ -2626,6 +2899,7 @@
   "irq-diyala": {
     "name": "Diyala ili",
     "country": "Irak",
+    "center": [44.932, 33.868],
     "neighbors": [
       "irn-ilam",
       "irn-kermanshah",
@@ -2640,6 +2914,7 @@
   "irq-duhok": {
     "name": "Duhok ili",
     "country": "Irak",
+    "center": [43.088, 37.089],
     "neighbors": [
       "irq-erbil",
       "irq-nineveh",
@@ -2651,6 +2926,7 @@
   "irq-erbil": {
     "name": "Erbil ili",
     "country": "Irak",
+    "center": [44.202, 36.267],
     "neighbors": [
       "irn-west-azerbaijan",
       "irq-duhok",
@@ -2664,16 +2940,19 @@
   "irq-karbala": {
     "name": "Kerbela ili",
     "country": "Irak",
+    "center": [43.824, 32.505],
     "neighbors": ["irq-al-anbar", "irq-babylon", "irq-najaf"]
   },
   "irq-kirkuk": {
     "name": "Kerkük ili",
     "country": "Irak",
+    "center": [44.137, 35.354],
     "neighbors": ["irq-erbil", "irq-saladin", "irq-sulaymaniyah"]
   },
   "irq-maysan": {
     "name": "Maysan ili",
     "country": "Irak",
+    "center": [47.058, 31.886],
     "neighbors": [
       "irn-ilam",
       "irn-khuzestan",
@@ -2685,6 +2964,7 @@
   "irq-najaf": {
     "name": "Necef ili",
     "country": "Irak",
+    "center": [43.804, 31.107],
     "neighbors": [
       "irq-al-anbar",
       "irq-al-muthanna",
@@ -2697,6 +2977,7 @@
   "irq-nineveh": {
     "name": "Nineve ili",
     "country": "Irak",
+    "center": [42.438, 36.069],
     "neighbors": [
       "irq-al-anbar",
       "irq-duhok",
@@ -2709,6 +2990,7 @@
   "irq-saladin": {
     "name": "Selahaddin ili",
     "country": "Irak",
+    "center": [43.598, 34.447],
     "neighbors": [
       "irq-al-anbar",
       "irq-diyala",
@@ -2721,6 +3003,7 @@
   "irq-sulaymaniyah": {
     "name": "Süleymaniye ili",
     "country": "Irak",
+    "center": [45.293, 35.511],
     "neighbors": [
       "irn-kermanshah",
       "irn-kurdistan",
@@ -2734,6 +3017,7 @@
   "irq-wasit": {
     "name": "Vasit ili",
     "country": "Irak",
+    "center": [45.719, 32.664],
     "neighbors": [
       "irn-ilam",
       "irq-al-qadisiyyah",
@@ -2746,21 +3030,25 @@
   "isr-central": {
     "name": "Merkez Bölge",
     "country": "İsrail",
+    "center": [34.874, 31.922],
     "neighbors": ["isr-haifa", "isr-jerusalem", "isr-southern", "isr-tel-aviv"]
   },
   "isr-haifa": {
     "name": "Hayfa Bölgesi",
     "country": "İsrail",
+    "center": [35.025, 32.723],
     "neighbors": ["isr-central", "isr-northern"]
   },
   "isr-jerusalem": {
     "name": "Kudüs Bölgesi",
     "country": "İsrail",
+    "center": [34.996, 31.746],
     "neighbors": ["isr-central", "isr-southern"]
   },
   "isr-northern": {
     "name": "Kuzey Bölgesi",
     "country": "İsrail",
+    "center": [35.471, 32.861],
     "neighbors": [
       "isr-haifa",
       "jor-irbid",
@@ -2772,6 +3060,7 @@
   "isr-southern": {
     "name": "Güney Bölgesi",
     "country": "İsrail",
+    "center": [34.851, 30.838],
     "neighbors": [
       "egy-north-sinai",
       "isr-central",
@@ -2785,16 +3074,19 @@
   "isr-tel-aviv": {
     "name": "Tel Aviv Bölgesi",
     "country": "İsrail",
+    "center": [34.802, 32.065],
     "neighbors": ["isr-central"]
   },
   "jor-ajloun": {
     "name": "Ajloun Yönetimi",
     "country": "Ürdün",
+    "center": [35.74, 32.288],
     "neighbors": ["jor-balqa", "jor-irbid", "jor-jerash"]
   },
   "jor-amman": {
     "name": "Amman ili",
     "country": "Ürdün",
+    "center": [36.297, 31.557],
     "neighbors": [
       "jor-balqa",
       "jor-karak",
@@ -2807,11 +3099,13 @@
   "jor-aqaba": {
     "name": "Aqaba Yönetimi",
     "country": "Ürdün",
+    "center": [35.299, 29.666],
     "neighbors": ["isr-southern", "jor-ma-an", "jor-tafilah", "sau-al-jowf"]
   },
   "jor-balqa": {
     "name": "Balqa Yönetimi",
     "country": "Ürdün",
+    "center": [35.653, 32.013],
     "neighbors": [
       "jor-ajloun",
       "jor-amman",
@@ -2824,6 +3118,7 @@
   "jor-irbid": {
     "name": "Irbid Yönetimi",
     "country": "Ürdün",
+    "center": [35.779, 32.541],
     "neighbors": [
       "isr-northern",
       "jor-ajloun",
@@ -2837,6 +3132,7 @@
   "jor-jerash": {
     "name": "Jerash Yönetimi",
     "country": "Ürdün",
+    "center": [35.885, 32.219],
     "neighbors": [
       "jor-ajloun",
       "jor-balqa",
@@ -2848,6 +3144,7 @@
   "jor-karak": {
     "name": "Karak Yönetimi",
     "country": "Ürdün",
+    "center": [35.684, 31.161],
     "neighbors": [
       "isr-southern",
       "jor-amman",
@@ -2859,6 +3156,7 @@
   "jor-ma-an": {
     "name": "Ma'an Valiliği",
     "country": "Ürdün",
+    "center": [36.561, 30.455],
     "neighbors": [
       "jor-amman",
       "jor-aqaba",
@@ -2870,11 +3168,13 @@
   "jor-madaba": {
     "name": "Madaba Yönetimi",
     "country": "Ürdün",
+    "center": [35.676, 31.575],
     "neighbors": ["isr-southern", "jor-amman", "jor-balqa", "jor-karak"]
   },
   "jor-mafraq": {
     "name": "Mafraq Yönetimi",
     "country": "Ürdün",
+    "center": [37.95, 32.315],
     "neighbors": [
       "irq-al-anbar",
       "jor-irbid",
@@ -2891,11 +3191,13 @@
   "jor-tafilah": {
     "name": "Tafilah Yönetimi",
     "country": "Ürdün",
+    "center": [35.628, 30.779],
     "neighbors": ["isr-southern", "jor-aqaba", "jor-karak", "jor-ma-an"]
   },
   "jor-zarqa": {
     "name": "Zarqa Yönetimi",
     "country": "Ürdün",
+    "center": [36.97, 31.752],
     "neighbors": [
       "jor-amman",
       "jor-balqa",
@@ -2907,6 +3209,7 @@
   "kos": {
     "name": "Kosova",
     "country": "Kosova",
+    "center": [20.872, 42.573],
     "neighbors": [
       "alb-kukes",
       "mkd",
@@ -2923,6 +3226,7 @@
   "kwt-al-ahmadi": {
     "name": "El Ahmedî Valiliği",
     "country": "Kuveyt",
+    "center": [47.932, 28.829],
     "neighbors": [
       "kwt-al-farwaniyah",
       "kwt-al-jahra",
@@ -2933,6 +3237,7 @@
   "kwt-al-farwaniyah": {
     "name": "El Fervaniye Valiliği",
     "country": "Kuveyt",
+    "center": [47.94, 29.257],
     "neighbors": [
       "kwt-al-ahmadi",
       "kwt-al-jahra",
@@ -2944,6 +3249,7 @@
   "kwt-al-jahra": {
     "name": "El Cehrâ",
     "country": "Kuveyt",
+    "center": [47.379, 29.534],
     "neighbors": [
       "irq-al-muthanna",
       "irq-basra",
@@ -2956,26 +3262,31 @@
   "kwt-capital": {
     "name": "El Asime Valiliği",
     "country": "Kuveyt",
+    "center": [47.962, 29.349],
     "neighbors": ["kwt-al-farwaniyah", "kwt-al-jahra", "kwt-hawally"]
   },
   "kwt-hawally": {
     "name": "Hawalli Yönetimi",
     "country": "Kuveyt",
+    "center": [48.036, 29.327],
     "neighbors": ["kwt-al-farwaniyah", "kwt-capital", "kwt-mubarak-al-kabeer"]
   },
   "kwt-mubarak-al-kabeer": {
     "name": "Mübarek El Kebir Valiliği",
     "country": "Kuveyt",
+    "center": [48.061, 29.259],
     "neighbors": ["kwt-al-ahmadi", "kwt-al-farwaniyah", "kwt-hawally"]
   },
   "lbn-beirut": {
     "name": "Beyrut ili",
     "country": "Lübnan",
+    "center": [35.508, 33.887],
     "neighbors": ["lbn-mount-lebanon"]
   },
   "lbn-beqaa": {
     "name": "Bekaa ili",
     "country": "Lübnan",
+    "center": [36.29, 34.193],
     "neighbors": [
       "lbn-mount-lebanon",
       "lbn-nabatieh",
@@ -2989,11 +3300,13 @@
   "lbn-mount-lebanon": {
     "name": "Cebel-i Lübnan İli",
     "country": "Lübnan",
+    "center": [35.771, 34.013],
     "neighbors": ["lbn-beirut", "lbn-beqaa", "lbn-north", "lbn-south"]
   },
   "lbn-nabatieh": {
     "name": "Nebatiye ili",
     "country": "Lübnan",
+    "center": [35.447, 33.388],
     "neighbors": [
       "isr-northern",
       "lbn-beqaa",
@@ -3004,11 +3317,13 @@
   "lbn-north": {
     "name": "Şimal İli",
     "country": "Lübnan",
+    "center": [36.026, 34.394],
     "neighbors": ["lbn-beqaa", "lbn-mount-lebanon", "syr-homs", "syr-tartus"]
   },
   "lbn-south": {
     "name": "Cenub ili",
     "country": "Lübnan",
+    "center": [35.291, 33.266],
     "neighbors": [
       "isr-northern",
       "lbn-beqaa",
@@ -3019,6 +3334,7 @@
   "lby-ajdabiya": {
     "name": "Ajdabiya",
     "country": "Libya",
+    "center": [21.265, 28.825],
     "neighbors": [
       "egy-matrouh",
       "egy-new-valley",
@@ -3035,11 +3351,13 @@
   "lby-al-qubbah": {
     "name": "Al Qubbah",
     "country": "Libya",
+    "center": [22.543, 31.904],
     "neighbors": ["lby-ajdabiya", "lby-butnan", "lby-jabal-al-akhdar"]
   },
   "lby-ash-shati": {
     "name": "Ash Shati'",
     "country": "Libya",
+    "center": [12.134, 27.704],
     "neighbors": [
       "dza-illizi",
       "lby-ghadames",
@@ -3053,16 +3371,19 @@
   "lby-benghazi": {
     "name": "Bingazi",
     "country": "Libya",
+    "center": [20.554, 31.322],
     "neighbors": ["lby-ajdabiya", "lby-marj"]
   },
   "lby-butnan": {
     "name": "El Butnan ili",
     "country": "Libya",
+    "center": [23.912, 29.786],
     "neighbors": ["egy-matrouh", "lby-ajdabiya", "lby-al-qubbah"]
   },
   "lby-ghadames": {
     "name": "Ghadamis",
     "country": "Libya",
+    "center": [10.743, 30.029],
     "neighbors": [
       "dza-illizi",
       "dza-ouargla",
@@ -3076,6 +3397,7 @@
   "lby-ghat": {
     "name": "Ghat",
     "country": "Libya",
+    "center": [10.548, 26.074],
     "neighbors": [
       "dza-illizi",
       "lby-ash-shati",
@@ -3086,11 +3408,13 @@
   "lby-jabal-al-akhdar": {
     "name": "Jabak Al Akhdar",
     "country": "Libya",
+    "center": [21.684, 32.322],
     "neighbors": ["lby-ajdabiya", "lby-al-qubbah", "lby-marj"]
   },
   "lby-jafara": {
     "name": "El Cfara ili",
     "country": "Libya",
+    "center": [13.024, 32.461],
     "neighbors": [
       "lby-mizdah",
       "lby-murqub",
@@ -3101,6 +3425,7 @@
   "lby-jufra": {
     "name": "El Cufra ili",
     "country": "Libya",
+    "center": [17.111, 27.919],
     "neighbors": [
       "lby-ajdabiya",
       "lby-ash-shati",
@@ -3115,21 +3440,25 @@
   "lby-kufra": {
     "name": "El Kufra ili",
     "country": "Libya",
+    "center": [22.246, 23.758],
     "neighbors": ["egy-new-valley", "lby-ajdabiya", "lby-jufra", "lby-murzuq"]
   },
   "lby-marj": {
     "name": "Marj",
     "country": "Libya",
+    "center": [21.022, 32.032],
     "neighbors": ["lby-ajdabiya", "lby-benghazi", "lby-jabal-al-akhdar"]
   },
   "lby-misrata": {
     "name": "Misrata",
     "country": "Libya",
+    "center": [15.081, 31.103],
     "neighbors": ["lby-jufra", "lby-mizdah", "lby-murqub", "lby-sirte"]
   },
   "lby-mizdah": {
     "name": "Mizdah",
     "country": "Libya",
+    "center": [12.983, 30.389],
     "neighbors": [
       "lby-ash-shati",
       "lby-ghadames",
@@ -3143,6 +3472,7 @@
   "lby-murqub": {
     "name": "Murqup Belediyesi",
     "country": "Libya",
+    "center": [14.03, 32.397],
     "neighbors": [
       "lby-jafara",
       "lby-misrata",
@@ -3153,6 +3483,7 @@
   "lby-murzuq": {
     "name": "Murzuq",
     "country": "Libya",
+    "center": [15.597, 24.93],
     "neighbors": [
       "dza-illizi",
       "dza-tamanghasset",
@@ -3166,11 +3497,13 @@
   "lby-nuqat-al-khams": {
     "name": "Nuqat Al Khams",
     "country": "Libya",
+    "center": [11.896, 32.696],
     "neighbors": ["lby-ghadames", "lby-zawiya", "tun-medenine"]
   },
   "lby-sabha": {
     "name": "Sabha",
     "country": "Libya",
+    "center": [15.111, 27.21],
     "neighbors": [
       "lby-ash-shati",
       "lby-jufra",
@@ -3181,21 +3514,25 @@
   "lby-sirte": {
     "name": "Surt",
     "country": "Libya",
+    "center": [17.51, 30.147],
     "neighbors": ["lby-ajdabiya", "lby-jufra", "lby-misrata"]
   },
   "lby-tripoli-district": {
     "name": "Tajura' wa an Nawahi al Arba",
     "country": "Libya",
+    "center": [13.397, 32.693],
     "neighbors": ["lby-jafara", "lby-murqub", "lby-zawiya"]
   },
   "lby-wadi-al-hayaa": {
     "name": "Wadi Al Hayaa",
     "country": "Libya",
+    "center": [12.754, 26.395],
     "neighbors": ["lby-ash-shati", "lby-ghat", "lby-murzuq", "lby-sabha"]
   },
   "lby-zawiya": {
     "name": "Zawaiya",
     "country": "Libya",
+    "center": [12.636, 32.518],
     "neighbors": [
       "lby-jafara",
       "lby-mizdah",
@@ -3206,6 +3543,7 @@
   "mda-anenii-noi": {
     "name": "Anenii Noi",
     "country": "Moldova",
+    "center": [29.213, 46.889],
     "neighbors": [
       "mda-bender",
       "mda-causeni",
@@ -3218,16 +3556,19 @@
   "mda-balti": {
     "name": "Bălţi",
     "country": "Moldova",
+    "center": [27.95, 47.77],
     "neighbors": ["mda-falesti", "mda-glodeni", "mda-riscani", "mda-singerei"]
   },
   "mda-basarabeasca": {
     "name": "Basarabeasca",
     "country": "Moldova",
+    "center": [28.854, 46.374],
     "neighbors": ["mda-cimislia", "mda-comrat", "mda-taraclia", "ukr-odessa"]
   },
   "mda-bender": {
     "name": "Bender",
     "country": "Moldova",
+    "center": [29.719, 46.768],
     "neighbors": [
       "mda-anenii-noi",
       "mda-causeni",
@@ -3239,11 +3580,13 @@
   "mda-briceni": {
     "name": "Briceni",
     "country": "Moldova",
+    "center": [27.012, 48.27],
     "neighbors": ["mda-edinet", "mda-ocnita", "rou-botosani", "ukr-chernivtsi"]
   },
   "mda-cahul": {
     "name": "Cahul",
     "country": "Moldova",
+    "center": [28.251, 45.891],
     "neighbors": [
       "mda-cantemir",
       "mda-comrat",
@@ -3256,6 +3599,7 @@
   "mda-calarasi": {
     "name": "Călărași ili",
     "country": "Moldova",
+    "center": [28.329, 47.299],
     "neighbors": [
       "mda-nisporeni",
       "mda-orhei",
@@ -3267,6 +3611,7 @@
   "mda-camenca": {
     "name": "Camenca",
     "country": "Moldova",
+    "center": [28.656, 48.028],
     "neighbors": [
       "mda-floresti",
       "mda-rezina",
@@ -3279,11 +3624,13 @@
   "mda-cantemir": {
     "name": "Cantemir",
     "country": "Moldova",
+    "center": [28.317, 46.247],
     "neighbors": ["mda-cahul", "mda-comrat", "mda-leova", "rou-vaslui"]
   },
   "mda-causeni": {
     "name": "Causeni Distict",
     "country": "Moldova",
+    "center": [29.287, 46.643],
     "neighbors": [
       "mda-anenii-noi",
       "mda-bender",
@@ -3296,6 +3643,7 @@
   "mda-chisinau": {
     "name": "Kişinev",
     "country": "Moldova",
+    "center": [28.839, 47.037],
     "neighbors": [
       "mda-anenii-noi",
       "mda-criuleni",
@@ -3306,6 +3654,7 @@
   "mda-cimislia": {
     "name": "Cimislia",
     "country": "Moldova",
+    "center": [28.814, 46.64],
     "neighbors": [
       "mda-basarabeasca",
       "mda-causeni",
@@ -3319,6 +3668,7 @@
   "mda-comrat": {
     "name": "Comrat",
     "country": "Moldova",
+    "center": [28.66, 46.206],
     "neighbors": [
       "mda-basarabeasca",
       "mda-cahul",
@@ -3332,6 +3682,7 @@
   "mda-criuleni": {
     "name": "Criuelni",
     "country": "Moldova",
+    "center": [28.988, 47.177],
     "neighbors": [
       "mda-anenii-noi",
       "mda-chisinau",
@@ -3344,6 +3695,7 @@
   "mda-donduseni": {
     "name": "Donduseni",
     "country": "Moldova",
+    "center": [27.732, 48.235],
     "neighbors": [
       "mda-drochia",
       "mda-edinet",
@@ -3356,6 +3708,7 @@
   "mda-drochia": {
     "name": "Drochia",
     "country": "Moldova",
+    "center": [27.907, 48.029],
     "neighbors": [
       "mda-donduseni",
       "mda-floresti",
@@ -3367,6 +3720,7 @@
   "mda-edinet": {
     "name": "Edinet",
     "country": "Moldova",
+    "center": [27.302, 48.134],
     "neighbors": [
       "mda-briceni",
       "mda-donduseni",
@@ -3378,6 +3732,7 @@
   "mda-falesti": {
     "name": "Falesti",
     "country": "Moldova",
+    "center": [27.748, 47.568],
     "neighbors": [
       "mda-balti",
       "mda-glodeni",
@@ -3390,6 +3745,7 @@
   "mda-floresti": {
     "name": "Floresti",
     "country": "Moldova",
+    "center": [28.319, 47.878],
     "neighbors": [
       "mda-camenca",
       "mda-drochia",
@@ -3402,11 +3758,13 @@
   "mda-glodeni": {
     "name": "Glodeni",
     "country": "Moldova",
+    "center": [27.527, 47.737],
     "neighbors": ["mda-balti", "mda-falesti", "mda-riscani", "rou-botosani"]
   },
   "mda-grigoriopol": {
     "name": "Grigoriopol",
     "country": "Moldova",
+    "center": [29.405, 47.161],
     "neighbors": [
       "mda-anenii-noi",
       "mda-bender",
@@ -3417,6 +3775,7 @@
   "mda-hincesti": {
     "name": "Hinceşti",
     "country": "Moldova",
+    "center": [28.364, 46.837],
     "neighbors": [
       "mda-cimislia",
       "mda-ialoveni",
@@ -3429,6 +3788,7 @@
   "mda-ialoveni": {
     "name": "ialoveni",
     "country": "Moldova",
+    "center": [28.792, 46.901],
     "neighbors": [
       "mda-anenii-noi",
       "mda-causeni",
@@ -3442,6 +3802,7 @@
   "mda-leova": {
     "name": "Leova",
     "country": "Moldova",
+    "center": [28.419, 46.537],
     "neighbors": [
       "mda-cantemir",
       "mda-cimislia",
@@ -3453,6 +3814,7 @@
   "mda-nisporeni": {
     "name": "Nisporeni",
     "country": "Moldova",
+    "center": [28.197, 47.066],
     "neighbors": [
       "mda-calarasi",
       "mda-hincesti",
@@ -3465,6 +3827,7 @@
   "mda-ocnita": {
     "name": "Ornita",
     "country": "Moldova",
+    "center": [27.498, 48.368],
     "neighbors": [
       "mda-briceni",
       "mda-donduseni",
@@ -3476,6 +3839,7 @@
   "mda-orhei": {
     "name": "Orhei",
     "country": "Moldova",
+    "center": [28.82, 47.411],
     "neighbors": [
       "mda-calarasi",
       "mda-criuleni",
@@ -3489,6 +3853,7 @@
   "mda-rezina": {
     "name": "Rezina",
     "country": "Moldova",
+    "center": [29.087, 47.747],
     "neighbors": [
       "mda-camenca",
       "mda-orhei",
@@ -3500,11 +3865,13 @@
   "mda-rezina-2": {
     "name": "Rezina",
     "country": "Moldova",
+    "center": [28.846, 47.682],
     "neighbors": ["mda-orhei", "mda-rezina", "mda-soldanesti", "mda-telenesti"]
   },
   "mda-riscani": {
     "name": "Riscani",
     "country": "Moldova",
+    "center": [27.542, 47.952],
     "neighbors": [
       "mda-balti",
       "mda-donduseni",
@@ -3518,6 +3885,7 @@
   "mda-singerei": {
     "name": "Singerei",
     "country": "Moldova",
+    "center": [28.145, 47.661],
     "neighbors": [
       "mda-balti",
       "mda-drochia",
@@ -3531,6 +3899,7 @@
   "mda-soldanesti": {
     "name": "Soldanesti Dstric",
     "country": "Moldova",
+    "center": [28.75, 47.856],
     "neighbors": [
       "mda-camenca",
       "mda-floresti",
@@ -3541,6 +3910,7 @@
   "mda-soroca": {
     "name": "Soroco",
     "country": "Moldova",
+    "center": [28.225, 48.116],
     "neighbors": [
       "mda-camenca",
       "mda-donduseni",
@@ -3552,11 +3922,13 @@
   "mda-stefan-voda": {
     "name": "Stefan Voda",
     "country": "Moldova",
+    "center": [29.627, 46.543],
     "neighbors": ["mda-bender", "mda-causeni", "ukr-odessa"]
   },
   "mda-straseni": {
     "name": "Straseni",
     "country": "Moldova",
+    "center": [28.572, 47.177],
     "neighbors": [
       "mda-calarasi",
       "mda-chisinau",
@@ -3569,11 +3941,13 @@
   "mda-taraclia": {
     "name": "Taraclia",
     "country": "Moldova",
+    "center": [28.606, 45.878],
     "neighbors": ["mda-basarabeasca", "mda-cahul", "mda-comrat", "ukr-odessa"]
   },
   "mda-telenesti": {
     "name": "Teleneşti",
     "country": "Moldova",
+    "center": [28.487, 47.541],
     "neighbors": [
       "mda-calarasi",
       "mda-floresti",
@@ -3587,6 +3961,7 @@
   "mda-transnistria": {
     "name": "Stîngă Nistrului",
     "country": "Moldova",
+    "center": [29.247, 47.319],
     "neighbors": [
       "mda-criuleni",
       "mda-grigoriopol",
@@ -3599,11 +3974,13 @@
   "mda-transnistria-2": {
     "name": "Transnistria",
     "country": "Moldova",
+    "center": [29.154, 47.265],
     "neighbors": ["mda-criuleni", "mda-transnistria"]
   },
   "mda-ungheni": {
     "name": "Ungheni",
     "country": "Moldova",
+    "center": [27.904, 47.307],
     "neighbors": [
       "mda-calarasi",
       "mda-falesti",
@@ -3616,6 +3993,7 @@
   "mkd": {
     "name": "Makedonya",
     "country": "Kuzey Makedonya",
+    "center": [21.679, 41.601],
     "neighbors": [
       "alb-diber",
       "alb-elbasan",
@@ -3632,6 +4010,7 @@
   "mne-andrijevica": {
     "name": "Andrijevica Belediyesi",
     "country": "Karadağ",
+    "center": [19.758, 42.71],
     "neighbors": [
       "alb-shkoder",
       "mne-berane",
@@ -3643,6 +4022,7 @@
   "mne-bar": {
     "name": "Bar Belediyesi",
     "country": "Karadağ",
+    "center": [19.14, 42.169],
     "neighbors": [
       "alb-shkoder",
       "mne-budva",
@@ -3654,6 +4034,7 @@
   "mne-berane": {
     "name": "Berane",
     "country": "Karadağ",
+    "center": [19.925, 42.848],
     "neighbors": [
       "kos",
       "mne-andrijevica",
@@ -3668,6 +4049,7 @@
   "mne-bijelo-polje": {
     "name": "Bijelo Polje Belediyesi",
     "country": "Karadağ",
+    "center": [19.73, 43.036],
     "neighbors": [
       "mne-berane",
       "mne-mojkovac",
@@ -3679,11 +4061,13 @@
   "mne-budva": {
     "name": "Budva Belediyesi",
     "country": "Karadağ",
+    "center": [18.845, 42.315],
     "neighbors": ["mne-bar", "mne-cetinje", "mne-kotor"]
   },
   "mne-cetinje": {
     "name": "Cetinje Belediyesi",
     "country": "Karadağ",
+    "center": [18.865, 42.493],
     "neighbors": [
       "mne-bar",
       "mne-budva",
@@ -3696,11 +4080,13 @@
   "mne-danilovgrad": {
     "name": "Danilovgrad Belediyesi",
     "country": "Karadağ",
+    "center": [19.12, 42.605],
     "neighbors": ["mne-cetinje", "mne-kolasin", "mne-niksic", "mne-podgorica"]
   },
   "mne-herceg-novi": {
     "name": "Herceg Novi Belediye",
     "country": "Karadağ",
+    "center": [18.523, 42.508],
     "neighbors": [
       "bih-trebinje",
       "hrv-dubrovnik-neretva",
@@ -3711,6 +4097,7 @@
   "mne-kolasin": {
     "name": "Kolasin Belediyesi",
     "country": "Karadağ",
+    "center": [19.413, 42.796],
     "neighbors": [
       "mne-andrijevica",
       "mne-berane",
@@ -3724,6 +4111,7 @@
   "mne-kotor": {
     "name": "Kotor",
     "country": "Karadağ",
+    "center": [18.631, 42.564],
     "neighbors": [
       "bih-trebinje",
       "mne-budva",
@@ -3736,6 +4124,7 @@
   "mne-mojkovac": {
     "name": "Mojkovac Belediyesi",
     "country": "Karadağ",
+    "center": [19.509, 42.967],
     "neighbors": [
       "mne-berane",
       "mne-bijelo-polje",
@@ -3748,6 +4137,7 @@
   "mne-niksic": {
     "name": "Niksic Belediyesi",
     "country": "Karadağ",
+    "center": [18.721, 42.866],
     "neighbors": [
       "bih-trebinje",
       "mne-cetinje",
@@ -3761,6 +4151,7 @@
   "mne-plav": {
     "name": "Plav",
     "country": "Karadağ",
+    "center": [19.92, 42.59],
     "neighbors": [
       "alb-kukes",
       "alb-shkoder",
@@ -3772,6 +4163,7 @@
   "mne-pljevlja": {
     "name": "Pljevlja Belediyesi",
     "country": "Karadağ",
+    "center": [19.244, 43.3],
     "neighbors": [
       "bih-foca",
       "mne-bijelo-polje",
@@ -3783,6 +4175,7 @@
   "mne-pluzine": {
     "name": "Pluzine Belediyesi",
     "country": "Karadağ",
+    "center": [18.849, 43.158],
     "neighbors": [
       "bih-foca",
       "bih-trebinje",
@@ -3794,6 +4187,7 @@
   "mne-podgorica": {
     "name": "Podgorica",
     "country": "Karadağ",
+    "center": [19.342, 42.482],
     "neighbors": [
       "alb-shkoder",
       "mne-andrijevica",
@@ -3806,11 +4200,13 @@
   "mne-rozaje": {
     "name": "Rožaje",
     "country": "Karadağ",
+    "center": [20.184, 42.873],
     "neighbors": ["kos", "mne-berane", "srb-raska"]
   },
   "mne-savnik": {
     "name": "Savnik Belediyesi",
     "country": "Karadağ",
+    "center": [19.13, 42.965],
     "neighbors": [
       "mne-kolasin",
       "mne-mojkovac",
@@ -3822,16 +4218,19 @@
   "mne-tivat": {
     "name": "Tivat",
     "country": "Karadağ",
+    "center": [18.713, 42.425],
     "neighbors": ["mne-herceg-novi", "mne-kotor"]
   },
   "mne-ulcinj": {
     "name": "Ulcinj Belediyesi",
     "country": "Karadağ",
+    "center": [19.289, 41.982],
     "neighbors": ["alb-shkoder", "mne-bar"]
   },
   "mne-zabljak": {
     "name": "Zabljak Belediyesi",
     "country": "Karadağ",
+    "center": [19.175, 43.118],
     "neighbors": [
       "bih-foca",
       "mne-mojkovac",
@@ -3843,6 +4242,7 @@
   "rou-alba": {
     "name": "Alba ili",
     "country": "Romanya",
+    "center": [23.485, 46.165],
     "neighbors": [
       "rou-arad",
       "rou-bihor",
@@ -3856,6 +4256,7 @@
   "rou-arad": {
     "name": "Arad ili",
     "country": "Romanya",
+    "center": [21.754, 46.267],
     "neighbors": [
       "hun-bekes",
       "hun-csongrad-csanad",
@@ -3868,6 +4269,7 @@
   "rou-arges": {
     "name": "Argeș ili",
     "country": "Romanya",
+    "center": [24.885, 45.033],
     "neighbors": [
       "rou-brasov",
       "rou-dambovita",
@@ -3880,6 +4282,7 @@
   "rou-bacau": {
     "name": "Bacău ili",
     "country": "Romanya",
+    "center": [26.791, 46.406],
     "neighbors": [
       "rou-covasna",
       "rou-harghita",
@@ -3891,6 +4294,7 @@
   "rou-bihor": {
     "name": "Bihor ili",
     "country": "Romanya",
+    "center": [22.201, 46.932],
     "neighbors": [
       "hun-bekes",
       "hun-hajdu-bihar",
@@ -3905,11 +4309,13 @@
   "rou-bistrita-nasaud": {
     "name": "Bistrița-Năsăud ili",
     "country": "Romanya",
+    "center": [24.529, 47.213],
     "neighbors": ["rou-cluj", "rou-maramures", "rou-mures", "rou-suceava"]
   },
   "rou-botosani": {
     "name": "Botoșani ili",
     "country": "Romanya",
+    "center": [26.757, 47.853],
     "neighbors": [
       "mda-briceni",
       "mda-edinet",
@@ -3924,6 +4330,7 @@
   "rou-braila": {
     "name": "Brăila ili",
     "country": "Romanya",
+    "center": [27.667, 45.096],
     "neighbors": [
       "rou-buzau",
       "rou-constanta",
@@ -3936,6 +4343,7 @@
   "rou-brasov": {
     "name": "Brașov ili",
     "country": "Romanya",
+    "center": [25.291, 45.781],
     "neighbors": [
       "rou-arges",
       "rou-buzau",
@@ -3950,11 +4358,13 @@
   "rou-bucharest": {
     "name": "Bükreș",
     "country": "Romanya",
+    "center": [26.099, 44.46],
     "neighbors": ["rou-ilfov"]
   },
   "rou-buzau": {
     "name": "Buzău ili",
     "country": "Romanya",
+    "center": [26.742, 45.256],
     "neighbors": [
       "rou-braila",
       "rou-brasov",
@@ -3967,6 +4377,7 @@
   "rou-calarasi": {
     "name": "Călărași ili",
     "country": "Romanya",
+    "center": [26.78, 44.327],
     "neighbors": [
       "bgr-silistra",
       "rou-constanta",
@@ -3978,6 +4389,7 @@
   "rou-caras-severin": {
     "name": "Caraș-Severin ili",
     "country": "Romanya",
+    "center": [22.047, 45.141],
     "neighbors": [
       "rou-gorj",
       "rou-hunedoara",
@@ -3990,6 +4402,7 @@
   "rou-cluj": {
     "name": "Cluj",
     "country": "Romanya",
+    "center": [23.693, 46.774],
     "neighbors": [
       "rou-alba",
       "rou-bihor",
@@ -4002,6 +4415,7 @@
   "rou-constanta": {
     "name": "Köstence ili",
     "country": "Romanya",
+    "center": [28.298, 44.194],
     "neighbors": [
       "bgr-dobrich",
       "bgr-silistra",
@@ -4014,6 +4428,7 @@
   "rou-covasna": {
     "name": "Covasna ili",
     "country": "Romanya",
+    "center": [26.065, 45.884],
     "neighbors": [
       "rou-bacau",
       "rou-brasov",
@@ -4025,6 +4440,7 @@
   "rou-dambovita": {
     "name": "Dâmbovița ili",
     "country": "Romanya",
+    "center": [25.487, 44.848],
     "neighbors": [
       "rou-arges",
       "rou-brasov",
@@ -4037,6 +4453,7 @@
   "rou-dolj": {
     "name": "Dolj ili",
     "country": "Romanya",
+    "center": [23.641, 44.176],
     "neighbors": [
       "bgr-montana",
       "bgr-vidin",
@@ -4050,6 +4467,7 @@
   "rou-galati": {
     "name": "Galați ili",
     "country": "Romanya",
+    "center": [27.775, 45.772],
     "neighbors": [
       "mda-cahul",
       "rou-braila",
@@ -4062,6 +4480,7 @@
   "rou-giurgiu": {
     "name": "Yergöğü ili",
     "country": "Romanya",
+    "center": [25.914, 44.159],
     "neighbors": [
       "bgr-ruse",
       "bgr-silistra",
@@ -4074,6 +4493,7 @@
   "rou-gorj": {
     "name": "Gorj ili",
     "country": "Romanya",
+    "center": [23.33, 45.003],
     "neighbors": [
       "rou-caras-severin",
       "rou-dolj",
@@ -4085,6 +4505,7 @@
   "rou-harghita": {
     "name": "Harghita ili",
     "country": "Romanya",
+    "center": [25.573, 46.539],
     "neighbors": [
       "rou-bacau",
       "rou-brasov",
@@ -4097,6 +4518,7 @@
   "rou-hunedoara": {
     "name": "Hunedoara ili",
     "country": "Romanya",
+    "center": [22.934, 45.747],
     "neighbors": [
       "rou-alba",
       "rou-arad",
@@ -4109,6 +4531,7 @@
   "rou-ialomita": {
     "name": "Ialomița ili",
     "country": "Romanya",
+    "center": [27.325, 44.647],
     "neighbors": [
       "rou-braila",
       "rou-buzau",
@@ -4121,6 +4544,7 @@
   "rou-iasi": {
     "name": "Yaș ili",
     "country": "Romanya",
+    "center": [27.333, 47.229],
     "neighbors": [
       "mda-falesti",
       "mda-hincesti",
@@ -4135,6 +4559,7 @@
   "rou-ilfov": {
     "name": "Ilfov ili",
     "country": "Romanya",
+    "center": [26.216, 44.627],
     "neighbors": [
       "rou-bucharest",
       "rou-calarasi",
@@ -4147,6 +4572,7 @@
   "rou-maramures": {
     "name": "Maramureș ili",
     "country": "Romanya",
+    "center": [23.972, 47.679],
     "neighbors": [
       "rou-bistrita-nasaud",
       "rou-cluj",
@@ -4161,6 +4587,7 @@
   "rou-mehedinti": {
     "name": "Mehedinți ili",
     "country": "Romanya",
+    "center": [22.984, 44.531],
     "neighbors": [
       "bgr-vidin",
       "rou-caras-severin",
@@ -4173,6 +4600,7 @@
   "rou-mures": {
     "name": "Mureș ili",
     "country": "Romanya",
+    "center": [24.697, 46.585],
     "neighbors": [
       "rou-alba",
       "rou-bistrita-nasaud",
@@ -4186,6 +4614,7 @@
   "rou-neamt": {
     "name": "Neamț ili",
     "country": "Romanya",
+    "center": [26.388, 46.945],
     "neighbors": [
       "rou-bacau",
       "rou-harghita",
@@ -4197,6 +4626,7 @@
   "rou-olt": {
     "name": "Olt ili",
     "country": "Romanya",
+    "center": [24.481, 44.317],
     "neighbors": [
       "bgr-pleven",
       "bgr-vratsa",
@@ -4209,6 +4639,7 @@
   "rou-prahova": {
     "name": "Prahova ili",
     "country": "Romanya",
+    "center": [26.009, 45.123],
     "neighbors": [
       "rou-brasov",
       "rou-buzau",
@@ -4220,11 +4651,13 @@
   "rou-salaj": {
     "name": "Sălaj ili",
     "country": "Romanya",
+    "center": [23.126, 47.12],
     "neighbors": ["rou-bihor", "rou-cluj", "rou-maramures", "rou-satu-mare"]
   },
   "rou-satu-mare": {
     "name": "Satu Mare ili",
     "country": "Romanya",
+    "center": [22.894, 47.688],
     "neighbors": [
       "hun-szabolcs-szatmar-bereg",
       "rou-bihor",
@@ -4236,6 +4669,7 @@
   "rou-sibiu": {
     "name": "Sibiu ili",
     "country": "Romanya",
+    "center": [24.25, 45.847],
     "neighbors": [
       "rou-alba",
       "rou-arges",
@@ -4247,6 +4681,7 @@
   "rou-suceava": {
     "name": "Suceava ili",
     "country": "Romanya",
+    "center": [25.594, 47.571],
     "neighbors": [
       "rou-bistrita-nasaud",
       "rou-botosani",
@@ -4261,6 +4696,7 @@
   "rou-teleorman": {
     "name": "Teleorman ili",
     "country": "Romanya",
+    "center": [25.229, 44.05],
     "neighbors": [
       "bgr-pleven",
       "bgr-ruse",
@@ -4274,6 +4710,7 @@
   "rou-timis": {
     "name": "Timiș ili",
     "country": "Romanya",
+    "center": [21.265, 45.662],
     "neighbors": [
       "hun-csongrad-csanad",
       "rou-arad",
@@ -4287,11 +4724,13 @@
   "rou-tulcea": {
     "name": "Tulcea ili",
     "country": "Romanya",
+    "center": [28.608, 44.977],
     "neighbors": ["rou-braila", "rou-constanta", "rou-galati", "ukr-odessa"]
   },
   "rou-valcea": {
     "name": "Vâlcea ili",
     "country": "Romanya",
+    "center": [24.129, 45.095],
     "neighbors": [
       "rou-alba",
       "rou-arges",
@@ -4305,6 +4744,7 @@
   "rou-vaslui": {
     "name": "Vaslui ili",
     "country": "Romanya",
+    "center": [27.781, 46.518],
     "neighbors": [
       "mda-cahul",
       "mda-cantemir",
@@ -4320,6 +4760,7 @@
   "rou-vrancea": {
     "name": "Vrancea ili",
     "country": "Romanya",
+    "center": [26.993, 45.784],
     "neighbors": [
       "rou-bacau",
       "rou-braila",
@@ -4332,11 +4773,13 @@
   "sau-al-baha": {
     "name": "El Baha Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [41.416, 20.106],
     "neighbors": ["sau-asir", "sau-makkah"]
   },
   "sau-al-jowf": {
     "name": "Cevf Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [38.763, 29.625],
     "neighbors": [
       "jor-amman",
       "jor-aqaba",
@@ -4351,6 +4794,7 @@
   "sau-al-madinah": {
     "name": "Medine Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [39.206, 24.647],
     "neighbors": [
       "sau-al-qassim",
       "sau-ha-il",
@@ -4362,11 +4806,13 @@
   "sau-al-qassim": {
     "name": "El Kasım Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [43.22, 25.946],
     "neighbors": ["sau-al-madinah", "sau-ha-il", "sau-riyadh"]
   },
   "sau-asir": {
     "name": "Asir Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [42.995, 19.269],
     "neighbors": [
       "sau-al-baha",
       "sau-jazan",
@@ -4378,6 +4824,7 @@
   "sau-eastern": {
     "name": "Doğu Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [50.376, 21.963],
     "neighbors": [
       "irq-al-muthanna",
       "kwt-al-ahmadi",
@@ -4390,6 +4837,7 @@
   "sau-ha-il": {
     "name": "Hail Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [41.608, 27.348],
     "neighbors": [
       "sau-al-jowf",
       "sau-al-madinah",
@@ -4402,11 +4850,13 @@
   "sau-jazan": {
     "name": "Cizan Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [42.705, 17.325],
     "neighbors": ["sau-asir", "sau-makkah"]
   },
   "sau-makkah": {
     "name": "Mekke Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [41.496, 21.858],
     "neighbors": [
       "sau-al-baha",
       "sau-al-madinah",
@@ -4418,11 +4868,13 @@
   "sau-najran": {
     "name": "Necran Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [45.832, 18.288],
     "neighbors": ["sau-asir", "sau-eastern", "sau-riyadh"]
   },
   "sau-northern-borders": {
     "name": "Kuzey Sınır Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [42.539, 29.631],
     "neighbors": [
       "irq-al-anbar",
       "irq-al-muthanna",
@@ -4437,6 +4889,7 @@
   "sau-riyadh": {
     "name": "Riyad Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [45.57, 23.08],
     "neighbors": [
       "sau-al-madinah",
       "sau-al-qassim",
@@ -4451,11 +4904,13 @@
   "sau-tabuk": {
     "name": "Tebük Bölgesi",
     "country": "Suudi Arabistan",
+    "center": [36.526, 27.868],
     "neighbors": ["sau-al-jowf", "sau-al-madinah", "sau-ha-il"]
   },
   "srb-belgrade": {
     "name": "Belgrad",
     "country": "Sırbistan",
+    "center": [20.409, 44.647],
     "neighbors": [
       "srb-central-banat",
       "srb-kolubara",
@@ -4469,6 +4924,7 @@
   "srb-bor": {
     "name": "Bor İlçesi",
     "country": "Sırbistan",
+    "center": [22.258, 44.347],
     "neighbors": [
       "bgr-vidin",
       "rou-mehedinti",
@@ -4480,6 +4936,7 @@
   "srb-branicevo": {
     "name": "Braniçevo İlçesi",
     "country": "Sırbistan",
+    "center": [21.533, 44.462],
     "neighbors": [
       "rou-caras-severin",
       "rou-mehedinti",
@@ -4492,6 +4949,7 @@
   "srb-central-banat": {
     "name": "Orta Banat İlçesi",
     "country": "Sırbistan",
+    "center": [20.5, 45.427],
     "neighbors": [
       "rou-timis",
       "srb-belgrade",
@@ -4504,6 +4962,7 @@
   "srb-jablanica": {
     "name": "Jablanica İlçesi",
     "country": "Sırbistan",
+    "center": [21.886, 42.94],
     "neighbors": [
       "bgr-pernik",
       "kos",
@@ -4516,6 +4975,7 @@
   "srb-kolubara": {
     "name": "Kolubara İlçesi",
     "country": "Sırbistan",
+    "center": [19.974, 44.283],
     "neighbors": [
       "srb-belgrade",
       "srb-macva",
@@ -4527,6 +4987,7 @@
   "srb-macva": {
     "name": "Maçva İlçesi",
     "country": "Sırbistan",
+    "center": [19.505, 44.634],
     "neighbors": [
       "bih-bijeljina",
       "bih-vlasenica",
@@ -4539,11 +5000,13 @@
   "srb-moravica": {
     "name": "Moravica",
     "country": "Sırbistan",
+    "center": [20.326, 43.848],
     "neighbors": ["srb-kolubara", "srb-raska", "srb-sumadija", "srb-zlatibor"]
   },
   "srb-nisava": {
     "name": "Nišava İlçesi",
     "country": "Sırbistan",
+    "center": [21.89, 43.353],
     "neighbors": [
       "srb-jablanica",
       "srb-pirot",
@@ -4556,6 +5019,7 @@
   "srb-north-backa": {
     "name": "Kuzey Bačka İlçesi",
     "country": "Sırbistan",
+    "center": [19.6, 45.927],
     "neighbors": [
       "hun-bacs-kiskun",
       "hun-csongrad-csanad",
@@ -4567,6 +5031,7 @@
   "srb-north-banat": {
     "name": "Kuzey Banat İlçesi",
     "country": "Sırbistan",
+    "center": [20.152, 45.956],
     "neighbors": [
       "hun-csongrad-csanad",
       "hun-szeged",
@@ -4579,11 +5044,13 @@
   "srb-pcinja": {
     "name": "Pčinja İlçesi",
     "country": "Sırbistan",
+    "center": [22.055, 42.533],
     "neighbors": ["bgr-kyustendil", "bgr-pernik", "kos", "mkd", "srb-jablanica"]
   },
   "srb-pirot": {
     "name": "Pirot İlçesi",
     "country": "Sırbistan",
+    "center": [22.554, 43.132],
     "neighbors": [
       "bgr-montana",
       "bgr-pernik",
@@ -4597,6 +5064,7 @@
   "srb-podunavlje": {
     "name": "Podunavlye İlçesi",
     "country": "Sırbistan",
+    "center": [20.962, 44.453],
     "neighbors": [
       "srb-belgrade",
       "srb-branicevo",
@@ -4608,6 +5076,7 @@
   "srb-pomoravski": {
     "name": "Pomoravski",
     "country": "Sırbistan",
+    "center": [21.366, 43.991],
     "neighbors": [
       "srb-bor",
       "srb-branicevo",
@@ -4622,6 +5091,7 @@
   "srb-rasina": {
     "name": "Rasina",
     "country": "Sırbistan",
+    "center": [21.154, 43.507],
     "neighbors": [
       "kos",
       "srb-nisava",
@@ -4633,6 +5103,7 @@
   "srb-raska": {
     "name": "Raska",
     "country": "Sırbistan",
+    "center": [20.584, 43.373],
     "neighbors": [
       "kos",
       "mne-berane",
@@ -4648,6 +5119,7 @@
   "srb-south-backa": {
     "name": "Güney Bačka İlçesi",
     "country": "Sırbistan",
+    "center": [19.739, 45.395],
     "neighbors": [
       "hrv-osijek-baranja",
       "hrv-vukovar-syrmia",
@@ -4661,6 +5133,7 @@
   "srb-south-banat": {
     "name": "Güney Banat İlçesi",
     "country": "Sırbistan",
+    "center": [20.962, 45.002],
     "neighbors": [
       "rou-caras-severin",
       "rou-timis",
@@ -4673,6 +5146,7 @@
   "srb-srem": {
     "name": "Srem İlçesi",
     "country": "Sırbistan",
+    "center": [19.934, 44.96],
     "neighbors": [
       "bih-bijeljina",
       "hrv-vukovar-syrmia",
@@ -4685,6 +5159,7 @@
   "srb-sumadija": {
     "name": "Šumadija İlçesi",
     "country": "Sırbistan",
+    "center": [20.815, 44.07],
     "neighbors": [
       "srb-belgrade",
       "srb-kolubara",
@@ -4697,11 +5172,13 @@
   "srb-toplica": {
     "name": "Toplica Dstrict",
     "country": "Sırbistan",
+    "center": [21.366, 43.149],
     "neighbors": ["kos", "srb-jablanica", "srb-nisava", "srb-rasina"]
   },
   "srb-west-backa": {
     "name": "Batı Bačka İlçesi",
     "country": "Sırbistan",
+    "center": [19.202, 45.72],
     "neighbors": [
       "hrv-osijek-baranja",
       "hun-bacs-kiskun",
@@ -4712,6 +5189,7 @@
   "srb-zajecar": {
     "name": "Zayeçar İlçesi",
     "country": "Sırbistan",
+    "center": [22.148, 43.69],
     "neighbors": [
       "bgr-vidin",
       "srb-bor",
@@ -4723,6 +5201,7 @@
   "srb-zlatibor": {
     "name": "Zlatibor",
     "country": "Sırbistan",
+    "center": [19.736, 43.743],
     "neighbors": [
       "bih-foca",
       "bih-vlasenica",
@@ -4737,6 +5216,7 @@
   "syr-al-hasakah": {
     "name": "Hasiçi",
     "country": "Suriye",
+    "center": [40.778, 36.547],
     "neighbors": [
       "irq-duhok",
       "irq-nineveh",
@@ -4750,6 +5230,7 @@
   "syr-al-raqqah": {
     "name": "Rakka",
     "country": "Suriye",
+    "center": [38.957, 35.967],
     "neighbors": [
       "syr-al-hasakah",
       "syr-aleppo",
@@ -4762,6 +5243,7 @@
   "syr-aleppo": {
     "name": "Halep",
     "country": "Suriye",
+    "center": [37.58, 36.164],
     "neighbors": [
       "syr-al-raqqah",
       "syr-hama",
@@ -4775,16 +5257,19 @@
   "syr-as-suwayda": {
     "name": "Süveyde",
     "country": "Suriye",
+    "center": [36.831, 32.765],
     "neighbors": ["jor-mafraq", "syr-daraa", "syr-rif-dimashq"]
   },
   "syr-damascus": {
     "name": "Şam",
     "country": "Suriye",
+    "center": [36.284, 33.519],
     "neighbors": ["syr-rif-dimashq"]
   },
   "syr-daraa": {
     "name": "Dera",
     "country": "Suriye",
+    "center": [36.157, 32.845],
     "neighbors": [
       "jor-irbid",
       "jor-mafraq",
@@ -4797,6 +5282,7 @@
   "syr-deir-ez-zor": {
     "name": "Deyrizor",
     "country": "Suriye",
+    "center": [40.281, 35.155],
     "neighbors": [
       "irq-al-anbar",
       "irq-nineveh",
@@ -4808,6 +5294,7 @@
   "syr-hama": {
     "name": "Hama",
     "country": "Suriye",
+    "center": [37.311, 35.205],
     "neighbors": [
       "syr-al-raqqah",
       "syr-aleppo",
@@ -4820,6 +5307,7 @@
   "syr-homs": {
     "name": "Humus",
     "country": "Suriye",
+    "center": [38.384, 34.202],
     "neighbors": [
       "irq-al-anbar",
       "jor-mafraq",
@@ -4835,21 +5323,25 @@
   "syr-idlib": {
     "name": "İdlip",
     "country": "Suriye",
+    "center": [36.679, 35.779],
     "neighbors": ["syr-aleppo", "syr-hama", "syr-latakia", "tur-hatay"]
   },
   "syr-latakia": {
     "name": "Lazkiye",
     "country": "Suriye",
+    "center": [36.027, 35.569],
     "neighbors": ["syr-hama", "syr-idlib", "syr-tartus", "tur-hatay"]
   },
   "syr-quneitra": {
     "name": "Kuneytire",
     "country": "Suriye",
+    "center": [35.922, 33.076],
     "neighbors": ["syr-daraa", "syr-rif-dimashq", "syr-western-al-samadania"]
   },
   "syr-rif-dimashq": {
     "name": "Rif Şam",
     "country": "Suriye",
+    "center": [37.033, 33.567],
     "neighbors": [
       "jor-mafraq",
       "lbn-beqaa",
@@ -4864,11 +5356,13 @@
   "syr-tartus": {
     "name": "Tartus",
     "country": "Suriye",
+    "center": [36.016, 34.94],
     "neighbors": ["lbn-north", "syr-hama", "syr-homs", "syr-latakia"]
   },
   "syr-western-al-samadania": {
     "name": "UNDOF",
     "country": "Suriye",
+    "center": [35.863, 33.146],
     "neighbors": [
       "isr-northern",
       "jor-irbid",
@@ -4882,6 +5376,7 @@
   "tun-beja": {
     "name": "Bace ili",
     "country": "Tunus",
+    "center": [9.246, 36.62],
     "neighbors": [
       "tun-bizerte",
       "tun-jendouba",
@@ -4893,16 +5388,19 @@
   "tun-ben-arous": {
     "name": "Ben Arus ili",
     "country": "Tunus",
+    "center": [10.228, 36.622],
     "neighbors": ["tun-manouba", "tun-nabeul", "tun-tunis", "tun-zaghouan"]
   },
   "tun-bizerte": {
     "name": "Binzert ili",
     "country": "Tunus",
+    "center": [9.606, 37.081],
     "neighbors": ["tun-beja", "tun-manouba"]
   },
   "tun-gabes": {
     "name": "Gabes",
     "country": "Tunus",
+    "center": [9.798, 33.784],
     "neighbors": [
       "tun-gafsa",
       "tun-kebili",
@@ -4914,6 +5412,7 @@
   "tun-gafsa": {
     "name": "Kafsa ili",
     "country": "Tunus",
+    "center": [8.76, 34.407],
     "neighbors": [
       "dza-tebessa",
       "tun-gabes",
@@ -4926,6 +5425,7 @@
   "tun-jendouba": {
     "name": "Cendube ili",
     "country": "Tunus",
+    "center": [8.689, 36.634],
     "neighbors": [
       "dza-el-tarf",
       "dza-souk-ahras",
@@ -4937,6 +5437,7 @@
   "tun-kairouan": {
     "name": "Kayravan",
     "country": "Tunus",
+    "center": [9.863, 35.606],
     "neighbors": [
       "tun-mahdia",
       "tun-sfax",
@@ -4949,6 +5450,7 @@
   "tun-kasserine": {
     "name": "Kassarin ili",
     "country": "Tunus",
+    "center": [8.761, 35.219],
     "neighbors": [
       "dza-tebessa",
       "tun-gafsa",
@@ -4960,6 +5462,7 @@
   "tun-kebili": {
     "name": "Kabili ili",
     "country": "Tunus",
+    "center": [8.88, 33.291],
     "neighbors": [
       "dza-el-oued",
       "tun-gabes",
@@ -4972,6 +5475,7 @@
   "tun-kef": {
     "name": "Kâf ili",
     "country": "Tunus",
+    "center": [8.661, 36.062],
     "neighbors": [
       "dza-souk-ahras",
       "dza-tebessa",
@@ -4983,11 +5487,13 @@
   "tun-mahdia": {
     "name": "Mehdiye ili",
     "country": "Tunus",
+    "center": [10.449, 35.285],
     "neighbors": ["tun-kairouan", "tun-monastir", "tun-sfax", "tun-sousse"]
   },
   "tun-manouba": {
     "name": "Manuba ili",
     "country": "Tunus",
+    "center": [9.883, 36.818],
     "neighbors": [
       "tun-beja",
       "tun-ben-arous",
@@ -4999,6 +5505,7 @@
   "tun-medenine": {
     "name": "Medenin ili",
     "country": "Tunus",
+    "center": [10.915, 33.297],
     "neighbors": [
       "lby-ghadames",
       "lby-nuqat-al-khams",
@@ -5010,21 +5517,25 @@
   "tun-monastir": {
     "name": "Munastır",
     "country": "Tunus",
+    "center": [10.767, 35.607],
     "neighbors": ["tun-mahdia", "tun-sousse"]
   },
   "tun-nabeul": {
     "name": "Nabil ili",
     "country": "Tunus",
+    "center": [10.715, 36.691],
     "neighbors": ["tun-ben-arous", "tun-sousse", "tun-zaghouan"]
   },
   "tun-sfax": {
     "name": "Sfaks ili",
     "country": "Tunus",
+    "center": [10.347, 34.782],
     "neighbors": ["tun-gabes", "tun-kairouan", "tun-mahdia", "tun-sidi-bouzid"]
   },
   "tun-sidi-bouzid": {
     "name": "Sidi Bu Zeyd ili",
     "country": "Tunus",
+    "center": [9.531, 34.86],
     "neighbors": [
       "tun-gabes",
       "tun-gafsa",
@@ -5037,6 +5548,7 @@
   "tun-siliana": {
     "name": "Silyana ili",
     "country": "Tunus",
+    "center": [9.363, 36.077],
     "neighbors": [
       "tun-beja",
       "tun-jendouba",
@@ -5050,6 +5562,7 @@
   "tun-sousse": {
     "name": "Susa ili",
     "country": "Tunus",
+    "center": [10.398, 35.84],
     "neighbors": [
       "tun-kairouan",
       "tun-mahdia",
@@ -5061,6 +5574,7 @@
   "tun-tataouine": {
     "name": "Tatavin ili",
     "country": "Tunus",
+    "center": [9.834, 32.084],
     "neighbors": [
       "dza-el-oued",
       "dza-ouargla",
@@ -5072,16 +5586,19 @@
   "tun-tozeur": {
     "name": "Tuzer ili",
     "country": "Tunus",
+    "center": [7.962, 33.944],
     "neighbors": ["dza-el-oued", "dza-tebessa", "tun-gafsa", "tun-kebili"]
   },
   "tun-tunis": {
     "name": "Tunus ili",
     "country": "Tunus",
+    "center": [10.142, 36.774],
     "neighbors": ["tun-ben-arous", "tun-manouba"]
   },
   "tun-zaghouan": {
     "name": "Zağvan ili",
     "country": "Tunus",
+    "center": [9.995, 36.317],
     "neighbors": [
       "tun-beja",
       "tun-ben-arous",
@@ -5095,6 +5612,7 @@
   "tur-adana": {
     "name": "Adana",
     "country": "Türkiye",
+    "center": [35.517, 37.332],
     "neighbors": [
       "tur-hatay",
       "tur-kahramanmaras",
@@ -5107,6 +5625,7 @@
   "tur-adiyaman": {
     "name": "Adıyaman",
     "country": "Türkiye",
+    "center": [38.374, 37.769],
     "neighbors": [
       "tur-diyarbakir",
       "tur-gaziantep",
@@ -5118,6 +5637,7 @@
   "tur-afyonkarahisar": {
     "name": "Afyonkarahisar",
     "country": "Türkiye",
+    "center": [30.628, 38.655],
     "neighbors": [
       "tur-burdur",
       "tur-denizli",
@@ -5131,6 +5651,7 @@
   "tur-agri": {
     "name": "Ağrı",
     "country": "Türkiye",
+    "center": [43.069, 39.667],
     "neighbors": [
       "irn-west-azerbaijan",
       "tur-bitlis",
@@ -5144,6 +5665,7 @@
   "tur-aksaray": {
     "name": "Aksaray",
     "country": "Türkiye",
+    "center": [33.861, 38.378],
     "neighbors": [
       "tur-ankara",
       "tur-kirsehir",
@@ -5155,11 +5677,13 @@
   "tur-amasya": {
     "name": "Amasya",
     "country": "Türkiye",
+    "center": [35.718, 40.674],
     "neighbors": ["tur-corum", "tur-samsun", "tur-tokat", "tur-yozgat"]
   },
   "tur-ankara": {
     "name": "Ankara",
     "country": "Türkiye",
+    "center": [32.61, 39.78],
     "neighbors": [
       "tur-aksaray",
       "tur-bolu",
@@ -5173,6 +5697,7 @@
   "tur-antalya": {
     "name": "Antalya",
     "country": "Türkiye",
+    "center": [30.139, 36.725],
     "neighbors": [
       "tur-burdur",
       "tur-isparta",
@@ -5185,6 +5710,7 @@
   "tur-ardahan": {
     "name": "Ardahan",
     "country": "Türkiye",
+    "center": [42.781, 41.142],
     "neighbors": [
       "geo-adjara",
       "geo-samtskhe-javakheti",
@@ -5196,16 +5722,19 @@
   "tur-artvin": {
     "name": "Artvin",
     "country": "Türkiye",
+    "center": [41.785, 41.119],
     "neighbors": ["geo-adjara", "tur-ardahan", "tur-erzurum", "tur-rize"]
   },
   "tur-aydin": {
     "name": "Aydın",
     "country": "Türkiye",
+    "center": [28.011, 37.749],
     "neighbors": ["tur-denizli", "tur-izmir", "tur-manisa", "tur-mugla"]
   },
   "tur-balikesir": {
     "name": "Balıkesir",
     "country": "Türkiye",
+    "center": [27.879, 39.721],
     "neighbors": [
       "tur-bursa",
       "tur-canakkale",
@@ -5217,11 +5746,13 @@
   "tur-bartin": {
     "name": "Bartın",
     "country": "Türkiye",
+    "center": [32.518, 41.603],
     "neighbors": ["tur-karabuk", "tur-kastamonu", "tur-zonguldak"]
   },
   "tur-batman": {
     "name": "Batman",
     "country": "Türkiye",
+    "center": [41.411, 38.25],
     "neighbors": [
       "tur-bitlis",
       "tur-diyarbakir",
@@ -5233,11 +5764,13 @@
   "tur-bayburt": {
     "name": "Bayburt",
     "country": "Türkiye",
+    "center": [40.224, 40.281],
     "neighbors": ["tur-erzincan", "tur-erzurum", "tur-gumushane", "tur-trabzon"]
   },
   "tur-bilecik": {
     "name": "Bilecik",
     "country": "Türkiye",
+    "center": [30.099, 40.078],
     "neighbors": [
       "tur-bolu",
       "tur-bursa",
@@ -5249,6 +5782,7 @@
   "tur-bingol": {
     "name": "Bingöl",
     "country": "Türkiye",
+    "center": [40.742, 39.05],
     "neighbors": [
       "tur-diyarbakir",
       "tur-elazig",
@@ -5261,11 +5795,13 @@
   "tur-bitlis": {
     "name": "Bitlis",
     "country": "Türkiye",
+    "center": [42.386, 38.548],
     "neighbors": ["tur-agri", "tur-batman", "tur-mus", "tur-siirt", "tur-van"]
   },
   "tur-bolu": {
     "name": "Bolu",
     "country": "Türkiye",
+    "center": [31.761, 40.625],
     "neighbors": [
       "tur-ankara",
       "tur-bilecik",
@@ -5280,6 +5816,7 @@
   "tur-burdur": {
     "name": "Burdur",
     "country": "Türkiye",
+    "center": [29.984, 37.474],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-antalya",
@@ -5291,6 +5828,7 @@
   "tur-bursa": {
     "name": "Bursa",
     "country": "Türkiye",
+    "center": [29.043, 40.028],
     "neighbors": [
       "tur-balikesir",
       "tur-bilecik",
@@ -5303,11 +5841,13 @@
   "tur-canakkale": {
     "name": "Çanakkale",
     "country": "Türkiye",
+    "center": [26.793, 40.009],
     "neighbors": ["tur-balikesir", "tur-edirne", "tur-tekirdag"]
   },
   "tur-cankiri": {
     "name": "Çankırı",
     "country": "Türkiye",
+    "center": [33.494, 40.677],
     "neighbors": [
       "tur-ankara",
       "tur-bolu",
@@ -5320,6 +5860,7 @@
   "tur-corum": {
     "name": "Çorum",
     "country": "Türkiye",
+    "center": [34.651, 40.561],
     "neighbors": [
       "tur-amasya",
       "tur-cankiri",
@@ -5333,6 +5874,7 @@
   "tur-denizli": {
     "name": "Denizli",
     "country": "Türkiye",
+    "center": [29.246, 37.752],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-aydin",
@@ -5345,6 +5887,7 @@
   "tur-diyarbakir": {
     "name": "Diyarbakır",
     "country": "Türkiye",
+    "center": [40.34, 38.087],
     "neighbors": [
       "tur-adiyaman",
       "tur-batman",
@@ -5359,11 +5902,13 @@
   "tur-duzce": {
     "name": "Düzce",
     "country": "Türkiye",
+    "center": [31.27, 40.91],
     "neighbors": ["tur-bolu", "tur-sakarya", "tur-zonguldak"]
   },
   "tur-edirne": {
     "name": "Edirne",
     "country": "Türkiye",
+    "center": [26.575, 41.142],
     "neighbors": [
       "bgr-haskovo",
       "bgr-yambol",
@@ -5376,6 +5921,7 @@
   "tur-elazig": {
     "name": "Elâzığ",
     "country": "Türkiye",
+    "center": [39.214, 38.603],
     "neighbors": [
       "tur-bingol",
       "tur-diyarbakir",
@@ -5387,6 +5933,7 @@
   "tur-erzincan": {
     "name": "Erzincan",
     "country": "Türkiye",
+    "center": [39.052, 39.736],
     "neighbors": [
       "tur-bayburt",
       "tur-bingol",
@@ -5402,6 +5949,7 @@
   "tur-erzurum": {
     "name": "Erzurum",
     "country": "Türkiye",
+    "center": [41.55, 40.022],
     "neighbors": [
       "tur-agri",
       "tur-ardahan",
@@ -5417,6 +5965,7 @@
   "tur-eskisehir": {
     "name": "Eskişehir",
     "country": "Türkiye",
+    "center": [31.088, 39.629],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-ankara",
@@ -5429,6 +5978,7 @@
   "tur-gaziantep": {
     "name": "Gaziantep",
     "country": "Türkiye",
+    "center": [37.427, 37.067],
     "neighbors": [
       "syr-aleppo",
       "tur-adiyaman",
@@ -5442,6 +5992,7 @@
   "tur-giresun": {
     "name": "Giresun",
     "country": "Türkiye",
+    "center": [38.541, 40.584],
     "neighbors": [
       "tur-erzincan",
       "tur-gumushane",
@@ -5453,11 +6004,13 @@
   "tur-gumushane": {
     "name": "Gümüşhane",
     "country": "Türkiye",
+    "center": [39.382, 40.309],
     "neighbors": ["tur-bayburt", "tur-erzincan", "tur-giresun", "tur-trabzon"]
   },
   "tur-hakkari": {
     "name": "Hakkâri",
     "country": "Türkiye",
+    "center": [44.133, 37.573],
     "neighbors": [
       "irn-west-azerbaijan",
       "irq-duhok",
@@ -5469,6 +6022,7 @@
   "tur-hatay": {
     "name": "Hatay",
     "country": "Türkiye",
+    "center": [36.181, 36.347],
     "neighbors": [
       "syr-aleppo",
       "syr-idlib",
@@ -5481,6 +6035,7 @@
   "tur-igdir": {
     "name": "Iğdır",
     "country": "Türkiye",
+    "center": [43.995, 39.83],
     "neighbors": [
       "arm-ararat",
       "arm-armavir",
@@ -5492,6 +6047,7 @@
   "tur-isparta": {
     "name": "Isparta",
     "country": "Türkiye",
+    "center": [30.961, 37.938],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-antalya",
@@ -5502,16 +6058,19 @@
   "tur-istanbul": {
     "name": "İstanbul",
     "country": "Türkiye",
+    "center": [28.457, 41.243],
     "neighbors": ["tur-kirklareli", "tur-kocaeli", "tur-tekirdag"]
   },
   "tur-izmir": {
     "name": "İzmir",
     "country": "Türkiye",
+    "center": [27.4, 38.295],
     "neighbors": ["tur-aydin", "tur-balikesir", "tur-manisa"]
   },
   "tur-kahramanmaras": {
     "name": "Kahramanmaraş",
     "country": "Türkiye",
+    "center": [36.978, 37.931],
     "neighbors": [
       "tur-adana",
       "tur-adiyaman",
@@ -5525,6 +6084,7 @@
   "tur-karabuk": {
     "name": "Karabük",
     "country": "Türkiye",
+    "center": [32.65, 41.17],
     "neighbors": [
       "tur-bartin",
       "tur-bolu",
@@ -5536,11 +6096,13 @@
   "tur-karaman": {
     "name": "Karaman",
     "country": "Türkiye",
+    "center": [33.17, 37.172],
     "neighbors": ["tur-antalya", "tur-konya", "tur-mersin"]
   },
   "tur-kars": {
     "name": "Kars",
     "country": "Türkiye",
+    "center": [43.1, 40.428],
     "neighbors": [
       "arm-aragatsotn",
       "arm-armavir",
@@ -5554,6 +6116,7 @@
   "tur-kastamonu": {
     "name": "Kastamonu",
     "country": "Türkiye",
+    "center": [33.671, 41.505],
     "neighbors": [
       "tur-bartin",
       "tur-cankiri",
@@ -5565,6 +6128,7 @@
   "tur-kayseri": {
     "name": "Kayseri",
     "country": "Türkiye",
+    "center": [35.77, 38.706],
     "neighbors": [
       "tur-adana",
       "tur-kahramanmaras",
@@ -5577,11 +6141,13 @@
   "tur-kilis": {
     "name": "Kilis",
     "country": "Türkiye",
+    "center": [37.077, 36.792],
     "neighbors": ["syr-aleppo", "tur-gaziantep"]
   },
   "tur-kirikkale": {
     "name": "Kırıkkale",
     "country": "Türkiye",
+    "center": [33.666, 39.781],
     "neighbors": [
       "tur-ankara",
       "tur-cankiri",
@@ -5593,6 +6159,7 @@
   "tur-kirklareli": {
     "name": "Kırklareli",
     "country": "Türkiye",
+    "center": [27.398, 41.641],
     "neighbors": [
       "bgr-burgas",
       "bgr-yambol",
@@ -5604,6 +6171,7 @@
   "tur-kirsehir": {
     "name": "Kırşehir",
     "country": "Türkiye",
+    "center": [34.149, 39.328],
     "neighbors": [
       "tur-aksaray",
       "tur-ankara",
@@ -5615,11 +6183,13 @@
   "tur-kocaeli": {
     "name": "Kocaeli",
     "country": "Türkiye",
+    "center": [30.017, 40.931],
     "neighbors": ["tur-bursa", "tur-istanbul", "tur-sakarya", "tur-yalova"]
   },
   "tur-konya": {
     "name": "Konya",
     "country": "Türkiye",
+    "center": [32.539, 38.037],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-aksaray",
@@ -5635,6 +6205,7 @@
   "tur-kutahya": {
     "name": "Kütahya",
     "country": "Türkiye",
+    "center": [29.575, 39.263],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-balikesir",
@@ -5648,6 +6219,7 @@
   "tur-malatya": {
     "name": "Malatya",
     "country": "Türkiye",
+    "center": [38.003, 38.567],
     "neighbors": [
       "tur-adiyaman",
       "tur-diyarbakir",
@@ -5660,6 +6232,7 @@
   "tur-manisa": {
     "name": "Manisa",
     "country": "Türkiye",
+    "center": [28.296, 38.703],
     "neighbors": [
       "tur-aydin",
       "tur-balikesir",
@@ -5672,6 +6245,7 @@
   "tur-mardin": {
     "name": "Mardin",
     "country": "Türkiye",
+    "center": [40.936, 37.409],
     "neighbors": [
       "syr-al-hasakah",
       "tur-batman",
@@ -5683,6 +6257,7 @@
   "tur-mersin": {
     "name": "Mersin",
     "country": "Türkiye",
+    "center": [33.836, 36.688],
     "neighbors": [
       "tur-adana",
       "tur-antalya",
@@ -5694,11 +6269,13 @@
   "tur-mugla": {
     "name": "Muğla",
     "country": "Türkiye",
+    "center": [28.556, 37.09],
     "neighbors": ["tur-antalya", "tur-aydin", "tur-burdur", "tur-denizli"]
   },
   "tur-mus": {
     "name": "Muş",
     "country": "Türkiye",
+    "center": [41.685, 38.896],
     "neighbors": [
       "tur-agri",
       "tur-batman",
@@ -5711,6 +6288,7 @@
   "tur-nevsehir": {
     "name": "Nevşehir",
     "country": "Türkiye",
+    "center": [34.681, 38.789],
     "neighbors": [
       "tur-aksaray",
       "tur-kayseri",
@@ -5722,6 +6300,7 @@
   "tur-nigde": {
     "name": "Niğde",
     "country": "Türkiye",
+    "center": [34.668, 37.978],
     "neighbors": [
       "tur-adana",
       "tur-aksaray",
@@ -5734,11 +6313,13 @@
   "tur-ordu": {
     "name": "Ordu",
     "country": "Türkiye",
+    "center": [37.658, 40.804],
     "neighbors": ["tur-giresun", "tur-samsun", "tur-sivas", "tur-tokat"]
   },
   "tur-osmaniye": {
     "name": "Osmaniye",
     "country": "Türkiye",
+    "center": [36.269, 37.181],
     "neighbors": [
       "tur-adana",
       "tur-gaziantep",
@@ -5749,11 +6330,13 @@
   "tur-rize": {
     "name": "Rize",
     "country": "Türkiye",
+    "center": [40.844, 40.935],
     "neighbors": ["tur-artvin", "tur-erzurum", "tur-trabzon"]
   },
   "tur-sakarya": {
     "name": "Sakarya",
     "country": "Türkiye",
+    "center": [30.504, 40.722],
     "neighbors": [
       "tur-bilecik",
       "tur-bolu",
@@ -5765,6 +6348,7 @@
   "tur-samsun": {
     "name": "Samsun",
     "country": "Türkiye",
+    "center": [35.95, 41.198],
     "neighbors": [
       "tur-amasya",
       "tur-corum",
@@ -5776,6 +6360,7 @@
   "tur-sanliurfa": {
     "name": "Şanlıurfa",
     "country": "Türkiye",
+    "center": [39.195, 37.217],
     "neighbors": [
       "syr-al-hasakah",
       "syr-al-raqqah",
@@ -5789,16 +6374,19 @@
   "tur-siirt": {
     "name": "Siirt",
     "country": "Türkiye",
+    "center": [42.099, 37.919],
     "neighbors": ["tur-batman", "tur-bitlis", "tur-sirnak", "tur-van"]
   },
   "tur-sinop": {
     "name": "Sinop",
     "country": "Türkiye",
+    "center": [34.88, 41.629],
     "neighbors": ["tur-corum", "tur-kastamonu", "tur-samsun"]
   },
   "tur-sirnak": {
     "name": "Şırnak",
     "country": "Türkiye",
+    "center": [42.526, 37.452],
     "neighbors": [
       "irq-duhok",
       "syr-al-hasakah",
@@ -5811,6 +6399,7 @@
   "tur-sivas": {
     "name": "Sivas",
     "country": "Türkiye",
+    "center": [37.346, 39.586],
     "neighbors": [
       "tur-erzincan",
       "tur-giresun",
@@ -5825,6 +6414,7 @@
   "tur-tekirdag": {
     "name": "Tekirdağ",
     "country": "Türkiye",
+    "center": [27.186, 41.035],
     "neighbors": [
       "tur-canakkale",
       "tur-edirne",
@@ -5835,6 +6425,7 @@
   "tur-tokat": {
     "name": "Tokat",
     "country": "Türkiye",
+    "center": [36.611, 40.427],
     "neighbors": [
       "tur-amasya",
       "tur-ordu",
@@ -5846,16 +6437,19 @@
   "tur-trabzon": {
     "name": "Trabzon",
     "country": "Türkiye",
+    "center": [39.605, 40.818],
     "neighbors": ["tur-bayburt", "tur-giresun", "tur-gumushane", "tur-rize"]
   },
   "tur-tunceli": {
     "name": "Tunceli",
     "country": "Türkiye",
+    "center": [39.482, 39.174],
     "neighbors": ["tur-bingol", "tur-elazig", "tur-erzincan"]
   },
   "tur-usak": {
     "name": "Uşak",
     "country": "Türkiye",
+    "center": [29.351, 38.504],
     "neighbors": [
       "tur-afyonkarahisar",
       "tur-denizli",
@@ -5866,6 +6460,7 @@
   "tur-van": {
     "name": "Van",
     "country": "Türkiye",
+    "center": [43.626, 38.501],
     "neighbors": [
       "irn-west-azerbaijan",
       "tur-agri",
@@ -5878,11 +6473,13 @@
   "tur-yalova": {
     "name": "Yalova",
     "country": "Türkiye",
+    "center": [29.201, 40.593],
     "neighbors": ["tur-bursa", "tur-kocaeli"]
   },
   "tur-yozgat": {
     "name": "Yozgat",
     "country": "Türkiye",
+    "center": [35.279, 39.634],
     "neighbors": [
       "tur-amasya",
       "tur-corum",
@@ -5897,21 +6494,25 @@
   "tur-zonguldak": {
     "name": "Zonguldak",
     "country": "Türkiye",
+    "center": [31.884, 41.265],
     "neighbors": ["tur-bartin", "tur-bolu", "tur-duzce", "tur-karabuk"]
   },
   "ukr-cherkasy": {
     "name": "Çerkası Oblastı",
     "country": "Ukrayna",
+    "center": [31.548, 49.362],
     "neighbors": ["ukr-kirovohrad", "ukr-kyiv", "ukr-poltava", "ukr-vinnytsia"]
   },
   "ukr-chernihiv": {
     "name": "Çernigov Oblastı",
     "country": "Ukrayna",
+    "center": [31.994, 51.35],
     "neighbors": ["ukr-kyiv", "ukr-poltava", "ukr-sumy"]
   },
   "ukr-chernivtsi": {
     "name": "Çernovtsi Oblastı",
     "country": "Ukrayna",
+    "center": [25.985, 48.27],
     "neighbors": [
       "mda-briceni",
       "mda-ocnita",
@@ -5927,6 +6528,7 @@
   "ukr-dnipropetrovsk": {
     "name": "Dnipropetrovsk Oblastı",
     "country": "Ukrayna",
+    "center": [34.266, 48.173],
     "neighbors": [
       "ukr-donetsk",
       "ukr-kharkiv",
@@ -5940,6 +6542,7 @@
   "ukr-donetsk": {
     "name": "Donetsk Oblastı",
     "country": "Ukrayna",
+    "center": [37.667, 48.045],
     "neighbors": [
       "ukr-dnipropetrovsk",
       "ukr-kharkiv",
@@ -5950,6 +6553,7 @@
   "ukr-ivano-frankivsk": {
     "name": "İvano-Frankivsk Oblastı",
     "country": "Ukrayna",
+    "center": [24.615, 48.692],
     "neighbors": [
       "rou-maramures",
       "ukr-chernivtsi",
@@ -5961,6 +6565,7 @@
   "ukr-kharkiv": {
     "name": "Harkiv Oblastı",
     "country": "Ukrayna",
+    "center": [36.485, 49.556],
     "neighbors": [
       "ukr-dnipropetrovsk",
       "ukr-donetsk",
@@ -5972,11 +6577,13 @@
   "ukr-kherson": {
     "name": "Herson Oblastı",
     "country": "Ukrayna",
+    "center": [33.603, 46.794],
     "neighbors": ["ukr-dnipropetrovsk", "ukr-mykolaiv", "ukr-zaporizhzhia"]
   },
   "ukr-khmelnytskyi": {
     "name": "Hmelnitski Oblastı",
     "country": "Ukrayna",
+    "center": [26.934, 49.502],
     "neighbors": [
       "ukr-chernivtsi",
       "ukr-rivne",
@@ -5988,6 +6595,7 @@
   "ukr-kirovohrad": {
     "name": "Kirovograd Oblastı",
     "country": "Ukrayna",
+    "center": [32.157, 48.409],
     "neighbors": [
       "ukr-cherkasy",
       "ukr-dnipropetrovsk",
@@ -6000,6 +6608,7 @@
   "ukr-kyiv": {
     "name": "Kiev",
     "country": "Ukrayna",
+    "center": [30.175, 49.793],
     "neighbors": [
       "ukr-cherkasy",
       "ukr-chernihiv",
@@ -6012,16 +6621,19 @@
   "ukr-kyiv-2": {
     "name": "Kiev",
     "country": "Ukrayna",
+    "center": [30.53, 50.414],
     "neighbors": ["ukr-kyiv"]
   },
   "ukr-luhansk": {
     "name": "Luhansk Oblastı",
     "country": "Ukrayna",
+    "center": [39.01, 48.975],
     "neighbors": ["ukr-donetsk", "ukr-kharkiv"]
   },
   "ukr-lviv": {
     "name": "Lviv Oblastı",
     "country": "Ukrayna",
+    "center": [23.91, 49.714],
     "neighbors": [
       "ukr-ivano-frankivsk",
       "ukr-rivne",
@@ -6033,6 +6645,7 @@
   "ukr-mykolaiv": {
     "name": "Mıkolayiv Oblastı",
     "country": "Ukrayna",
+    "center": [31.486, 47.595],
     "neighbors": [
       "ukr-dnipropetrovsk",
       "ukr-kherson",
@@ -6043,6 +6656,7 @@
   "ukr-odessa": {
     "name": "Odessa Oblastı",
     "country": "Ukrayna",
+    "center": [30.446, 46.989],
     "neighbors": [
       "mda-basarabeasca",
       "mda-bender",
@@ -6066,6 +6680,7 @@
   "ukr-poltava": {
     "name": "Poltava Oblastı",
     "country": "Ukrayna",
+    "center": [33.774, 49.733],
     "neighbors": [
       "ukr-cherkasy",
       "ukr-chernihiv",
@@ -6079,6 +6694,7 @@
   "ukr-rivne": {
     "name": "Rivne Oblastı",
     "country": "Ukrayna",
+    "center": [26.615, 51.075],
     "neighbors": [
       "ukr-khmelnytskyi",
       "ukr-lviv",
@@ -6090,11 +6706,13 @@
   "ukr-sumy": {
     "name": "Sumi Oblastı",
     "country": "Ukrayna",
+    "center": [33.79, 50.994],
     "neighbors": ["ukr-chernihiv", "ukr-kharkiv", "ukr-poltava"]
   },
   "ukr-ternopil": {
     "name": "Ternopil Oblastı",
     "country": "Ukrayna",
+    "center": [25.647, 49.4],
     "neighbors": [
       "ukr-chernivtsi",
       "ukr-ivano-frankivsk",
@@ -6106,6 +6724,7 @@
   "ukr-vinnytsia": {
     "name": "Vinnitsa Oblastı",
     "country": "Ukrayna",
+    "center": [28.689, 48.906],
     "neighbors": [
       "mda-camenca",
       "mda-donduseni",
@@ -6123,11 +6742,13 @@
   "ukr-volyn": {
     "name": "Volın Oblastı",
     "country": "Ukrayna",
+    "center": [24.852, 51.181],
     "neighbors": ["ukr-lviv", "ukr-rivne"]
   },
   "ukr-zakarpattia": {
     "name": "Zakarpatya Oblastı",
     "country": "Ukrayna",
+    "center": [23.045, 48.451],
     "neighbors": [
       "hun-borsod-abauj-zemplen",
       "hun-szabolcs-szatmar-bereg",
@@ -6140,11 +6761,13 @@
   "ukr-zaporizhzhia": {
     "name": "Zaporijya Oblastı",
     "country": "Ukrayna",
+    "center": [35.691, 47.267],
     "neighbors": ["ukr-dnipropetrovsk", "ukr-donetsk", "ukr-kherson"]
   },
   "ukr-zhytomyr": {
     "name": "Jitomir Oblastı",
     "country": "Ukrayna",
+    "center": [28.471, 50.63],
     "neighbors": ["ukr-khmelnytskyi", "ukr-kyiv", "ukr-rivne", "ukr-vinnytsia"]
   }
 }

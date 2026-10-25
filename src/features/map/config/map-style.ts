@@ -21,6 +21,7 @@ export const MAP_COLORS = {
   graticule: '#8a6d3b',
   provinceLine: '#6b4f2a',
   highlight: '#3b2412',
+  reachable: '#b8860b',
 } as const;
 
 const sourceUrl = (file: string) =>
@@ -133,6 +134,35 @@ export function createMapStyle(): StyleSpecification {
           'line-color': MAP_COLORS.provinceLine,
           'line-opacity': 0.4,
           'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.3, 8, 1.2],
+        },
+      },
+      {
+        id: 'provinces-reachable',
+        type: 'fill',
+        source: PROVINCE_SOURCE,
+        paint: {
+          'fill-color': MAP_COLORS.reachable,
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'reachable'], false],
+            0.35,
+            0,
+          ],
+        },
+      },
+      {
+        id: 'provinces-reachable-line',
+        type: 'line',
+        source: PROVINCE_SOURCE,
+        paint: {
+          'line-color': MAP_COLORS.reachable,
+          'line-dasharray': [2, 1.5],
+          'line-width': [
+            'case',
+            ['boolean', ['feature-state', 'reachable'], false],
+            3,
+            0,
+          ],
         },
       },
       {

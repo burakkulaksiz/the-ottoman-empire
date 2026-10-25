@@ -130,7 +130,7 @@ function prepare(source) {
 }
 
 /** Ortak kenarı paylaşan bölgeleri komşu sayar. */
-function buildAdjacency(collection) {
+function buildAdjacency(collection, centers) {
   const edgeOwners = new Map();
   const info = new Map();
 
@@ -166,7 +166,12 @@ function buildAdjacency(collection) {
   const result = {};
   for (const id of [...info.keys()].sort()) {
     const { name, country, neighbors } = info.get(id);
-    result[id] = { name, country, neighbors: [...neighbors].sort() };
+    result[id] = {
+      name,
+      country,
+      center: centers.get(id),
+      neighbors: [...neighbors].sort(),
+    };
   }
   return result;
 }
@@ -190,7 +195,18 @@ const collection = JSON.parse(out['output.json']);
 fs.mkdirSync(path.dirname(OUT_GEOJSON), { recursive: true });
 fs.writeFileSync(OUT_GEOJSON, JSON.stringify(collection));
 
-const adjacency = buildAdjacency(collection);
+// Ordu işaretleri için her bölgenin içinde kalan bir nokta (kutup noktası).
+const centerOut = await mapshaper.applyCommands(
+  '-i regions.json -points inner -o centers.json format=geojson precision=0.001',
+  { 'regions.json': out['output.json'] },
+);
+const centers = new Map(
+  JSON.parse(centerOut['centers.json']).features.map((f) => [
+    f.properties.id,
+    f.geometry.coordinates,
+  ]),
+);
+const adjacency = buildAdjacency(collection, centers);
 fs.mkdirSync(path.dirname(OUT_ADJACENCY), { recursive: true });
 fs.writeFileSync(OUT_ADJACENCY, JSON.stringify(adjacency, null, 2) + '\n');
 

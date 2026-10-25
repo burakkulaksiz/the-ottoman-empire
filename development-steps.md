@@ -31,11 +31,11 @@ Oynanabilir ilk sürüm için:
 
 **A1 → A2 → B1 → B2 → C1 → C2 (tek senaryo) → C4 + C5 → C3 → D1 → E1**
 
-> **MVP durumu:** Sıradaki tüm motor ve içerik maddeleri bitti, ama arayüzden henüz ordu hareket ettirilemiyor (E2/B5). O yüzden "oynanabilir" sayılması için A3 → E2 + B5 gerekiyor.
+> **MVP durumu:** Oynanabilir ilk sürümün tüm adımları tamam: haritada ordu seçip komşu bölgeye yürütülüyor, savaş/fetih/kuşatma çözülüyor, olay kartı çıkıyor, hedeflere göre zafer/yenilgi belirleniyor. Eksik: rakipler henüz pasif (C9), kayıt yok (A4).
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** E2 + B5 (haritada ordu ikonları, ordu seçip hareket ettirme; bölge/ordu paneli)
+**Sıradaki madde:** C9 (rakip devletler için yapay zekâ; şimdilik rakipler pasif), ardından A4 (kayıt ve yükleme)
 
 ---
 
@@ -56,6 +56,11 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [ ] **B3. Yıla göre tarihi sınırlar:** açık veri kullanılabilir, örneğin historical-basemaps GeoJSON setleri.
 - [ ] **B4. Şehirler, kaleler, boğazlar, nehirler ve ticaret yolları:** hem görsel hem de oyun kurallarına etki edecek.
 - [ ] **B5. Birlik ikonları, hareket okları, savaş animasyonları ve sis perdesi (fog of war).**
+  - [x] Ordu ikonları (devlet renginde, asker sayılı işaretler; aynı bölgedekiler yan yana)
+  - [x] Hareket vurgusu: seçili ordunun gidebileceği komşu bölgeler işaretlenir
+  - [ ] Hareket okları
+  - [ ] Savaş animasyonları
+  - [ ] Sis perdesi (fog of war)
 
 ## C. Oyun mekanikleri (kazanma ve kaybetme)
 
@@ -91,6 +96,9 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [x] **E1. Ana menü, senaryo seçimi ve oyun ekranının yerleşimi** (HUD, yan paneller).
   - _Yapıldı: ana menü (`/`), senaryo seçimi (`/scenarios`), oyun ekranı (`/play/:scenarioId`): üst çubuk (hazine, tarih, tur, Turu Bitir), sol panel (hedefler, günlük), sağ panel (seçilen bölge), olay kartı. Paneller başlığa basınca daralır. Bölge/ordu/şehir ayrıntıları E2'de, mobil düzen E5'te._
 - [ ] **E2. Bölge, ordu ve şehir panelleri.**
+  - [x] Bölge paneli (sahip, komşular, içindeki ordular)
+  - [x] Ordu paneli (birlikler, moral, hareket hakkı, gidebileceği bölgeler)
+  - [ ] Şehir paneli (şehir/kale verisi B4'te gelince)
 - [ ] **E3. Tarihi görsel kimlik:** tezhip, hat tipografisi ve minyatür esintili bir tema.
 - [ ] **E4. Ses ve müzik** (mehter gibi), ayarlar ekranı.
 - [ ] **E5. Mobil ve tablet uyumu.**

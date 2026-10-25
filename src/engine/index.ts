@@ -1,5 +1,6 @@
 export * from './ai';
 export * from './calendar';
+export { legalMoves } from './commands';
 export type { ActionCommand, Command, CommandError } from './commands/types';
 export * from './create-game';
 export * from './dispatch';
