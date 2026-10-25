@@ -1,6 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 
+import { SAVE_SLOTS, saveRepository } from '@/lib/saves/save-repository';
 import { gameStore } from '@/stores/game-store';
 
 import Play, { clientLoader } from '../play';
@@ -51,7 +58,10 @@ function renderPlay(path: string) {
 }
 
 describe('Play', () => {
-  beforeEach(() => gameStore.getState().reset());
+  beforeEach(async () => {
+    gameStore.getState().reset();
+    for (const slot of SAVE_SLOTS) await saveRepository.remove(slot);
+  });
 
   it('lays out the HUD, goals and map for the chosen scenario', async () => {
     renderPlay('/play/kurulus-1299');
@@ -131,5 +141,56 @@ describe('Play', () => {
 
     expect(screen.queryByText('Seçimi kaldır')).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /^git / })).toBeNull();
+  });
+
+  it('autosaves when the turn ends', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(await screen.findByRole('button', { name: /turu bitir/i }));
+
+    await waitFor(async () => {
+      expect((await saveRepository.get('auto'))?.turn).toBe(2);
+    });
+  });
+
+  it('saves into a slot from the save menu', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(await screen.findByRole('button', { name: /^kaydet$/i }));
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'Yuva 1: kaydet' }),
+    );
+
+    await waitFor(async () => {
+      expect((await saveRepository.get('slot-1'))?.scenarioId).toBe(
+        'kurulus-1299',
+      );
+    });
+    expect(await screen.findByText(/Son kayıt: Yuva 1/)).toBeInTheDocument();
+  });
+
+  it('continues a saved game from the slot in the address', async () => {
+    renderPlay('/play/kurulus-1299');
+    fireEvent.click(await screen.findByRole('button', { name: /turu bitir/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /turu bitir/i }));
+    await screen.findByText('Sonbahar 1299');
+    await waitFor(async () => {
+      expect((await saveRepository.get('auto'))?.turn).toBe(3);
+    });
+
+    cleanup();
+    gameStore.getState().reset();
+    renderPlay('/play/kurulus-1299?slot=auto');
+
+    expect(await screen.findByText('Sonbahar 1299')).toBeInTheDocument();
+    expect(gameStore.getState().game?.turn).toBe(3);
+  });
+
+  it('explains when a slot cannot be loaded', async () => {
+    renderPlay('/play/kurulus-1299?slot=slot-3');
+
+    expect(
+      await screen.findByText(/Oyun yüklenemedi: Bu yuvada kayıt yok/),
+    ).toBeInTheDocument();
   });
 });

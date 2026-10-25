@@ -10,6 +10,7 @@ export {
   type HeuristicAiOptions,
 } from './heuristic-ai';
 export * from './rng';
+export { validateSavedState } from './saved-state';
 export { RULES } from './rules';
 export * from './types';
 export * from './units';

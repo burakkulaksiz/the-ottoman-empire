@@ -62,6 +62,7 @@ testing/        Test kurulumu ve fixture'lar
 ### Oyun motoru ilkeleri (detay: [src/engine/README.md](src/engine/README.md))
 
 - Arayüz motoru doğrudan çağırmaz: `useGameStore` (`send`, `start`) → `src/workers` → motor. Motor Worker'da çalıştığı için durum her komuttan sonra yapısal kopya olarak gelir; `GameState` ve `World` yapısal klonlanabilir kalmalı (fonksiyon, sınıf örneği, `Map`/`Set` koyma — düz nesne/dizi kullan).
+- Kayıt: `src/lib/saves` (Dexie/IndexedDB). `GameState` kayıt formatıdır; alanını değiştirirsen `version`'ı artır ve `validateSavedState`'i güncelle. Her tur sonunda `auto` yuvasına yazılır; kayıt hatası oyunu durdurmaz.
 - `GameState` düz JSON'dur (kaydedilebilir, karşılaştırılabilir); statik dünya (`World`) kayda yazılmaz.
 - Tek giriş noktası `dispatch(world, state, factionId, command)`; girdi durumu **asla mutasyona uğramaz**, Immer kullanılır.
 - **Determinizm:** `Math.random`, `Date.now()` ve benzeri kullanma. Rastgelelik yalnızca `GameState.rng` / `context.random` üzerinden. Aynı tohum + aynı komutlar = aynı oyun.

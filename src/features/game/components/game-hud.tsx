@@ -1,4 +1,4 @@
-import { ArrowLeft, Coins, SkipForward } from 'lucide-react';
+import { ArrowLeft, Coins, Save, SkipForward } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -12,6 +12,8 @@ type GameHudProps = {
   resultLabel: string | null;
   canEndTurn: boolean;
   onEndTurn: () => void;
+  /** Kayıt menüsünü açar/kapatır. */
+  onToggleSaves: () => void;
 };
 
 /** Oyun ekranının üst çubuğu: senaryo, tarih, hazine ve tur düğmesi. */
@@ -23,6 +25,7 @@ export function GameHud({
   resultLabel,
   canEndTurn,
   onEndTurn,
+  onToggleSaves,
 }: GameHudProps) {
   return (
     <header className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b bg-card p-2">
@@ -52,6 +55,9 @@ export function GameHud({
           {resultLabel}
         </span>
       )}
+      <Button size="sm" variant="outline" onClick={onToggleSaves}>
+        <Save /> Kaydet
+      </Button>
       <Button size="sm" disabled={!canEndTurn} onClick={onEndTurn}>
         <SkipForward /> Turu Bitir
       </Button>

@@ -14,14 +14,14 @@
 
 | Bölüm            | Biten  | Toplam |
 | ---------------- | ------ | ------ |
-| A. Altyapı       | 3      | 5      |
+| A. Altyapı       | 4      | 5      |
 | B. Harita        | 2      | 5      |
 | C. Mekanikler    | 6      | 10     |
 | D. Tarih öğrenme | 1      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **13** | **41** |
+| **Toplam**       | **14** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -31,11 +31,11 @@ Oynanabilir ilk sürüm için:
 
 **A1 → A2 → B1 → B2 → C1 → C2 (tek senaryo) → C4 + C5 → C3 → D1 → E1**
 
-> **MVP durumu:** Oynanabilir ilk sürümün tüm adımları tamam: haritada ordu seçip komşu bölgeye yürütülüyor, savaş/fetih/kuşatma çözülüyor, olay kartı çıkıyor, hedeflere göre zafer/yenilgi belirleniyor. Rakipler sezgisel yapay zekâyla oynuyor (C9). Eksik: kayıt yok (A4).
+> **MVP durumu:** Oynanabilir ilk sürümün tüm adımları tamam: haritada ordu seçip komşu bölgeye yürütülüyor, savaş/fetih/kuşatma çözülüyor, olay kartı çıkıyor, hedeflere göre zafer/yenilgi belirleniyor. Rakipler sezgisel yapay zekâyla oynuyor (C9). Kayıt/yükleme var (A4). Eksik: arazi/kale verisi (B4), ekonomi (C6), diplomasi (C7).
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** A4 (kayıt ve yükleme: IndexedDB, otomatik kayıt, birden fazla yuva)
+**Sıradaki madde:** B4 (şehirler, kaleler, boğazlar, nehirler; arazi ve kale verisini sağlar, kuşatma ve savunma bonusu gerçek bölgelerde çalışmaya başlar)
 
 ---
 
@@ -45,7 +45,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [x] **A2. Oyun motorunun iskeleti:** oyun durumu modeli, komutlar (hamle ve emirler), tur döngüsü ve tohumlu rastgele sayı üreteci (RNG).
 - [x] **A3. Durum yönetimi:** Zustand ve Immer ile motor ve arayüz arasındaki köprü, Web Worker entegrasyonu.
   - _Yapıldı: motor Web Worker'da çalışır (`src/workers`, Comlink); `src/stores/game-store.ts` Zustand + Immer ile anlık görüntüyü, son günlüğü, komut hatasını ve seçili bölgeyi tutar. Komutlar sırayla işlenir. Worker olmayan ortamda (test) aynı kod yerel çalışır. Kayıttan devam için `load` hazır, kayıt yuvaları A4'te._
-- [ ] **A4. Kayıt ve yükleme:** IndexedDB üzerinde, otomatik kayıt ve birden fazla kayıt yuvasıyla.
+- [x] **A4. Kayıt ve yükleme:** IndexedDB üzerinde, otomatik kayıt ve birden fazla kayıt yuvasıyla.
+  - _Yapıldı: Dexie ile IndexedDB (`src/lib/saves`), otomatik kayıt (her tur sonunda) + 3 elle yuva, oyun içi "Kaydet" menüsü, `/saves` sayfası (yükle/sil), ana menüde "Devam Et", `/play/:id?slot=` ile devam. Yüklenen kayıt `validateSavedState` ile dünyayla uyumlu mu diye denetlenir; kayıt sürümü `GameState.version`._
 - [ ] **A5. Çoklu dil (i18n):** Türkçe ana dil, İngilizce opsiyonel.
 
 ## B. Gerçek dünya haritası

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router';
 
+import { buttonVariants } from '@/components/ui/button';
 import { APP_NAME } from '@/config/app';
 import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
 import { PROVINCE_META } from '@/content/world/provinces';
@@ -9,13 +11,23 @@ import { ArmyPanel } from '@/features/game/components/army-panel';
 import { GameHud } from '@/features/game/components/game-hud';
 import { GameLog } from '@/features/game/components/game-log';
 import { ObjectivesPanel } from '@/features/game/components/objectives-panel';
+import { Panel } from '@/features/game/components/panel';
 import { ProvincePanel } from '@/features/game/components/province-panel';
 import { formatDate } from '@/features/game/config/season-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
+import { SaveSlotList } from '@/features/saves/components/save-slot-list';
+import {
+  isSaveSlot,
+  saveRepository,
+  SLOT_LABELS,
+  type SaveSlotId,
+  type SaveSummary,
+} from '@/lib/saves/save-repository';
 import { useGameStore } from '@/stores/game-store';
 
 import { buildArmyMarkers } from '../lib/army-markers';
+import { buildSlotRows } from '../lib/slot-rows';
 
 import type { Route } from './+types/play';
 
@@ -35,23 +47,34 @@ export default function Play({ loaderData }: Route.ComponentProps) {
 }
 
 function PlayGame({ id }: { id: string }) {
+  const [searchParams] = useSearchParams();
+  const requested = searchParams.get('slot');
+  const slot = isSaveSlot(requested) ? requested : null;
+
   const start = useGameStore((s) => s.start);
+  const load = useGameStore((s) => s.load);
   const status = useGameStore((s) => s.status);
   const game = useGameStore((s) => s.game);
   const loadError = useGameStore((s) => s.loadError);
 
+  // `?slot=` varsa kayıttan devam edilir, yoksa yeni oyun başlar.
   useEffect(() => {
-    void start(id);
-  }, [id, start]);
+    void (slot ? load(slot) : start(id));
+  }, [id, slot, start, load]);
 
   if (status === 'error') {
     return (
       <main className="grid h-dvh place-items-center p-4 text-center">
-        <p>Oyun yüklenemedi: {loadError}</p>
+        <div className="flex flex-col items-center gap-4">
+          <p>Oyun yüklenemedi: {loadError}</p>
+          <Link to="/" className={buttonVariants()}>
+            Ana Menü
+          </Link>
+        </div>
       </main>
     );
   }
-  if (!game || game.scenarioId !== id) {
+  if (!game || (!slot && game.scenarioId !== id)) {
     return (
       <main className="grid h-dvh place-items-center">
         <p className="font-display text-2xl text-muted-foreground">
@@ -60,7 +83,7 @@ function PlayGame({ id }: { id: string }) {
       </main>
     );
   }
-  return <GameScreen id={id} game={game} />;
+  return <GameScreen id={game.scenarioId} game={game} />;
 }
 
 function GameScreen({ id, game }: { id: string; game: GameState }) {
@@ -69,6 +92,24 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
   const selectProvince = useGameStore((s) => s.selectProvince);
   const selectedArmyId = useGameStore((s) => s.selectedArmyId);
   const selectArmy = useGameStore((s) => s.selectArmy);
+  const save = useGameStore((s) => s.save);
+  const lastSave = useGameStore((s) => s.lastSave);
+  const saveError = useGameStore((s) => s.saveError);
+
+  // --- Kayıt menüsü ---
+  const [savesOpen, setSavesOpen] = useState(false);
+  const [saves, setSaves] = useState<SaveSummary[]>([]);
+  useEffect(() => {
+    if (!savesOpen) return;
+    let cancelled = false;
+    saveRepository
+      .list()
+      .then((list) => !cancelled && setSaves(list))
+      .catch(() => !cancelled && setSaves([]));
+    return () => {
+      cancelled = true;
+    };
+  }, [savesOpen, lastSave]);
 
   const scenario = getScenarioDefinition(id)!;
   // Statik dünya (adlar, renkler, hedefler) içerikten okunur; motor yalnızca
@@ -186,6 +227,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
         }
         canEndTurn={!ended && game.events.pending.length === 0}
         onEndTurn={() => void send({ type: 'endTurn' })}
+        onToggleSaves={() => setSavesOpen((open) => !open)}
       />
 
       <div className="relative flex-1">
@@ -210,6 +252,27 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                   setup.world.endDate ? formatDate(setup.world.endDate) : null
                 }
               />
+            )}
+            {savesOpen && (
+              <Panel title="Kayıt">
+                <SaveSlotList
+                  rows={buildSlotRows(saves)}
+                  onSave={(slot) => void save(slot as SaveSlotId)}
+                  loadHref={(slot) => `/play/${id}?slot=${slot}`}
+                />
+                {saveError ? (
+                  <p role="alert" className="mt-2 text-destructive">
+                    Kaydedilemedi: {saveError}
+                  </p>
+                ) : (
+                  lastSave && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Son kayıt: {SLOT_LABELS[lastSave.slot]},{' '}
+                      {new Date(lastSave.savedAt).toLocaleTimeString('tr-TR')}
+                    </p>
+                  )
+                )}
+              </Panel>
             )}
             <GameLog lines={logLines} />
           </div>

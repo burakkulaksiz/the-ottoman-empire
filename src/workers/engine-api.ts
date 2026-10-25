@@ -3,6 +3,7 @@ import {
   createGame,
   dispatch,
   heuristicAi,
+  validateSavedState,
   type Command,
   type DispatchResult,
   type GameState,
@@ -37,7 +38,12 @@ export function createEngineApi(): EngineApi {
     },
 
     load(scenarioId, loaded) {
-      setup = loadScenario(scenarioId);
+      const next = loadScenario(scenarioId);
+      const errors = validateSavedState(next.world, loaded);
+      if (errors.length > 0) {
+        throw new Error(`Kayıt bu sürümle uyumsuz: ${errors[0]}`);
+      }
+      setup = next;
       state = loaded;
     },
 

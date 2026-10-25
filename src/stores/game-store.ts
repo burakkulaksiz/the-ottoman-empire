@@ -4,6 +4,11 @@ import { createStore } from 'zustand/vanilla';
 
 import type { Command, CommandError, GameState, LogEntry } from '@/engine';
 import {
+  saveRepository,
+  type SaveRepository,
+  type SaveSlotId,
+} from '@/lib/saves/save-repository';
+import {
   createDefaultEngine,
   type EngineClient,
 } from '@/workers/engine-client';
@@ -23,6 +28,10 @@ export interface GameStoreState {
   selectedProvinceId: string | null;
   /** Emir vermek için seçilen ordu (oyuncunun). */
   selectedArmyId: string | null;
+  /** Son başarılı kaydın yuvası ve zamanı (arayüz geri bildirimi için). */
+  lastSave: { slot: SaveSlotId; savedAt: number } | null;
+  /** Kaydetme başarısız olduysa nedeni; oyun yine de devam eder. */
+  saveError: string | null;
 }
 
 export interface GameStoreActions {
@@ -30,6 +39,10 @@ export interface GameStoreActions {
   start(scenarioId: string, options?: { seed?: number }): Promise<void>;
   /** Oyuncu komutu gönderir; komutlar sırayla işlenir. */
   send(command: Command): Promise<void>;
+  /** Oyunu bir yuvaya kaydeder. */
+  save(slot: SaveSlotId): Promise<void>;
+  /** Bir yuvadaki kayıttan devam eder. */
+  load(slot: SaveSlotId): Promise<void>;
   selectProvince(provinceId: string | null): void;
   selectArmy(armyId: string | null): void;
   reset(): void;
@@ -46,6 +59,8 @@ const initialState: GameStoreState = {
   loadError: null,
   selectedProvinceId: null,
   selectedArmyId: null,
+  lastSave: null,
+  saveError: null,
 };
 
 /** Oyun kuralı değil, oyuncuya özel rastgelelik: motor dışında seçilir. */
@@ -53,11 +68,18 @@ function randomSeed() {
   return crypto.getRandomValues(new Uint32Array(1))[0]!;
 }
 
+const messageOf = (error: unknown) =>
+  error instanceof Error ? error.message : String(error);
+
 /**
  * Motor (Worker) ile arayüz arasındaki köprü. Motor tek doğruluk kaynağıdır;
  * store onun anlık görüntüsünü ve seçili bölge gibi arayüz durumunu tutar.
+ * Her tur sonunda oyun "otomatik kayıt" yuvasına yazılır.
  */
-export function createGameStore(createEngine: () => EngineClient) {
+export function createGameStore(
+  createEngine: () => EngineClient,
+  saves: SaveRepository = saveRepository,
+) {
   // Worker ilk kullanımda kurulur (import sırasında değil).
   let engine: EngineClient | null = null;
   const getEngine = () => (engine ??= createEngine());
@@ -71,63 +93,114 @@ export function createGameStore(createEngine: () => EngineClient) {
   };
 
   return createStore<GameStore>()(
-    immer((set) => ({
-      ...initialState,
-
-      start: (scenarioId, options) => {
-        // Yükleniyor durumu hemen görünsün; motor çağrısı sıraya girer.
-        set((s) => {
-          Object.assign(s, initialState);
-          s.status = 'loading';
-          s.scenarioId = scenarioId;
-        });
-        return enqueue(async () => {
-          try {
-            const game = await getEngine().start(
-              scenarioId,
-              options?.seed ?? randomSeed(),
-            );
-            set((s) => {
-              s.status = 'ready';
-              s.game = game;
-              s.lastLog = game.log;
-            });
-          } catch (error) {
-            set((s) => {
-              s.status = 'error';
-              s.loadError =
-                error instanceof Error ? error.message : String(error);
-            });
-          }
-        });
-      },
-
-      send: (command) =>
-        enqueue(async () => {
-          const result = await getEngine().dispatch(command);
+    immer((set, get) => {
+      /** Kayıt başarısız olsa bile oyun sürer; hata store'a yazılır. */
+      const writeSave = async (slot: SaveSlotId, game: GameState) => {
+        const savedAt = Date.now();
+        try {
+          await saves.put(slot, game, savedAt);
           set((s) => {
-            if (result.ok) {
-              s.game = result.state;
-              s.lastLog = result.log;
-              s.commandError = null;
-            } else {
-              s.commandError = result.error;
+            s.lastSave = { slot, savedAt };
+            s.saveError = null;
+          });
+        } catch (error) {
+          set((s) => {
+            s.saveError = messageOf(error);
+          });
+        }
+      };
+
+      return {
+        ...initialState,
+
+        start: (scenarioId, options) => {
+          // Yükleniyor durumu hemen görünsün; motor çağrısı sıraya girer.
+          set((s) => {
+            Object.assign(s, initialState);
+            s.status = 'loading';
+            s.scenarioId = scenarioId;
+          });
+          return enqueue(async () => {
+            try {
+              const game = await getEngine().start(
+                scenarioId,
+                options?.seed ?? randomSeed(),
+              );
+              set((s) => {
+                s.status = 'ready';
+                s.game = game;
+                s.lastLog = game.log;
+              });
+            } catch (error) {
+              set((s) => {
+                s.status = 'error';
+                s.loadError = messageOf(error);
+              });
             }
           });
-        }),
+        },
 
-      selectProvince: (provinceId) =>
-        set((s) => {
-          s.selectedProvinceId = provinceId;
-        }),
+        load: (slot) => {
+          set((s) => {
+            Object.assign(s, initialState);
+            s.status = 'loading';
+          });
+          return enqueue(async () => {
+            try {
+              const record = await saves.get(slot);
+              if (!record) throw new Error('Bu yuvada kayıt yok.');
+              await getEngine().load(record.scenarioId, record.state);
+              set((s) => {
+                s.status = 'ready';
+                s.scenarioId = record.scenarioId;
+                s.game = record.state;
+                s.lastLog = [];
+              });
+            } catch (error) {
+              set((s) => {
+                s.status = 'error';
+                s.loadError = messageOf(error);
+              });
+            }
+          });
+        },
 
-      selectArmy: (armyId) =>
-        set((s) => {
-          s.selectedArmyId = armyId;
-        }),
+        save: (slot) =>
+          enqueue(async () => {
+            const { game } = get();
+            if (game) await writeSave(slot, game);
+          }),
 
-      reset: () => set(initialState),
-    })),
+        send: (command) =>
+          enqueue(async () => {
+            const result = await getEngine().dispatch(command);
+            set((s) => {
+              if (result.ok) {
+                s.game = result.state;
+                s.lastLog = result.log;
+                s.commandError = null;
+              } else {
+                s.commandError = result.error;
+              }
+            });
+            if (result.ok && command.type === 'endTurn') {
+              await writeSave('auto', result.state);
+            }
+          }),
+
+        selectProvince: (provinceId) =>
+          set((s) => {
+            s.selectedProvinceId = provinceId;
+          }),
+
+        selectArmy: (armyId) =>
+          set((s) => {
+            s.selectedArmyId = armyId;
+          }),
+
+        reset: () => set(initialState),
+      };
+    }),
   );
 }
 

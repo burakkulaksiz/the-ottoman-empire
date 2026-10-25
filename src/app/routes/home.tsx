@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
 import { APP_NAME, APP_TAGLINE } from '@/config/app';
+import { saveRepository } from '@/lib/saves/save-repository';
 
 import type { Route } from './+types/home';
 
@@ -10,7 +11,17 @@ export function meta(_: Route.MetaArgs) {
   return [{ title: APP_NAME }, { name: 'description', content: APP_TAGLINE }];
 }
 
-export default function Home() {
+export async function clientLoader() {
+  try {
+    return { hasSaves: (await saveRepository.list()).length > 0 };
+  } catch {
+    // IndexedDB kapalıysa (gizli pencere vb.) oyun yine açılır.
+    return { hasSaves: false };
+  }
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const hasSaves = loaderData?.hasSaves ?? false;
   return (
     <main className="grid min-h-dvh place-items-center p-4">
       <div className="flex w-full max-w-sm flex-col items-center gap-10">
@@ -25,9 +36,18 @@ export default function Home() {
           <Link to="/scenarios" className={buttonVariants({ size: 'lg' })}>
             <Swords /> Yeni Oyun
           </Link>
-          <Button size="lg" variant="outline" disabled>
-            <FolderOpen /> Devam Et
-          </Button>
+          {hasSaves ? (
+            <Link
+              to="/saves"
+              className={buttonVariants({ size: 'lg', variant: 'outline' })}
+            >
+              <FolderOpen /> Devam Et
+            </Link>
+          ) : (
+            <Button size="lg" variant="outline" disabled>
+              <FolderOpen /> Devam Et
+            </Button>
+          )}
           <Button size="lg" variant="outline" disabled>
             <BookOpen /> Ansiklopedi
           </Button>
