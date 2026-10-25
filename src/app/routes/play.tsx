@@ -12,11 +12,14 @@ import { routePath, TRADE_ROUTES } from '@/content/world/trade-routes';
 import { legalMoves, objectiveProgress, type GameState } from '@/engine';
 import { EventCard } from '@/features/events/components/event-card';
 import { ArmyPanel } from '@/features/game/components/army-panel';
+import { DecisionsPanel } from '@/features/game/components/decisions-panel';
 import { GameHud } from '@/features/game/components/game-hud';
 import { GameLog } from '@/features/game/components/game-log';
+import { GameOverCard } from '@/features/game/components/game-over-card';
 import { ObjectivesPanel } from '@/features/game/components/objectives-panel';
 import { Panel } from '@/features/game/components/panel';
 import { ProvincePanel } from '@/features/game/components/province-panel';
+import { END_REASON_LABELS } from '@/features/game/config/end-reasons';
 import { formatDate } from '@/features/game/config/season-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
@@ -31,6 +34,7 @@ import {
 import { useGameStore } from '@/stores/game-store';
 
 import { buildArmyMarkers } from '../lib/army-markers';
+import { summarizeDecisions } from '../lib/decisions';
 import { buildSlotRows } from '../lib/slot-rows';
 
 import type { Route } from './+types/play';
@@ -239,6 +243,13 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
 
   const ended = game.status.phase === 'ended';
 
+  // --- Karar defteri ve oyun sonu ---
+  const decisions = useMemo(
+    () => summarizeDecisions(scenario.events ?? [], game.events.choices),
+    [scenario, game.events.choices],
+  );
+  const [gameOverDismissed, setGameOverDismissed] = useState(false);
+
   return (
     <main className="flex h-dvh flex-col">
       <GameHud
@@ -304,6 +315,9 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 )}
               </Panel>
             )}
+            <DecisionsPanel
+              rows={decisions.rows.map((r) => ({ id: r.eventId, ...r }))}
+            />
             <GameLog lines={logLines} />
           </div>
           <div className="flex flex-col gap-3 md:mr-12">
@@ -340,6 +354,18 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           </div>
         </div>
 
+        {game.status.phase === 'ended' && !gameOverDismissed && (
+          <GameOverCard
+            content={{
+              result: game.status.result,
+              reason: END_REASON_LABELS[game.status.reason],
+              score: game.status.score,
+              decisions,
+              historicalNote: scenario.historical?.note,
+            }}
+            onDismiss={() => setGameOverDismissed(true)}
+          />
+        )}
         {shownEvent && (
           <EventCard
             event={shownEvent}

@@ -9,7 +9,10 @@ const event: EventCardContent = {
     { id: 'savas', label: 'Meydanda karşıla', outcome: 'Zafer kazandın.' },
     { id: 'cekil', label: 'Kalelere çekil', outcome: 'Moral düştü.' },
   ],
-  historical: { note: 'Osman Bey Bizans ordusunu yendi.' },
+  historical: {
+    note: 'Osman Bey Bizans ordusunu yendi.',
+    choiceId: 'savas',
+  },
 };
 
 describe('EventCard', () => {
@@ -67,5 +70,33 @@ describe('EventCard', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Devam' }));
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it('says when the player decided as history did', () => {
+    render(
+      <EventCard
+        event={event}
+        chosenId="savas"
+        onChoose={() => {}}
+        onClose={() => {}}
+      />,
+    );
+    expect(screen.getByTestId('verdict')).toHaveTextContent(
+      'Tarihteki gibi karar verdin.',
+    );
+  });
+
+  it('shows what history chose when the player decided differently', () => {
+    render(
+      <EventCard
+        event={event}
+        chosenId="cekil"
+        onChoose={() => {}}
+        onClose={() => {}}
+      />,
+    );
+    expect(screen.getByTestId('verdict')).toHaveTextContent(
+      'Tarihte farklı oldu: "Meydanda karşıla" seçildi.',
+    );
   });
 });

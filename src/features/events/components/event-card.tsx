@@ -12,7 +12,8 @@ export type EventCardContent = {
   title: string;
   description: string;
   choices: { id: string; label: string; outcome: string }[];
-  historical: { note: string };
+  /** `choiceId`: tarihte gerçekleşene en yakın seçenek. */
+  historical: { note: string; choiceId: string };
 };
 
 type EventCardProps = {
@@ -31,6 +32,10 @@ export function EventCard({
   onClose,
 }: EventCardProps) {
   const chosen = event.choices.find((c) => c.id === chosenId);
+  const historicalChoice = event.choices.find(
+    (c) => c.id === event.historical.choiceId,
+  );
+  const sameAsHistory = chosen?.id === event.historical.choiceId;
 
   return (
     <div
@@ -59,6 +64,14 @@ export function EventCard({
                 <h3 className="font-display text-lg">
                   Tarihte gerçekte ne oldu?
                 </h3>
+                <p
+                  className="mt-1 text-sm font-medium text-primary"
+                  data-testid="verdict"
+                >
+                  {sameAsHistory
+                    ? 'Tarihteki gibi karar verdin.'
+                    : `Tarihte farklı oldu: "${historicalChoice?.label}" seçildi.`}
+                </p>
                 <p className="mt-1 text-sm">{event.historical.note}</p>
               </section>
             </CardContent>

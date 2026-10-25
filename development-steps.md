@@ -17,11 +17,11 @@
 | A. Altyapı       | 4      | 5      |
 | B. Harita        | 2      | 5      |
 | C. Mekanikler    | 6      | 10     |
-| D. Tarih öğrenme | 1      | 7      |
+| D. Tarih öğrenme | 2      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **14** | **41** |
+| **Toplam**       | **15** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -92,7 +92,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 - [x] **D1. Tarihi olay kartları:** tetikleyicisi olan olaylar, oyuncunun seçimleri ve "Tarihte gerçekte ne oldu?" açıklaması.
   - _Yapıldı: tetikleyiciler (tarih, bölgeye sahip olma), seçeneklerin etkisi (hazine, moral), bekleyen olay tur bitirmeyi engeller, olay kartı arayüzü ("Tarihte gerçekte ne oldu?" bölümüyle). 1299 Kuruluş için iki kart: Koyunhisar Savaşı (1302) ve Bursa'nın Düşüşü. Metinler `TODO(kaynak)` ile doğrulanmayı bekliyor. Seçimin tarihle karşılaştırılması D2'de._
-- [ ] **D2. Karar anları:** oyuncu kritik bir kararı (ör. Ankara Savaşı öncesi) verdikten sonra seçimi gerçek tarihle karşılaştırılır.
+- [x] **D2. Karar anları:** oyuncu kritik bir kararı (ör. Ankara Savaşı öncesi) verdikten sonra seçimi gerçek tarihle karşılaştırılır.
+  - _Yapıldı: olay kartı kararın tarihle aynı olup olmadığını söyler ve tarihte seçileni gösterir; "Kararlar" paneli (karar defteri, tarihle uyum x/y); oyun sonu kartı (sonuç, nedeni, tarihe göre puan, karar uyumu, "Tarihte gerçekte ne oldu?")._
 - [ ] **D3. Ansiklopedi:** kişiler, kurumlar (devşirme, tımar, kapıkulu), savaşlar ve yerler. Haritadaki bir öğeye tıklayınca ilgili maddesi açılır.
 - [ ] **D4. Kronik/zaman çizelgesi:** oyuncunun oynadığı tarih ile gerçek tarih yan yana.
 - [ ] **D5. Mini quizler:** doğru cevap oyun içinde küçük bir bonus kazandırır (ör. prestij), yanlış cevabın cezası olmaz.
