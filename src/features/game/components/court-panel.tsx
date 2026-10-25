@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { useT } from '@/hooks/use-t';
 
 import { Panel } from './panel';
 
@@ -26,10 +27,14 @@ type CourtPanelProps = {
 };
 
 function Skills({ person }: { person: CourtPerson }) {
+  const t = useT();
   return (
     <span className="text-xs text-muted-foreground">
-      {person.age} yaş · savaş {person.military} · yönetim{' '}
-      {person.administration}
+      {t('court.skills', {
+        age: person.age,
+        military: person.military,
+        administration: person.administration,
+      })}
     </span>
   );
 }
@@ -47,8 +52,9 @@ export function CourtPanel({
   canAffordVizier,
   onAppointVizier,
 }: CourtPanelProps) {
+  const t = useT();
   return (
-    <Panel title="Saray" defaultOpen={false}>
+    <Panel title={t('court.title')} defaultOpen={false}>
       <p>
         <span className="font-medium">{ruler.name}</span>{' '}
         <Skills person={ruler} />
@@ -56,12 +62,12 @@ export function CourtPanel({
 
       <div className="mt-2">
         <div className="flex justify-between text-xs">
-          <span>Sadakat: {stabilityLabel}</span>
+          <span>{t('court.stabilityLabel', { label: stabilityLabel })}</span>
           <span>{stability}/100</span>
         </div>
         <div
           role="progressbar"
-          aria-label="Sadakat"
+          aria-label={t('court.stability')}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={stability}
@@ -74,9 +80,9 @@ export function CourtPanel({
         </div>
       </div>
 
-      <h3 className="mt-3 font-display text-base">Şehzadeler</h3>
+      <h3 className="mt-3 font-display text-base">{t('court.heirs')}</h3>
       {heirs.length === 0 ? (
-        <p className="text-muted-foreground">Şehzade yok.</p>
+        <p className="text-muted-foreground">{t('court.noHeirs')}</p>
       ) : (
         <ul>
           {heirs.map((heir) => (
@@ -87,7 +93,7 @@ export function CourtPanel({
         </ul>
       )}
 
-      <h3 className="mt-3 font-display text-base">Vezir</h3>
+      <h3 className="mt-3 font-display text-base">{t('court.vizier')}</h3>
       {vizier ? (
         <p>
           {vizier.name} <Skills person={vizier} />
@@ -104,16 +110,20 @@ export function CourtPanel({
                 variant="outline"
                 className="ml-auto"
                 disabled={!canAffordVizier}
-                title={canAffordVizier ? undefined : 'Yeterli akçe yok'}
+                title={
+                  canAffordVizier ? undefined : t('recruitErrors.notEnoughGold')
+                }
                 onClick={() => onAppointVizier(candidate.id)}
               >
-                Vezir yap ({vizierCost} akçe)
+                {t('court.appoint', { cost: vizierCost })}
               </Button>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-muted-foreground">{vizierNote ?? 'Vezir yok.'}</p>
+        <p className="text-muted-foreground">
+          {vizierNote ?? t('court.noVizier')}
+        </p>
       )}
     </Panel>
   );

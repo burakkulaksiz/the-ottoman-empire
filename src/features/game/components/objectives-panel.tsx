@@ -1,5 +1,7 @@
 import { Check, Circle } from 'lucide-react';
 
+import { useT } from '@/hooks/use-t';
+
 import { Panel } from './panel';
 
 export type ObjectiveRow = {
@@ -20,20 +22,21 @@ export function ObjectivesPanel({
   objectives,
   deadlineLabel,
 }: ObjectivesPanelProps) {
+  const t = useT();
   return (
-    <Panel title="Hedefler">
+    <Panel title={t('panels.objectives')}>
       <ul className="space-y-1">
         {objectives.map((o) => (
           <li key={o.id} className="flex items-start gap-2">
             {o.done ? (
               <Check
                 className="mt-0.5 size-4 shrink-0 text-primary"
-                aria-label="Tamamlandı"
+                aria-label={t('panels.done')}
               />
             ) : (
               <Circle
                 className="mt-0.5 size-4 shrink-0 text-muted-foreground"
-                aria-label="Sürüyor"
+                aria-label={t('panels.inProgress')}
               />
             )}
             <span>
@@ -47,7 +50,7 @@ export function ObjectivesPanel({
       </ul>
       {deadlineLabel && (
         <p className="mt-2 text-xs text-muted-foreground">
-          Süre sınırı: {deadlineLabel}
+          {t('panels.deadline', { date: deadlineLabel })}
         </p>
       )}
     </Panel>

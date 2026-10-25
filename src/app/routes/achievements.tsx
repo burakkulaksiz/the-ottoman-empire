@@ -5,10 +5,13 @@ import { buttonVariants } from '@/components/ui/button';
 import { APP_NAME } from '@/config/app';
 import { ACHIEVEMENTS } from '@/content/achievements';
 import { getScenarioDefinition } from '@/content/scenarios';
+import { useT } from '@/hooks/use-t';
 import {
   achievementRepository,
   type UnlockedAchievement,
 } from '@/lib/achievements/achievement-repository';
+import { LOCALE_TAGS } from '@/lib/i18n';
+import { useLocale } from '@/stores/locale-store';
 
 import type { Route } from './+types/achievements';
 
@@ -30,18 +33,20 @@ export default function Achievements({ loaderData }: Route.ComponentProps) {
   const unlocked = new Map(
     (loaderData?.unlocked ?? []).map((u) => [u.id, u] as const),
   );
+  const t = useT();
+  const locale = useLocale();
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col gap-6 p-4 pt-8">
       <header className="flex items-center gap-3">
         <Link
           to="/"
-          aria-label="Ana Menü"
+          aria-label={t('common.mainMenu')}
           className={buttonVariants({ variant: 'ghost', size: 'icon' })}
         >
           <ArrowLeft />
         </Link>
-        <h1 className="text-3xl">Başarımlar</h1>
+        <h1 className="text-3xl">{t('achievements.title')}</h1>
         <span className="ml-auto text-sm text-muted-foreground">
           {unlocked.size}/{ACHIEVEMENTS.length}
         </span>
@@ -60,10 +65,13 @@ export default function Achievements({ loaderData }: Route.ComponentProps) {
               {earned ? (
                 <Trophy
                   className="size-5 shrink-0 text-gold"
-                  aria-label="Kazanıldı"
+                  aria-label={t('achievements.earned')}
                 />
               ) : (
-                <Lock className="size-5 shrink-0" aria-label="Kilitli" />
+                <Lock
+                  className="size-5 shrink-0"
+                  aria-label={t('achievements.locked')}
+                />
               )}
               <div>
                 <p className="font-display text-lg">{achievement.title}</p>
@@ -72,7 +80,10 @@ export default function Achievements({ loaderData }: Route.ComponentProps) {
                   <p className="text-xs text-muted-foreground">
                     {getScenarioDefinition(earned.scenarioId)?.name ??
                       earned.scenarioId}
-                    , {new Date(earned.unlockedAt).toLocaleDateString('tr-TR')}
+                    ,{' '}
+                    {new Date(earned.unlockedAt).toLocaleDateString(
+                      LOCALE_TAGS[locale],
+                    )}
                   </p>
                 )}
               </div>

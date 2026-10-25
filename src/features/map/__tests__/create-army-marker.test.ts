@@ -17,7 +17,8 @@ const army: ArmyMarker = {
 
 describe('markerOffset', () => {
   it('centres a single army and spreads several side by side', () => {
-    expect(markerOffset(0, 1)).toEqual([0, 0]);
+    // Tek ordu ortada, şehir işaretini örtmemek için noktanın altında.
+    expect(markerOffset(0, 1)).toEqual([0, 16]);
     const [a] = markerOffset(0, 2);
     const [b] = markerOffset(1, 2);
     expect(a).toBeLessThan(0);

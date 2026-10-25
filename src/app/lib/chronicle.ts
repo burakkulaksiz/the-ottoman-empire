@@ -8,6 +8,7 @@ import {
 } from '@/engine';
 import { formatDate } from '@/features/game/config/season-labels';
 import type { LogNames } from '@/features/game/lib/format-log-entry';
+import { tTr, type Translate } from '@/lib/i18n';
 
 export interface ChronicleRow {
   year: number;
@@ -33,52 +34,74 @@ function describe(
   player: string,
   names: LogNames,
   scenario: ScenarioDefinition,
+  t: Translate,
 ): string | null {
+  const p = names.province;
+  const f = names.faction;
   switch (entry.type) {
     case 'provinceCaptured':
       if (entry.by === player) {
-        return `${names.province(entry.provinceId)} ele geçirildi.`;
+        return t('chronicleEvents.captured', { province: p(entry.provinceId) });
       }
       return entry.from === player
-        ? `${names.province(entry.provinceId)}, ${names.faction(entry.by)} eline geçti.`
+        ? t('chronicleEvents.lost', {
+            province: p(entry.provinceId),
+            by: f(entry.by),
+          })
         : null;
     case 'battleFought':
       if (entry.attackerId !== player && entry.defenderId !== player) {
         return null;
       }
-      return `${names.province(entry.provinceId)} savaşı ${
-        entry.winnerId === player ? 'kazanıldı' : 'kaybedildi'
-      }.`;
+      return t(
+        entry.winnerId === player
+          ? 'chronicleEvents.battleWon'
+          : 'chronicleEvents.battleLost',
+        { province: p(entry.provinceId) },
+      );
     case 'warDeclared':
       if (entry.by === player) {
-        return `${names.faction(entry.target)} devletine savaş ilan edildi.`;
+        return t('chronicleEvents.warOn', { target: f(entry.target) });
       }
       return entry.target === player
-        ? `${names.faction(entry.by)} savaş ilan etti.`
+        ? t('chronicleEvents.warBy', { by: f(entry.by) })
         : null;
     case 'peaceMade':
       if (entry.a !== player && entry.b !== player) return null;
-      return `${names.faction(entry.a === player ? entry.b : entry.a)} ile barış yapıldı.`;
+      return t('chronicleEvents.peaceWith', {
+        faction: f(entry.a === player ? entry.b : entry.a),
+      });
     case 'allianceFormed':
       if (entry.a !== player && entry.b !== player) return null;
-      return `${names.faction(entry.a === player ? entry.b : entry.a)} ile evlilik ittifakı kuruldu.`;
+      return t('chronicleEvents.allianceWith', {
+        faction: f(entry.a === player ? entry.b : entry.a),
+      });
     case 'eventResolved': {
       const event = scenario.events?.find((e) => e.id === entry.eventId);
       const choice = event?.choices.find((c) => c.id === entry.choiceId);
-      return event && choice ? `${event.title}: ${choice.label}.` : null;
+      return event && choice
+        ? t('chronicleEvents.decision', {
+            title: event.title,
+            choice: choice.label,
+          })
+        : null;
     }
     case 'rulerDied':
-      return `${entry.name} öldü.`;
+      return t('chronicleEvents.rulerDied', { name: entry.name });
     case 'newRuler':
-      return `${entry.name} tahta çıktı.`;
+      return t('chronicleEvents.newRuler', { name: entry.name });
     case 'successionStruggle':
-      return `Taht kavgası: ${entry.winner} galip geldi.`;
+      return t('chronicleEvents.struggle', { winner: entry.winner });
     case 'vizierAppointed':
-      return `${entry.name} vezir oldu.`;
+      return t('chronicleEvents.vizier', { name: entry.name });
     case 'revolt':
-      return `${names.province(entry.provinceId)} isyan edip elden çıktı.`;
+      return t('chronicleEvents.revolt', { province: p(entry.provinceId) });
     case 'gameEnded':
-      return entry.status.result === 'victory' ? 'Zafer!' : 'Yenilgi.';
+      return t(
+        entry.status.result === 'victory'
+          ? 'chronicleEvents.victory'
+          : 'chronicleEvents.defeat',
+      );
     default:
       return null;
   }
@@ -92,6 +115,7 @@ export function buildChronicle(
   game: GameState,
   scenario: ScenarioDefinition,
   names: LogNames,
+  t: Translate = tTr,
 ): ChronicleRow[] {
   const rows = new Map<number, ChronicleRow>();
   const row = (year: number) => {
@@ -104,10 +128,10 @@ export function buildChronicle(
   };
 
   for (const entry of game.log) {
-    const text = describe(entry, game.playerFactionId, names, scenario);
+    const text = describe(entry, game.playerFactionId, names, scenario, t);
     if (!text) continue;
     const date = dateOfTurn(scenario.startDate, entry.turn);
-    row(date.year).played.push({ date: formatDate(date), text });
+    row(date.year).played.push({ date: formatDate(date, t), text });
   }
 
   for (const item of scenario.chronicle ?? []) {

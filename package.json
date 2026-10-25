@@ -13,6 +13,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "lint-staged": "lint-staged --config infra/lint-staged.config.js --concurrent false",
     "data:provinces": "node scripts/build-provinces.mjs",
     "data:rivers": "node scripts/build-rivers.mjs",
@@ -22,6 +23,7 @@
     "@base-ui/react": "^1.9.0",
     "@fontsource-variable/eb-garamond": "^5.3.0",
     "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/amiri": "^5.3.0",
     "@react-router/node": "^7.18.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -42,6 +44,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.64.1",
     "@react-router/dev": "^7.18.4",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/dom": "^10.4.2",

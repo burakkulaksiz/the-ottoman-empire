@@ -1,3 +1,4 @@
+import { TezhipDivider } from '@/components/ornament';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -7,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { useT } from '@/hooks/use-t';
 
 export type EventCardContent = {
   title: string;
@@ -42,6 +44,7 @@ export function EventCard({
     (c) => c.id === event.historical.choiceId,
   );
   const sameAsHistory = chosen?.id === event.historical.choiceId;
+  const t = useT();
 
   return (
     <div
@@ -50,11 +53,12 @@ export function EventCard({
       aria-labelledby="event-title"
       className="absolute inset-0 z-10 grid place-items-center bg-foreground/30 p-4"
     >
-      <Card className="max-h-full w-full max-w-lg overflow-y-auto">
+      <Card className="tezhip-frame max-h-full w-full max-w-lg overflow-y-auto">
         <CardHeader>
           <CardTitle id="event-title" className="font-display text-2xl">
             {event.title}
           </CardTitle>
+          <TezhipDivider />
           {!chosen && <CardDescription>{event.description}</CardDescription>}
         </CardHeader>
 
@@ -62,32 +66,34 @@ export function EventCard({
           <>
             <CardContent className="space-y-4">
               <p>
-                <span className="font-medium">Kararın: </span>
+                <span className="font-medium">{t('event.yourDecision')}</span>
                 {chosen.label}
               </p>
               <p>{chosen.outcome}</p>
               <section className="rounded-lg bg-muted p-3">
                 <h3 className="font-display text-lg">
-                  Tarihte gerçekte ne oldu?
+                  {t('event.whatHappened')}
                 </h3>
                 <p
                   className="mt-1 text-sm font-medium text-primary"
                   data-testid="verdict"
                 >
                   {sameAsHistory
-                    ? 'Tarihteki gibi karar verdin.'
-                    : `Tarihte farklı oldu: "${historicalChoice?.label}" seçildi.`}
+                    ? t('event.sameAsHistory')
+                    : t('event.historyChose', {
+                        choice: historicalChoice?.label ?? '',
+                      })}
                 </p>
                 <p className="mt-1 text-sm">{event.historical.note}</p>
                 {sources.length > 0 && (
                   <p className="mt-2 text-xs text-muted-foreground">
-                    Kaynak: {sources.join('; ')}
+                    {t('event.source', { sources: sources.join('; ') })}
                   </p>
                 )}
               </section>
             </CardContent>
             <CardFooter className="justify-end">
-              <Button onClick={onClose}>Devam</Button>
+              <Button onClick={onClose}>{t('common.continue')}</Button>
             </CardFooter>
           </>
         ) : (
@@ -103,7 +109,7 @@ export function EventCard({
                 {revealHistorical &&
                   choice.id === event.historical.choiceId && (
                     <span className="ml-auto rounded bg-primary/10 px-1.5 text-xs text-primary">
-                      Tarihte seçilen
+                      {t('event.historicalChoice')}
                     </span>
                   )}
               </Button>

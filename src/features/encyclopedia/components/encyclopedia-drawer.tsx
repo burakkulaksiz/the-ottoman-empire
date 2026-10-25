@@ -2,6 +2,7 @@ import { BookOpen, X } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button } from '@/components/ui/button';
+import { useT } from '@/hooks/use-t';
 
 import { EntryView, type EntryViewContent } from './entry-view';
 
@@ -21,19 +22,20 @@ export function EncyclopediaDrawer({
   onRelated,
   onClose,
 }: EncyclopediaDrawerProps) {
+  const t = useT();
   return (
     <aside
-      aria-label="Ansiklopedi"
+      aria-label={t('encyclopedia.title')}
       className="pointer-events-auto w-full max-w-sm rounded-lg border bg-card/95 p-4 text-sm text-card-foreground shadow-lg backdrop-blur-sm"
     >
       <div className="mb-2 flex items-center gap-2 text-muted-foreground">
         <BookOpen className="size-4" aria-hidden />
-        <span>Ansiklopedi</span>
+        <span>{t('encyclopedia.title')}</span>
         <Button
           size="icon-xs"
           variant="ghost"
           className="ml-auto"
-          aria-label="Kapat"
+          aria-label={t('common.close')}
           onClick={onClose}
         >
           <X />
@@ -47,7 +49,7 @@ export function EncyclopediaDrawer({
         target="_blank"
         className="mt-3 inline-block text-xs text-primary underline-offset-4 hover:underline"
       >
-        Ansiklopedide aç
+        {t('encyclopedia.openFull')}
       </Link>
     </aside>
   );

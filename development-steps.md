@@ -14,14 +14,14 @@
 
 | Bölüm            | Biten  | Toplam |
 | ---------------- | ------ | ------ |
-| A. Altyapı       | 4      | 5      |
+| A. Altyapı       | 5      | 5      |
 | B. Harita        | 2      | 5      |
 | C. Mekanikler    | 9      | 10     |
 | D. Tarih öğrenme | 7      | 7      |
-| E. Arayüz        | 1      | 5      |
-| F. Kalite        | 0      | 5      |
+| E. Arayüz        | 2      | 5      |
+| F. Kalite        | 1      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **23** | **41** |
+| **Toplam**       | **26** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** F3 (Playwright ile uçtan uca testler; şimdiye kadar hiçbir akış gerçek tarayıcıda otomatik denenmedi) veya A5 (çoklu dil), E3 (tarihi görsel kimlik)
+**Sıradaki madde:** E5 (mobil ve tablet uyumu) veya B5 (hareket okları, sis perdesi); kalite tarafında F4 (performans, paket analizi) ve CI (GitHub Actions ile birim + E2E)
 
 ---
 
@@ -47,7 +47,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - _Yapıldı: motor Web Worker'da çalışır (`src/workers`, Comlink); `src/stores/game-store.ts` Zustand + Immer ile anlık görüntüyü, son günlüğü, komut hatasını ve seçili bölgeyi tutar. Komutlar sırayla işlenir. Worker olmayan ortamda (test) aynı kod yerel çalışır. Kayıttan devam için `load` hazır, kayıt yuvaları A4'te._
 - [x] **A4. Kayıt ve yükleme:** IndexedDB üzerinde, otomatik kayıt ve birden fazla kayıt yuvasıyla.
   - _Yapıldı: Dexie ile IndexedDB (`src/lib/saves`), otomatik kayıt (her tur sonunda) + 3 elle yuva, oyun içi "Kaydet" menüsü, `/saves` sayfası (yükle/sil), ana menüde "Devam Et", `/play/:id?slot=` ile devam. Yüklenen kayıt `validateSavedState` ile dünyayla uyumlu mu diye denetlenir; kayıt sürümü `GameState.version`._
-- [ ] **A5. Çoklu dil (i18n):** Türkçe ana dil, İngilizce opsiyonel.
+- [x] **A5. Çoklu dil (i18n):** Türkçe ana dil, İngilizce opsiyonel.
+  - _Yapıldı: kütüphanesiz, tipli sözlükler (`src/lib/i18n`: `tr.ts` ana dil, `en.ts` aynı anahtarları tip zorunluluğuyla taşır), `{param}` doldurma, eksik çeviride Türkçeye düşme. Dil seçimi ana menüde (Türkçe/English), tarayıcıda hatırlanır, `<html lang>` güncellenir; kayıtlı dil hydration'dan sonra uygulanır. Tüm arayüz metinleri (menüler, HUD, paneller, kartlar, günlük, kronik, kayıtlar, başarım ve ansiklopedi sayfaları) çevrildi. Tarih içeriği (senaryolar, olaylar, ansiklopedi, sorular) şimdilik yalnızca Türkçe; İngilizce modda bu not gösterilir. Testler: anahtar/yer tutucu eşliği, dil değiştirme (birim + E2E)._
 
 ## B. Gerçek dünya haritası
 
@@ -123,7 +124,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - [x] Bölge paneli (sahip, komşular, içindeki ordular)
   - [x] Ordu paneli (birlikler, moral, hareket hakkı, gidebileceği bölgeler)
   - [ ] Şehir paneli (şehir/kale verisi B4'te gelince)
-- [ ] **E3. Tarihi görsel kimlik:** tezhip, hat tipografisi ve minyatür esintili bir tema.
+- [x] **E3. Tarihi görsel kimlik:** tezhip, hat tipografisi ve minyatür esintili bir tema.
+  - _Yapıldı: hat için Amiri nesih yazı tipi ve ana menüde Osmanlıca "دولت علیه" başlığı; minyatür paleti (lâciverd, sülüğen, zümrüt, altın) tema değişkeni olarak; parşömen dokulu arka plan; `tezhip-frame` (altın çift çizgi + köşelerde sekiz köşeli yıldız gülleri) ve `tezhip-rule` yardımcıları; `components/ornament.tsx` (gül, tezhip ayracı, Osmanlıca başlık). Ana menü, senaryo kartları, oyun panelleri, üst çubuk, olay/oyun sonu/soru/kronik kartları bu çerçeveyle. Minyatür tarzı çizimler (görsel varlık) ileride._
 - [ ] **E4. Ses ve müzik** (mehter gibi), ayarlar ekranı.
 - [ ] **E5. Mobil ve tablet uyumu.**
 
@@ -131,7 +133,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 - [ ] **F1. Motor kuralları için birim testleri (Vitest).** _Not: A2 ile temel testler yazıldı (takvim, RNG, oyun oluşturma, dispatch); her yeni kural kendi testiyle gelmeli, madde sürekli açık kalır._
 - [ ] **F2. Arayüz bileşenleri için Storybook.**
-- [ ] **F3. Uçtan uca (E2E) testler (Playwright):** "bir senaryoyu başlat, tur geç, kaydet" gibi akışlar.
+- [x] **F3. Uçtan uca (E2E) testler (Playwright):** "bir senaryoyu başlat, tur geç, kaydet" gibi akışlar.
+  - _Yapıldı: Playwright + Chromium (`e2e/`, `npm run test:e2e`): üretim derlemesini sunar; senaryo başlatma ve haritanın gerçekten çizilmesi (WebGL, MapLibre Worker), ordu yürütme ve fetih, tur geçme, kaydetme ve kayıttan devam, öğretici rehberi, haritadan ansiklopedi, ansiklopedi araması, 404, arayüz dilini değiştirme. Her testte tarayıcı konsolunda hata olmaması beklenir. İlk koşu gerçek bir hatayı yakaladı: Bursa'da ordu işareti şehir işaretini örtüyordu (düzeltildi). CI kurulumu henüz yok._
 - [ ] **F4. Performans:** harita katmanlarının optimizasyonu ve paket (bundle) analizi.
 - [ ] **F5. PWA desteği:** oyunu kurup çevrimdışı oynayabilmek.
 

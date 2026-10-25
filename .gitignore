@@ -9,3 +9,8 @@
 
 # Ham harita verisi (scripts/build-provinces.mjs indirir)
 /data-src/
+
+# Playwright (F3)
+/test-results/
+/playwright-report/
+/blob-report/

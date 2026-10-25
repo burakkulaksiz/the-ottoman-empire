@@ -5,7 +5,7 @@ Devlet-i Âliyye: gerçek dünya haritası üzerinde oynanan, Osmanlı tarihini 
 ## İletişim ve dil
 
 - Kullanıcıyla **Türkçe** konuş. Kod, değişken adları ve kod yorumları: yorumlar Türkçe, tanımlayıcılar İngilizce (mevcut koddaki gibi).
-- Oyun metinleri ve tarih içeriği Türkçe ana dildedir; İngilizce sonradan i18n ile eklenecek (A5).
+- Oyun metinleri ve tarih içeriği Türkçe ana dildedir. Arayüz metinleri İngilizceye çevrilidir (A5, aşağıda "Arayüz metinleri ve tema"); tarih içeriği (`src/content`) şimdilik yalnızca Türkçe.
 
 ## Yol haritası
 
@@ -24,10 +24,11 @@ Devlet-i Âliyye: gerçek dünya haritası üzerinde oynanan, Osmanlı tarihini 
 | `npm run lint`           | ESLint (mimari sınırlar dahil)                     |
 | `npm run format`         | Prettier                                           |
 | `npm test`               | Vitest (`vitest run`)                              |
+| `npm run test:e2e`       | Playwright uçtan uca testler (derler ve sunar)     |
 | `npm run data:provinces` | Bölge GeoJSON'u ve komşuluk grafını yeniden üretir |
 | `npm run data:rivers`    | Nehir GeoJSON'unu yeniden üretir                   |
 
-Bir işi bitmiş saymadan önce **`npm run typecheck`, `npm run lint` ve `npm test`** geçmeli. Husky pre-commit `lint-staged` + `npm test` çalıştırır; `--no-verify` kullanma.
+Bir işi bitmiş saymadan önce **`npm run typecheck`, `npm run lint` ve `npm test`** geçmeli. Harita, Worker ya da oyun ekranı akışlarını değiştirdiysen **`npm run test:e2e`** de çalıştır: jsdom testleri haritayı taklit eder, gerçek tarayıcı hatalarını yalnızca E2E yakalar (ilk kurulumda `npx playwright install chromium`). Husky pre-commit `lint-staged` + `npm test` çalıştırır; `--no-verify` kullanma.
 
 ## Teknoloji
 
@@ -51,6 +52,7 @@ src/
 scripts/        Veri üretim betikleri (ör. build-provinces.mjs; ham veri data-src/, git'te yok)
 infra/          ESLint import kuralları, lint-staged
 testing/        Test kurulumu ve fixture'lar
+e2e/            Playwright uçtan uca testleri
 ```
 
 ### Değişmez kurallar (ESLint zorlar — `infra/eslint-import-rules.js`)
@@ -69,6 +71,13 @@ testing/        Test kurulumu ve fixture'lar
 - **Determinizm:** `Math.random`, `Date.now()` ve benzeri kullanma. Rastgelelik yalnızca `GameState.rng` / `context.random` üzerinden. Aynı tohum + aynı komutlar = aynı oyun.
 - Sabitler ve denge değerleri `rules.ts` içinde toplanır; kuralların içine sayı gömme.
 - Her yeni emir/tur aşaması kendi birim testiyle gelir (`src/engine/__tests__`).
+
+### Arayüz metinleri ve tema
+
+- **Arayüze sabit metin yazma.** Yeni metin için anahtarı hem `src/lib/i18n/messages/tr.ts` hem `en.ts`'e ekle (`en` `Messages` tipini taşıdığı için eksik anahtar tip hatası verir; yer tutucular `{ad}` iki dilde aynı olmalı, test denetler).
+- Bileşende `const t = useT()` (`@/hooks/use-t`); bileşen dışı yardımcılar son parametre olarak `t: Translate = tTr` alır ve çağıran `t`'yi geçirir. Tarih/sayı biçimi için `LOCALE_TAGS[locale]`.
+- Dil store'u (`stores/locale-store.ts`) hydration uyuşmazlığı olmasın diye Türkçe başlar; kayıtlı dili `App` içindeki `restoreLocale()` uygular. Render sırasında `localStorage` okuma.
+- Görsel kimlik (E3): kart/panel çerçevesi için `tezhip-frame`, çubuk altı için `tezhip-rule` (`app.css`); süs öğeleri `components/ornament.tsx`; renkler tema değişkeni (`gold`, `lapis`, `vermilion`, `malachite`, `parchment`) — elle renk kodu yazma. Osmanlıca hat için `font-hat`.
 
 ## Kod stili
 

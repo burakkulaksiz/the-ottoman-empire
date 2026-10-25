@@ -1,3 +1,5 @@
+import { useT } from '@/hooks/use-t';
+
 export type EntryViewContent = {
   title: string;
   categoryLabel: string;
@@ -23,6 +25,7 @@ export function EntryView({
   headingLevel = 2,
 }: EntryViewProps) {
   const Heading = headingLevel === 1 ? 'h1' : 'h2';
+  const t = useT();
 
   return (
     <article className="space-y-3">
@@ -39,14 +42,14 @@ export function EntryView({
 
       {entry.inGame && (
         <aside className="rounded-lg bg-muted p-3 text-sm">
-          <span className="font-medium">Oyunda: </span>
+          <span className="font-medium">{t('encyclopedia.inGame')}</span>
           {entry.inGame}
         </aside>
       )}
 
       {entry.sources && entry.sources.length > 0 && (
         <section>
-          <h3 className="font-display text-lg">Kaynaklar</h3>
+          <h3 className="font-display text-lg">{t('encyclopedia.sources')}</h3>
           <ul className="mt-1 list-disc space-y-0.5 pl-5 text-xs text-muted-foreground">
             {entry.sources.map((source) => (
               <li key={source}>{source}</li>
@@ -57,7 +60,7 @@ export function EntryView({
 
       {related.length > 0 && (
         <section>
-          <h3 className="font-display text-lg">İlgili maddeler</h3>
+          <h3 className="font-display text-lg">{t('encyclopedia.related')}</h3>
           <ul className="mt-1 flex flex-wrap gap-2">
             {related.map((item) => (
               <li key={item.id}>

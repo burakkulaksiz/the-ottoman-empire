@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import type { Units } from '@/engine';
+import { useT } from '@/hooks/use-t';
 
 import { formatUnits } from '../config/unit-labels';
 
@@ -59,23 +60,24 @@ export function ProvincePanel({
   onSelectArmy,
   recruit,
 }: ProvincePanelProps) {
+  const t = useT();
   return (
     <Panel title={name}>
       <p className="text-muted-foreground">
-        {country} · {ownerName ?? 'Sahipsiz'}
+        {country} · {ownerName ?? t('province.unowned')}
       </p>
       {(terrainLabel || fortification > 0) && (
         <p className="mt-2">
           {terrainLabel && (
             <>
-              <span className="font-medium">Arazi: </span>
+              <span className="font-medium">{t('province.terrain')}</span>
               {terrainLabel}
             </>
           )}
           {terrainLabel && fortification > 0 && ' · '}
           {fortification > 0 && (
             <>
-              <span className="font-medium">Kale seviyesi: </span>
+              <span className="font-medium">{t('province.fortification')}</span>
               {fortification}
             </>
           )}
@@ -83,7 +85,7 @@ export function ProvincePanel({
       )}
       {places.length > 0 && (
         <p className="mt-2">
-          <span className="font-medium">Şehirler: </span>
+          <span className="font-medium">{t('province.cities')}</span>
           {places.map((place, index) => (
             <span key={place.id}>
               {index > 0 && ', '}
@@ -103,13 +105,13 @@ export function ProvincePanel({
         </p>
       )}
       <p className="mt-2">
-        <span className="font-medium">Komşular: </span>
-        {neighborNames.join(', ') || 'yok (ada)'}
+        <span className="font-medium">{t('province.neighbors')}</span>
+        {neighborNames.join(', ') || t('province.island')}
       </p>
 
-      <h3 className="mt-3 font-display text-base">Ordular</h3>
+      <h3 className="mt-3 font-display text-base">{t('province.armies')}</h3>
       {armies.length === 0 ? (
-        <p className="text-muted-foreground">Bu bölgede ordu yok.</p>
+        <p className="text-muted-foreground">{t('province.noArmies')}</p>
       ) : (
         <ul className="mt-1 space-y-1">
           {armies.map((army) => (
@@ -134,7 +136,9 @@ export function ProvincePanel({
       )}
       {recruit && recruit.options.length > 0 && (
         <>
-          <h3 className="mt-3 font-display text-base">Devşirme</h3>
+          <h3 className="mt-3 font-display text-base">
+            {t('province.recruitment')}
+          </h3>
           <ul className="mt-1 space-y-1">
             {recruit.options.map((option) => (
               <li key={option.unit}>
@@ -145,7 +149,10 @@ export function ProvincePanel({
                   title={option.disabledReason}
                   onClick={() => recruit.onRecruit(option.unit)}
                 >
-                  {option.label} +100 ({option.cost} akçe)
+                  {t('province.recruitButton', {
+                    unit: option.label,
+                    cost: option.cost,
+                  })}
                 </Button>
               </li>
             ))}
@@ -157,11 +164,13 @@ export function ProvincePanel({
 }
 
 function ArmyRow({ army }: { army: ProvinceArmyRow }) {
+  const t = useT();
   return (
     <>
       <span className="font-medium">{army.factionName}</span>
       <span className="block text-xs text-muted-foreground">
-        {formatUnits(army.units)} · moral {army.morale}
+        {formatUnits(army.units, t)} ·{' '}
+        {t('province.morale', { value: army.morale })}
       </span>
     </>
   );

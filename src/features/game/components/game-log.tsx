@@ -1,3 +1,5 @@
+import { useT } from '@/hooks/use-t';
+
 import { Panel } from './panel';
 
 type GameLogProps = {
@@ -10,11 +12,12 @@ type GameLogProps = {
 /** Son olayların kısa günlüğü (D4'teki kronikten ayrı, anlık özet). */
 export function GameLog({ lines, limit = 30 }: GameLogProps) {
   const recent = lines.slice(-limit).reverse();
+  const t = useT();
 
   return (
-    <Panel title="Günlük" defaultOpen={false}>
+    <Panel title={t('panels.log')} defaultOpen={false}>
       {recent.length === 0 ? (
-        <p className="text-muted-foreground">Henüz bir şey olmadı.</p>
+        <p className="text-muted-foreground">{t('panels.logEmpty')}</p>
       ) : (
         <ol className="space-y-1">
           {recent.map((line, index) => (

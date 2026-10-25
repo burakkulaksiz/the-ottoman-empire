@@ -2,6 +2,7 @@ import { Download, Save, Trash2 } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
+import { useT } from '@/hooks/use-t';
 
 export type SaveSlotRow = {
   slot: string;
@@ -29,6 +30,7 @@ export function SaveSlotList({
   loadHref,
   onDelete,
 }: SaveSlotListProps) {
+  const t = useT();
   return (
     <ul className="space-y-2">
       {rows.map((row) => (
@@ -36,7 +38,9 @@ export function SaveSlotList({
           <div className="flex items-baseline justify-between gap-2">
             <span className="font-medium">{row.label}</span>
             {!row.summary && (
-              <span className="text-xs text-muted-foreground">Boş</span>
+              <span className="text-xs text-muted-foreground">
+                {t('saves.emptySlot')}
+              </span>
             )}
           </div>
           {row.summary && (
@@ -53,29 +57,29 @@ export function SaveSlotList({
               <Button
                 size="xs"
                 variant="outline"
-                aria-label={`${row.label}: kaydet`}
+                aria-label={t('saves.saveLabel', { slot: row.label })}
                 onClick={() => onSave(row.slot)}
               >
-                <Save /> {row.summary ? 'Üzerine yaz' : 'Kaydet'}
+                <Save /> {row.summary ? t('saves.overwrite') : t('saves.save')}
               </Button>
             )}
             {loadHref && row.summary && (
               <Link
                 to={loadHref(row.slot)}
-                aria-label={`${row.label}: yükle`}
+                aria-label={t('saves.loadLabel', { slot: row.label })}
                 className={buttonVariants({ size: 'xs', variant: 'outline' })}
               >
-                <Download /> Yükle
+                <Download /> {t('saves.load')}
               </Link>
             )}
             {onDelete && row.summary && (
               <Button
                 size="xs"
                 variant="ghost"
-                aria-label={`${row.label}: sil`}
+                aria-label={t('saves.deleteLabel', { slot: row.label })}
                 onClick={() => onDelete(row.slot)}
               >
-                <Trash2 /> Sil
+                <Trash2 /> {t('saves.delete')}
               </Button>
             )}
           </div>

@@ -15,14 +15,9 @@ import { APP_NAME } from '@/config/app';
 import { SCENARIOS } from '@/content/scenarios';
 import type { GameSettings } from '@/engine';
 import { formatDate } from '@/features/game/config/season-labels';
+import { useT } from '@/hooks/use-t';
 
-import {
-  DIFFICULTIES,
-  DIFFICULTY_HINTS,
-  DIFFICULTY_LABELS,
-  HISTORICAL_MODE_HINT,
-  settingsToSearch,
-} from '../lib/game-settings';
+import { DIFFICULTIES, settingsToSearch } from '../lib/game-settings';
 
 import type { Route } from './+types/scenarios';
 
@@ -31,6 +26,7 @@ export function meta(_: Route.MetaArgs) {
 }
 
 export default function Scenarios() {
+  const t = useT();
   const [settings, setSettings] = useState<GameSettings>({
     difficulty: 'normal',
     historicalMode: false,
@@ -41,20 +37,22 @@ export default function Scenarios() {
       <header className="flex items-center gap-3">
         <Link
           to="/"
-          aria-label="Ana Menü"
+          aria-label={t('common.mainMenu')}
           className={buttonVariants({ variant: 'ghost', size: 'icon' })}
         >
           <ArrowLeft />
         </Link>
-        <h1 className="text-3xl">Senaryo Seç</h1>
+        <h1 className="text-3xl">{t('scenarios.title')}</h1>
       </header>
 
       <section
-        aria-label="Oyun ayarları"
+        aria-label={t('scenarios.settings')}
         className="grid gap-3 rounded-xl border bg-card p-4 sm:grid-cols-2"
       >
         <fieldset>
-          <legend className="font-display text-lg">Zorluk</legend>
+          <legend className="font-display text-lg">
+            {t('scenarios.difficulty')}
+          </legend>
           <div className="mt-1 flex flex-wrap gap-3">
             {DIFFICULTIES.map((difficulty) => (
               <label key={difficulty} className="flex items-center gap-1.5">
@@ -65,12 +63,12 @@ export default function Scenarios() {
                   checked={settings.difficulty === difficulty}
                   onChange={() => setSettings((s) => ({ ...s, difficulty }))}
                 />
-                {DIFFICULTY_LABELS[difficulty]}
+                {t(`difficulty.${difficulty}`)}
               </label>
             ))}
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
-            {DIFFICULTY_HINTS[settings.difficulty]}
+            {t(`difficulty.${settings.difficulty}Hint`)}
           </p>
         </fieldset>
         <div>
@@ -82,10 +80,10 @@ export default function Scenarios() {
                 setSettings((s) => ({ ...s, historicalMode: e.target.checked }))
               }
             />
-            Tarihe sadık mod
+            {t('scenarios.historicalMode')}
           </label>
           <p className="mt-1 text-xs text-muted-foreground">
-            {HISTORICAL_MODE_HINT}
+            {t('scenarios.historicalModeHint')}
           </p>
         </div>
       </section>
@@ -93,27 +91,31 @@ export default function Scenarios() {
       <ul className="grid gap-4">
         {SCENARIOS.map((scenario) => (
           <li key={scenario.id}>
-            <Card>
+            <Card className="tezhip-frame">
               <CardHeader>
                 <CardTitle className="font-display text-2xl">
                   <h2>{scenario.name}</h2>
                 </CardTitle>
                 {scenario.tutorial && (
                   <p className="w-fit rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                    Yeni başlayanlar için önerilir
+                    {t('scenarios.recommended')}
                   </p>
                 )}
                 <CardDescription>
-                  Başlangıç: {formatDate(scenario.startDate)}
+                  {t('scenarios.start', {
+                    date: formatDate(scenario.startDate, t),
+                  })}
                   {scenario.endDate &&
-                    ` · Süre sınırı: ${formatDate(scenario.endDate)}`}
+                    ` · ${t('scenarios.deadline', { date: formatDate(scenario.endDate, t) })}`}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p>{scenario.summary}</p>
                 {scenario.objectives && scenario.objectives.length > 0 && (
                   <>
-                    <h3 className="mt-4 font-display text-lg">Hedefler</h3>
+                    <h3 className="mt-4 font-display text-lg">
+                      {t('scenarios.goals')}
+                    </h3>
                     <ul className="list-disc pl-5 text-sm">
                       {scenario.objectives.map((o) => (
                         <li key={o.id}>{o.title}</li>
@@ -126,9 +128,11 @@ export default function Scenarios() {
                 <Link
                   to={`/play/${scenario.id}${settingsToSearch(settings)}`}
                   className={buttonVariants()}
-                  aria-label={`${scenario.name} senaryosunu başlat`}
+                  aria-label={t('scenarios.playLabel', {
+                    name: scenario.name,
+                  })}
                 >
-                  <Play /> Başla
+                  <Play /> {t('scenarios.play')}
                 </Link>
               </CardFooter>
             </Card>
@@ -137,8 +141,7 @@ export default function Scenarios() {
       </ul>
 
       <p className="text-sm text-muted-foreground">
-        Diğer dönemler (1326 Bursa, 1402 Ankara, 1453 İstanbul …) yol
-        haritasında; yakında eklenecek.
+        {t('scenarios.comingSoon')}
       </p>
     </main>
   );

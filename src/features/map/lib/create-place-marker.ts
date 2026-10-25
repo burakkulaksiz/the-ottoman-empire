@@ -7,6 +7,8 @@ export type PlaceMarker = {
   kind: 'city' | 'strait';
   /** Kale seviyesi (0 = surlu değil). */
   fortification: number;
+  /** İpucu ve ekran okuyucu metni; verilmezse ad (ve kale seviyesi). */
+  title?: string;
 };
 
 /**
@@ -30,9 +32,11 @@ export function createPlaceMarkerElement(
   }
 
   const fortified = place.fortification > 0;
-  el.title = fortified
-    ? `${place.name} (kale seviyesi ${place.fortification})`
-    : place.name;
+  el.title =
+    place.title ??
+    (fortified
+      ? `${place.name} (kale seviyesi ${place.fortification})`
+      : place.name);
   el.setAttribute('aria-label', el.title);
 
   if (place.kind === 'strait') {

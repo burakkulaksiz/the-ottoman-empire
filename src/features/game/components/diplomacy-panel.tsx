@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { useT } from '@/hooks/use-t';
 
 import { Panel } from './panel';
 
@@ -30,12 +31,6 @@ type DiplomacyPanelProps = {
   onRespond: (offerId: string, accept: boolean) => void;
 };
 
-const RELATION_LABELS = {
-  war: 'Savaş',
-  peace: 'Barış',
-  alliance: 'İttifak',
-} as const;
-
 const RELATION_CLASSES = {
   war: 'text-destructive',
   peace: 'text-muted-foreground',
@@ -50,11 +45,16 @@ export function DiplomacyPanel({
   onAction,
   onRespond,
 }: DiplomacyPanelProps) {
+  const t = useT();
   return (
     // Teklif gelince panel açık başlasın.
     <Panel
       key={offers.length > 0 ? 'offers' : 'plain'}
-      title={offers.length > 0 ? `Diplomasi (${offers.length})` : 'Diplomasi'}
+      title={
+        offers.length > 0
+          ? t('diplomacy.titleWithOffers', { count: offers.length })
+          : t('diplomacy.title')
+      }
       defaultOpen={offers.length > 0}
     >
       {offers.length > 0 && (
@@ -64,14 +64,14 @@ export function DiplomacyPanel({
               <p>{offer.text}</p>
               <div className="mt-2 flex gap-2">
                 <Button size="xs" onClick={() => onRespond(offer.id, true)}>
-                  Kabul et
+                  {t('diplomacy.accept')}
                 </Button>
                 <Button
                   size="xs"
                   variant="outline"
                   onClick={() => onRespond(offer.id, false)}
                 >
-                  Reddet
+                  {t('diplomacy.reject')}
                 </Button>
               </div>
             </li>
@@ -92,7 +92,7 @@ export function DiplomacyPanel({
               <span
                 className={`ml-auto text-xs ${RELATION_CLASSES[row.relation]}`}
               >
-                {RELATION_LABELS[row.relation]}
+                {t(`diplomacy.${row.relation}`)}
               </span>
             </div>
             {row.note && (

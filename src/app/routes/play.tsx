@@ -15,7 +15,7 @@ import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
 import { formatCitation } from '@/content/sources';
 import { PLACES, placesIn } from '@/content/world/places';
 import { PROVINCE_META } from '@/content/world/provinces';
-import { TERRAIN_LABELS, terrainOf } from '@/content/world/terrain';
+import { terrainOf } from '@/content/world/terrain';
 import { routePath, TRADE_ROUTES } from '@/content/world/trade-routes';
 import {
   ageOf,
@@ -45,21 +45,23 @@ import { ObjectivesPanel } from '@/features/game/components/objectives-panel';
 import { Panel } from '@/features/game/components/panel';
 import { ProvincePanel } from '@/features/game/components/province-panel';
 import { TutorialPanel } from '@/features/game/components/tutorial-panel';
-import { END_REASON_LABELS } from '@/features/game/config/end-reasons';
+import { endReasonLabel } from '@/features/game/config/end-reasons';
 import { formatDate } from '@/features/game/config/season-labels';
-import { UNIT_LABELS } from '@/features/game/config/unit-labels';
+import { unitLabel } from '@/features/game/config/unit-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
 import { QuizCard } from '@/features/quiz/components/quiz-card';
 import { SaveSlotList } from '@/features/saves/components/save-slot-list';
+import { useT } from '@/hooks/use-t';
+import { LOCALE_TAGS, type MessageKey } from '@/lib/i18n';
 import {
   isSaveSlot,
   saveRepository,
-  SLOT_LABELS,
   type SaveSlotId,
   type SaveSummary,
 } from '@/lib/saves/save-repository';
 import { useGameStore } from '@/stores/game-store';
+import { useLocale } from '@/stores/locale-store';
 
 import { buildArmyMarkers } from '../lib/army-markers';
 import { buildChronicle } from '../lib/chronicle';
@@ -70,7 +72,7 @@ import {
   diplomacyCommand,
 } from '../lib/diplomacy-rows';
 import { settingsFromSearch, settingsLabel } from '../lib/game-settings';
-import { buildSlotRows } from '../lib/slot-rows';
+import { buildSlotRows, slotLabel } from '../lib/slot-rows';
 import {
   NO_TUTORIAL_FLAGS,
   tutorialProgress,
@@ -79,20 +81,14 @@ import {
 
 import type { Route } from './+types/play';
 
-/** Devşirme düğmesi pasifken gösterilen neden. */
-const RECRUIT_ERRORS: Partial<Record<CommandError, string>> = {
-  notEnoughGold: 'Yeterli akçe yok',
-  recruitLimit: 'Bu bölgede bu tur daha fazla devşirilemez',
-  besieged: 'Kuşatma altında devşirme yapılamaz',
-  notOwner: 'Bu bölge sana ait değil',
-  eventPending: 'Önce olay kartına karar ver',
+/** Devşirme düğmesi pasifken gösterilen neden (çeviri anahtarı). */
+const RECRUIT_ERRORS: Partial<Record<CommandError, MessageKey>> = {
+  notEnoughGold: 'recruitErrors.notEnoughGold',
+  recruitLimit: 'recruitErrors.recruitLimit',
+  besieged: 'recruitErrors.besieged',
+  notOwner: 'recruitErrors.notOwner',
+  eventPending: 'recruitErrors.eventPending',
 };
-
-const STABILITY_LABELS = {
-  stable: 'Sağlam',
-  uneasy: 'Huzursuz',
-  unrest: 'İsyan eşiğinde',
-} as const;
 
 export function meta(_: Route.MetaArgs) {
   return [{ title: `Oyun · ${APP_NAME}` }];
@@ -130,6 +126,7 @@ function PlayGame({ id }: { id: string }) {
   const status = useGameStore((s) => s.status);
   const game = useGameStore((s) => s.game);
   const loadError = useGameStore((s) => s.loadError);
+  const t = useT();
 
   // `?slot=` varsa kayıttan devam edilir, yoksa yeni oyun başlar.
   useEffect(() => {
@@ -142,9 +139,9 @@ function PlayGame({ id }: { id: string }) {
     return (
       <main className="grid h-dvh place-items-center p-4 text-center">
         <div className="flex flex-col items-center gap-4">
-          <p>Oyun yüklenemedi: {loadError}</p>
+          <p>{t('errors.gameLoadFailed', { reason: loadError ?? '' })}</p>
           <Link to="/" className={buttonVariants()}>
-            Ana Menü
+            {t('common.mainMenu')}
           </Link>
         </div>
       </main>
@@ -154,7 +151,7 @@ function PlayGame({ id }: { id: string }) {
     return (
       <main className="grid h-dvh place-items-center">
         <p className="font-display text-2xl text-muted-foreground">
-          Yükleniyor…
+          {t('common.loading')}
         </p>
       </main>
     );
@@ -171,6 +168,8 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
   const save = useGameStore((s) => s.save);
   const lastSave = useGameStore((s) => s.lastSave);
   const saveError = useGameStore((s) => s.saveError);
+  const t = useT();
+  const locale = useLocale();
 
   // --- Kayıt menüsü ---
   const [savesOpen, setSavesOpen] = useState(false);
@@ -209,13 +208,17 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
   );
   const armyMarkers = useMemo(
     () =>
-      buildArmyMarkers(game.armies, {
-        center: (pid) => PROVINCE_META[pid]?.center,
-        provinceName: (pid) => PROVINCE_META[pid]?.name ?? pid,
-        faction: (fid) => setup.world.factions[fid],
-        playerFactionId: game.playerFactionId,
-      }),
-    [game.armies, game.playerFactionId, setup],
+      buildArmyMarkers(
+        game.armies,
+        {
+          center: (pid) => PROVINCE_META[pid]?.center,
+          provinceName: (pid) => PROVINCE_META[pid]?.name ?? pid,
+          faction: (fid) => setup.world.factions[fid],
+          playerFactionId: game.playerFactionId,
+        },
+        t,
+      ),
+    [game.armies, game.playerFactionId, setup, t],
   );
 
   // Şehir/kale/boğaz işaretleri ve ticaret yolları (değişmez içerik).
@@ -227,8 +230,11 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
         position: p.position,
         kind: p.kind,
         fortification: p.fortification ?? 0,
+        title: p.fortification
+          ? t('panels.placeFortified', { name: p.name, level: p.fortification })
+          : p.name,
       })),
-    [],
+    [t],
   );
   const tradeRoutes = useMemo<FeatureCollection>(
     () => ({
@@ -285,8 +291,8 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
     [setup, scenario],
   );
   const logLines = useMemo(
-    () => game.log.flatMap((entry) => formatLogEntry(entry, names) ?? []),
-    [game.log, names],
+    () => game.log.flatMap((entry) => formatLogEntry(entry, names, t) ?? []),
+    [game.log, names, t],
   );
 
   const selected = selectedId ? PROVINCE_META[selectedId] : undefined;
@@ -316,9 +322,11 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             selectedId,
           ).map((o) => ({
             unit: o.unit,
-            label: UNIT_LABELS[o.unit],
+            label: unitLabel(o.unit, t),
             cost: o.cost,
-            disabledReason: o.error ? RECRUIT_ERRORS[o.error] : undefined,
+            disabledReason: o.error
+              ? t(RECRUIT_ERRORS[o.error] ?? 'recruitErrors.notOwner')
+              : undefined,
           })),
           onRecruit: (unit: string) =>
             void send({
@@ -401,25 +409,27 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             'offerRejected',
           ].includes(e.type),
         )
-        .flatMap((e) => formatLogEntry(e, names) ?? []),
-    [lastLog, names],
+        .flatMap((e) => formatLogEntry(e, names, t) ?? []),
+    [lastLog, names, t],
   );
 
   return (
     <main className="flex h-dvh flex-col">
       <GameHud
         scenarioName={scenario.name}
-        settingsLabel={settingsLabel(game.settings)}
-        dateLabel={formatDate(game.date)}
+        settingsLabel={settingsLabel(game.settings, t)}
+        dateLabel={formatDate(game.date, t)}
         turn={game.turn}
         treasury={game.factions[game.playerFactionId]?.treasury ?? 0}
         income={incomeOf(setup.world, game, game.playerFactionId)}
         upkeep={upkeepOf(game, game.playerFactionId)}
         resultLabel={
           game.status.phase === 'ended'
-            ? game.status.result === 'victory'
-              ? 'Zafer'
-              : 'Yenilgi'
+            ? t(
+                game.status.result === 'victory'
+                  ? 'common.victory'
+                  : 'common.defeat',
+              )
             : null
         }
         canEndTurn={!ended && game.events.pending.length === 0}
@@ -459,26 +469,32 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
               <ObjectivesPanel
                 objectives={objectives}
                 deadlineLabel={
-                  setup.world.endDate ? formatDate(setup.world.endDate) : null
+                  setup.world.endDate
+                    ? formatDate(setup.world.endDate, t)
+                    : null
                 }
               />
             )}
             {savesOpen && (
-              <Panel title="Kayıt">
+              <Panel title={t('panels.saveMenu')}>
                 <SaveSlotList
-                  rows={buildSlotRows(saves)}
+                  rows={buildSlotRows(saves, t, LOCALE_TAGS[locale])}
                   onSave={(slot) => void save(slot as SaveSlotId)}
                   loadHref={(slot) => `/play/${id}?slot=${slot}`}
                 />
                 {saveError ? (
                   <p role="alert" className="mt-2 text-destructive">
-                    Kaydedilemedi: {saveError}
+                    {t('panels.saveFailed', { reason: saveError })}
                   </p>
                 ) : (
                   lastSave && (
                     <p className="mt-2 text-xs text-muted-foreground">
-                      Son kayıt: {SLOT_LABELS[lastSave.slot]},{' '}
-                      {new Date(lastSave.savedAt).toLocaleTimeString('tr-TR')}
+                      {t('panels.lastSave', {
+                        slot: slotLabel(lastSave.slot, t),
+                        time: new Date(lastSave.savedAt).toLocaleTimeString(
+                          LOCALE_TAGS[locale],
+                        ),
+                      })}
                     </p>
                   )
                 )}
@@ -499,13 +515,13 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                   courtPerson(c, game.date.year),
                 )}
                 stability={Math.round(game.court.stability)}
-                stabilityLabel={
-                  STABILITY_LABELS[stabilityLevel(game.court.stability)]
-                }
+                stabilityLabel={t(
+                  `court.${stabilityLevel(game.court.stability)}`,
+                )}
                 vizierNote={
                   game.date.year < RULES.court.divanFrom
-                    ? 'Divan teşkilatı henüz kurulmadı; vezir atanamaz.'
-                    : 'Yeni adaylar ilkbaharda belirir.'
+                    ? t('court.noDivan')
+                    : t('court.candidatesInSpring')
                 }
                 vizierCost={RULES.court.vizierCost}
                 canAffordVizier={
@@ -518,8 +534,8 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
               />
             )}
             <DiplomacyPanel
-              rows={buildDiplomacyRows(setup.world, game)}
-              offers={buildOffers(setup.world, game)}
+              rows={buildDiplomacyRows(setup.world, game, t)}
+              offers={buildOffers(setup.world, game, t)}
               feedback={diplomacyFeedback}
               onAction={(target, actionId) => {
                 const command = diplomacyCommand(target, actionId);
@@ -558,7 +574,11 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 units={selectedArmy.units}
                 morale={selectedArmy.morale}
                 movesLeft={selectedArmy.movesLeft}
-                destinationNames={destinations.map(names.province)}
+                destinations={destinations.map((id) => ({
+                  id,
+                  name: names.province(id),
+                }))}
+                onMove={(provinceId) => handleProvinceSelect(provinceId)}
                 onCancel={() => selectArmy(null)}
               />
             )}
@@ -569,7 +589,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 ownerName={ownerId ? names.faction(ownerId) : null}
                 neighborNames={selected.neighbors.map(names.province)}
                 terrainLabel={
-                  selectedId ? TERRAIN_LABELS[terrainOf(selectedId)] : undefined
+                  selectedId ? t(`terrain.${terrainOf(selectedId)}`) : undefined
                 }
                 fortification={
                   setup.world.provinces[selectedId!]?.fortification ?? 0
@@ -595,7 +615,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           <GameOverCard
             content={{
               result: game.status.result,
-              reason: END_REASON_LABELS[game.status.reason],
+              reason: endReasonLabel(game.status.reason, t),
               score: game.status.score,
               decisions,
               historicalNote: scenario.historical?.note,
@@ -608,13 +628,15 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             role="status"
             className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-gold bg-card px-4 py-2 shadow-lg"
           >
-            <span className="font-display text-lg">Başarım: {toast.title}</span>
+            <span className="font-display text-lg">
+              {t('panels.achievement', { title: toast.title })}
+            </span>
             <span className="text-sm text-muted-foreground">
               {toast.description}
             </span>
             <button
               type="button"
-              aria-label="Bildirimi kapat"
+              aria-label={t('panels.dismiss')}
               className="text-muted-foreground hover:text-foreground"
               onClick={() => dismissAchievement(toast.id)}
             >
@@ -643,7 +665,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
         )}
         {chronicleOpen && (
           <ChronicleCard
-            rows={buildChronicle(game, scenario, names)}
+            rows={buildChronicle(game, scenario, names, t)}
             onClose={() => setChronicleOpen(false)}
           />
         )}

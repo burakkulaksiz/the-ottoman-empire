@@ -2,6 +2,7 @@ import type { ArmyState, FactionId } from '@/engine';
 import { armySize } from '@/engine';
 import { formatUnits } from '@/features/game/config/unit-labels';
 import type { ArmyMarker } from '@/features/map/lib/create-army-marker';
+import { tTr, type Translate } from '@/lib/i18n';
 
 type Lookups = {
   /** Bölgenin harita üzerindeki işaret noktası [boylam, enlem]. */
@@ -18,6 +19,7 @@ type Lookups = {
 export function buildArmyMarkers(
   armies: Record<string, ArmyState>,
   lookups: Lookups,
+  t: Translate = tTr,
 ): ArmyMarker[] {
   const byProvince = new Map<string, ArmyState[]>();
   for (const army of Object.values(armies)) {
@@ -38,7 +40,11 @@ export function buildArmyMarkers(
         position,
         color: faction?.color ?? '#6b7280',
         label: String(armySize(army.units)),
-        title: `${faction?.name ?? army.ownerId} ordusu, ${lookups.provinceName(provinceId)}: ${formatUnits(army.units)}`,
+        title: t('panels.armyMarker', {
+          faction: faction?.name ?? army.ownerId,
+          province: lookups.provinceName(provinceId),
+          units: formatUnits(army.units, t),
+        }),
         index,
         count: sorted.length,
         selectable: army.ownerId === lookups.playerFactionId,

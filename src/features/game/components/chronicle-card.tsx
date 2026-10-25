@@ -2,6 +2,7 @@ import { X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useT } from '@/hooks/use-t';
 
 export type ChronicleCardRow = {
   year: number;
@@ -43,6 +44,7 @@ function Items({
 
 /** Kronik (D4): oyuncunun yazdığı tarih ile gerçek tarih yan yana. */
 export function ChronicleCard({ rows, onClose }: ChronicleCardProps) {
+  const t = useT();
   return (
     <div
       role="dialog"
@@ -50,16 +52,16 @@ export function ChronicleCard({ rows, onClose }: ChronicleCardProps) {
       aria-labelledby="chronicle-title"
       className="absolute inset-0 z-10 grid place-items-center bg-foreground/30 p-4"
     >
-      <Card className="max-h-full w-full max-w-3xl overflow-hidden">
+      <Card className="tezhip-frame max-h-full w-full max-w-3xl overflow-hidden">
         <CardHeader className="flex flex-row items-center">
           <CardTitle id="chronicle-title" className="font-display text-2xl">
-            Kronik
+            {t('chronicle.title')}
           </CardTitle>
           <Button
             size="icon-sm"
             variant="ghost"
             className="ml-auto"
-            aria-label="Kapat"
+            aria-label={t('common.close')}
             onClick={onClose}
           >
             <X />
@@ -67,19 +69,19 @@ export function ChronicleCard({ rows, onClose }: ChronicleCardProps) {
         </CardHeader>
         <CardContent className="max-h-[70dvh] overflow-y-auto">
           {rows.length === 0 ? (
-            <p className="text-muted-foreground">Kronik henüz boş.</p>
+            <p className="text-muted-foreground">{t('chronicle.empty')}</p>
           ) : (
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="text-left">
                   <th scope="col" className="w-16 py-1">
-                    Yıl
+                    {t('chronicle.year')}
                   </th>
                   <th scope="col" className="py-1">
-                    Senin tarihin
+                    {t('chronicle.yours')}
                   </th>
                   <th scope="col" className="py-1">
-                    Gerçek tarih
+                    {t('chronicle.history')}
                   </th>
                 </tr>
               </thead>
@@ -101,7 +103,7 @@ export function ChronicleCard({ rows, onClose }: ChronicleCardProps) {
             </table>
           )}
           <p className="mt-3 text-xs text-muted-foreground">
-            Gerçek tarih yalnızca oyunda gelinen yıla kadar gösterilir.
+            {t('chronicle.note')}
           </p>
         </CardContent>
       </Card>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -8,6 +9,8 @@ import {
 } from 'react-router';
 
 import { APP_NAME } from '@/config/app';
+import { translator } from '@/lib/i18n';
+import { localeStore, restoreLocale } from '@/stores/locale-store';
 
 import type { Route } from './+types/root';
 import './app.css';
@@ -32,28 +35,37 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  useEffect(() => {
+    restoreLocale();
+  }, []);
   return <Outlet />;
 }
+
+/** Kancasız yerlerde (hata sınırı, yükleme) seçili dilin çevirmeni. */
+const currentT = () => translator(localeStore.getState().locale);
 
 // SPA modunda JavaScript yüklenene kadar gösterilir.
 export function HydrateFallback() {
   return (
     <main className="grid min-h-dvh place-items-center">
-      <p className="font-display text-2xl text-muted-foreground">Yükleniyor…</p>
+      <p className="font-display text-2xl text-muted-foreground">
+        {currentT()('common.loading')}
+      </p>
     </main>
   );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Bir şeyler ters gitti';
-  let details = 'Beklenmeyen bir hata oluştu.';
+  const t = currentT();
+  let message = t('errors.generic');
+  let details = t('errors.unexpected');
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? 'Sayfa bulunamadı' : 'Hata';
+    message = t(error.status === 404 ? 'errors.notFound' : 'errors.error');
     details =
       error.status === 404
-        ? 'Aradığınız sayfa mevcut değil.'
+        ? t('errors.notFoundDetail')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;

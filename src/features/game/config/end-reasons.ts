@@ -1,8 +1,6 @@
 import type { EndReason } from '@/engine';
+import { tTr, type Translate } from '@/lib/i18n';
 
-export const END_REASON_LABELS: Record<EndReason, string> = {
-  eliminated: 'Devletin tarih sahnesinden çekildi.',
-  lastStanding: 'Tüm rakiplerini yendin.',
-  objectives: 'Senaryonun hedeflerini tamamladın.',
-  timeLimit: 'Süre doldu.',
-};
+export function endReasonLabel(reason: EndReason, t: Translate = tTr): string {
+  return t(`gameOver.${reason}`);
+}

@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { useT } from '@/hooks/use-t';
 
 export type QuizCardContent = {
   question: string;
@@ -39,6 +40,7 @@ export function QuizCard({
 }: QuizCardProps) {
   const answered = chosen !== null;
   const correct = chosen === quiz.answer;
+  const t = useT();
 
   return (
     <div
@@ -47,10 +49,10 @@ export function QuizCard({
       aria-labelledby="quiz-title"
       className="absolute inset-0 z-10 grid place-items-center bg-foreground/30 p-4"
     >
-      <Card className="w-full max-w-md">
+      <Card className="tezhip-frame w-full max-w-md">
         <CardHeader>
           <p className="text-xs tracking-wide text-muted-foreground uppercase">
-            Bilgi yarışması · doğru cevap +{reward} akçe
+            {t('quiz.header', { reward })}
           </p>
           <CardTitle id="quiz-title" className="font-display text-xl">
             {quiz.question}
@@ -81,7 +83,7 @@ export function QuizCard({
           {answered && (
             <p role="status" className="mt-2 text-sm">
               <span className="font-medium">
-                {correct ? 'Doğru! ' : 'Doğru cevap işaretli. '}
+                {t(correct ? 'quiz.correct' : 'quiz.wrong')}
               </span>
               {quiz.explanation}
             </p>
@@ -91,13 +93,13 @@ export function QuizCard({
           {answered ? (
             <>
               <Button variant="link" onClick={onReadMore}>
-                Ansiklopedide oku
+                {t('quiz.readMore')}
               </Button>
-              <Button onClick={onClose}>Devam</Button>
+              <Button onClick={onClose}>{t('common.continue')}</Button>
             </>
           ) : (
             <Button variant="ghost" className="ml-auto" onClick={onSkip}>
-              Şimdi değil
+              {t('quiz.skip')}
             </Button>
           )}
         </CardFooter>

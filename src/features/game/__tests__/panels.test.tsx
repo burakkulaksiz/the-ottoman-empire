@@ -19,7 +19,11 @@ describe('ArmyPanel', () => {
     provinceName: 'Bilecik',
     units: { sipahi: 600 },
     morale: 80,
-    destinationNames: ['Bursa', 'Kütahya'],
+    destinations: [
+      { id: 'tur-bursa', name: 'Bursa' },
+      { id: 'tur-kutahya', name: 'Kütahya' },
+    ],
+    onMove: () => {},
     onCancel: () => {},
   };
 
@@ -32,15 +36,27 @@ describe('ArmyPanel', () => {
       'aria-valuenow',
       '80',
     );
-    expect(screen.getByText('Bursa, Kütahya')).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Bursa bölgesine yürü' }),
+    ).toBeInTheDocument();
   });
 
   it('explains why there is nothing to do', () => {
     const { rerender } = render(<ArmyPanel {...base} movesLeft={0} />);
     expect(screen.getByText(/hareket hakkı kalmadı/)).toBeInTheDocument();
 
-    rerender(<ArmyPanel {...base} movesLeft={1} destinationNames={[]} />);
+    rerender(<ArmyPanel {...base} movesLeft={1} destinations={[]} />);
     expect(screen.getByText(/gidebileceği bölge yok/)).toBeInTheDocument();
+  });
+
+  it('lets the player march from the panel too', () => {
+    const onMove = vi.fn();
+    render(<ArmyPanel {...base} movesLeft={1} onMove={onMove} />);
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Kütahya bölgesine yürü' }),
+    );
+    expect(onMove).toHaveBeenCalledWith('tur-kutahya');
   });
 
   it('lets the player drop the selection', () => {

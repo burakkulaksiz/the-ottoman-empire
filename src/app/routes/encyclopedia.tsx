@@ -9,6 +9,7 @@ import {
   searchEntries,
   type EntryCategory,
 } from '@/content/encyclopedia/entries';
+import { useT } from '@/hooks/use-t';
 
 import type { Route } from './+types/encyclopedia';
 
@@ -22,23 +23,24 @@ export default function Encyclopedia() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<EntryCategory | undefined>();
   const entries = searchEntries(query, category);
+  const t = useT();
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-6 p-4 pt-8">
       <header className="flex items-center gap-3">
         <Link
           to="/"
-          aria-label="Ana Menü"
+          aria-label={t('common.mainMenu')}
           className={buttonVariants({ variant: 'ghost', size: 'icon' })}
         >
           <ArrowLeft />
         </Link>
-        <h1 className="text-3xl">Ansiklopedi</h1>
+        <h1 className="text-3xl">{t('encyclopedia.title')}</h1>
         <Link
           to="/sources"
           className={buttonVariants({ variant: 'link', size: 'sm' })}
         >
-          Kaynakça
+          {t('encyclopedia.bibliography')}
         </Link>
       </header>
 
@@ -47,14 +49,14 @@ export default function Encyclopedia() {
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Madde ara: Osman, tımar, Bursa…"
-          aria-label="Madde ara"
+          placeholder={t('encyclopedia.searchPlaceholder')}
+          aria-label={t('encyclopedia.search')}
           className="rounded-md border bg-card px-3 py-2"
         />
         <div
           className="flex flex-wrap gap-2"
           role="group"
-          aria-label="Kategori"
+          aria-label={t('encyclopedia.category')}
         >
           <Button
             size="sm"
@@ -62,7 +64,7 @@ export default function Encyclopedia() {
             aria-pressed={!category}
             onClick={() => setCategory(undefined)}
           >
-            Tümü
+            {t('encyclopedia.all')}
           </Button>
           {CATEGORIES.map((c) => (
             <Button
@@ -79,7 +81,7 @@ export default function Encyclopedia() {
       </div>
 
       {entries.length === 0 ? (
-        <p className="text-muted-foreground">Aramana uygun madde yok.</p>
+        <p className="text-muted-foreground">{t('encyclopedia.noResults')}</p>
       ) : (
         <ul className="divide-y rounded-xl border bg-card">
           {entries.map((entry) => (
@@ -102,8 +104,7 @@ export default function Encyclopedia() {
       )}
 
       <p className="text-xs text-muted-foreground">
-        Maddeler genel kabul gören bilgilere dayanır; kaynakça eklenmesi ve
-        tarihçi denetimi sürüyor.
+        {t('encyclopedia.disclaimer')}
       </p>
     </main>
   );

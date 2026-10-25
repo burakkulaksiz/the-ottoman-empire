@@ -1,5 +1,7 @@
 import { Check, Circle } from 'lucide-react';
 
+import { useT } from '@/hooks/use-t';
+
 import { Panel } from './panel';
 
 export type TutorialPanelStep = {
@@ -19,9 +21,10 @@ type TutorialPanelProps = {
 export function TutorialPanel({ steps, currentId }: TutorialPanelProps) {
   const current = steps.find((s) => s.id === currentId);
   const done = steps.filter((s) => s.done).length;
+  const t = useT();
 
   return (
-    <Panel title={`Rehber (${done}/${steps.length})`}>
+    <Panel title={t('tutorial.title', { done, total: steps.length })}>
       {current ? (
         <div className="rounded-md bg-primary/10 p-2" aria-live="polite">
           <p className="font-medium">{current.title}</p>
@@ -29,8 +32,7 @@ export function TutorialPanel({ steps, currentId }: TutorialPanelProps) {
         </div>
       ) : (
         <p className="rounded-md bg-primary/10 p-2 font-medium">
-          Tebrikler! Öğreticiyi tamamladın. Artık 1299 Kuruluş senaryosuna
-          hazırsın.
+          {t('tutorial.finished')}
         </p>
       )}
       <ol className="mt-2 space-y-1">
@@ -44,12 +46,12 @@ export function TutorialPanel({ steps, currentId }: TutorialPanelProps) {
             {step.done ? (
               <Check
                 className="size-4 shrink-0 text-primary"
-                aria-label="Tamamlandı"
+                aria-label={t('tutorial.done')}
               />
             ) : (
               <Circle
                 className="size-4 shrink-0 text-muted-foreground"
-                aria-label="Bekliyor"
+                aria-label={t('tutorial.waiting')}
               />
             )}
             {step.title}

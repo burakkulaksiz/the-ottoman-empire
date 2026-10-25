@@ -21,7 +21,7 @@ export function Panel({
     <details
       open={defaultOpen}
       className={cn(
-        'pointer-events-auto w-full max-w-xs rounded-lg border bg-card/95 text-card-foreground shadow-md backdrop-blur-sm',
+        'tezhip-frame pointer-events-auto w-full max-w-xs rounded-lg bg-card/95 text-card-foreground backdrop-blur-sm',
         className,
       )}
     >

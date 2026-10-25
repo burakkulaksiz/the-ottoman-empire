@@ -4,11 +4,14 @@ import { Link, useRevalidator } from 'react-router';
 import { buttonVariants } from '@/components/ui/button';
 import { APP_NAME } from '@/config/app';
 import { SaveSlotList } from '@/features/saves/components/save-slot-list';
+import { useT } from '@/hooks/use-t';
+import { LOCALE_TAGS } from '@/lib/i18n';
 import {
   isSaveSlot,
   saveRepository,
   type SaveSummary,
 } from '@/lib/saves/save-repository';
+import { useLocale } from '@/stores/locale-store';
 
 import { buildSlotRows } from '../lib/slot-rows';
 
@@ -29,6 +32,8 @@ export async function clientLoader(): Promise<{ saves: SaveSummary[] }> {
 export default function Saves({ loaderData }: Route.ComponentProps) {
   const { revalidate } = useRevalidator();
   const saves = loaderData?.saves ?? [];
+  const t = useT();
+  const locale = useLocale();
 
   async function remove(slot: string) {
     if (!isSaveSlot(slot)) return;
@@ -41,16 +46,16 @@ export default function Saves({ loaderData }: Route.ComponentProps) {
       <header className="flex items-center gap-3">
         <Link
           to="/"
-          aria-label="Ana Menü"
+          aria-label={t('common.mainMenu')}
           className={buttonVariants({ variant: 'ghost', size: 'icon' })}
         >
           <ArrowLeft />
         </Link>
-        <h1 className="text-3xl">Kayıtlı Oyunlar</h1>
+        <h1 className="text-3xl">{t('saves.title')}</h1>
       </header>
 
       <SaveSlotList
-        rows={buildSlotRows(saves)}
+        rows={buildSlotRows(saves, t, LOCALE_TAGS[locale])}
         loadHref={(slot) => {
           const scenarioId = saves.find((s) => s.slot === slot)?.scenarioId;
           return `/play/${scenarioId}?slot=${slot}`;
@@ -59,10 +64,7 @@ export default function Saves({ loaderData }: Route.ComponentProps) {
       />
 
       {saves.length === 0 && (
-        <p className="text-muted-foreground">
-          Henüz kayıt yok. Bir oyun başlatıp tur bitirince otomatik kayıt
-          oluşur.
-        </p>
+        <p className="text-muted-foreground">{t('saves.empty')}</p>
       )}
     </main>
   );

@@ -17,10 +17,15 @@ export type ArmyMarker = {
 };
 
 const MARKER_WIDTH = 40;
+/**
+ * Ordu işaretleri bölge noktasının biraz altına konur; böylece bölgedeki şehir
+ * ve kale işaretlerini örtmez (E2E testi Bursa'da çakışmayı yakaladı).
+ */
+const MARKER_DROP = 16;
 
-/** Aynı bölgedeki orduları yatayda ortalayarak yan yana dizen kaydırma. */
+/** Aynı bölgedeki orduları yatayda ortalayarak yan yana dizen, noktanın altına kaydıran kayma. */
 export function markerOffset(index: number, count: number): [number, number] {
-  return [(index - (count - 1) / 2) * MARKER_WIDTH, 0];
+  return [(index - (count - 1) / 2) * MARKER_WIDTH, MARKER_DROP];
 }
 
 /**

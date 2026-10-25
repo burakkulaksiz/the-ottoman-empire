@@ -1,7 +1,8 @@
 import type { LogEntry } from '@/engine';
+import { tTr, type Translate } from '@/lib/i18n';
 
 import { formatDate } from '../config/season-labels';
-import { UNIT_LABELS } from '../config/unit-labels';
+import { unitLabel } from '../config/unit-labels';
 
 /** Günlük metinlerinde kullanılacak adlar; içerik katmanından gelir. */
 export interface LogNames {
@@ -10,78 +11,126 @@ export interface LogNames {
   event(id: string): string;
 }
 
-/** Günlük kaydını okunur Türkçe metne çevirir; gösterilmeyecekse `null`. */
+/** Günlük kaydını okunur metne çevirir; gösterilmeyecekse `null`. */
 export function formatLogEntry(
   entry: LogEntry,
   names: LogNames,
+  t: Translate = tTr,
 ): string | null {
+  const p = names.province;
+  const f = names.faction;
   switch (entry.type) {
     case 'turnStarted':
-      return `— ${formatDate(entry.date)} —`;
+      return `— ${formatDate(entry.date, t)} —`;
     case 'armyMoved':
-      return `${names.faction(entry.factionId)}: ${names.province(entry.from)} → ${names.province(entry.to)}`;
+      return `${f(entry.factionId)}: ${p(entry.from)} → ${p(entry.to)}`;
     case 'battleFought':
-      return `Savaş (${names.province(entry.provinceId)}): ${names.faction(entry.attackerId)} saldırdı, ${names.faction(entry.winnerId)} kazandı — kayıp ${entry.attackerLosses} / ${entry.defenderLosses}`;
+      return t('log.battle', {
+        province: p(entry.provinceId),
+        attacker: f(entry.attackerId),
+        winner: f(entry.winnerId),
+        attackerLosses: entry.attackerLosses,
+        defenderLosses: entry.defenderLosses,
+      });
     case 'armyRetreated':
-      return `Ordu geri çekildi: ${names.province(entry.from)} → ${names.province(entry.to)}`;
+      return t('log.retreated', { from: p(entry.from), to: p(entry.to) });
     case 'armyDestroyed':
-      return `${names.faction(entry.factionId)} ordusu dağıldı`;
+      return t('log.destroyed', { faction: f(entry.factionId) });
     case 'provinceCaptured':
-      return `${names.province(entry.provinceId)} ele geçirildi (${names.faction(entry.by)})`;
+      return t('log.captured', {
+        province: p(entry.provinceId),
+        by: f(entry.by),
+      });
     case 'siegeStarted':
-      return `${names.province(entry.provinceId)} kuşatılıyor (${names.faction(entry.attackerId)})`;
+      return t('log.siegeStarted', {
+        province: p(entry.provinceId),
+        by: f(entry.attackerId),
+      });
     case 'siegeLifted':
-      return `${names.province(entry.provinceId)} kuşatması kalktı`;
+      return t('log.siegeLifted', { province: p(entry.provinceId) });
     case 'winterAttrition':
-      return `${names.province(entry.provinceId)}: kışlaksız ordu ${entry.lost} asker yitirdi`;
+      return t('log.winterAttrition', {
+        province: p(entry.provinceId),
+        lost: entry.lost,
+      });
     case 'eventTriggered':
-      return `Olay: ${names.event(entry.eventId)}`;
+      return t('log.event', { title: names.event(entry.eventId) });
     case 'factionEliminated':
-      return `${names.faction(entry.factionId)} tarih sahnesinden çekildi`;
+      return t('log.eliminated', { faction: f(entry.factionId) });
     case 'gameEnded':
-      return `Oyun bitti: ${entry.status.result === 'victory' ? 'Zafer' : 'Yenilgi'}`;
+      return t('log.gameEnded', {
+        result: t(
+          entry.status.result === 'victory'
+            ? 'common.victory'
+            : 'common.defeat',
+        ),
+      });
     case 'recruited':
-      return `${names.faction(entry.factionId)}: ${names.province(entry.provinceId)} bölgesinde ${entry.amount} ${UNIT_LABELS[entry.unit]} devşirildi (${entry.cost} akçe)`;
+      return t('log.recruited', {
+        faction: f(entry.factionId),
+        province: p(entry.provinceId),
+        amount: entry.amount,
+        unit: unitLabel(entry.unit, t),
+        cost: entry.cost,
+      });
     case 'troopsUnpaid':
-      return `${names.faction(entry.factionId)}: maaşlar ödenemedi (eksik ${entry.shortfall} akçe), kapıkulu kaçıyor ve morali düşüyor`;
+      return t('log.unpaid', {
+        faction: f(entry.factionId),
+        shortfall: entry.shortfall,
+      });
     case 'warDeclared':
-      return `${names.faction(entry.by)}, ${names.faction(entry.target)} devletine savaş ilan etti`;
+      return t('log.warDeclared', { by: f(entry.by), target: f(entry.target) });
     case 'peaceMade':
-      return `Barış: ${names.faction(entry.a)} ve ${names.faction(entry.b)}${
-        entry.tribute === 0
-          ? ''
-          : ` (haraç: ${names.faction(entry.tribute > 0 ? entry.a : entry.b)} her tur ${Math.abs(entry.tribute)} akçe öder)`
-      }`;
+      return entry.tribute === 0
+        ? t('log.peace', { a: f(entry.a), b: f(entry.b) })
+        : t('log.peaceTribute', {
+            a: f(entry.a),
+            b: f(entry.b),
+            payer: f(entry.tribute > 0 ? entry.a : entry.b),
+            amount: Math.abs(entry.tribute),
+          });
     case 'allianceFormed':
-      return `Evlilik ittifakı: ${names.faction(entry.a)} ve ${names.faction(entry.b)}`;
+      return t('log.alliance', { a: f(entry.a), b: f(entry.b) });
     case 'proposalRefused':
-      return `${names.faction(entry.to)}, ${names.faction(entry.from)} devletinin ${entry.kind === 'peace' ? 'barış' : 'ittifak'} teklifini reddetti`;
+      return t(
+        entry.kind === 'peace' ? 'log.peaceRefused' : 'log.allianceRefused',
+        { to: f(entry.to), from: f(entry.from) },
+      );
     case 'offerMade':
-      return `${names.faction(entry.from)} barış teklif ediyor`;
+      return t('log.offerMade', { from: f(entry.from) });
     case 'offerRejected':
-      return `${names.faction(entry.from)} devletinin barış teklifini reddettin`;
+      return t('log.offerRejected', { from: f(entry.from) });
     case 'tributePaid':
-      return `Haraç: ${names.faction(entry.payer)} → ${names.faction(entry.receiver)}, ${entry.amount} akçe`;
+      return t('log.tribute', {
+        payer: f(entry.payer),
+        receiver: f(entry.receiver),
+        amount: entry.amount,
+      });
     case 'rulerDied':
-      return `${entry.name} ${entry.age} yaşında öldü`;
+      return t('log.rulerDied', { name: entry.name, age: entry.age });
     case 'newRuler':
-      return `${entry.name} tahta çıktı (${entry.age} yaşında)`;
+      return t('log.newRuler', { name: entry.name, age: entry.age });
     case 'successionStruggle':
-      return `Taht kavgası: ${entry.winner}, ${entry.rivals.join(', ')} karşısında galip geldi`;
+      return t('log.struggle', {
+        winner: entry.winner,
+        rivals: entry.rivals.join(', '),
+      });
     case 'heirBorn':
-      return `Şehzade ${entry.name} doğdu`;
+      return t('log.heirBorn', { name: entry.name });
     case 'vizierAppointed':
-      return `${entry.name} vezir oldu`;
+      return t('log.vizierAppointed', { name: entry.name });
     case 'vizierDied':
-      return `Vezir ${entry.name} öldü`;
+      return t('log.vizierDied', { name: entry.name });
     case 'janissaryRevolt':
-      return `${names.faction(entry.factionId)}: maaşını alamayan yeniçeriler ayaklandı`;
+      return t('log.janissaries', { faction: f(entry.factionId) });
     case 'revolt':
-      return `${names.province(entry.provinceId)}: ${entry.kind === 'celali' ? 'Celali isyanı' : 'isyan'} çıktı, bölge elden çıktı`;
+      return t(entry.kind === 'celali' ? 'log.celali' : 'log.revolt', {
+        province: p(entry.provinceId),
+      });
     case 'quizAnswered':
       return entry.correct
-        ? `Bilgi yarışması: doğru cevap (+${entry.reward} akçe)`
-        : 'Bilgi yarışması: yanlış cevap';
+        ? t('log.quizRight', { reward: entry.reward })
+        : t('log.quizWrong');
     case 'upkeepPaid':
     case 'incomeCollected':
     case 'eventResolved':

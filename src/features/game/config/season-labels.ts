@@ -1,12 +1,12 @@
 import type { GameDate, Season } from '@/engine';
+import { tTr, type Translate } from '@/lib/i18n';
 
-export const SEASON_LABELS: Record<Season, string> = {
-  spring: 'İlkbahar',
-  summer: 'Yaz',
-  autumn: 'Sonbahar',
-  winter: 'Kış',
-};
+/** Mevsimin adı (çevrilmiş). */
+export function seasonLabel(season: Season, t: Translate = tTr): string {
+  return t(`seasons.${season}`);
+}
 
-export function formatDate(date: GameDate): string {
-  return `${SEASON_LABELS[date.season]} ${date.year}`;
+/** "İlkbahar 1299" / "Spring 1299". */
+export function formatDate(date: GameDate, t: Translate = tTr): string {
+  return `${seasonLabel(date.season, t)} ${date.year}`;
 }

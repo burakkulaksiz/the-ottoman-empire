@@ -3,12 +3,15 @@
 @import 'shadcn/tailwind.css';
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/eb-garamond';
+/* Hat (Osmanlıca yazı) için nesih yazı tipi (E3). */
+@import '@fontsource/amiri/arabic-700.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'EB Garamond Variable', ui-serif, Georgia, serif;
+  --font-hat: 'Amiri', 'Noto Naskh Arabic', serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -37,6 +40,10 @@
   --color-gold: var(--gold);
   --color-ink: var(--ink);
   --color-parchment: var(--parchment);
+  /* Minyatür paleti: lâciverd, sülüğen (al), zümrüt (E3) */
+  --color-lapis: var(--lapis);
+  --color-vermilion: var(--vermilion);
+  --color-malachite: var(--malachite);
 }
 
 /* Varsayılan tema: parşömen zemin, al (Osmanlı kırmızısı) ve altın. */
@@ -45,6 +52,9 @@
   --parchment: oklch(0.95 0.03 85);
   --ink: oklch(0.22 0.03 50);
   --gold: oklch(0.74 0.13 82);
+  --lapis: oklch(0.4 0.1 255);
+  --vermilion: oklch(0.55 0.19 32);
+  --malachite: oklch(0.52 0.09 165);
 
   --background: var(--parchment);
   --foreground: var(--ink);
@@ -97,9 +107,53 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+  /* Parşömen dokusu: kenarlara doğru hafifçe koyulaşan kâğıt (E3). */
+  body {
+    background-image:
+      radial-gradient(
+        ellipse at center,
+        transparent 55%,
+        color-mix(in oklch, var(--gold) 14%, transparent) 100%
+      ),
+      radial-gradient(
+        circle at 20% 15%,
+        color-mix(in oklch, var(--card) 70%, transparent) 0,
+        transparent 40%
+      );
+    background-attachment: fixed;
+  }
   h1,
   h2,
   h3 {
     @apply font-display;
   }
+}
+
+/*
+ * Tezhip çerçevesi (E3): altın çift çizgi ve köşelerde sekiz köşeli yıldız
+ * gülleri. Kart ve paneller için.
+ */
+@utility tezhip-frame {
+  border: 1px solid color-mix(in oklch, var(--gold) 85%, var(--ink));
+  box-shadow:
+    inset 0 0 0 3px var(--card),
+    inset 0 0 0 4px color-mix(in oklch, var(--gold) 60%, transparent),
+    0 4px 14px color-mix(in oklch, var(--ink) 12%, transparent);
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2024%2024'%3E%3Cg%20fill%3D'%23b8892b'%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%20transform%3D'rotate(45%2012%2012)'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'12'%20cy%3D'12'%20r%3D'3.2'%20fill%3D'%231f4e79'%2F%3E%3C%2Fsvg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2024%2024'%3E%3Cg%20fill%3D'%23b8892b'%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%20transform%3D'rotate(45%2012%2012)'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'12'%20cy%3D'12'%20r%3D'3.2'%20fill%3D'%231f4e79'%2F%3E%3C%2Fsvg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2024%2024'%3E%3Cg%20fill%3D'%23b8892b'%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%20transform%3D'rotate(45%2012%2012)'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'12'%20cy%3D'12'%20r%3D'3.2'%20fill%3D'%231f4e79'%2F%3E%3C%2Fsvg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2024%2024'%3E%3Cg%20fill%3D'%23b8892b'%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'14'%20height%3D'14'%20transform%3D'rotate(45%2012%2012)'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'12'%20cy%3D'12'%20r%3D'3.2'%20fill%3D'%231f4e79'%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  background-position:
+    top 2px left 2px,
+    top 2px right 2px,
+    bottom 2px left 2px,
+    bottom 2px right 2px;
+}
+
+/* Üst çubuğun altındaki altın çift çizgi. */
+@utility tezhip-rule {
+  border-bottom: 3px double color-mix(in oklch, var(--gold) 85%, var(--ink));
 }

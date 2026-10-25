@@ -6,6 +6,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import { useEffect, useRef, useState } from 'react';
 
+import { useT } from '@/hooks/use-t';
+
 import {
   createMapStyle,
   TRADE_ROUTES_SOURCE,
@@ -84,6 +86,7 @@ export function GameMap({
   onReady,
 }: GameMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useT();
   const [map, setMap] = useState<MapLibreMap | null>(null);
 
   // Olay işleyicileri harita yeniden kurulmadan güncel kalsın.
@@ -267,7 +270,7 @@ export function GameMap({
       <div
         ref={containerRef}
         role="application"
-        aria-label="Oyun haritası"
+        aria-label={t('panels.mapLabel')}
         className="h-full w-full"
       />
     </div>

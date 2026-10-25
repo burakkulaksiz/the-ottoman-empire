@@ -9,6 +9,7 @@ import {
   SOURCES,
   type SourceKind,
 } from '@/content/sources';
+import { useT } from '@/hooks/use-t';
 
 import type { Route } from './+types/sources';
 
@@ -27,23 +28,22 @@ function citedBy(sourceId: string) {
 }
 
 export default function Sources() {
+  const t = useT();
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-6 p-4 pt-8">
       <header className="flex items-center gap-3">
         <Link
           to="/encyclopedia"
-          aria-label="Ansiklopedi"
+          aria-label={t('encyclopedia.title')}
           className={buttonVariants({ variant: 'ghost', size: 'icon' })}
         >
           <ArrowLeft />
         </Link>
-        <h1 className="text-3xl">Kaynakça</h1>
+        <h1 className="text-3xl">{t('encyclopedia.bibliography')}</h1>
       </header>
 
       <p className="text-sm text-muted-foreground">
-        Oyundaki tarih bilgileri aşağıdaki eserlere dayanır. Atıflar şimdilik
-        konuyu ele alan başvuru eserini gösterir; sayfa numaraları ve tarihçi
-        denetimi eklenecek.
+        {t('encyclopedia.bibliographyIntro')}
       </p>
 
       {KINDS.map((kind) => {

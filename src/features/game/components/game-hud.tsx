@@ -2,6 +2,7 @@ import { ArrowLeft, Coins, Save, ScrollText, SkipForward } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
+import { useT } from '@/hooks/use-t';
 
 type GameHudProps = {
   scenarioName: string;
@@ -38,10 +39,11 @@ export function GameHud({
   onToggleSaves,
   onOpenChronicle,
 }: GameHudProps) {
+  const t = useT();
   return (
-    <header className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b bg-card p-2">
+    <header className="tezhip-rule flex flex-wrap items-center gap-x-3 gap-y-1 bg-card p-2">
       <Link to="/" className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
-        <ArrowLeft /> Ana Menü
+        <ArrowLeft /> {t('common.mainMenu')}
       </Link>
       <h1 className="font-display text-lg">{scenarioName}</h1>
       {settingsLabel && (
@@ -49,14 +51,14 @@ export function GameHud({
       )}
 
       <dl className="ml-auto flex items-center gap-4 text-sm">
-        <div className="flex items-center gap-1" title="Hazine (akçe)">
-          <dt className="sr-only">Hazine</dt>
+        <div className="flex items-center gap-1" title={t('hud.treasuryTitle')}>
+          <dt className="sr-only">{t('hud.treasury')}</dt>
           <Coins className="size-4 text-gold" aria-hidden />
           <dd>
             {treasury}{' '}
             <span
               className="text-xs text-muted-foreground"
-              title="Tur başına gelir / ordu maaşı"
+              title={t('hud.incomeTitle')}
             >
               (+{income}
               {upkeep > 0 && ` / −${upkeep}`})
@@ -64,11 +66,11 @@ export function GameHud({
           </dd>
         </div>
         <div>
-          <dt className="sr-only">Tarih</dt>
+          <dt className="sr-only">{t('hud.date')}</dt>
           <dd className="font-medium">{dateLabel}</dd>
         </div>
         <div className="text-muted-foreground">
-          <dt className="inline">Tur </dt>
+          <dt className="inline">{t('hud.turn')} </dt>
           <dd className="inline">{turn}</dd>
         </div>
       </dl>
@@ -79,13 +81,13 @@ export function GameHud({
         </span>
       )}
       <Button size="sm" variant="outline" onClick={onOpenChronicle}>
-        <ScrollText /> Kronik
+        <ScrollText /> {t('hud.chronicle')}
       </Button>
       <Button size="sm" variant="outline" onClick={onToggleSaves}>
-        <Save /> Kaydet
+        <Save /> {t('hud.save')}
       </Button>
       <Button size="sm" disabled={!canEndTurn} onClick={onEndTurn}>
-        <SkipForward /> Turu Bitir
+        <SkipForward /> {t('hud.endTurn')}
       </Button>
     </header>
   );
