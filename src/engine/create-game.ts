@@ -1,4 +1,4 @@
-import type { GameDate } from './calendar';
+import { compareDates, type GameDate } from './calendar';
 import { RULES } from './rules';
 import type {
   ArmyState,
@@ -9,6 +9,7 @@ import type {
   ProvinceState,
   World,
 } from './types';
+import { armySize, UNIT_DEFS, unitEntries, type Units } from './units';
 import { validateWorld } from './world';
 
 /** Bir senaryonun başlangıç anı. İçerik katmanı (C2) bunu üretecek. */
@@ -20,7 +21,7 @@ export interface ScenarioSetup {
   factions: Record<FactionId, { treasury: number }>;
   /** Listede olmayan sancaklar sahipsiz başlar. */
   provinceOwners: Record<ProvinceId, FactionId>;
-  armies: { ownerId: FactionId; provinceId: ProvinceId; troops: number }[];
+  armies: { ownerId: FactionId; provinceId: ProvinceId; units: Units }[];
 }
 
 export function validateSetup(setup: ScenarioSetup): string[] {
@@ -50,7 +51,32 @@ export function validateSetup(setup: ScenarioSetup): string[] {
     if (!hasProvince(army.provinceId)) {
       errors.push(`Army #${index}: unknown province "${army.provinceId}"`);
     }
+    if (armySize(army.units) === 0) errors.push(`Army #${index}: has no units`);
+    for (const [type] of unitEntries(army.units)) {
+      if (UNIT_DEFS[type].minYear > setup.startDate.year) {
+        errors.push(
+          `Army #${index}: "${type}" is not available before ${UNIT_DEFS[type].minYear}`,
+        );
+      }
+    }
   });
+
+  const { objectives = [], endDate, historical } = world;
+  for (const objective of objectives) {
+    if (objective.type !== 'holdProvinces') continue;
+    for (const id of objective.provinces) {
+      if (!hasProvince(id)) {
+        errors.push(`Objective "${objective.id}": unknown province "${id}"`);
+      }
+    }
+  }
+  for (const id of historical?.provinces ?? []) {
+    if (!hasProvince(id))
+      errors.push(`Historical benchmark: unknown province "${id}"`);
+  }
+  if (endDate && compareDates(endDate, setup.startDate) <= 0) {
+    errors.push('endDate must be after startDate');
+  }
 
   return errors;
 }
@@ -82,7 +108,12 @@ export function createGame(
   const armies: Record<string, ArmyState> = {};
   for (const army of setup.armies) {
     const id = `army-${nextId++}`;
-    armies[id] = { id, ...army, movesLeft: RULES.armyMovesPerTurn };
+    armies[id] = {
+      id,
+      ...army,
+      morale: RULES.moraleStart,
+      movesLeft: RULES.armyMovesPerTurn,
+    };
   }
 
   return {

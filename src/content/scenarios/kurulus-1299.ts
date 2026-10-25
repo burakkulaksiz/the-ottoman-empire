@@ -5,7 +5,8 @@ import type { ScenarioDefinition } from './scenario-schema';
  *
  * Sınırlar yaklaşık: bölgeler modern illerdir (bkz. B2/B3) ve sahiplik
  * "o ilin ağırlıklı kısmı" olarak yorumlanmıştır. Para ve asker sayıları
- * tarihî veri değil, denge değeridir.
+ * tarihî veri ve ordu bileşimi değil, denge değeridir (hepsi hafif/ağır
+ * süvari: yaya 1330'dan, yeniçeri 1363'ten önce kurulamaz).
  *
  * TODO(kaynak): Aşağıdaki sahiplik atamaları (özellikle Karesi, Hamidoğulları
  * ve Candaroğulları sınırları) tarihçi kaynaklarıyla doğrulanmalı (D6).
@@ -18,6 +19,26 @@ export const kurulus1299: ScenarioDefinition = {
   summary:
     'Anadolu Selçuklu devletinin çöküşünde Bizans sınırında küçük bir uç beyliği olan Osman Bey, Söğüt çevresinde ayakta kalmaya çalışıyor. Güçlü komşular ve rakip beylikler arasında ilk adımını at.',
   startDate: { year: 1299, season: 'spring' },
+  endDate: { year: 1330, season: 'spring' },
+  objectives: [
+    {
+      id: 'koru',
+      title: 'Söğüt çevresini (Bilecik ve Eskişehir) elinde tut',
+      type: 'holdProvinces',
+      provinces: ['tur-bilecik', 'tur-eskisehir'],
+    },
+    {
+      id: 'bursa',
+      title: "Bursa'yı fethet (tarihte 1326)",
+      type: 'holdProvinces',
+      provinces: ['tur-bursa'],
+    },
+  ],
+  // TODO(kaynak): 1330'da Osmanlı elindeki yerler ve fetih tarihleri doğrulanmalı (D6).
+  historical: {
+    provinces: ['tur-bilecik', 'tur-eskisehir', 'tur-bursa'],
+    note: "Osman Bey'in ölümünün ardından oğlu Orhan, uzun kuşatmanın sonunda 1326'da Bursa'yı aldı; Bursa ilk Osmanlı başkenti oldu.",
+  },
   playerFactionId: 'osmanli',
   factions: {
     osmanli: {
@@ -25,7 +46,9 @@ export const kurulus1299: ScenarioDefinition = {
       color: '#b91c1c',
       treasury: 20,
       provinces: ['tur-bilecik', 'tur-eskisehir'],
-      armies: [{ provinceId: 'tur-bilecik', troops: 1000 }],
+      armies: [
+        { provinceId: 'tur-bilecik', units: { sipahi: 600, akinci: 400 } },
+      ],
     },
     bizans: {
       name: 'Bizans İmparatorluğu',
@@ -44,8 +67,8 @@ export const kurulus1299: ScenarioDefinition = {
         'grc-centre-macedonia',
       ],
       armies: [
-        { provinceId: 'tur-bursa', troops: 3000 },
-        { provinceId: 'tur-kocaeli', troops: 2000 },
+        { provinceId: 'tur-bursa', units: { sipahi: 1800, akinci: 1200 } },
+        { provinceId: 'tur-kocaeli', units: { sipahi: 1200, akinci: 800 } },
       ],
     },
     germiyan: {
@@ -53,14 +76,18 @@ export const kurulus1299: ScenarioDefinition = {
       color: '#15803d',
       treasury: 40,
       provinces: ['tur-kutahya', 'tur-afyonkarahisar', 'tur-usak'],
-      armies: [{ provinceId: 'tur-kutahya', troops: 2000 }],
+      armies: [
+        { provinceId: 'tur-kutahya', units: { sipahi: 1200, akinci: 800 } },
+      ],
     },
     karesi: {
       name: 'Karesioğulları',
       color: '#0e7490',
       treasury: 15,
       provinces: ['tur-balikesir', 'tur-canakkale'],
-      armies: [{ provinceId: 'tur-balikesir', troops: 1000 }],
+      armies: [
+        { provinceId: 'tur-balikesir', units: { sipahi: 600, akinci: 400 } },
+      ],
     },
     mentese: {
       name: 'Menteşeoğulları',
@@ -79,7 +106,9 @@ export const kurulus1299: ScenarioDefinition = {
       color: '#4d7c0f',
       treasury: 25,
       provinces: ['tur-karaman', 'tur-konya'],
-      armies: [{ provinceId: 'tur-karaman', troops: 1500 }],
+      armies: [
+        { provinceId: 'tur-karaman', units: { sipahi: 900, akinci: 600 } },
+      ],
     },
     candar: {
       name: 'Candaroğulları',

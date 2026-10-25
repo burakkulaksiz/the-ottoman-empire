@@ -1,5 +1,7 @@
 import { isWinter } from '../calendar';
+import { hostileArmiesIn, resolveBattle } from '../combat';
 import type { ExecuteContext } from '../context';
+import { occupy } from '../siege';
 import type { FactionId } from '../types';
 import { areAdjacent } from '../world';
 
@@ -29,10 +31,11 @@ export function validateMoveArmy({
 }
 
 export function executeMoveArmy(
-  { state, emit }: ExecuteContext,
+  context: ExecuteContext,
   factionId: FactionId,
   command: MoveArmy,
 ) {
+  const { state, emit } = context;
   const army = state.armies[command.armyId]!;
   const from = army.provinceId;
   army.provinceId = command.to;
@@ -44,4 +47,11 @@ export function executeMoveArmy(
     from,
     to: command.to,
   });
+
+  // Düşman ordusu varsa savaş; kazanan (ya da karşısı boş olan) bölgeyi alır.
+  const defenders = hostileArmiesIn(state, command.to, factionId);
+  if (defenders.length > 0) resolveBattle(context, army, defenders, from);
+
+  const survivor = state.armies[army.id];
+  if (survivor?.provinceId === command.to) occupy(context, survivor);
 }

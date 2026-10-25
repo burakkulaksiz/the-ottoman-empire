@@ -54,6 +54,13 @@ describe('moveArmy', () => {
         to: 'bilecik',
         turn: 1,
       },
+      {
+        type: 'provinceCaptured',
+        provinceId: 'bilecik',
+        by: 'osmanli',
+        from: 'bizans',
+        turn: 1,
+      },
     ]);
   });
 
@@ -87,7 +94,7 @@ describe('moveArmy', () => {
 });
 
 describe('endTurn', () => {
-  it('advances the calendar, restores moves and collects income', () => {
+  it('advances the calendar, restores moves and collects income of conquered land', () => {
     const moved = run(newGame(), {
       type: 'moveArmy',
       armyId: 'army-1',
@@ -98,8 +105,8 @@ describe('endTurn', () => {
     expect(state.turn).toBe(2);
     expect(state.date).toEqual({ year: 1300, season: 'summer' });
     expect(state.armies['army-1']?.movesLeft).toBe(1);
-    expect(state.factions.osmanli?.treasury).toBe(10 + 2);
-    expect(state.factions.bizans?.treasury).toBe(50 + 3 + 2 + 8);
+    expect(state.factions.osmanli?.treasury).toBe(10 + 2 + 3);
+    expect(state.factions.bizans?.treasury).toBe(50 + 2 + 8);
     expect(log.map((entry) => entry.type)).toEqual([
       'turnStarted',
       'incomeCollected',
@@ -115,11 +122,17 @@ describe('endTurn', () => {
   });
 
   it('lets AI factions act with their own armies only', () => {
-    const { state } = run(newGame(), { type: 'endTurn' }, { ai: wanderingAi });
+    const { state, log } = run(
+      newGame(),
+      { type: 'endTurn' },
+      { ai: wanderingAi },
+    );
 
-    expect(state.armies['army-1']?.provinceId).toBe('sogut');
+    const movers = log.flatMap((e) =>
+      e.type === 'armyMoved' ? [e.armyId] : [],
+    );
+    expect(movers.sort()).toEqual(['army-2', 'army-3']);
     expect(state.armies['army-2']?.provinceId).not.toBe('bursa');
-    expect(state.armies['army-3']?.provinceId).toBe('sogut');
   });
 
   it('is deterministic for the same seed and commands', () => {

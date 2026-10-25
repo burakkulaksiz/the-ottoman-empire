@@ -65,8 +65,20 @@ export const testScenario: ScenarioSetup = {
     kutahya: 'germiyan',
   },
   armies: [
-    { ownerId: 'osmanli', provinceId: 'sogut', troops: 1000 },
-    { ownerId: 'bizans', provinceId: 'bursa', troops: 3000 },
-    { ownerId: 'germiyan', provinceId: 'kutahya', troops: 2000 },
+    {
+      ownerId: 'osmanli',
+      provinceId: 'sogut',
+      units: { sipahi: 600, akinci: 400 },
+    },
+    {
+      ownerId: 'bizans',
+      provinceId: 'bursa',
+      units: { sipahi: 1800, akinci: 1200 },
+    },
+    {
+      ownerId: 'germiyan',
+      provinceId: 'kutahya',
+      units: { sipahi: 1200, akinci: 800 },
+    },
   ],
 };

@@ -64,7 +64,10 @@ describe('winter quarters (C1)', () => {
 
     const lost = Math.floor(1000 * RULES.winterAttritionRate);
     expect(result.state.date.season).toBe('winter');
-    expect(result.state.armies['army-1']?.troops).toBe(1000 - lost);
+    expect(result.state.armies['army-1']?.units).toEqual({
+      sipahi: 540,
+      akinci: 360,
+    });
     expect(result.log).toContainEqual({
       type: 'winterAttrition',
       armyId: 'army-1',
@@ -79,7 +82,10 @@ describe('winter quarters (C1)', () => {
       type: 'endTurn',
     });
     if (!atHome.ok) throw new Error(atHome.error);
-    expect(atHome.state.armies['army-1']?.troops).toBe(1000);
+    expect(atHome.state.armies['army-1']?.units).toEqual({
+      sipahi: 600,
+      akinci: 400,
+    });
 
     const abroad = dispatch(
       testWorld,
@@ -88,6 +94,9 @@ describe('winter quarters (C1)', () => {
       { type: 'endTurn' },
     );
     if (!abroad.ok) throw new Error(abroad.error);
-    expect(abroad.state.armies['army-1']?.troops).toBe(1000);
+    expect(abroad.state.armies['army-1']?.units).toEqual({
+      sipahi: 600,
+      akinci: 400,
+    });
   });
 });

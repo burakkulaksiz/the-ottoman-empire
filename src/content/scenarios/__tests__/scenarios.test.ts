@@ -1,4 +1,9 @@
-import { createGame, dispatch, validateSetup } from '@/engine';
+import {
+  createGame,
+  dispatch,
+  objectiveProgress,
+  validateSetup,
+} from '@/engine';
 
 import { buildScenario } from '../build-scenario';
 import { getScenarioDefinition, loadScenario, SCENARIOS } from '../index';
@@ -43,6 +48,36 @@ describe('kurulus-1299', () => {
         ),
       );
     expect(touches).toBe(true);
+  });
+});
+
+describe('kurulus-1299 goals', () => {
+  const setup = loadScenario('kurulus-1299');
+
+  it('asks the player to take Bursa before the time limit', () => {
+    expect(setup.world.objectives).toContainEqual({
+      id: 'bursa',
+      type: 'holdProvinces',
+      provinces: ['tur-bursa'],
+    });
+    expect(setup.world.endDate).toEqual({ year: 1330, season: 'spring' });
+  });
+
+  it('does not leak objective titles into the engine world', () => {
+    for (const objective of setup.world.objectives ?? []) {
+      expect(objective).not.toHaveProperty('title');
+    }
+  });
+
+  it('starts with the defence goal met and the conquest goal open', () => {
+    const progress = objectiveProgress(
+      setup.world,
+      createGame(setup, { seed: 1 }),
+    );
+    expect(progress.map((p) => [p.id, p.done])).toEqual([
+      ['koru', true],
+      ['bursa', false],
+    ]);
   });
 });
 

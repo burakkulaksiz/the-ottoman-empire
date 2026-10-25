@@ -6,4 +6,6 @@ export * from './dispatch';
 export * from './rng';
 export { RULES } from './rules';
 export * from './types';
+export * from './units';
+export * from './victory';
 export { areAdjacent, validateWorld } from './world';

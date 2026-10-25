@@ -37,7 +37,17 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
 
   return {
     id: scenario.id,
-    world: { provinces: createProvinceDefs(), factions },
+    world: {
+      provinces: createProvinceDefs(),
+      factions,
+      objectives: scenario.objectives.map(
+        ({ title: _title, ...objective }) => objective,
+      ),
+      endDate: scenario.endDate,
+      historical: scenario.historical && {
+        provinces: scenario.historical.provinces,
+      },
+    },
     startDate: scenario.startDate,
     playerFactionId: scenario.playerFactionId,
     factions: treasuries,

@@ -16,12 +16,12 @@
 | ---------------- | ----- | ------ |
 | A. Altyapı       | 2     | 5      |
 | B. Harita        | 2     | 5      |
-| C. Mekanikler    | 2     | 10     |
+| C. Mekanikler    | 5     | 10     |
 | D. Tarih öğrenme | 0     | 7      |
 | E. Arayüz        | 0     | 5      |
 | F. Kalite        | 0     | 5      |
 | G. İleride       | 0     | 4      |
-| **Toplam**       | **6** | **41** |
+| **Toplam**       | **9** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -33,7 +33,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C4 + C5 (askeri sistem ve savaş çözümü)
+**Sıradaki madde:** D1 (tarihi olay kartları)
 
 ---
 
@@ -60,9 +60,12 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - _Karar: her tur bir mevsim (ilkbahar–sonbahar sefer, kış kışlak). Kışın ordu yalnızca kendi toprağına çekilebilir; kış başında yabancı toprakta kalan ordu %10 asker kaybeder (`RULES.winterAttritionRate`)._
 - [x] **C2. Senaryo sistemi:** 1299 Kuruluş, 1326 Bursa, 1402 Ankara ve Fetret, 1453 İstanbul, 1514 Çaldıran, 1526 Mohaç, 1683 Viyana, 1768–1774 Rus Savaşı gibi.
   - _Sistem hazır (`src/content/scenarios`: Zod şeması, `buildScenario`, kayıt defteri). MVP için tek senaryo yazıldı: **1299 Kuruluş**. Diğer senaryolar (1326, 1402, 1453 …) aynı biçimde eklenecek; sahiplik verileri `TODO(kaynak)` ile doğrulanmayı bekliyor._
-- [ ] **C3. Zafer ve yenilgi koşulları:** senaryo hedefleri, zaman sınırı ve devletin yıkılması. Ayrıca "tarihî sonuca göre" bir puan: tarihten daha iyi mi, daha kötü mü yaptın?
-- [ ] **C4. Askeri sistem:** yeniçeri, tımarlı sipahi, akıncı, topçu ve donanma. İkmal, moral, arazi ve kuşatma.
-- [ ] **C5. Savaş çözümü:** önce otomatik ve olasılık tabanlı, ileride taktik savaş ekranı.
+- [x] **C3. Zafer ve yenilgi koşulları:** senaryo hedefleri, zaman sınırı ve devletin yıkılması. Ayrıca "tarihî sonuca göre" bir puan: tarihten daha iyi mi, daha kötü mü yaptın?
+  - _Yapıldı: senaryo hedefleri (`holdProvinces`, `provinceCount`), zaman sınırı, yıkılma = yenilgi, tarihî sonuca göre puan (bölge sayısı / tarihî bölge sayısı; daha iyi–aynı–daha kötü). 1299 Kuruluş için hedefler: Söğüt çevresini koru + Bursa'yı fethet, süre sınırı 1330. Hedef ilerlemesi `/play`'de gösteriliyor; oyun sonu ekranı E1'de._
+- [x] **C4. Askeri sistem:** yeniçeri, tımarlı sipahi, akıncı, topçu ve donanma. İkmal, moral, arazi ve kuşatma.
+  - _Yapıldı: birlik sınıfları (akıncı, sipahi, yaya, yeniçeri, topçu; yıla göre açılır), moral, kışlak/ikmal kaybı, arazi ve kale bonusu, kuşatma (topçu hızlandırır). Eksik: donanma (deniz bölgeleri B4'te), arazi/kale verisi (B4), ordu devşirme/bakım maliyeti (C6), ikmal hatları._
+- [x] **C5. Savaş çözümü:** önce otomatik ve olasılık tabanlı, ileride taktik savaş ekranı.
+  - _Yapıldı: otomatik, tohumlu olasılık tabanlı savaş (güç = birlik × moral × arazi/kale × zar), geri çekilme/dağılma, fetih. Taktik savaş ekranı ileride._
 - [ ] **C6. Ekonomi:** akçe, tımar sistemi, vergi (cizye, öşür), ticaret yolları ve enflasyon. Enflasyon geç dönem için önemli.
 - [ ] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
 - [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.

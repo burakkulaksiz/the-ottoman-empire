@@ -28,6 +28,25 @@ else console.warn(result.error); // 'notAdjacent', 'noMovesLeft', ...
 
 Her tur bir mevsimdir (ilkbahar → yaz → sonbahar → kış). İlkbahar–sonbahar sefer mevsimidir; kışın ordu yalnızca kendi toprağına çekilebilir (`winterQuarters` hatası) ve kış başında yabancı toprakta kalan ordu `RULES.winterAttritionRate` oranında asker kaybeder (`winterAttrition` günlük kaydı).
 
+## Ordular, savaş ve kuşatma (C4, C5)
+
+- **Ordu**: `units` (akıncı, sipahi, yaya, yeniçeri, topçu sayıları) ve `morale` (0–100). Birimler `units.ts` içinde; `minYear`'dan önce senaryoya konamaz.
+- **Savaş**: Düşman ordusu bulunan bölgeye giren ordu savaşır (`combat.ts`). Güç = Σ birlik × (saldırı|savunma) × moral çarpanı; savunmacıya arazi ve (toprağın sahibiyse) kale çarpanı, iki tarafa tohumlu ± zar. Kaybeden geri çekilir (saldıran geldiği bölgeye) ya da kaçacak yer yoksa dağılır. Diplomasi (C7) gelene kadar farklı her devlet düşmandır.
+- **Fetih**: Karşısında ordu olmayan düşman/sahipsiz bölge kalesizse hemen alınır; kaleliyse (`fortification > 0`) kuşatma başlar, `fortification × siegeTurnsPerFortLevel` tur sonra düşer (topçu oranı süreyi kısaltır). Kuşatan ordu ayrılır ya da yenilirse kuşatma kalkar (`siege.ts`).
+- **Moral**: tur sonunda kendi toprağında +10, yabancı toprakta −5; savaşı kazanan +10, kaybeden −25.
+- Denge sabitleri `rules.ts` içindedir. `ProvinceDef.terrain` ve `fortification` isteğe bağlıdır; gerçek veri B4'te gelecek.
+
+## Zafer, yenilgi ve tarihe göre puan (C3)
+
+`World` içinde (senaryodan gelir): `objectives` (oyuncunun hedefleri), `endDate` (zaman sınırı) ve `historical` (tarihî sonuç). `checkGameOver` aşaması her tur sırayla bakar:
+
+1. Oyuncunun devleti yıkıldı → yenilgi (`eliminated`)
+2. Tüm hedefler tamam → zafer (`objectives`)
+3. Rakip kalmadı → zafer (`lastStanding`)
+4. `endDate`'e gelindi → hedefi olan senaryoda yenilgi, hedefsiz (hayatta kalma) senaryoda zafer (`timeLimit`)
+
+Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 = tarihle aynı, `verdict` ±%10 toleransla `better | same | worse` (`RULES.historicalTolerance`). Hedef ilerlemesi için `objectiveProgress(world, state)`.
+
 ## Yeni mekanik eklemek
 
 - **Yeni emir**: `commands/types.ts` içindeki `ActionCommand` birleşimine ekle, `commands/<emir>.ts` içinde `validate…` / `execute…` yaz, `commands/index.ts` içindeki `switch`'lere bağla.

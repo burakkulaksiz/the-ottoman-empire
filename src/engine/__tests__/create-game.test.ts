@@ -31,7 +31,9 @@ describe('createGame', () => {
         {
           ...testScenario,
           provinceOwners: { sogut: 'karesi' },
-          armies: [{ ownerId: 'osmanli', provinceId: 'iznik', troops: 1 }],
+          armies: [
+            { ownerId: 'osmanli', provinceId: 'iznik', units: { akinci: 1 } },
+          ],
         },
         { seed: 1 },
       ),

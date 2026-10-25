@@ -1,4 +1,4 @@
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Check, Circle } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 
@@ -10,7 +10,12 @@ import {
   loadScenario,
 } from '@/content/scenarios';
 import { PROVINCE_META } from '@/content/world/provinces';
-import { createGame, seedFromString, type Season } from '@/engine';
+import {
+  createGame,
+  objectiveProgress,
+  seedFromString,
+  type Season,
+} from '@/engine';
 import { GameMap } from '@/features/map/components/game-map';
 
 import type { Route } from './+types/play';
@@ -52,6 +57,14 @@ export default function Play() {
     [setup],
   );
 
+  const objectives = useMemo(() => {
+    const titles = new Map(scenario?.objectives?.map((o) => [o.id, o.title]));
+    return objectiveProgress(setup.world, game).map((p) => ({
+      ...p,
+      title: titles.get(p.id) ?? p.id,
+    }));
+  }, [setup, game, scenario]);
+
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = selectedId ? PROVINCE_META[selectedId] : undefined;
   const ownerId = selectedId ? game.provinces[selectedId]?.ownerId : null;
@@ -79,6 +92,34 @@ export default function Play() {
           selectedProvinceId={selectedId}
           onProvinceSelect={setSelectedId}
         />
+        {objectives.length > 0 && (
+          <aside className="absolute top-4 left-4 max-w-xs rounded-lg border bg-card/95 p-3 text-card-foreground shadow-md">
+            <h2 className="font-display text-lg">Hedefler</h2>
+            <ul className="mt-1 space-y-1 text-sm">
+              {objectives.map((o) => (
+                <li key={o.id} className="flex items-start gap-2">
+                  {o.done ? (
+                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                  ) : (
+                    <Circle className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                  )}
+                  <span>
+                    {o.title}{' '}
+                    <span className="text-muted-foreground">
+                      ({o.current}/{o.target})
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            {setup.world.endDate && (
+              <p className="mt-2 text-xs text-muted-foreground">
+                Süre sınırı: {SEASON_LABELS[setup.world.endDate.season]}{' '}
+                {setup.world.endDate.year}
+              </p>
+            )}
+          </aside>
+        )}
         {selected && (
           <aside className="absolute bottom-4 left-4 max-w-xs rounded-lg border bg-card/95 p-3 text-card-foreground shadow-md">
             <h2 className="font-display text-xl">{selected.name}</h2>
