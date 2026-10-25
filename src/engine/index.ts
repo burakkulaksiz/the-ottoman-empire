@@ -2,6 +2,12 @@ export * from './ai';
 export * from './calendar';
 export { legalMoves, validateAction as checkCommand } from './commands';
 export type { ActionCommand, Command, CommandError } from './commands/types';
+export {
+  ageOf,
+  courtIncomeFactor,
+  stabilityLevel,
+  stabilityTarget,
+} from './court';
 export * from './create-game';
 export {
   incomeOf,

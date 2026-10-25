@@ -74,6 +74,10 @@ Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 =
 
 `dispatch`'e `{ ai }` verilir; varsayılan `passiveAi` hiçbir şey yapmaz, uygulama `heuristicAi` kullanır (`engine-api.ts`). `createHeuristicAi({ aggression })` her ordunun komşu bölgelerini puanlar: savunmasız düşman toprağı, kazanılabilir savaş (güç oranı ≥ `aggression`, `battleOdds` ile zarsız hesaplanır), kışın eve dönüş ve düşman sınırına yaklaşma. Sahipsiz bölgelere yayılmaz. Devşirme bütçesi tur gelirinin `recruitShare` oranıdır; devlet başına `FactionDef.ai` (`aggression`, `recruitShare`) kişilik verir (1299'da Bizans temkinli ve az devşirir). Rastgelelik yalnızca verilen `random()` ile (deterministik).
 
+## İç siyaset (C8)
+
+`GameState.court` (yalnızca senaryo saray tanımlarsa, oyuncu devleti için): hükümdar, şehzadeler, vezir, vezir adayları, sadakat (0–100). `advanceCourt` tur aşaması her ilkbahar ölüm (yaşa bağlı), doğum ve vezir adaylarını işler; sadakati her tur hükümdar ve vezirin yönetim becerisine göre hedefe kaydırır; sadakat `revoltThreshold` altındaysa ordusuz bir bölge isyanla elden çıkabilir. Hükümdar ölünce en büyük yetişkin hak sahibi şehzade tahta çıkar; birden çok hak sahibi varsa taht kavgası sadakati düşürür. Sadakat oyuncu gelirini çarpar (`courtIncomeFactor`). Savaş kaybı, bölge kaybı/fethi ve ödenmeyen maaş sadakati `adjustStability` ile değiştirir. Komut: `appointVizier`.
+
 ## Zorluk ve tarihe sadık mod (C10)
 
 `createGame(setup, { seed, settings })` ile `GameState.settings` (`difficulty`, `historicalMode`) belirlenir. Zorluk `RULES.difficulty` tablosundan oyuncu gelirini (`incomeOf`) ve yapay zekânın `aggression`, `recruitShare`, `warlike` kişiliğini ölçekler. Tarihe sadık modda yapay zekâ yalnızca kendi topraklarında hareket eder, saldırmaz ve savaş açmaz (barış isteyebilir).

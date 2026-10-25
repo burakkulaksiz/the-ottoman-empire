@@ -62,6 +62,26 @@ export function formatLogEntry(
       return `${names.faction(entry.from)} devletinin barış teklifini reddettin`;
     case 'tributePaid':
       return `Haraç: ${names.faction(entry.payer)} → ${names.faction(entry.receiver)}, ${entry.amount} akçe`;
+    case 'rulerDied':
+      return `${entry.name} ${entry.age} yaşında öldü`;
+    case 'newRuler':
+      return `${entry.name} tahta çıktı (${entry.age} yaşında)`;
+    case 'successionStruggle':
+      return `Taht kavgası: ${entry.winner}, ${entry.rivals.join(', ')} karşısında galip geldi`;
+    case 'heirBorn':
+      return `Şehzade ${entry.name} doğdu`;
+    case 'vizierAppointed':
+      return `${entry.name} vezir oldu`;
+    case 'vizierDied':
+      return `Vezir ${entry.name} öldü`;
+    case 'janissaryRevolt':
+      return `${names.faction(entry.factionId)}: maaşını alamayan yeniçeriler ayaklandı`;
+    case 'revolt':
+      return `${names.province(entry.provinceId)}: ${entry.kind === 'celali' ? 'Celali isyanı' : 'isyan'} çıktı, bölge elden çıktı`;
+    case 'quizAnswered':
+      return entry.correct
+        ? `Bilgi yarışması: doğru cevap (+${entry.reward} akçe)`
+        : 'Bilgi yarışması: yanlış cevap';
     case 'upkeepPaid':
     case 'incomeCollected':
     case 'eventResolved':

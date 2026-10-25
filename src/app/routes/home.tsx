@@ -1,4 +1,4 @@
-import { BookOpen, FolderOpen, Settings, Swords } from 'lucide-react';
+import { BookOpen, FolderOpen, Settings, Swords, Trophy } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -48,9 +48,18 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <FolderOpen /> Devam Et
             </Button>
           )}
-          <Button size="lg" variant="outline" disabled>
+          <Link
+            to="/encyclopedia"
+            className={buttonVariants({ size: 'lg', variant: 'outline' })}
+          >
             <BookOpen /> Ansiklopedi
-          </Button>
+          </Link>
+          <Link
+            to="/achievements"
+            className={buttonVariants({ size: 'lg', variant: 'outline' })}
+          >
+            <Trophy /> Başarımlar
+          </Link>
           <Button size="lg" variant="outline" disabled>
             <Settings /> Ayarlar
           </Button>

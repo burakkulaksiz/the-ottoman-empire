@@ -1,3 +1,4 @@
+import { createMemoryAchievementRepository } from '@/lib/achievements/achievement-repository';
 import {
   createMemorySaveRepository,
   type SaveRepository,
@@ -6,8 +7,10 @@ import { createLocalEngine } from '@/workers/engine-client';
 
 import { createGameStore } from '../game-store';
 
-const newStore = (saves: SaveRepository = createMemorySaveRepository()) =>
-  createGameStore(createLocalEngine, saves);
+const newStore = (
+  saves: SaveRepository = createMemorySaveRepository(),
+  achievements = createMemoryAchievementRepository(),
+) => createGameStore(createLocalEngine, saves, achievements);
 
 describe('game store', () => {
   it('starts idle', () => {
@@ -206,5 +209,52 @@ describe('saving and loading', () => {
 
     expect(store.getState().game?.turn).toBe(2);
     expect(store.getState().saveError).toBe('Depolama dolu');
+  });
+});
+
+describe('achievements', () => {
+  // Sakarya Bizans'ın ve ordusuz: Bilecik'ten yürüyen ordu hemen ele geçirir.
+  const capture = {
+    type: 'moveArmy',
+    armyId: 'army-1',
+    to: 'tur-sakarya',
+  } as const;
+
+  it('unlocks an achievement once, remembers it and announces it', async () => {
+    const achievements = createMemoryAchievementRepository();
+    const store = newStore(createMemorySaveRepository(), achievements);
+    await store.getState().start('kurulus-1299', { seed: 1 });
+    expect(store.getState().newAchievements).toEqual([]);
+
+    await store.getState().send(capture);
+
+    expect(store.getState().newAchievements).toEqual(['ilk-fetih']);
+    expect(await achievements.list()).toEqual([
+      expect.objectContaining({ id: 'ilk-fetih', scenarioId: 'kurulus-1299' }),
+    ]);
+
+    // Aynı başarım bir daha bildirilmez.
+    await store.getState().send({ type: 'endTurn' });
+    expect(store.getState().newAchievements).toEqual(['ilk-fetih']);
+  });
+
+  it('does not announce what was earned in an earlier game', async () => {
+    const achievements = createMemoryAchievementRepository();
+    await achievements.add([
+      { id: 'ilk-fetih', unlockedAt: 1, scenarioId: 'kurulus-1299' },
+    ]);
+    const store = newStore(createMemorySaveRepository(), achievements);
+    await store.getState().start('kurulus-1299', { seed: 1 });
+    await store.getState().send(capture);
+
+    expect(store.getState().newAchievements).toEqual([]);
+  });
+
+  it('lets the player dismiss a notification', async () => {
+    const store = newStore();
+    await store.getState().start('kurulus-1299', { seed: 1 });
+    await store.getState().send(capture);
+    store.getState().dismissAchievement('ilk-fetih');
+    expect(store.getState().newAchievements).toEqual([]);
   });
 });

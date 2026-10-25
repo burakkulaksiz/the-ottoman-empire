@@ -2,6 +2,7 @@ import { useStore } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createStore } from 'zustand/vanilla';
 
+import { newlyEarned } from '@/content/achievements';
 import type {
   Command,
   CommandError,
@@ -9,6 +10,10 @@ import type {
   GameState,
   LogEntry,
 } from '@/engine';
+import {
+  achievementRepository,
+  type AchievementRepository,
+} from '@/lib/achievements/achievement-repository';
 import {
   saveRepository,
   type SaveRepository,
@@ -38,6 +43,8 @@ export interface GameStoreState {
   lastSave: { slot: SaveSlotId; savedAt: number } | null;
   /** Kaydetme başarısız olduysa nedeni; oyun yine de devam eder. */
   saveError: string | null;
+  /** Bu oturumda yeni kazanılan, henüz gösterilmemiş başarımlar (D6). */
+  newAchievements: string[];
 }
 
 export interface GameStoreActions {
@@ -54,6 +61,8 @@ export interface GameStoreActions {
   load(slot: SaveSlotId): Promise<void>;
   selectProvince(provinceId: string | null): void;
   selectArmy(armyId: string | null): void;
+  /** Gösterilen başarım bildirimini kapatır. */
+  dismissAchievement(id: string): void;
   reset(): void;
 }
 
@@ -70,6 +79,7 @@ const initialState: GameStoreState = {
   selectedArmyId: null,
   lastSave: null,
   saveError: null,
+  newAchievements: [],
 };
 
 /** Oyun kuralı değil, oyuncuya özel rastgelelik: motor dışında seçilir. */
@@ -88,7 +98,20 @@ const messageOf = (error: unknown) =>
 export function createGameStore(
   createEngine: () => EngineClient,
   saves: SaveRepository = saveRepository,
+  achievements: AchievementRepository = achievementRepository,
 ) {
+  // Daha önce kazanılan başarımlar (oyunlar arası); ilk kullanımda okunur.
+  let known: Set<string> | null = null;
+  const knownAchievements = async () => {
+    if (!known) {
+      try {
+        known = new Set((await achievements.list()).map((a) => a.id));
+      } catch {
+        known = new Set();
+      }
+    }
+    return known;
+  };
   // Worker ilk kullanımda kurulur (import sırasında değil).
   let engine: EngineClient | null = null;
   const getEngine = () => (engine ??= createEngine());
@@ -117,6 +140,29 @@ export function createGameStore(
             s.saveError = messageOf(error);
           });
         }
+      };
+
+      /** Yeni kazanılan başarımları kaydeder ve bildirime ekler (D6). */
+      const checkAchievements = async (game: GameState) => {
+        const seen = await knownAchievements();
+        const earned = newlyEarned(game, seen);
+        if (earned.length === 0) return;
+        for (const a of earned) seen.add(a.id);
+        const unlockedAt = Date.now();
+        try {
+          await achievements.add(
+            earned.map((a) => ({
+              id: a.id,
+              unlockedAt,
+              scenarioId: game.scenarioId,
+            })),
+          );
+        } catch {
+          // Kalıcı kayıt başarısız olsa da bildirim gösterilir.
+        }
+        set((s) => {
+          s.newAchievements.push(...earned.map((a) => a.id));
+        });
       };
 
       return {
@@ -196,6 +242,7 @@ export function createGameStore(
             if (result.ok && command.type === 'endTurn') {
               await writeSave('auto', result.state);
             }
+            if (result.ok) await checkAchievements(result.state);
           }),
 
         selectProvince: (provinceId) =>
@@ -206,6 +253,11 @@ export function createGameStore(
         selectArmy: (armyId) =>
           set((s) => {
             s.selectedArmyId = armyId;
+          }),
+
+        dismissAchievement: (id) =>
+          set((s) => {
+            s.newAchievements = s.newAchievements.filter((a) => a !== id);
           }),
 
         reset: () => set(initialState),

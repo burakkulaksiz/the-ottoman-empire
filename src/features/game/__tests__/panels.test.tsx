@@ -94,12 +94,17 @@ describe('ProvincePanel', () => {
   });
 
   it('shows terrain, fortification and the cities of the province', () => {
+    const onPlaceSelect = vi.fn();
     render(
       <ProvincePanel
         {...base}
         terrainLabel="Engebeli"
         fortification={2}
-        placeNames={['Bursa (Prusa)', 'İznik (Nikaia)']}
+        places={[
+          { id: 'bursa', name: 'Bursa (Prusa)' },
+          { id: 'iznik', name: 'İznik (Nikaia)' },
+        ]}
+        onPlaceSelect={onPlaceSelect}
         armies={[]}
         onSelectArmy={() => {}}
       />,
@@ -107,9 +112,8 @@ describe('ProvincePanel', () => {
 
     expect(screen.getByText(/Engebeli/)).toBeInTheDocument();
     expect(screen.getByText('Kale seviyesi:')).toBeInTheDocument();
-    expect(
-      screen.getByText('Bursa (Prusa), İznik (Nikaia)'),
-    ).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'İznik (Nikaia)' }));
+    expect(onPlaceSelect).toHaveBeenCalledWith('iznik');
   });
 
   it('leaves out the terrain and fortress lines when there is nothing to say', () => {

@@ -9,11 +9,25 @@ export type PlaceMarker = {
   fortification: number;
 };
 
-/** Ordu işaretlerinin altında kalacak, tıklamayı engellemeyen küçük işaret. */
-export function createPlaceMarkerElement(place: PlaceMarker): HTMLElement {
-  const el = document.createElement('div');
+/**
+ * Ordu işaretlerinin altında kalan küçük işaret. `onSelect` verilirse
+ * tıklanabilir bir düğmedir; tıklama haritaya (bölge seçimine) ulaşmaz.
+ */
+export function createPlaceMarkerElement(
+  place: PlaceMarker,
+  onSelect?: (placeId: string) => void,
+): HTMLElement {
+  const el = document.createElement(onSelect ? 'button' : 'div');
   el.dataset.placeId = place.id;
-  el.setAttribute('role', 'img');
+  if (onSelect) {
+    (el as HTMLButtonElement).type = 'button';
+    el.addEventListener('click', (event) => {
+      event.stopPropagation();
+      onSelect(place.id);
+    });
+  } else {
+    el.setAttribute('role', 'img');
+  }
 
   const fortified = place.fortification > 0;
   el.title = fortified
@@ -24,16 +38,16 @@ export function createPlaceMarkerElement(place: PlaceMarker): HTMLElement {
   if (place.kind === 'strait') {
     // Boğaz: mavi baklava.
     el.className =
-      'size-3 rotate-45 border border-white bg-sky-700 shadow pointer-events-auto';
+      'size-3 rotate-45 cursor-pointer border border-white bg-sky-700 shadow pointer-events-auto';
   } else if (fortified) {
     // Surlu şehir: kare, seviyeye göre büyür.
     el.className =
-      'border-2 border-white bg-stone-900 shadow pointer-events-auto ' +
+      'cursor-pointer border-2 border-white bg-stone-900 shadow pointer-events-auto ' +
       (place.fortification >= 3 ? 'size-4' : 'size-3');
   } else {
     // Surları olmayan şehir: küçük yuvarlak.
     el.className =
-      'size-2.5 rounded-full border border-white bg-stone-700 shadow pointer-events-auto';
+      'size-2.5 cursor-pointer rounded-full border border-white bg-stone-700 shadow pointer-events-auto';
   }
   return el;
 }

@@ -65,6 +65,7 @@ export const kurulus1299: ScenarioDefinition = {
       ],
       historical: {
         choiceId: 'savas',
+        sources: [{ source: 'pachymeres' }, { source: 'lindner-prehistory' }],
         note: "Temmuz 1302'de Osman Bey'in kuvvetleri, Bizans'ın Nikomedia (İzmit) yönünden gönderdiği orduyla Koyunhisar (Bafeus) yakınlarında karşılaştı ve onu yendi. Bu zafer, Osman'ın itibarını artırdı ve Bizans'ı bölgede savunmaya itti.",
       },
     },
@@ -95,8 +96,40 @@ export const kurulus1299: ScenarioDefinition = {
       ],
       historical: {
         choiceId: 'koru',
+        sources: [{ source: 'asikpasazade' }, { source: 'inalcik-klasik-cag' }],
         note: "Bursa, uzun bir kuşatmadan sonra 1326'da Orhan Bey'e teslim oldu ve şehir halkına dokunulmadı. Bursa ilk Osmanlı başkenti oldu; ilk Osmanlı gümüş sikkesi akçenin de Orhan döneminde basıldığı kabul edilir.",
       },
+    },
+  ],
+  // TODO(kaynak): Kronolojideki tarihler genel kabul gören tarihlerdir;
+  // tartışmalı olanlar metinde belirtilmiştir (D6).
+  chronicle: [
+    {
+      year: 1299,
+      text: "Geleneksel olarak Osmanlı Beyliği'nin kuruluş yılı kabul edilir; bu tarih tarihçiler arasında tartışmalıdır.",
+      sources: [{ source: 'kafadar-two-worlds' }],
+    },
+    {
+      year: 1302,
+      dateLabel: 'Temmuz 1302',
+      text: "Koyunhisar (Bafeus) Savaşı: Osman Bey'in kuvvetleri İzmit yönünden gelen bir Bizans ordusunu yendi.",
+      sources: [{ source: 'pachymeres' }],
+    },
+    {
+      year: 1324,
+      dateLabel: "1320'lerin ortası",
+      text: 'Osman Bey öldü, yerine oğlu Orhan geçti. Kesin yıl kaynaklarda 1323–1326 arasında değişir.',
+      sources: [{ source: 'inalcik-klasik-cag' }],
+    },
+    {
+      year: 1326,
+      text: "Bursa uzun bir kuşatmanın ardından Orhan Bey'e teslim oldu ve beyliğin merkezi oldu.",
+      sources: [{ source: 'asikpasazade' }],
+    },
+    {
+      year: 1329,
+      text: "Pelekanon (Maltepe) Savaşı: Orhan Bey, İmparator III. Andronikos'un ordusunu yendi.",
+      sources: [{ source: 'finkel-osmans-dream' }],
     },
   ],
   // TODO(kaynak): 1330'da Osmanlı elindeki yerler ve fetih tarihleri doğrulanmalı (D6).
@@ -116,6 +149,48 @@ export const kurulus1299: ScenarioDefinition = {
         relation: 'war',
         note: 'Uç beyliği ile Bizans tekfurları arasında süregelen akın ve sınır savaşları.',
       },
+    ],
+  },
+  // TODO(kaynak): Doğum yılları geleneksel tarihlerdir ve tartışmalıdır
+  // (Osman ~1258, Orhan ~1281). Beceri puanları tarihî veri değil, oyun
+  // değeridir. Alâeddin'in tahtta hak iddia etmediği rivayeti esas alındı.
+  court: {
+    ruler: {
+      id: 'osman',
+      name: 'Osman Bey',
+      born: 1258,
+      military: 4,
+      administration: 3,
+    },
+    heirs: [
+      {
+        id: 'orhan',
+        name: 'Orhan',
+        born: 1281,
+        military: 4,
+        administration: 4,
+      },
+      {
+        id: 'alaeddin',
+        name: 'Alâeddin',
+        born: 1285,
+        military: 2,
+        administration: 4,
+        claimsThrone: false,
+      },
+    ],
+    stability: 60,
+    names: [
+      'Süleyman',
+      'Murad',
+      'Halil',
+      'İbrahim',
+      'Kasım',
+      'Yusuf',
+      'Ahmed',
+      'Mahmud',
+      'Hasan',
+      'Hüseyin',
     ],
   },
   playerFactionId: 'osmanli',

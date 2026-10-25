@@ -1,5 +1,6 @@
 import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
+import { adjustStability, advanceCourt } from '../court';
 import { payTributes } from '../diplomacy';
 import { incomeOf, upkeepOf } from '../economy';
 import { triggerEvents } from '../events';
@@ -96,6 +97,15 @@ export const payUpkeep: TurnPhase = ({ state, emit }) => {
       factionId: faction.id,
       shortfall: due - paid,
     });
+    adjustStability(state, faction.id, -RULES.court.unpaidLoss);
+    // Maaşını alamayan yeniçeri ayaklanır (C8).
+    const janissaries = Object.values(state.armies).some(
+      (a) => a.ownerId === faction.id && (a.units.yeniceri ?? 0) > 0,
+    );
+    if (janissaries) {
+      adjustStability(state, faction.id, -RULES.court.janissaryRevoltLoss);
+      emit({ type: 'janissaryRevolt', factionId: faction.id });
+    }
     for (const army of Object.values(state.armies)) {
       if (army.ownerId !== faction.id) continue;
       const kept: Units = { ...army.units };
@@ -111,6 +121,9 @@ export const payUpkeep: TurnPhase = ({ state, emit }) => {
     }
   }
 };
+
+/** Saray ve iç siyaset (C8). */
+export const advanceCourtPhase: TurnPhase = (context) => advanceCourt(context);
 
 /** Ne toprağı ne ordusu kalan devlet tarih sahnesinden çekilir. */
 export const eliminateFactions: TurnPhase = ({ state, emit }) => {
@@ -173,6 +186,7 @@ export const TURN_PHASES: TurnPhase[] = [
   collectIncome,
   payTributes,
   payUpkeep,
+  advanceCourtPhase,
   eliminateFactions,
   checkGameOver,
   triggerEvents,

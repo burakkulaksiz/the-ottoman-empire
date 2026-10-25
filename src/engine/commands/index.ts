@@ -1,4 +1,5 @@
 import type { ExecuteContext } from '../context';
+import { executeAppointVizier, validateAppointVizier } from '../court';
 import {
   executeDeclareWar,
   executeProposeAlliance,
@@ -9,6 +10,7 @@ import {
   validateProposePeace,
   validateRespondOffer,
 } from '../diplomacy';
+import { executeAnswerQuiz, validateAnswerQuiz } from '../quiz';
 import type { FactionId, GameState, ProvinceId, World } from '../types';
 
 import { executeMoveArmy, validateMoveArmy } from './move-army';
@@ -36,6 +38,10 @@ export function validateAction(
       return validateProposeAlliance({ world, state, factionId, command });
     case 'respondOffer':
       return validateRespondOffer({ world, state, factionId, command });
+    case 'appointVizier':
+      return validateAppointVizier({ world, state, factionId, command });
+    case 'answerQuiz':
+      return validateAnswerQuiz({ world, state, factionId, command });
   }
 }
 
@@ -57,6 +63,10 @@ export function executeAction(
       return executeProposeAlliance(context, factionId, command);
     case 'respondOffer':
       return executeRespondOffer(context, factionId, command);
+    case 'appointVizier':
+      return executeAppointVizier(context, factionId, command);
+    case 'answerQuiz':
+      return executeAnswerQuiz(context, factionId, command);
   }
 }
 

@@ -39,6 +39,8 @@ type GameMapProps = {
   selectedProvinceId?: string | null;
   /** Şehir, kale ve boğaz işaretleri. */
   places?: PlaceMarker[];
+  /** Bir yer işaretine tıklanınca (ansiklopedi). */
+  onPlaceSelect?: (placeId: string) => void;
   /** Ticaret yolları (çizgi nesneleri). */
   tradeRoutes?: FeatureCollection;
   /** Haritada gösterilecek ordular. */
@@ -72,6 +74,7 @@ export function GameMap({
   factionColors = NO_COLORS,
   selectedProvinceId = null,
   places = NO_PLACES,
+  onPlaceSelect,
   tradeRoutes,
   armies = NO_ARMIES,
   selectedArmyId = null,
@@ -84,10 +87,20 @@ export function GameMap({
   const [map, setMap] = useState<MapLibreMap | null>(null);
 
   // Olay işleyicileri harita yeniden kurulmadan güncel kalsın.
-  const callbacks = useRef({ onProvinceSelect, onArmySelect, onReady });
+  const callbacks = useRef({
+    onProvinceSelect,
+    onArmySelect,
+    onPlaceSelect,
+    onReady,
+  });
   useEffect(() => {
-    callbacks.current = { onProvinceSelect, onArmySelect, onReady };
-  }, [onProvinceSelect, onArmySelect, onReady]);
+    callbacks.current = {
+      onProvinceSelect,
+      onArmySelect,
+      onPlaceSelect,
+      onReady,
+    };
+  }, [onProvinceSelect, onArmySelect, onPlaceSelect, onReady]);
   const markerClass = useRef<typeof Marker | null>(null);
 
   useEffect(() => {
@@ -212,7 +225,11 @@ export function GameMap({
     const MarkerClass = markerClass.current;
     if (!map || !MarkerClass) return;
     const markers = places.map((place) =>
-      new MarkerClass({ element: createPlaceMarkerElement(place) })
+      new MarkerClass({
+        element: createPlaceMarkerElement(place, (id) =>
+          callbacks.current.onPlaceSelect?.(id),
+        ),
+      })
         .setLngLat(place.position)
         .addTo(map),
     );

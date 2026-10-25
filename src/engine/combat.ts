@@ -1,6 +1,7 @@
 import type { Draft } from 'immer';
 
 import type { ExecuteContext } from './context';
+import { adjustStability } from './court';
 import { isHostile } from './diplomacy';
 import { random } from './rng';
 import { moraleFactor, RULES } from './rules';
@@ -152,6 +153,7 @@ export function resolveBattle(
   for (const army of losers) {
     army.morale = Math.max(0, army.morale - RULES.moraleLossPenalty);
   }
+  adjustStability(state, losers[0]!.ownerId, -RULES.court.battleLostLoss);
 
   emit({
     type: 'battleFought',

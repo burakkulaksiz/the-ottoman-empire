@@ -24,8 +24,9 @@ type ProvincePanelProps = {
   terrainLabel?: string;
   /** Kale seviyesi (0 = yok): savunana bonus verir, kuşatmayı uzatır. */
   fortification?: number;
-  /** Bölgedeki şehir ve kalelerin adları. */
-  placeNames?: string[];
+  /** Bölgedeki şehir ve kaleler; adlarına basınca ansiklopedi açılır. */
+  places?: { id: string; name: string }[];
+  onPlaceSelect?: (placeId: string) => void;
   armies: ProvinceArmyRow[];
   onSelectArmy: (armyId: string) => void;
   /** Oyuncunun bölgesinde devşirme seçenekleri (yoksa bölüm görünmez). */
@@ -52,7 +53,8 @@ export function ProvincePanel({
   neighborNames,
   terrainLabel,
   fortification = 0,
-  placeNames = [],
+  places = [],
+  onPlaceSelect,
   armies,
   onSelectArmy,
   recruit,
@@ -79,10 +81,25 @@ export function ProvincePanel({
           )}
         </p>
       )}
-      {placeNames.length > 0 && (
+      {places.length > 0 && (
         <p className="mt-2">
           <span className="font-medium">Şehirler: </span>
-          {placeNames.join(', ')}
+          {places.map((place, index) => (
+            <span key={place.id}>
+              {index > 0 && ', '}
+              {onPlaceSelect ? (
+                <button
+                  type="button"
+                  className="text-primary underline-offset-4 hover:underline"
+                  onClick={() => onPlaceSelect(place.id)}
+                >
+                  {place.name}
+                </button>
+              ) : (
+                place.name
+              )}
+            </span>
+          ))}
         </p>
       )}
       <p className="mt-2">

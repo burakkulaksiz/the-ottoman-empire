@@ -16,12 +16,12 @@
 | ---------------- | ------ | ------ |
 | A. Altyapı       | 4      | 5      |
 | B. Harita        | 2      | 5      |
-| C. Mekanikler    | 8      | 10     |
-| D. Tarih öğrenme | 2      | 7      |
+| C. Mekanikler    | 9      | 10     |
+| D. Tarih öğrenme | 7      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **17** | **41** |
+| **Toplam**       | **23** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -35,7 +35,7 @@ Oynanabilir ilk sürüm için:
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C8 (iç siyaset: padişah, şehzadeler, divan, isyanlar) veya D3 (ansiklopedi; yer notları ve olay metinleri hazır)
+**Sıradaki madde:** F3 (Playwright ile uçtan uca testler; şimdiye kadar hiçbir akış gerçek tarayıcıda otomatik denenmedi) veya A5 (çoklu dil), E3 (tarihi görsel kimlik)
 
 ---
 
@@ -91,7 +91,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - [ ] Enflasyon (akçenin ayarı düşer, geç dönem)
 - [x] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
   - _Yapıldı: savaş/barış/ittifak ilişkileri (senaryoda başlangıç ilişkileri), savaş ilanı, barış önerisi (haraç vererek ya da isteyerek), evlilik ittifakı (çeyiz karşılığı, ortak düşman şartı), tur başına haraç ödemesi, yapay zekânın barış teklifleri (oyuncu kabul/ret eder) ve savaşçı kişilikte savaş ilanı. Barıştaki devletin sınırı kapalı, müttefikinki açık. Diplomasi paneli. Not: 1299 ilişkileri sadeleştirilmiştir (`TODO(kaynak)`)._
-- [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
+- [x] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
+  - _Yapıldı: saray (hükümdar, şehzadeler, vezir), yaşlanma ve ölüm, veraset ve taht kavgası (hak iddia eden yetişkin şehzadeler), şehzade doğumu, divan kurulunca (1320'den, `TODO(kaynak)`) vezir atama, sadakat (gelir çarpanı; savaş, fetih, maaş ile değişir), sadakat düşünce ordusuz bölgelerde isyan (1590'dan sonra Celali isyanı), maaşı ödenmeyen yeniçerilerin ayaklanması. Saray paneli. Yalnızca oyuncu devleti için; doğum yılları geleneksel tarihlerdir._
 - [x] **C9. Rakip devletler için yapay zekâ.**
   - _Yapıldı: sezgisel yapay zekâ (`heuristic-ai.ts`): savunmasız düşman toprağını alır, güç oranı yeterliyse (`aggression`) saldırır, zayıf kalacağı savaştan kaçınır, kışın eve döner, düşman sınırına doğru ilerler. Sahipsiz bölgelere yayılmaz (diplomasi/diğer devletler modellenene kadar). Ordu devşirme, ekonomi ve diplomasi içermez (C6, C7); zorluk ayarı C10'da._
 - [x] **C10. Zorluk seviyeleri ve "tarihe sadık mod" seçeneği.**
@@ -103,11 +104,16 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - _Yapıldı: tetikleyiciler (tarih, bölgeye sahip olma), seçeneklerin etkisi (hazine, moral), bekleyen olay tur bitirmeyi engeller, olay kartı arayüzü ("Tarihte gerçekte ne oldu?" bölümüyle). 1299 Kuruluş için iki kart: Koyunhisar Savaşı (1302) ve Bursa'nın Düşüşü. Metinler `TODO(kaynak)` ile doğrulanmayı bekliyor. Seçimin tarihle karşılaştırılması D2'de._
 - [x] **D2. Karar anları:** oyuncu kritik bir kararı (ör. Ankara Savaşı öncesi) verdikten sonra seçimi gerçek tarihle karşılaştırılır.
   - _Yapıldı: olay kartı kararın tarihle aynı olup olmadığını söyler ve tarihte seçileni gösterir; "Kararlar" paneli (karar defteri, tarihle uyum x/y); oyun sonu kartı (sonuç, nedeni, tarihe göre puan, karar uyumu, "Tarihte gerçekte ne oldu?")._
-- [ ] **D3. Ansiklopedi:** kişiler, kurumlar (devşirme, tımar, kapıkulu), savaşlar ve yerler. Haritadaki bir öğeye tıklayınca ilgili maddesi açılır.
-- [ ] **D4. Kronik/zaman çizelgesi:** oyuncunun oynadığı tarih ile gerçek tarih yan yana.
-- [ ] **D5. Mini quizler:** doğru cevap oyun içinde küçük bir bonus kazandırır (ör. prestij), yanlış cevabın cezası olmaz.
-- [ ] **D6. Başarımlar (achievements) ve kaynakça:** her bilginin kaynağı gösterilir, güvenilirlik için önemli.
-- [ ] **D7. Öğretici (tutorial) senaryo:** Osman Bey ile küçük bir beylikten başlamak.
+- [x] **D3. Ansiklopedi:** kişiler, kurumlar (devşirme, tımar, kapıkulu), savaşlar ve yerler. Haritadaki bir öğeye tıklayınca ilgili maddesi açılır.
+  - _Yapıldı: 19 elle yazılmış madde (kişiler, kurumlar, savaşlar) + haritadaki her yer için madde; `/encyclopedia` (arama, kategori) ve `/encyclopedia/:id` sayfaları, ana menüde "Ansiklopedi"; oyunda şehir/kale/boğaz işaretine ya da bölge panelindeki şehir adına basınca madde haritadan ayrılmadan yan panelde açılır. Her maddede "Oyunda" notu var. Kaynakça D6'da._
+- [x] **D4. Kronik/zaman çizelgesi:** oyuncunun oynadığı tarih ile gerçek tarih yan yana.
+  - _Yapıldı: üst çubukta "Kronik": yıl yıl "Senin tarihin" (fetihler, savaşlar, diplomasi, saray, kararlar, isyanlar) ile "Gerçek tarih" (senaryo kronolojisi, kaynak kısaltmasıyla) yan yana. Gerçek tarih yalnızca oyunda gelinen yıla kadar gösterilir._
+- [x] **D5. Mini quizler:** doğru cevap oyun içinde küçük bir bonus kazandırır (ör. prestij), yanlış cevabın cezası olmaz.
+  - _Yapıldı: 12 soru (`content/quizzes.ts`), her biri bir ansiklopedi maddesine dayanır. Her ilkbahar bir soru sorulur ("Şimdi değil" ile geçilebilir); doğru cevap +5 akçe ve sadakat, yanlışa ceza yok. Doğru cevabı motor doğrular (`answerQuiz`). Henüz yaşanmamış olaylar sorulmaz (`minYear`). "Meraklı Öğrenci" başarımı._
+- [x] **D6. Başarımlar (achievements) ve kaynakça:** her bilginin kaynağı gösterilir, güvenilirlik için önemli.
+  - _Yapıldı: kaynakça (`content/sources.ts`: birincil kaynaklar, araştırmalar, başvuru eserleri, veri), her ansiklopedi maddesinde, olay kartının "Tarihte gerçekte ne oldu?" bölümünde ve kronikte kaynak; `/sources` (Kaynakça) sayfası. 10 başarım (`content/achievements.ts`), oyunlar arası IndexedDB'de kalıcı, oyunda bildirim, `/achievements` sayfası ve ana menüde "Başarımlar". Atıflar şimdilik eser düzeyinde; sayfa numaraları ve tarihçi denetimi `TODO(kaynak)`._
+- [x] **D7. Öğretici (tutorial) senaryo:** Osman Bey ile küçük bir beylikten başlamak.
+  - _Yapıldı: "Öğretici · Osman Bey'in İlk Adımları" senaryosu (senaryo listesinde ilk sırada, "Yeni başlayanlar için önerilir"); 7 adımlı rehber paneli: ordu seç, Sakarya'yı al, asker devşir, turu bitir, ansiklopediyi aç, kroniğe bak, Bursa'yı al. Rakipler saldırmaz, Bursa muhafızı azdır._
 
 ## E. Arayüz ve deneyim
 

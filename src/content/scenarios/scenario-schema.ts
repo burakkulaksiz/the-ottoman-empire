@@ -57,10 +57,25 @@ const eventSchema = z.object({
     note: z.string().min(1),
     /** Tarihte gerçekleşene en yakın seçenek (D2'de karşılaştırılır). */
     choiceId: z.string().min(1),
+    sources: z.array(z.lazy(() => citationSchema)).default([]),
   }),
 });
 
 export type ScenarioEvent = z.input<typeof eventSchema>;
+
+const personSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  born: z.number().int(),
+  military: z.number().int().min(1).max(5),
+  administration: z.number().int().min(1).max(5),
+  claimsThrone: z.boolean().optional(),
+});
+
+const citationSchema = z.object({
+  source: z.string().min(1),
+  locator: z.string().optional(),
+});
 
 export const scenarioSchema = z.object({
   id: z.string().min(1),
@@ -73,6 +88,18 @@ export const scenarioSchema = z.object({
   /** Hepsi tamamlanınca oyuncu kazanır; boşsa hayatta kalmak yeter. */
   objectives: z.array(objectiveSchema).default([]),
   events: z.array(eventSchema).default([]),
+  /** Gerçek tarihin kronolojisi; oyuncunun kroniğiyle yan yana gösterilir (D4). */
+  chronicle: z
+    .array(
+      z.object({
+        year: z.number().int(),
+        /** Kesin olmayan tarihler için "1320'lerin ortası" gibi gösterim. */
+        dateLabel: z.string().optional(),
+        text: z.string().min(1),
+        sources: z.array(z.lazy(() => citationSchema)).default([]),
+      }),
+    )
+    .default([]),
   /** Oyuncunun sonucunun kıyaslandığı tarihî sonuç. */
   historical: z
     .object({
@@ -97,6 +124,34 @@ export const scenarioSchema = z.object({
           }),
         )
         .default([]),
+    })
+    .optional(),
+  /** Öğretici adımları (D7): her adımın hedefi oyunda yapılınca tamamlanır. */
+  tutorial: z
+    .array(
+      z.object({
+        id: z.string().min(1),
+        title: z.string().min(1),
+        text: z.string().min(1),
+        goal: z.discriminatedUnion('type', [
+          z.object({ type: z.literal('selectArmy') }),
+          z.object({ type: z.literal('capture'), provinceId: z.string() }),
+          z.object({ type: z.literal('recruit') }),
+          z.object({ type: z.literal('endTurn') }),
+          z.object({ type: z.literal('openEncyclopedia') }),
+          z.object({ type: z.literal('openChronicle') }),
+        ]),
+      }),
+    )
+    .optional(),
+  /** Oyuncu devletinin sarayı (C8). */
+  court: z
+    .object({
+      ruler: personSchema,
+      heirs: z.array(personSchema).default([]),
+      stability: z.number().min(0).max(100).default(60),
+      /** Yeni doğan şehzadeler ve vezir adayları için adlar. */
+      names: z.array(z.string()).default([]),
     })
     .optional(),
   playerFactionId: z.string().min(1),
@@ -131,3 +186,4 @@ export const scenarioSchema = z.object({
 });
 
 export type ScenarioDefinition = z.input<typeof scenarioSchema>;
+export type TutorialStep = NonNullable<ScenarioDefinition['tutorial']>[number];

@@ -149,6 +149,19 @@ describe('kurulus-1299 diplomacy', () => {
   });
 });
 
+describe('kurulus-1299 court', () => {
+  const state = createGame(loadScenario('kurulus-1299'), { seed: 1 });
+
+  it('starts with Osman Bey on the throne and Orhan as heir', () => {
+    expect(state.court?.ruler.name).toBe('Osman Bey');
+    expect(state.court?.heirs.map((h) => h.name)).toEqual([
+      'Orhan',
+      'Alâeddin',
+    ]);
+    expect(state.court?.vizier).toBeNull();
+  });
+});
+
 describe('buildScenario', () => {
   it('rejects a province given to two factions', () => {
     const broken = structuredClone(kurulus1299);

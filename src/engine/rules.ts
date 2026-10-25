@@ -64,6 +64,51 @@ export const RULES = {
   /** Yapay zekâ rakibinden bu kat güçlüyse savaş ilan etmeyi düşünür. */
   aiWarAdvantage: 2,
 
+  // --- İç siyaset (C8) ---
+  court: {
+    adultAge: 16,
+    /** Bu yaştan sonra her yıl ölüm olasılığı artar. */
+    deathAgeStart: 50,
+    /** (yaş − başlangıç) / bu değer = yıllık ölüm olasılığı. */
+    deathAgeSpan: 100,
+    maxDeathChance: 0.5,
+    birthChance: 0.25,
+    fatherMaxAge: 55,
+    maxHeirs: 6,
+    /** Vezir atanabilecek ilk yıl. TODO(kaynak): ilk vezirlik için tarih doğrulanmalı. */
+    divanFrom: 1320,
+    vizierCost: 20,
+    /** Vezirin yönetim puanı başına gelir artışı. */
+    vizierIncomeBonus: 0.02,
+    /** Celali isyanlarının görüldüğü dönem. TODO(kaynak) */
+    celaliFrom: 1590,
+    baseStability: 45,
+    rulerAdminWeight: 4,
+    vizierAdminWeight: 3,
+    /** Sadakatin tur başına hedefe yaklaşma hızı. */
+    stabilityDrift: 2,
+    /** Bu sadakatte gelir değişmez; ±incomeSpan sadakat geliri ±%100 oynatır. */
+    neutralStability: 60,
+    incomeSpan: 200,
+    uneasyThreshold: 45,
+    revoltThreshold: 30,
+    revoltRelief: 5,
+    successionStruggleLoss: 25,
+    minorHeirLoss: 20,
+    noHeirLoss: 30,
+    battleLostLoss: 3,
+    provinceLostLoss: 4,
+    provinceWonGain: 2,
+    unpaidLoss: 10,
+    janissaryRevoltLoss: 15,
+  },
+
+  // --- Mini quiz (D5) ---
+  /** Doğru cevabın akçe ödülü. */
+  quizReward: 5,
+  /** Doğru cevabın sadakate katkısı (saray varsa). */
+  quizStability: 2,
+
   // --- Zorluk (C10) ---
   difficulty: {
     /** Oyuncu kolay: daha çok gelir, temkinli ve yavaş büyüyen rakipler. */

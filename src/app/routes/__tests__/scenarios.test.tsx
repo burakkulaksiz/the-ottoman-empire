@@ -33,7 +33,7 @@ describe('Scenarios', () => {
     ]);
     render(<Stub initialEntries={['/scenarios']} />);
 
-    expect(await screen.findByText(/Bursa'yı fethet/)).toBeInTheDocument();
+    expect(await screen.findAllByText(/Bursa'yı fethet/)).not.toHaveLength(0);
   });
 
   it('carries the chosen difficulty and mode to the game', async () => {
@@ -51,5 +51,18 @@ describe('Scenarios', () => {
       'href',
       '/play/kurulus-1299?difficulty=hard&historical=1',
     );
+  });
+
+  it('recommends the tutorial to new players', async () => {
+    const Stub = createRoutesStub([
+      { path: '/scenarios', Component: Scenarios },
+    ]);
+    render(<Stub initialEntries={['/scenarios']} />);
+
+    expect(
+      await screen.findByText('Yeni başlayanlar için önerilir'),
+    ).toBeInTheDocument();
+    const headings = screen.getAllByRole('heading', { level: 2 });
+    expect(headings[0]).toHaveTextContent('Öğretici');
   });
 });

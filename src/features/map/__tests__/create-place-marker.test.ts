@@ -34,4 +34,23 @@ describe('createPlaceMarkerElement', () => {
     expect(great.className).toContain('size-4');
     expect(strait.className).toContain('rotate-45');
   });
+
+  it('becomes a button that reports clicks without reaching the map', () => {
+    const onSelect = vi.fn();
+    const onMapClick = vi.fn();
+    const parent = document.createElement('div');
+    parent.addEventListener('click', onMapClick);
+    const el = createPlaceMarkerElement(city, onSelect);
+    parent.append(el);
+
+    el.click();
+
+    expect(el.tagName).toBe('BUTTON');
+    expect(onSelect).toHaveBeenCalledWith('bursa');
+    expect(onMapClick).not.toHaveBeenCalled();
+  });
+
+  it('stays a plain image without a handler', () => {
+    expect(createPlaceMarkerElement(city).getAttribute('role')).toBe('img');
+  });
 });

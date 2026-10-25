@@ -1,5 +1,6 @@
 import type { FactionDef, ScenarioSetup } from '@/engine';
 
+import { quizAnswers } from '../quizzes';
 import { createProvinceDefs } from '../world/provinces';
 
 import { type ScenarioDefinition, scenarioSchema } from './scenario-schema';
@@ -56,6 +57,8 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
           effects: choice.effects,
         })),
       })),
+      // Quizler senaryodan bağımsızdır; motor yalnızca doğru cevapları bilir.
+      quizzes: quizAnswers(),
       endDate: scenario.endDate,
       historical: scenario.historical && {
         provinces: scenario.historical.provinces,
@@ -66,6 +69,7 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
     factions: treasuries,
     provinceOwners,
     armies,
+    ...(scenario.court && { court: scenario.court }),
     ...(scenario.relations && {
       relations: {
         default: scenario.relations.default,

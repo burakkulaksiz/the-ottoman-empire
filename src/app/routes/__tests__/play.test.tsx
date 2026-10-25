@@ -288,4 +288,111 @@ describe('Play', () => {
       historicalMode: true,
     });
   });
+
+  it('shows the court of the player state', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    expect(await screen.findByText('Saray')).toBeInTheDocument();
+    expect(screen.getByText('Osman Bey')).toBeInTheDocument();
+    expect(
+      screen.getByText('Divan teşkilatı henüz kurulmadı; vezir atanamaz.'),
+    ).toBeInTheDocument();
+  });
+
+  it('opens the encyclopedia entry of a city without leaving the map', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'bölge tur-bilecik' }),
+    );
+    fireEvent.click(await screen.findByRole('button', { name: 'Söğüt' }));
+
+    const drawer = await screen.findByRole('complementary', {
+      name: 'Ansiklopedi',
+    });
+    expect(drawer).toHaveTextContent(/uç beyliğinin merkezi/);
+    expect(screen.getByTestId('map')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Kapat' }));
+    expect(
+      screen.queryByRole('complementary', { name: 'Ansiklopedi' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('opens the chronicle with the real history of the reached years', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(await screen.findByRole('button', { name: /kronik/i }));
+
+    const dialog = await screen.findByRole('dialog', { name: 'Kronik' });
+    expect(dialog).toHaveTextContent('Senin tarihin');
+    expect(dialog).toHaveTextContent(/Geleneksel olarak Osmanlı Beyliği/);
+    // 1302 henüz gelmedi: Koyunhisar gösterilmez.
+    expect(dialog).not.toHaveTextContent(/Koyunhisar/);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Kapat' }));
+    expect(screen.queryByRole('dialog', { name: 'Kronik' })).toBeNull();
+  });
+
+  it('announces a new achievement', async () => {
+    renderPlay('/play/kurulus-1299');
+    await screen.findByTestId('map');
+
+    gameStore.setState({ newAchievements: ['ilk-fetih'] });
+
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Başarım: İlk Fetih',
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Bildirimi kapat' }));
+    expect(screen.queryByRole('status')).toBeNull();
+  });
+
+  it('asks a quiz question in spring and rewards the right answer', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    // İlkbahar 1299 → dört tur sonra İlkbahar 1300.
+    for (let i = 0; i < 4; i++) {
+      fireEvent.click(
+        await screen.findByRole('button', { name: /turu bitir/i }),
+      );
+      await waitFor(() => expect(gameStore.getState().game?.turn).toBe(i + 2));
+    }
+
+    expect(
+      await screen.findByRole('dialog', {
+        name: "Osmanlı Beyliği'nin kurucusu kimdir?",
+      }),
+    ).toBeInTheDocument();
+    const before = gameStore.getState().game!.factions.osmanli!.treasury;
+    fireEvent.click(screen.getByRole('button', { name: 'Osman Bey' }));
+
+    await waitFor(() =>
+      expect(gameStore.getState().game!.factions.osmanli!.treasury).toBe(
+        before + 5,
+      ),
+    );
+    expect(screen.getByRole('status')).toHaveTextContent('Doğru!');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Devam' }));
+    // Aynı ilkbaharda ikinci soru sorulmaz.
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('guides a new player through the tutorial', async () => {
+    renderPlay('/play/ogretici-1299');
+
+    expect(await screen.findByText('Rehber (0/7)')).toBeInTheDocument();
+    expect(
+      screen.getByText('Ordunu seç', { selector: 'p' }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'ordu army-1' }));
+    expect(await screen.findByText('Rehber (1/7)')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'git tur-sakarya' }));
+    expect(await screen.findByText('Rehber (2/7)')).toBeInTheDocument();
+    expect(
+      screen.getByText('Asker devşir', { selector: 'p' }),
+    ).toBeInTheDocument();
+  });
 });

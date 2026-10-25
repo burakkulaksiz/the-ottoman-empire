@@ -31,6 +31,10 @@ npm run dev
 | `/`                 | Ana menü                            |
 | `/scenarios`        | Senaryo seçimi                      |
 | `/play/:scenarioId` | Oyun ekranı (harita, HUD, paneller) |
+| `/saves`            | Kayıtlı oyunlar                     |
+| `/encyclopedia`     | Ansiklopedi (arama, kategoriler)    |
+| `/sources`          | Kaynakça                            |
+| `/achievements`     | Başarımlar                          |
 
 ## Mimari
 

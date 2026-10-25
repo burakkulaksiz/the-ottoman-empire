@@ -1,5 +1,6 @@
 import { validateAction } from './commands';
 import type { CommandError } from './commands/types';
+import { courtIncomeFactor } from './court';
 import { RULES } from './rules';
 import type { FactionId, GameState, ProvinceId, World } from './types';
 import { UNIT_DEFS, UNIT_TYPES, unitEntries, type UnitType } from './units';
@@ -18,7 +19,9 @@ export function incomeOf(
     .reduce((sum, p) => sum + (world.provinces[p.id]?.baseTax ?? 0), 0);
   if (factionId !== state.playerFactionId) return base;
   return Math.round(
-    base * RULES.difficulty[state.settings.difficulty].playerIncome,
+    base *
+      RULES.difficulty[state.settings.difficulty].playerIncome *
+      courtIncomeFactor(state.court),
   );
 }
 

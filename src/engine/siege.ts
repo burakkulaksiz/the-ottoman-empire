@@ -2,6 +2,7 @@ import type { Draft } from 'immer';
 
 import { hostileArmiesIn } from './combat';
 import type { ExecuteContext } from './context';
+import { adjustStability } from './court';
 import { isHostile } from './diplomacy';
 import { RULES } from './rules';
 import type { ArmyState, FactionId, ProvinceId } from './types';
@@ -18,6 +19,8 @@ export function captureProvince(
   const from = province.ownerId;
   province.ownerId = by;
   delete province.siege;
+  adjustStability(state, by, RULES.court.provinceWonGain);
+  if (from) adjustStability(state, from, -RULES.court.provinceLostLoss);
   emit({ type: 'provinceCaptured', provinceId, by, from });
 }
 

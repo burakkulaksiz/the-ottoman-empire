@@ -25,7 +25,11 @@ export type ActionCommand =
       tribute?: number;
     }
   | { type: 'proposeAlliance'; target: FactionId }
-  | { type: 'respondOffer'; offerId: string; accept: boolean };
+  | { type: 'respondOffer'; offerId: string; accept: boolean }
+  /** Vezir adaylarından birini atar (C8). */
+  | { type: 'appointVizier'; personId: string }
+  /** Mini quiz cevabı (D5); `choice` seçeneğin sırası. */
+  | { type: 'answerQuiz'; quizId: string; choice: number };
 
 export type Command =
   | ActionCommand
@@ -65,7 +69,13 @@ export type CommandError =
   | 'invalidTribute'
   | 'noSuchOffer'
   /** Barış yaptığın devletin topraklarına giremezsin. */
-  | 'atPeace';
+  | 'atPeace'
+  | 'noCourt'
+  /** Bu kurum henüz yok (ör. divan). */
+  | 'notYet'
+  | 'noSuchCandidate'
+  | 'unknownQuiz'
+  | 'alreadyAnswered';
 
 export interface ValidationArgs<C> {
   world: World;

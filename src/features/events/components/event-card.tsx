@@ -20,6 +20,8 @@ type EventCardProps = {
   event: EventCardContent;
   /** Oyuncu seçtiyse seçilen seçenek; sonuç ve tarihî bilgi gösterilir. */
   chosenId: string | null;
+  /** "Tarihte gerçekte ne oldu?" bölümünün kaynakları (D6). */
+  sources?: string[];
   /** Tarihe sadık mod: tarihte seçilen seçenek önceden gösterilir (C10). */
   revealHistorical?: boolean;
   onChoose: (choiceId: string) => void;
@@ -30,6 +32,7 @@ type EventCardProps = {
 export function EventCard({
   event,
   chosenId,
+  sources = [],
   revealHistorical = false,
   onChoose,
   onClose,
@@ -76,6 +79,11 @@ export function EventCard({
                     : `Tarihte farklı oldu: "${historicalChoice?.label}" seçildi.`}
                 </p>
                 <p className="mt-1 text-sm">{event.historical.note}</p>
+                {sources.length > 0 && (
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Kaynak: {sources.join('; ')}
+                  </p>
+                )}
               </section>
             </CardContent>
             <CardFooter className="justify-end">

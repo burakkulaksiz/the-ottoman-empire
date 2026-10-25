@@ -1,4 +1,4 @@
-import { ArrowLeft, Coins, Save, SkipForward } from 'lucide-react';
+import { ArrowLeft, Coins, Save, ScrollText, SkipForward } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -19,6 +19,8 @@ type GameHudProps = {
   onEndTurn: () => void;
   /** Kayıt menüsünü açar/kapatır. */
   onToggleSaves: () => void;
+  /** Kroniği açar (D4). */
+  onOpenChronicle: () => void;
 };
 
 /** Oyun ekranının üst çubuğu: senaryo, tarih, hazine ve tur düğmesi. */
@@ -34,6 +36,7 @@ export function GameHud({
   canEndTurn,
   onEndTurn,
   onToggleSaves,
+  onOpenChronicle,
 }: GameHudProps) {
   return (
     <header className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b bg-card p-2">
@@ -75,6 +78,9 @@ export function GameHud({
           {resultLabel}
         </span>
       )}
+      <Button size="sm" variant="outline" onClick={onOpenChronicle}>
+        <ScrollText /> Kronik
+      </Button>
       <Button size="sm" variant="outline" onClick={onToggleSaves}>
         <Save /> Kaydet
       </Button>

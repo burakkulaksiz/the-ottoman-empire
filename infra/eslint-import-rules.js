@@ -58,6 +58,8 @@ function generateImportRules() {
     { name: 'events', allowedFeatures: [] },
     { name: 'game', allowedFeatures: [] },
     { name: 'saves', allowedFeatures: [] },
+    { name: 'encyclopedia', allowedFeatures: [] },
+    { name: 'quiz', allowedFeatures: [] },
   ];
 
   features.forEach((feature) => {

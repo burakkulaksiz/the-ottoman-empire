@@ -4,6 +4,7 @@ import { RULES } from './rules';
 import type {
   ArmyState,
   FactionId,
+  CourtState,
   DiplomacyState,
   FactionState,
   GameSettings,
@@ -30,6 +31,9 @@ export interface ScenarioSetup {
    * Başlangıç ilişkileri (C7). Verilmezse herkes herkesle savaştadır; `default`
    * yazılmayan çiftler içindir, `pairs` özel durumları belirler.
    */
+  /** Oyuncu devletinin sarayı (C8); verilmezse iç siyaset yoktur. */
+  court?: Omit<CourtState, 'candidates' | 'vizier'> &
+    Partial<Pick<CourtState, 'vizier'>>;
   relations?: {
     default?: Relation;
     pairs?: { a: FactionId; b: FactionId; relation: Relation }[];
@@ -188,6 +192,14 @@ export function createGame(
     armies,
     events: { fired: [], pending: [], choices: {} },
     diplomacy: buildDiplomacy(setup),
+    ...(setup.court && {
+      court: {
+        ...setup.court,
+        vizier: setup.court.vizier ?? null,
+        candidates: [],
+      },
+    }),
+    quizzes: { answered: {} },
     settings: {
       difficulty: settings?.difficulty ?? 'normal',
       historicalMode: settings?.historicalMode ?? false,

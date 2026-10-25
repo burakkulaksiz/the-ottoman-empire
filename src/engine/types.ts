@@ -99,6 +99,8 @@ export interface World {
   historical?: HistoricalBenchmark;
   /** Tarihî olay kartları (D1). */
   events?: EventDef[];
+  /** Mini quiz soruları ve doğru seçenekleri (D5); metinler içerikte. */
+  quizzes?: { id: string; answer: number }[];
 }
 
 // --- Oyun durumu: her hamlede değişir, düz JSON olarak kaydedilir ---
@@ -220,6 +222,19 @@ export type LogPayload =
       receiver: FactionId;
       amount: number;
     }
+  | { type: 'rulerDied'; name: string; age: number }
+  | { type: 'newRuler'; name: string; age: number }
+  | { type: 'successionStruggle'; winner: string; rivals: string[] }
+  | { type: 'heirBorn'; name: string }
+  | { type: 'vizierAppointed'; name: string }
+  | { type: 'vizierDied'; name: string }
+  | { type: 'janissaryRevolt'; factionId: FactionId }
+  | {
+      type: 'revolt';
+      provinceId: ProvinceId;
+      kind: 'rebellion' | 'celali';
+    }
+  | { type: 'quizAnswered'; quizId: string; correct: boolean; reward: number }
   | { type: 'incomeCollected'; factionId: FactionId; amount: number }
   | { type: 'factionEliminated'; factionId: FactionId }
   | { type: 'gameEnded'; status: Extract<GameStatus, { phase: 'ended' }> };
@@ -237,6 +252,33 @@ export interface GameSettings {
    * tarihte seçilen seçenek gösterilir. Öğrenmeye odaklı oynanış.
    */
   historicalMode: boolean;
+}
+
+/** Sarayda bir kişi: hükümdar, şehzade veya vezir (C8). */
+export interface Person {
+  id: string;
+  name: string;
+  /** Doğum yılı; yaş tarihten hesaplanır. */
+  born: number;
+  /** 1–5: savaşçılık (ileride ordu komutası). */
+  military: number;
+  /** 1–5: yönetim; sadakati ve geliri artırır. */
+  administration: number;
+  /** `false`: tahtta hak iddia etmez (taht kavgasına katılmaz). */
+  claimsThrone?: boolean;
+}
+
+/** Oyuncu devletinin sarayı ve iç siyaseti (C8). */
+export interface CourtState {
+  ruler: Person;
+  heirs: Person[];
+  vizier: Person | null;
+  /** Vezirlik için adaylar (divan kurulduktan sonra, vezir yokken). */
+  candidates: Person[];
+  /** 0–100: sadakat/istikrar. Düşükse isyan çıkar, gelir azalır. */
+  stability: number;
+  /** Yeni doğan şehzadelere ve adaylara verilecek adlar. */
+  names: string[];
 }
 
 /** Olay kartlarının durumu (D1). */
@@ -266,6 +308,10 @@ export interface GameState {
   events: EventsState;
   diplomacy: DiplomacyState;
   settings: GameSettings;
+  /** Yalnızca sarayı tanımlanmış senaryolarda (oyuncu devleti için). */
+  court?: CourtState;
+  /** Cevaplanan quizler: soru → doğru mu? (D5) */
+  quizzes?: { answered: Record<string, boolean> };
   log: LogEntry[];
   /** Deterministik id üretimi için sayaç. */
   nextId: number;

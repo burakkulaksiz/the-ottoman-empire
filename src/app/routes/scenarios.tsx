@@ -98,6 +98,11 @@ export default function Scenarios() {
                 <CardTitle className="font-display text-2xl">
                   <h2>{scenario.name}</h2>
                 </CardTitle>
+                {scenario.tutorial && (
+                  <p className="w-fit rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                    Yeni başlayanlar için önerilir
+                  </p>
+                )}
                 <CardDescription>
                   Başlangıç: {formatDate(scenario.startDate)}
                   {scenario.endDate &&

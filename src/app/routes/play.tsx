@@ -4,23 +4,38 @@ import { Link, useSearchParams } from 'react-router';
 
 import { buttonVariants } from '@/components/ui/button';
 import { APP_NAME } from '@/config/app';
+import { ACHIEVEMENTS } from '@/content/achievements';
+import {
+  CATEGORY_LABELS,
+  getEntry,
+  placeEntryId,
+} from '@/content/encyclopedia/entries';
+import { getQuiz, nextQuiz } from '@/content/quizzes';
 import { getScenarioDefinition, loadScenario } from '@/content/scenarios';
+import { formatCitation } from '@/content/sources';
 import { PLACES, placesIn } from '@/content/world/places';
 import { PROVINCE_META } from '@/content/world/provinces';
 import { TERRAIN_LABELS, terrainOf } from '@/content/world/terrain';
 import { routePath, TRADE_ROUTES } from '@/content/world/trade-routes';
 import {
+  ageOf,
   incomeOf,
+  RULES,
+  stabilityLevel,
   legalMoves,
   objectiveProgress,
   recruitOptions,
   upkeepOf,
   type CommandError,
   type GameState,
+  type Person,
   type UnitType,
 } from '@/engine';
+import { EncyclopediaDrawer } from '@/features/encyclopedia/components/encyclopedia-drawer';
 import { EventCard } from '@/features/events/components/event-card';
 import { ArmyPanel } from '@/features/game/components/army-panel';
+import { ChronicleCard } from '@/features/game/components/chronicle-card';
+import { CourtPanel } from '@/features/game/components/court-panel';
 import { DecisionsPanel } from '@/features/game/components/decisions-panel';
 import { DiplomacyPanel } from '@/features/game/components/diplomacy-panel';
 import { GameHud } from '@/features/game/components/game-hud';
@@ -29,11 +44,13 @@ import { GameOverCard } from '@/features/game/components/game-over-card';
 import { ObjectivesPanel } from '@/features/game/components/objectives-panel';
 import { Panel } from '@/features/game/components/panel';
 import { ProvincePanel } from '@/features/game/components/province-panel';
+import { TutorialPanel } from '@/features/game/components/tutorial-panel';
 import { END_REASON_LABELS } from '@/features/game/config/end-reasons';
 import { formatDate } from '@/features/game/config/season-labels';
 import { UNIT_LABELS } from '@/features/game/config/unit-labels';
 import { formatLogEntry } from '@/features/game/lib/format-log-entry';
 import { GameMap } from '@/features/map/components/game-map';
+import { QuizCard } from '@/features/quiz/components/quiz-card';
 import { SaveSlotList } from '@/features/saves/components/save-slot-list';
 import {
   isSaveSlot,
@@ -45,6 +62,7 @@ import {
 import { useGameStore } from '@/stores/game-store';
 
 import { buildArmyMarkers } from '../lib/army-markers';
+import { buildChronicle } from '../lib/chronicle';
 import { summarizeDecisions } from '../lib/decisions';
 import {
   buildDiplomacyRows,
@@ -53,6 +71,11 @@ import {
 } from '../lib/diplomacy-rows';
 import { settingsFromSearch, settingsLabel } from '../lib/game-settings';
 import { buildSlotRows } from '../lib/slot-rows';
+import {
+  NO_TUTORIAL_FLAGS,
+  tutorialProgress,
+  type TutorialFlags,
+} from '../lib/tutorial';
 
 import type { Route } from './+types/play';
 
@@ -64,6 +87,12 @@ const RECRUIT_ERRORS: Partial<Record<CommandError, string>> = {
   notOwner: 'Bu bölge sana ait değil',
   eventPending: 'Önce olay kartına karar ver',
 };
+
+const STABILITY_LABELS = {
+  stable: 'Sağlam',
+  uneasy: 'Huzursuz',
+  unrest: 'İsyan eşiğinde',
+} as const;
 
 export function meta(_: Route.MetaArgs) {
   return [{ title: `Oyun · ${APP_NAME}` }];
@@ -78,6 +107,16 @@ export function clientLoader({ params }: Route.ClientLoaderArgs) {
 
 export default function Play({ loaderData }: Route.ComponentProps) {
   return <PlayGame key={loaderData.scenarioId} id={loaderData.scenarioId} />;
+}
+
+function courtPerson(person: Person, year: number) {
+  return {
+    id: person.id,
+    name: person.name,
+    age: ageOf(person, year),
+    military: person.military,
+    administration: person.administration,
+  };
 }
 
 function PlayGame({ id }: { id: string }) {
@@ -222,7 +261,9 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
     const army = game.armies[armyId];
     if (!army) return;
     selectProvince(army.provinceId);
-    selectArmy(army.ownerId === game.playerFactionId ? armyId : null);
+    const own = army.ownerId === game.playerFactionId;
+    selectArmy(own ? armyId : null);
+    if (own) markTutorial('armySelected');
   }
 
   // --- Paneller ---
@@ -305,6 +346,47 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
   );
   const [gameOverDismissed, setGameOverDismissed] = useState(false);
 
+  // --- Öğretici (D7): arayüzde yapılan adımlar burada izlenir ---
+  const [tutorialFlags, setTutorialFlags] =
+    useState<TutorialFlags>(NO_TUTORIAL_FLAGS);
+  const markTutorial = (flag: keyof TutorialFlags) =>
+    setTutorialFlags((f) => (f[flag] ? f : { ...f, [flag]: true }));
+  const tutorial = scenario.tutorial
+    ? tutorialProgress(scenario.tutorial, game, tutorialFlags)
+    : null;
+
+  // --- Başarım bildirimi (D6) ---
+  const newAchievements = useGameStore((s) => s.newAchievements);
+  const dismissAchievement = useGameStore((s) => s.dismissAchievement);
+  const toast = ACHIEVEMENTS.find((a) => a.id === newAchievements[0]);
+
+  // --- Bilgi yarışması (D5): her ilkbahar bir soru; geçilebilir ---
+  const [quizState, setQuizState] = useState<{
+    id: string;
+    chosen: number | null;
+  } | null>(null);
+  const [quizSkippedTurn, setQuizSkippedTurn] = useState<number | null>(null);
+  const offeredQuiz =
+    game.status.phase === 'playing' &&
+    game.turn > 1 &&
+    game.date.season === 'spring' &&
+    game.events.pending.length === 0 &&
+    quizSkippedTurn !== game.turn
+      ? nextQuiz(game)
+      : undefined;
+  const shownQuiz = quizState ? getQuiz(quizState.id) : offeredQuiz;
+
+  // --- Kronik (D4) ---
+  const [chronicleOpen, setChronicleOpen] = useState(false);
+
+  // --- Ansiklopedi (D3): haritadan ayrılmadan açılır ---
+  const [entryId, setEntryId] = useState<string | null>(null);
+  const entry = entryId ? getEntry(entryId) : undefined;
+  const openEntry = (id: string) => {
+    setEntryId(id);
+    markTutorial('encyclopediaOpened');
+  };
+
   // --- Diplomasi ---
   const lastLog = useGameStore((s) => s.lastLog);
   const diplomacyFeedback = useMemo(
@@ -343,6 +425,10 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
         canEndTurn={!ended && game.events.pending.length === 0}
         onEndTurn={() => void send({ type: 'endTurn' })}
         onToggleSaves={() => setSavesOpen((open) => !open)}
+        onOpenChronicle={() => {
+          setChronicleOpen(true);
+          markTutorial('chronicleOpened');
+        }}
       />
 
       <div className="relative flex-1">
@@ -353,6 +439,7 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
           selectedProvinceId={selectedId}
           onProvinceSelect={handleProvinceSelect}
           places={placeMarkers}
+          onPlaceSelect={(placeId) => openEntry(placeEntryId(placeId))}
           tradeRoutes={tradeRoutes}
           armies={armyMarkers}
           selectedArmyId={selectedArmyId}
@@ -362,6 +449,12 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
 
         <div className="pointer-events-none absolute inset-0 flex flex-col justify-between gap-3 p-3 md:flex-row md:items-start">
           <div className="flex min-h-0 flex-col gap-3 md:h-full md:justify-between">
+            {tutorial && (
+              <TutorialPanel
+                steps={tutorial.steps}
+                currentId={tutorial.current?.id ?? null}
+              />
+            )}
             {objectives.length > 0 && (
               <ObjectivesPanel
                 objectives={objectives}
@@ -391,6 +484,39 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 )}
               </Panel>
             )}
+            {game.court && (
+              <CourtPanel
+                ruler={courtPerson(game.court.ruler, game.date.year)}
+                heirs={game.court.heirs.map((h) =>
+                  courtPerson(h, game.date.year),
+                )}
+                vizier={
+                  game.court.vizier
+                    ? courtPerson(game.court.vizier, game.date.year)
+                    : null
+                }
+                candidates={game.court.candidates.map((c) =>
+                  courtPerson(c, game.date.year),
+                )}
+                stability={Math.round(game.court.stability)}
+                stabilityLabel={
+                  STABILITY_LABELS[stabilityLevel(game.court.stability)]
+                }
+                vizierNote={
+                  game.date.year < RULES.court.divanFrom
+                    ? 'Divan teşkilatı henüz kurulmadı; vezir atanamaz.'
+                    : 'Yeni adaylar ilkbaharda belirir.'
+                }
+                vizierCost={RULES.court.vizierCost}
+                canAffordVizier={
+                  (game.factions[game.playerFactionId]?.treasury ?? 0) >=
+                  RULES.court.vizierCost
+                }
+                onAppointVizier={(personId) =>
+                  void send({ type: 'appointVizier', personId })
+                }
+              />
+            )}
             <DiplomacyPanel
               rows={buildDiplomacyRows(setup.world, game)}
               offers={buildOffers(setup.world, game)}
@@ -409,6 +535,22 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             <GameLog lines={logLines} />
           </div>
           <div className="flex flex-col gap-3 md:mr-12">
+            {entry && (
+              <EncyclopediaDrawer
+                entryId={entry.id}
+                entry={{
+                  ...entry,
+                  categoryLabel: CATEGORY_LABELS[entry.category],
+                  sources: entry.sources.map(formatCitation),
+                }}
+                related={entry.related.flatMap((id) => {
+                  const target = getEntry(id);
+                  return target ? [{ id, title: target.title }] : [];
+                })}
+                onRelated={openEntry}
+                onClose={() => setEntryId(null)}
+              />
+            )}
             {selectedArmy && (
               <ArmyPanel
                 factionName={names.faction(selectedArmy.ownerId)}
@@ -432,9 +574,15 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 fortification={
                   setup.world.provinces[selectedId!]?.fortification ?? 0
                 }
-                placeNames={
-                  selectedId ? placesIn(selectedId).map((p) => p.name) : []
+                places={
+                  selectedId
+                    ? placesIn(selectedId).map((p) => ({
+                        id: p.id,
+                        name: p.name,
+                      }))
+                    : []
                 }
+                onPlaceSelect={(placeId) => openEntry(placeEntryId(placeId))}
                 armies={armiesHere}
                 onSelectArmy={handleArmySelect}
                 recruit={recruit}
@@ -455,11 +603,56 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
             onDismiss={() => setGameOverDismissed(true)}
           />
         )}
+        {toast && (
+          <div
+            role="status"
+            className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-gold bg-card px-4 py-2 shadow-lg"
+          >
+            <span className="font-display text-lg">Başarım: {toast.title}</span>
+            <span className="text-sm text-muted-foreground">
+              {toast.description}
+            </span>
+            <button
+              type="button"
+              aria-label="Bildirimi kapat"
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => dismissAchievement(toast.id)}
+            >
+              ×
+            </button>
+          </div>
+        )}
+        {shownQuiz && !shownEvent && (
+          <QuizCard
+            quiz={shownQuiz}
+            chosen={quizState?.chosen ?? null}
+            reward={RULES.quizReward}
+            onChoose={(choice) => {
+              setQuizState({ id: shownQuiz.id, chosen: choice });
+              // İlkbahar başına tek soru: cevaptan sonra yenisi gelmez.
+              setQuizSkippedTurn(game.turn);
+              void send({ type: 'answerQuiz', quizId: shownQuiz.id, choice });
+            }}
+            onSkip={() => setQuizSkippedTurn(game.turn)}
+            onReadMore={() => {
+              openEntry(shownQuiz.entryId);
+              setQuizState(null);
+            }}
+            onClose={() => setQuizState(null)}
+          />
+        )}
+        {chronicleOpen && (
+          <ChronicleCard
+            rows={buildChronicle(game, scenario, names)}
+            onClose={() => setChronicleOpen(false)}
+          />
+        )}
         {shownEvent && (
           <EventCard
             event={shownEvent}
             chosenId={resolved?.choiceId ?? null}
             revealHistorical={game.settings.historicalMode}
+            sources={(shownEvent.historical.sources ?? []).map(formatCitation)}
             onChoose={(choiceId) => {
               void send({
                 type: 'chooseEvent',

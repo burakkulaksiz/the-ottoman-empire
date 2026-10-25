@@ -93,7 +93,7 @@ Mevcut lockfile'dan `npm install` / `npm ci` sorunsuzdur. Makinenin belleği az 
 
 ## İçerik ve tarih doğruluğu
 
-Oyunun amacı tarih öğretmektir: tarih, kişi, yer ve olay içeriği uydurulmaz. Bilgi **kaynak** ile birlikte eklenir (D6) ve "tarihte gerçekte ne oldu?" ile oyunun sonucu ayrı tutulur. Emin olmadığın tarihi bilgiyi `TODO(kaynak)` ile işaretle ve kullanıcıya söyle.
+Oyunun amacı tarih öğretmektir: tarih, kişi, yer ve olay içeriği uydurulmaz. Bilgi **kaynak** ile birlikte eklenir (D6: `src/content/sources.ts`; yalnızca gerçekten var olan, doğrulanabilir eserler eklenir, emin olunmayan sayfa/madde bilgisi uydurulmaz) ve "tarihte gerçekte ne oldu?" ile oyunun sonucu ayrı tutulur. Emin olmadığın tarihi bilgiyi `TODO(kaynak)` ile işaretle ve kullanıcıya söyle.
 
 ## Git
 
