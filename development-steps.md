@@ -12,16 +12,16 @@
 
 ## İlerleme özeti
 
-| Bölüm            | Biten | Toplam |
-| ---------------- | ----- | ------ |
-| A. Altyapı       | 2     | 5      |
-| B. Harita        | 2     | 5      |
-| C. Mekanikler    | 5     | 10     |
-| D. Tarih öğrenme | 0     | 7      |
-| E. Arayüz        | 0     | 5      |
-| F. Kalite        | 0     | 5      |
-| G. İleride       | 0     | 4      |
-| **Toplam**       | **9** | **41** |
+| Bölüm            | Biten  | Toplam |
+| ---------------- | ------ | ------ |
+| A. Altyapı       | 2      | 5      |
+| B. Harita        | 2      | 5      |
+| C. Mekanikler    | 5      | 10     |
+| D. Tarih öğrenme | 1      | 7      |
+| E. Arayüz        | 1      | 5      |
+| F. Kalite        | 0      | 5      |
+| G. İleride       | 0      | 4      |
+| **Toplam**       | **11** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -31,9 +31,11 @@ Oynanabilir ilk sürüm için:
 
 **A1 → A2 → B1 → B2 → C1 → C2 (tek senaryo) → C4 + C5 → C3 → D1 → E1**
 
+> **MVP durumu:** Sıradaki tüm motor ve içerik maddeleri bitti, ama arayüzden henüz ordu hareket ettirilemiyor (E2/B5). O yüzden "oynanabilir" sayılması için A3 → E2 + B5 gerekiyor.
+
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** D1 (tarihi olay kartları)
+**Sıradaki madde:** A3 (durum yönetimi: `/play` içindeki geçici oyun durumunu Zustand store'a taşımak), ardından E2 + B5 (haritadan ordu seçip hareket ettirebilmek).
 
 ---
 
@@ -74,7 +76,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 ## D. Oynarken tarih öğrenme
 
-- [ ] **D1. Tarihi olay kartları:** tetikleyicisi olan olaylar, oyuncunun seçimleri ve "Tarihte gerçekte ne oldu?" açıklaması.
+- [x] **D1. Tarihi olay kartları:** tetikleyicisi olan olaylar, oyuncunun seçimleri ve "Tarihte gerçekte ne oldu?" açıklaması.
+  - _Yapıldı: tetikleyiciler (tarih, bölgeye sahip olma), seçeneklerin etkisi (hazine, moral), bekleyen olay tur bitirmeyi engeller, olay kartı arayüzü ("Tarihte gerçekte ne oldu?" bölümüyle). 1299 Kuruluş için iki kart: Koyunhisar Savaşı (1302) ve Bursa'nın Düşüşü. Metinler `TODO(kaynak)` ile doğrulanmayı bekliyor. Seçimin tarihle karşılaştırılması D2'de._
 - [ ] **D2. Karar anları:** oyuncu kritik bir kararı (ör. Ankara Savaşı öncesi) verdikten sonra seçimi gerçek tarihle karşılaştırılır.
 - [ ] **D3. Ansiklopedi:** kişiler, kurumlar (devşirme, tımar, kapıkulu), savaşlar ve yerler. Haritadaki bir öğeye tıklayınca ilgili maddesi açılır.
 - [ ] **D4. Kronik/zaman çizelgesi:** oyuncunun oynadığı tarih ile gerçek tarih yan yana.
@@ -84,7 +87,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 
 ## E. Arayüz ve deneyim
 
-- [ ] **E1. Ana menü, senaryo seçimi ve oyun ekranının yerleşimi** (HUD, yan paneller).
+- [x] **E1. Ana menü, senaryo seçimi ve oyun ekranının yerleşimi** (HUD, yan paneller).
+  - _Yapıldı: ana menü (`/`), senaryo seçimi (`/scenarios`), oyun ekranı (`/play/:scenarioId`): üst çubuk (hazine, tarih, tur, Turu Bitir), sol panel (hedefler, günlük), sağ panel (seçilen bölge), olay kartı. Paneller başlığa basınca daralır. Bölge/ordu/şehir ayrıntıları E2'de, mobil düzen E5'te._
 - [ ] **E2. Bölge, ordu ve şehir panelleri.**
 - [ ] **E3. Tarihi görsel kimlik:** tezhip, hat tipografisi ve minyatür esintili bir tema.
 - [ ] **E4. Ses ve müzik** (mehter gibi), ayarlar ekranı.

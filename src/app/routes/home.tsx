@@ -22,7 +22,7 @@ export default function Home() {
         </header>
 
         <nav className="flex w-full flex-col gap-3">
-          <Link to="/play" className={buttonVariants({ size: 'lg' })}>
+          <Link to="/scenarios" className={buttonVariants({ size: 'lg' })}>
             <Swords /> Yeni Oyun
           </Link>
           <Button size="lg" variant="outline" disabled>

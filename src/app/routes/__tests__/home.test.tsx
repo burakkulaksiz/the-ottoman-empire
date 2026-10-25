@@ -15,7 +15,7 @@ describe('Home', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /yeni oyun/i })).toHaveAttribute(
       'href',
-      '/play',
+      '/scenarios',
     );
   });
 });

@@ -23,6 +23,14 @@ npm run dev
 | `npm test`               | Vitest birim testleri                      |
 | `npm run data:provinces` | Bölge haritası ve komşuluk verisini üretir |
 
+## Sayfalar
+
+| Adres               | İçerik                              |
+| ------------------- | ----------------------------------- |
+| `/`                 | Ana menü                            |
+| `/scenarios`        | Senaryo seçimi                      |
+| `/play/:scenarioId` | Oyun ekranı (harita, HUD, paneller) |
+
 ## Mimari
 
 [React Application Architecture for Production (2nd Ed.)](https://github.com/PacktPublishing/React-Application-Architecture-for-Production-Second-Edition) yapısı temel alındı; React Router 7 **SPA modunda** (`ssr: false`) çalışır.
