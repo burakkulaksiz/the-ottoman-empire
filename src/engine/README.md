@@ -57,6 +57,10 @@ Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 =
 - Bekleyen olay varken `endTurn` `eventPending` hatası verir; oyuncu `{ type: 'chooseEvent', eventId, choiceId }` ile karar verir.
 - Seçimler `state.events.choices` içinde saklanır (D2'de tarihle karşılaştırılacak).
 
+## Yapay zekâ (C9)
+
+`dispatch`'e `{ ai }` verilir; varsayılan `passiveAi` hiçbir şey yapmaz, uygulama `heuristicAi` kullanır (`engine-api.ts`). `createHeuristicAi({ aggression })` her ordunun komşu bölgelerini puanlar: savunmasız düşman toprağı, kazanılabilir savaş (güç oranı ≥ `aggression`, `battleOdds` ile zarsız hesaplanır), kışın eve dönüş ve düşman sınırına yaklaşma. Sahipsiz bölgelere yayılmaz. Rastgelelik yalnızca verilen `random()` ile (deterministik).
+
 ## Yeni mekanik eklemek
 
 - **Yeni emir**: `commands/types.ts` içindeki `ActionCommand` birleşimine ekle, `commands/<emir>.ts` içinde `validate…` / `execute…` yaz, `commands/index.ts` içindeki `switch`'lere bağla.

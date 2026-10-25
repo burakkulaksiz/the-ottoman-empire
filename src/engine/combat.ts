@@ -3,7 +3,13 @@ import type { Draft } from 'immer';
 import type { ExecuteContext } from './context';
 import { random } from './rng';
 import { moraleFactor, RULES } from './rules';
-import type { ArmyState, FactionId, GameState, ProvinceId } from './types';
+import type {
+  ArmyState,
+  FactionId,
+  GameState,
+  ProvinceId,
+  World,
+} from './types';
 import { armySize, scaleUnits, UNIT_DEFS, unitEntries } from './units';
 
 type Army = Draft<ArmyState>;
@@ -22,7 +28,10 @@ export function hostileArmiesIn(
     .sort((a, b) => (a.id < b.id ? -1 : 1));
 }
 
-function power(armies: Army[], kind: 'attack' | 'defense'): number {
+function power(
+  armies: readonly Pick<ArmyState, 'units' | 'morale'>[],
+  kind: 'attack' | 'defense',
+): number {
   let total = 0;
   for (const army of armies) {
     const factor = moraleFactor(army.morale);
@@ -31,6 +40,31 @@ function power(armies: Army[], kind: 'attack' | 'defense'): number {
     }
   }
   return total;
+}
+
+/**
+ * Zarsız güç karşılaştırması (savaşın beklenen dengesi). Yapay zekâ saldırıp
+ * saldırmayacağına bununla karar verir; `resolveBattle` da aynı değerleri
+ * zarla çarpar.
+ */
+export function battleOdds(
+  world: World,
+  state: Pick<GameState, 'provinces'>,
+  attackers: readonly Pick<ArmyState, 'units' | 'morale'>[],
+  defenders: readonly Pick<ArmyState, 'units' | 'morale' | 'ownerId'>[],
+  provinceId: ProvinceId,
+): { attack: number; defense: number } {
+  const province = world.provinces[provinceId]!;
+  const terrain = RULES.terrainDefense[province.terrain ?? 'plain'];
+  const ownsProvince =
+    state.provinces[provinceId]?.ownerId === defenders[0]?.ownerId;
+  const fort = ownsProvince
+    ? 1 + (province.fortification ?? 0) * RULES.fortificationDefense
+    : 1;
+  return {
+    attack: power(attackers, 'attack'),
+    defense: power(defenders, 'defense') * terrain * fort,
+  };
 }
 
 /** 1 ± `battleLuck` aralığında tohumlu zar. */
@@ -81,18 +115,11 @@ export function resolveBattle(
 ) {
   const { world, state, emit } = context;
   const provinceId = attacker.provinceId;
-  const province = world.provinces[provinceId]!;
   const defenderId = defenders[0]!.ownerId;
 
-  const terrain = RULES.terrainDefense[province.terrain ?? 'plain'];
-  const ownsProvince = state.provinces[provinceId]?.ownerId === defenderId;
-  const fort = ownsProvince
-    ? 1 + (province.fortification ?? 0) * RULES.fortificationDefense
-    : 1;
-
-  const attackPower = power([attacker], 'attack') * luck(state);
-  const defensePower =
-    power(defenders, 'defense') * terrain * fort * luck(state);
+  const odds = battleOdds(world, state, [attacker], defenders, provinceId);
+  const attackPower = odds.attack * luck(state);
+  const defensePower = odds.defense * luck(state);
 
   const attackerWins = attackPower > defensePower;
   const strongest = Math.max(attackPower, defensePower);

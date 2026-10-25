@@ -1,5 +1,8 @@
 import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+// MapLibre kendi Worker dosyasını import.meta.url'e göre arar; Vite bağımlılığı
+// ön-paketleyince bu yol bozulur ("Worker failed to load"). Adres açıkça verilir.
+import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import { useEffect, useRef, useState } from 'react';
 
 import {
@@ -101,8 +104,10 @@ export function GameMap({
     };
 
     // MapLibre `window`'a bağlıdır; yalnızca tarayıcıda yüklenir.
-    void import('maplibre-gl').then(({ Map, Marker, NavigationControl }) => {
+    void import('maplibre-gl').then((maplibre) => {
       if (cancelled) return;
+      const { Map, Marker, NavigationControl } = maplibre;
+      maplibre.setWorkerUrl(maplibreWorkerUrl);
       markerClass.current = Marker;
       const created = new Map({
         container,
@@ -204,11 +209,16 @@ export function GameMap({
   }, [map, armies, selectedArmyId]);
 
   return (
-    <div
-      ref={containerRef}
-      role="application"
-      aria-label="Oyun haritası"
-      className={className}
-    />
+    // MapLibre kapsayıcısına kendi CSS'iyle `position: relative` verir; bu
+    // yüzden dış yerleşim sınıfları (örn. `absolute inset-0`) sarmalayıcıda,
+    // harita ise onu dolduran iç kutuda durur. Aksi hâlde yüksekliği 0 olur.
+    <div className={className}>
+      <div
+        ref={containerRef}
+        role="application"
+        aria-label="Oyun haritası"
+        className="h-full w-full"
+      />
+    </div>
   );
 }

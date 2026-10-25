@@ -5,7 +5,8 @@ import type { ScenarioDefinition } from './scenario-schema';
  *
  * Sınırlar yaklaşık: bölgeler modern illerdir (bkz. B2/B3) ve sahiplik
  * "o ilin ağırlıklı kısmı" olarak yorumlanmıştır. Para ve asker sayıları
- * tarihî veri ve ordu bileşimi değil, denge değeridir (hepsi hafif/ağır
+ * tarihî veri ve ordu bileşimi değil, denge değeridir (Anadolu'daki
+ * orduların hepsi benzer büyüklükte; kimse kendiliğinden ezici üstün değil) (hepsi hafif/ağır
  * süvari: yaya 1330'dan, yeniçeri 1363'ten önce kurulamaz).
  *
  * TODO(kaynak): Aşağıdaki sahiplik atamaları (özellikle Karesi, Hamidoğulları
@@ -131,8 +132,8 @@ export const kurulus1299: ScenarioDefinition = {
         'grc-centre-macedonia',
       ],
       armies: [
-        { provinceId: 'tur-bursa', units: { sipahi: 1800, akinci: 1200 } },
-        { provinceId: 'tur-kocaeli', units: { sipahi: 1200, akinci: 800 } },
+        { provinceId: 'tur-bursa', units: { sipahi: 600, akinci: 400 } },
+        { provinceId: 'tur-kocaeli', units: { sipahi: 500, akinci: 300 } },
       ],
     },
     germiyan: {
@@ -141,7 +142,7 @@ export const kurulus1299: ScenarioDefinition = {
       treasury: 40,
       provinces: ['tur-kutahya', 'tur-afyonkarahisar', 'tur-usak'],
       armies: [
-        { provinceId: 'tur-kutahya', units: { sipahi: 1200, akinci: 800 } },
+        { provinceId: 'tur-kutahya', units: { sipahi: 600, akinci: 400 } },
       ],
     },
     karesi: {
@@ -171,7 +172,7 @@ export const kurulus1299: ScenarioDefinition = {
       treasury: 25,
       provinces: ['tur-karaman', 'tur-konya'],
       armies: [
-        { provinceId: 'tur-karaman', units: { sipahi: 900, akinci: 600 } },
+        { provinceId: 'tur-karaman', units: { sipahi: 600, akinci: 400 } },
       ],
     },
     candar: {

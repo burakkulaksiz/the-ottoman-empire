@@ -4,6 +4,11 @@ export { legalMoves } from './commands';
 export type { ActionCommand, Command, CommandError } from './commands/types';
 export * from './create-game';
 export * from './dispatch';
+export {
+  createHeuristicAi,
+  heuristicAi,
+  type HeuristicAiOptions,
+} from './heuristic-ai';
 export * from './rng';
 export { RULES } from './rules';
 export * from './types';

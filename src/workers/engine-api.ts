@@ -2,6 +2,7 @@ import { loadScenario } from '@/content/scenarios';
 import {
   createGame,
   dispatch,
+  heuristicAi,
   type Command,
   type DispatchResult,
   type GameState,
@@ -47,6 +48,7 @@ export function createEngineApi(): EngineApi {
         state,
         state.playerFactionId,
         command,
+        { ai: heuristicAi },
       );
       if (result.ok) state = result.state;
       return result;

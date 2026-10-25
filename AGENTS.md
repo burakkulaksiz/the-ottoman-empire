@@ -76,6 +76,7 @@ testing/        Test kurulumu ve fixture'lar
 - Alias: `@/` → `src/`.
 - Kullanılmayan değişkenler `_` önekiyle. `any` kullanma.
 - Testler kodun yanındaki `__tests__/` klasöründe, `*.test.ts(x)`; ortak fixture'lar `testing/fixtures`.
+- MapLibre kapsayıcısına yerleşim sınıfı (`absolute`, `inset-0` …) verme: `maplibre-gl.css` `.maplibregl-map { position: relative }` ile bunu ezer ve harita 0 yükseklikte kalır. `GameMap` bu yüzden sarmalayıcı + iç kutu kullanır.
 - shadcn bileşeni eklerken (`npx shadcn add …`) çıktıdaki import'ları kontrol et: `import { cn } from "cn"` yazarsa `@/lib/utils` ile düzelt ve sahte `cn` paketini kaldır.
 
 ## Bağımlılık ekleme (önemli)

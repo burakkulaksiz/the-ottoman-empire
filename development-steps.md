@@ -16,12 +16,12 @@
 | ---------------- | ------ | ------ |
 | A. Altyapı       | 3      | 5      |
 | B. Harita        | 2      | 5      |
-| C. Mekanikler    | 5      | 10     |
+| C. Mekanikler    | 6      | 10     |
 | D. Tarih öğrenme | 1      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **12** | **41** |
+| **Toplam**       | **13** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -31,11 +31,11 @@ Oynanabilir ilk sürüm için:
 
 **A1 → A2 → B1 → B2 → C1 → C2 (tek senaryo) → C4 + C5 → C3 → D1 → E1**
 
-> **MVP durumu:** Oynanabilir ilk sürümün tüm adımları tamam: haritada ordu seçip komşu bölgeye yürütülüyor, savaş/fetih/kuşatma çözülüyor, olay kartı çıkıyor, hedeflere göre zafer/yenilgi belirleniyor. Eksik: rakipler henüz pasif (C9), kayıt yok (A4).
+> **MVP durumu:** Oynanabilir ilk sürümün tüm adımları tamam: haritada ordu seçip komşu bölgeye yürütülüyor, savaş/fetih/kuşatma çözülüyor, olay kartı çıkıyor, hedeflere göre zafer/yenilgi belirleniyor. Rakipler sezgisel yapay zekâyla oynuyor (C9). Eksik: kayıt yok (A4).
 
 Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kaybedilen ve bir tarihi olay kartı çıkan bir oyun elde ederiz. Diğer maddeler bunun üzerine eklenir.
 
-**Sıradaki madde:** C9 (rakip devletler için yapay zekâ; şimdilik rakipler pasif), ardından A4 (kayıt ve yükleme)
+**Sıradaki madde:** A4 (kayıt ve yükleme: IndexedDB, otomatik kayıt, birden fazla yuva)
 
 ---
 
@@ -77,7 +77,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
 - [ ] **C6. Ekonomi:** akçe, tımar sistemi, vergi (cizye, öşür), ticaret yolları ve enflasyon. Enflasyon geç dönem için önemli.
 - [ ] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
 - [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
-- [ ] **C9. Rakip devletler için yapay zekâ.**
+- [x] **C9. Rakip devletler için yapay zekâ.**
+  - _Yapıldı: sezgisel yapay zekâ (`heuristic-ai.ts`): savunmasız düşman toprağını alır, güç oranı yeterliyse (`aggression`) saldırır, zayıf kalacağı savaştan kaçınır, kışın eve döner, düşman sınırına doğru ilerler. Sahipsiz bölgelere yayılmaz (diplomasi/diğer devletler modellenene kadar). Ordu devşirme, ekonomi ve diplomasi içermez (C6, C7); zorluk ayarı C10'da._
 - [ ] **C10. Zorluk seviyeleri ve "tarihe sadık mod" seçeneği.**
 
 ## D. Oynarken tarih öğrenme
