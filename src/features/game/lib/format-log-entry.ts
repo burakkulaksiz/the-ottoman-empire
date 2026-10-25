@@ -44,6 +44,24 @@ export function formatLogEntry(
       return `${names.faction(entry.factionId)}: ${names.province(entry.provinceId)} bölgesinde ${entry.amount} ${UNIT_LABELS[entry.unit]} devşirildi (${entry.cost} akçe)`;
     case 'troopsUnpaid':
       return `${names.faction(entry.factionId)}: maaşlar ödenemedi (eksik ${entry.shortfall} akçe), kapıkulu kaçıyor ve morali düşüyor`;
+    case 'warDeclared':
+      return `${names.faction(entry.by)}, ${names.faction(entry.target)} devletine savaş ilan etti`;
+    case 'peaceMade':
+      return `Barış: ${names.faction(entry.a)} ve ${names.faction(entry.b)}${
+        entry.tribute === 0
+          ? ''
+          : ` (haraç: ${names.faction(entry.tribute > 0 ? entry.a : entry.b)} her tur ${Math.abs(entry.tribute)} akçe öder)`
+      }`;
+    case 'allianceFormed':
+      return `Evlilik ittifakı: ${names.faction(entry.a)} ve ${names.faction(entry.b)}`;
+    case 'proposalRefused':
+      return `${names.faction(entry.to)}, ${names.faction(entry.from)} devletinin ${entry.kind === 'peace' ? 'barış' : 'ittifak'} teklifini reddetti`;
+    case 'offerMade':
+      return `${names.faction(entry.from)} barış teklif ediyor`;
+    case 'offerRejected':
+      return `${names.faction(entry.from)} devletinin barış teklifini reddettin`;
+    case 'tributePaid':
+      return `Haraç: ${names.faction(entry.payer)} → ${names.faction(entry.receiver)}, ${entry.amount} akçe`;
     case 'upkeepPaid':
     case 'incomeCollected':
     case 'eventResolved':

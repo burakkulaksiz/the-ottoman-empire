@@ -66,5 +66,15 @@ export function buildScenario(definition: ScenarioDefinition): ScenarioSetup {
     factions: treasuries,
     provinceOwners,
     armies,
+    ...(scenario.relations && {
+      relations: {
+        default: scenario.relations.default,
+        pairs: scenario.relations.pairs.map(({ a, b, relation }) => ({
+          a,
+          b,
+          relation,
+        })),
+      },
+    }),
   };
 }

@@ -22,6 +22,9 @@ export function validateEndTurn(
 export function executeEndTurn(context: ExecuteContext) {
   const { world, state, ai } = context;
 
+  // Cevaplanmamış teklifler tur sonunda geçersiz olur.
+  state.diplomacy.offers = [];
+
   for (const faction of Object.values(state.factions)) {
     if (!faction.alive || faction.id === state.playerFactionId) continue;
 

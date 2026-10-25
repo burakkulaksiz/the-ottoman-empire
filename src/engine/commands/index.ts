@@ -1,4 +1,14 @@
 import type { ExecuteContext } from '../context';
+import {
+  executeDeclareWar,
+  executeProposeAlliance,
+  executeProposePeace,
+  executeRespondOffer,
+  validateDeclareWar,
+  validateProposeAlliance,
+  validateProposePeace,
+  validateRespondOffer,
+} from '../diplomacy';
 import type { FactionId, GameState, ProvinceId, World } from '../types';
 
 import { executeMoveArmy, validateMoveArmy } from './move-army';
@@ -18,6 +28,14 @@ export function validateAction(
       return validateMoveArmy({ world, state, factionId, command });
     case 'recruit':
       return validateRecruit({ world, state, factionId, command });
+    case 'declareWar':
+      return validateDeclareWar({ world, state, factionId, command });
+    case 'proposePeace':
+      return validateProposePeace({ world, state, factionId, command });
+    case 'proposeAlliance':
+      return validateProposeAlliance({ world, state, factionId, command });
+    case 'respondOffer':
+      return validateRespondOffer({ world, state, factionId, command });
   }
 }
 
@@ -31,6 +49,14 @@ export function executeAction(
       return executeMoveArmy(context, factionId, command);
     case 'recruit':
       return executeRecruit(context, factionId, command);
+    case 'declareWar':
+      return executeDeclareWar(context, factionId, command);
+    case 'proposePeace':
+      return executeProposePeace(context, factionId, command);
+    case 'proposeAlliance':
+      return executeProposeAlliance(context, factionId, command);
+    case 'respondOffer':
+      return executeRespondOffer(context, factionId, command);
   }
 }
 

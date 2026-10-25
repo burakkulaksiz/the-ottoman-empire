@@ -63,6 +63,13 @@ Oyun sonunda `status.score` tarihî bölge sayısıyla kıyaslar: `points` 100 =
 - **Devşirme**: `{ type: 'recruit', provinceId, unit }` bölgede `RULES.recruitBatch` (100) asker getirir, `UNIT_DEFS[unit].cost` akçe öder, bölgede ordu varsa ona katılır yoksa yeni ordu kurulur (o tur yürümez). Bölge başına tur başı `recruitOrdersPerProvince` emir; kuşatılan bölgede, başkasının bölgesinde ve henüz açılmamış birlikte yapılamaz. Arayüz için `recruitOptions`.
 - **Maaş**: tımarlı sipahi ve akıncı (`upkeep: 0`) toprak gelirinden geçinir; yaya, yeniçeri, topçu nakit maaş alır (`upkeepOf`). `payUpkeep` aşaması tur sonunda öder; ödenemezse ordunun morali düşer ve maaşlı birliklerden asker kaçar.
 
+## Diplomasi (C7)
+
+- `state.diplomacy.relations`: çift (`pairKey`) → `war | peace | alliance`. Senaryo `relations` vermezse herkes savaştadır (eski davranış).
+- Yalnızca **savaştaki** devletlerin orduları çarpışır ve toprakları alınabilir (`isHostile`). Barıştaki devletin topraklarına girilemez (`atPeace`); müttefik toprağından geçilir.
+- Komutlar: `declareWar`, `proposePeace` (`tribute` > 0 öneren öder, < 0 öneren ister), `proposeAlliance` (çeyiz, ortak düşman şartı), `respondOffer` (yapay zekânın oyuncuya teklifi). Kabul kuralları `acceptsPeace` / `acceptsAlliance` (deterministik). Aynı çifte tur başına bir teklif.
+- Haraçlar `payTributes` aşamasında ödenir; barış yapılınca iki taraf arasındaki kuşatmalar kalkar; cevaplanmayan teklifler tur sonunda düşer.
+
 ## Yapay zekâ (C9)
 
 `dispatch`'e `{ ai }` verilir; varsayılan `passiveAi` hiçbir şey yapmaz, uygulama `heuristicAi` kullanır (`engine-api.ts`). `createHeuristicAi({ aggression })` her ordunun komşu bölgelerini puanlar: savunmasız düşman toprağı, kazanılabilir savaş (güç oranı ≥ `aggression`, `battleOdds` ile zarsız hesaplanır), kışın eve dönüş ve düşman sınırına yaklaşma. Sahipsiz bölgelere yayılmaz. Devşirme bütçesi tur gelirinin `recruitShare` oranıdır; devlet başına `FactionDef.ai` (`aggression`, `recruitShare`) kişilik verir (1299'da Bizans temkinli ve az devşirir). Rastgelelik yalnızca verilen `random()` ile (deterministik).

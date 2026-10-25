@@ -82,6 +82,23 @@ export const scenarioSchema = z.object({
       note: z.string().min(1),
     })
     .optional(),
+  /** Başlangıç ilişkileri: yazılmayan çiftler `default` olur (C7). */
+  relations: z
+    .object({
+      default: z.enum(['war', 'peace', 'alliance']).default('war'),
+      pairs: z
+        .array(
+          z.object({
+            a: z.string(),
+            b: z.string(),
+            relation: z.enum(['war', 'peace', 'alliance']),
+            /** İlişkinin tarihî açıklaması. */
+            note: z.string().optional(),
+          }),
+        )
+        .default([]),
+    })
+    .optional(),
   playerFactionId: z.string().min(1),
   factions: z.record(
     z.string(),
@@ -93,6 +110,7 @@ export const scenarioSchema = z.object({
         .object({
           aggression: z.number().positive().optional(),
           recruitShare: z.number().min(0).max(1).optional(),
+          warlike: z.number().min(0).max(1).optional(),
         })
         .optional(),
       treasury: z.number().int().nonnegative(),

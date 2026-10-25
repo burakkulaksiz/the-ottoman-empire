@@ -256,4 +256,26 @@ describe('Play', () => {
 
     expect(screen.getByRole('button', { name: /Sipahi \+100/ })).toBeDisabled();
   });
+
+  it('declares war from the diplomacy panel and opens the border', async () => {
+    renderPlay('/play/kurulus-1299');
+
+    fireEvent.click(
+      await screen.findByRole('button', {
+        name: 'Germiyanoğulları: Savaş ilan et',
+      }),
+    );
+
+    await waitFor(() =>
+      expect(
+        gameStore.getState().game?.diplomacy.relations['germiyan|osmanli'],
+      ).toBe('war'),
+    );
+    // Hem diplomasi panelinde hem günlükte yazar.
+    expect(
+      await screen.findAllByText(
+        /Osmanlı Beyliği, Germiyanoğulları devletine savaş ilan etti/,
+      ),
+    ).not.toHaveLength(0);
+  });
 });

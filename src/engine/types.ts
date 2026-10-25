@@ -26,7 +26,36 @@ export interface FactionDef {
   name: string;
   color: string;
   /** Yapay zekâ kişiliği; yazılmazsa varsayılanlar kullanılır (C10). */
-  ai?: { aggression?: number; recruitShare?: number };
+  ai?: { aggression?: number; recruitShare?: number; warlike?: number };
+}
+
+/** İki devlet arasındaki ilişki (C7). */
+export type Relation = 'war' | 'peace' | 'alliance';
+
+/** Barışın şartı: `payer` her tur `receiver`a `amount` akçe öder (haraç). */
+export interface Tribute {
+  payer: FactionId;
+  receiver: FactionId;
+  amount: number;
+}
+
+/** Yapay zekânın oyuncuya yaptığı barış teklifi (oyuncu kabul eder ya da reddeder). */
+export interface Offer {
+  id: string;
+  from: FactionId;
+  to: FactionId;
+  kind: 'peace';
+  /** > 0: teklif eden öder; < 0: oyuncu öder. */
+  tribute: number;
+}
+
+export interface DiplomacyState {
+  /** `pairKey(a, b)` → ilişki. Kaydı olmayan çift savaştadır. */
+  relations: Record<string, Relation>;
+  tributes: Tribute[];
+  /** Bu tur yapılan teklifler (`kimden>kime`); aynı çifte tur başına bir teklif. */
+  proposed: string[];
+  offers: Offer[];
 }
 
 /** Oyuncunun zafer için tamamlaması gereken hedef (C3). */
@@ -168,6 +197,29 @@ export type LogPayload =
     }
   | { type: 'upkeepPaid'; factionId: FactionId; amount: number }
   | { type: 'troopsUnpaid'; factionId: FactionId; shortfall: number }
+  | { type: 'warDeclared'; by: FactionId; target: FactionId }
+  | { type: 'peaceMade'; a: FactionId; b: FactionId; tribute: number }
+  | { type: 'allianceFormed'; a: FactionId; b: FactionId }
+  | {
+      type: 'proposalRefused';
+      from: FactionId;
+      to: FactionId;
+      kind: 'peace' | 'alliance';
+    }
+  | {
+      type: 'offerMade';
+      offerId: string;
+      from: FactionId;
+      to: FactionId;
+      tribute: number;
+    }
+  | { type: 'offerRejected'; offerId: string; from: FactionId }
+  | {
+      type: 'tributePaid';
+      payer: FactionId;
+      receiver: FactionId;
+      amount: number;
+    }
   | { type: 'incomeCollected'; factionId: FactionId; amount: number }
   | { type: 'factionEliminated'; factionId: FactionId }
   | { type: 'gameEnded'; status: Extract<GameStatus, { phase: 'ended' }> };
@@ -199,6 +251,7 @@ export interface GameState {
   provinces: Record<ProvinceId, ProvinceState>;
   armies: Record<ArmyId, ArmyState>;
   events: EventsState;
+  diplomacy: DiplomacyState;
   log: LogEntry[];
   /** Deterministik id üretimi için sayaç. */
   nextId: number;

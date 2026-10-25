@@ -1,6 +1,7 @@
 import type { Draft } from 'immer';
 
 import type { ExecuteContext } from './context';
+import { isHostile } from './diplomacy';
 import { random } from './rng';
 import { moraleFactor, RULES } from './rules';
 import type {
@@ -16,7 +17,7 @@ type Army = Draft<ArmyState>;
 
 /**
  * Bir bölgedeki, verilen devlete düşman ordular (id sırasıyla, deterministik).
- * Diplomasi (C7) gelene kadar farklı her devlet düşmandır.
+ * Yalnızca savaşta olduğu devletlerin orduları düşmandır (C7).
  */
 export function hostileArmiesIn(
   state: Draft<GameState> | GameState,
@@ -24,7 +25,10 @@ export function hostileArmiesIn(
   factionId: FactionId,
 ): Army[] {
   return Object.values(state.armies as Record<string, Army>)
-    .filter((a) => a.provinceId === provinceId && a.ownerId !== factionId)
+    .filter(
+      (a) =>
+        a.provinceId === provinceId && isHostile(state, factionId, a.ownerId),
+    )
     .sort((a, b) => (a.id < b.id ? -1 : 1));
 }
 

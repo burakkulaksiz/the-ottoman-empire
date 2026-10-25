@@ -104,6 +104,20 @@ export const kurulus1299: ScenarioDefinition = {
     provinces: ['tur-bilecik', 'tur-eskisehir', 'tur-bursa'],
     note: "Osman Bey'in ölümünün ardından oğlu Orhan, uzun kuşatmanın sonunda 1326'da Bursa'yı aldı; Bursa ilk Osmanlı başkenti oldu.",
   },
+  // TODO(kaynak): 1299'daki ilişkiler sadeleştirilmiştir; Osmanlı'nın Bizans
+  // tekfurlarıyla mücadelesi esas alınmış, beylikler arası ilişkiler barış
+  // varsayılmıştır (D6).
+  relations: {
+    default: 'peace',
+    pairs: [
+      {
+        a: 'osmanli',
+        b: 'bizans',
+        relation: 'war',
+        note: 'Uç beyliği ile Bizans tekfurları arasında süregelen akın ve sınır savaşları.',
+      },
+    ],
+  },
   playerFactionId: 'osmanli',
   factions: {
     osmanli: {
@@ -141,6 +155,7 @@ export const kurulus1299: ScenarioDefinition = {
     germiyan: {
       name: 'Germiyanoğulları',
       color: '#15803d',
+      ai: { warlike: 0.03 },
       treasury: 40,
       provinces: ['tur-kutahya', 'tur-afyonkarahisar', 'tur-usak'],
       armies: [
@@ -150,6 +165,7 @@ export const kurulus1299: ScenarioDefinition = {
     karesi: {
       name: 'Karesioğulları',
       color: '#0e7490',
+      ai: { warlike: 0.03 },
       treasury: 15,
       provinces: ['tur-balikesir', 'tur-canakkale'],
       armies: [
@@ -171,6 +187,7 @@ export const kurulus1299: ScenarioDefinition = {
     karaman: {
       name: 'Karamanoğulları',
       color: '#4d7c0f',
+      ai: { warlike: 0.03 },
       treasury: 25,
       provinces: ['tur-karaman', 'tur-konya'],
       armies: [

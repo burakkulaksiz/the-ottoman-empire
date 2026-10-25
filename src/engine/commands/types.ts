@@ -13,7 +13,19 @@ export type ActionCommand =
       type: 'recruit';
       provinceId: ProvinceId;
       unit: UnitType;
-    };
+    }
+  | { type: 'declareWar'; target: FactionId }
+  | {
+      /**
+       * Savaştaki devlete barış önerir. `tribute` > 0: öneren tur başına haraç
+       * öder; < 0: öneren haraç ister.
+       */
+      type: 'proposePeace';
+      target: FactionId;
+      tribute?: number;
+    }
+  | { type: 'proposeAlliance'; target: FactionId }
+  | { type: 'respondOffer'; offerId: string; accept: boolean };
 
 export type Command =
   | ActionCommand
@@ -41,7 +53,19 @@ export type CommandError =
   /** Bu bölgede bu tur daha fazla devşirme yapılamaz. */
   | 'recruitLimit'
   /** Kuşatılan bölgede devşirme yapılamaz. */
-  | 'besieged';
+  | 'besieged'
+  | 'unknownFaction'
+  | 'alreadyAtWar'
+  /** İttifakı bozmadan savaş ilan edilemez. */
+  | 'allied'
+  | 'notAtWar'
+  | 'notAtPeace'
+  /** Aynı devlete tur başına bir teklif yapılabilir. */
+  | 'proposalCooldown'
+  | 'invalidTribute'
+  | 'noSuchOffer'
+  /** Barış yaptığın devletin topraklarına giremezsin. */
+  | 'atPeace';
 
 export interface ValidationArgs<C> {
   world: World;

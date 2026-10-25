@@ -1,5 +1,6 @@
 import { isWinter, nextDate } from '../calendar';
 import type { ExecuteContext } from '../context';
+import { payTributes } from '../diplomacy';
 import { upkeepOf } from '../economy';
 import { triggerEvents } from '../events';
 import { RULES } from '../rules';
@@ -24,6 +25,7 @@ export const resetArmies: TurnPhase = ({ state }) => {
   for (const province of Object.values(state.provinces)) {
     delete province.recruited;
   }
+  state.diplomacy.proposed = [];
 };
 
 /** Kış başında yabancı toprakta kalan ordular asker kaybeder (C1). */
@@ -175,6 +177,7 @@ export const TURN_PHASES: TurnPhase[] = [
   winterAttrition,
   resolveSieges,
   collectIncome,
+  payTributes,
   payUpkeep,
   eliminateFactions,
   checkGameOver,

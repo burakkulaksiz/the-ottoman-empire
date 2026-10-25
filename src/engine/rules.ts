@@ -50,6 +50,20 @@ export const RULES = {
   /** Maaşı ödenmeyen ordudan tur başına kaçan asker oranı. */
   unpaidDesertionRate: 0.05,
 
+  // --- Diplomasi (C7) ---
+  /** Haraç teklifinin tur başına 1 akçesi, savaş gücü olarak kaç puan sayılır? */
+  tributeWeight: 100,
+  /** Tur başına en fazla haraç (akçe). */
+  maxTribute: 20,
+  /** Barışa razı olmak için: kendi gücü ≤ teklif edenin gücü × bu oran. */
+  peaceAcceptRatio: 1.3,
+  /** Evlilik ittifakının çeyizi (akçe); kabul edene geçer. */
+  dowry: 15,
+  /** Yapay zekâ kendi gücü rakibin bu oranının altındaysa barış ister. */
+  aiPeaceThreshold: 0.7,
+  /** Yapay zekâ rakibinden bu kat güçlüyse savaş ilan etmeyi düşünür. */
+  aiWarAdvantage: 2,
+
   // --- Zafer ve tarihe göre puan (C3) ---
   /** Tarihî sonucun bu oranı içindeki sonuç "tarihle aynı" sayılır. */
   historicalTolerance: 0.1,

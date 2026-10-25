@@ -1,6 +1,7 @@
 import { isWinter } from '../calendar';
 import { hostileArmiesIn, resolveBattle } from '../combat';
 import type { ExecuteContext } from '../context';
+import { relationBetween } from '../diplomacy';
 import { occupy } from '../siege';
 import type { FactionId } from '../types';
 import { areAdjacent } from '../world';
@@ -26,6 +27,15 @@ export function validateMoveArmy({
     state.provinces[command.to]?.ownerId !== factionId
   ) {
     return 'winterQuarters';
+  }
+  // Barış yaptığın devletin sınırları kapalıdır; müttefikinki açıktır.
+  const owner = state.provinces[command.to]?.ownerId;
+  if (
+    owner &&
+    owner !== factionId &&
+    relationBetween(state, factionId, owner) === 'peace'
+  ) {
+    return 'atPeace';
   }
   return null;
 }

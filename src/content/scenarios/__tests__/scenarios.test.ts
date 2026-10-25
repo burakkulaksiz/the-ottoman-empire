@@ -2,6 +2,7 @@ import {
   createGame,
   dispatch,
   objectiveProgress,
+  relationBetween,
   validateSetup,
 } from '@/engine';
 
@@ -135,6 +136,16 @@ describe('kurulus-1299 map features', () => {
   it('makes the siege of Bursa last longer than taking open land', () => {
     expect(provinces['tur-balikesir']?.fortification).toBeUndefined();
     expect(provinces['tur-bursa']?.fortification).toBeGreaterThan(0);
+  });
+});
+
+describe('kurulus-1299 diplomacy', () => {
+  const state = createGame(loadScenario('kurulus-1299'), { seed: 1 });
+
+  it('starts at war with Byzantium and at peace with the beyliks', () => {
+    expect(relationBetween(state, 'osmanli', 'bizans')).toBe('war');
+    expect(relationBetween(state, 'osmanli', 'germiyan')).toBe('peace');
+    expect(relationBetween(state, 'karesi', 'bizans')).toBe('peace');
   });
 });
 

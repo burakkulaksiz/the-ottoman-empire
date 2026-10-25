@@ -1,12 +1,15 @@
 import { compareDates, type GameDate } from './calendar';
+import { pairKey } from './diplomacy';
 import { RULES } from './rules';
 import type {
   ArmyState,
   FactionId,
+  DiplomacyState,
   FactionState,
   GameState,
   ProvinceId,
   ProvinceState,
+  Relation,
   World,
 } from './types';
 import { armySize, UNIT_DEFS, unitEntries, type Units } from './units';
@@ -22,6 +25,14 @@ export interface ScenarioSetup {
   /** Listede olmayan sancaklar sahipsiz başlar. */
   provinceOwners: Record<ProvinceId, FactionId>;
   armies: { ownerId: FactionId; provinceId: ProvinceId; units: Units }[];
+  /**
+   * Başlangıç ilişkileri (C7). Verilmezse herkes herkesle savaştadır; `default`
+   * yazılmayan çiftler içindir, `pairs` özel durumları belirler.
+   */
+  relations?: {
+    default?: Relation;
+    pairs?: { a: FactionId; b: FactionId; relation: Relation }[];
+  };
 }
 
 export function validateSetup(setup: ScenarioSetup): string[] {
@@ -60,6 +71,14 @@ export function validateSetup(setup: ScenarioSetup): string[] {
       }
     }
   });
+
+  for (const pair of setup.relations?.pairs ?? []) {
+    if (!hasFaction(pair.a) || !hasFaction(pair.b) || pair.a === pair.b) {
+      errors.push(
+        `Relation "${pair.a}" – "${pair.b}": unknown or identical factions`,
+      );
+    }
+  }
 
   const { objectives = [], endDate, historical } = world;
   for (const objective of objectives) {
@@ -104,6 +123,19 @@ export function validateSetup(setup: ScenarioSetup): string[] {
   }
 
   return errors;
+}
+
+function buildDiplomacy(setup: ScenarioSetup): DiplomacyState {
+  const fallback = setup.relations?.default ?? 'war';
+  const ids = Object.keys(setup.world.factions);
+  const relations: Record<string, Relation> = {};
+  for (const [i, a] of ids.entries()) {
+    for (const b of ids.slice(i + 1)) relations[pairKey(a, b)] = fallback;
+  }
+  for (const pair of setup.relations?.pairs ?? []) {
+    relations[pairKey(pair.a, pair.b)] = pair.relation;
+  }
+  return { relations, tributes: [], proposed: [], offers: [] };
 }
 
 export function createGame(
@@ -154,6 +186,7 @@ export function createGame(
     provinces,
     armies,
     events: { fired: [], pending: [], choices: {} },
+    diplomacy: buildDiplomacy(setup),
     log: [{ type: 'turnStarted', date: setup.startDate, turn: 1 }],
     nextId,
   };

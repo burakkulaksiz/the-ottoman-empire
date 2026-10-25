@@ -1,6 +1,6 @@
 export * from './ai';
 export * from './calendar';
-export { legalMoves } from './commands';
+export { legalMoves, validateAction as checkCommand } from './commands';
 export type { ActionCommand, Command, CommandError } from './commands/types';
 export * from './create-game';
 export {
@@ -10,6 +10,14 @@ export {
   type RecruitOption,
 } from './economy';
 export * from './dispatch';
+export {
+  acceptsAlliance,
+  acceptsPeace,
+  isHostile,
+  militaryPower,
+  pairKey,
+  relationBetween,
+} from './diplomacy';
 export {
   createHeuristicAi,
   heuristicAi,

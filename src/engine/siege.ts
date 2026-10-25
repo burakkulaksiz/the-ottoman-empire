@@ -2,6 +2,7 @@ import type { Draft } from 'immer';
 
 import { hostileArmiesIn } from './combat';
 import type { ExecuteContext } from './context';
+import { isHostile } from './diplomacy';
 import { RULES } from './rules';
 import type { ArmyState, FactionId, ProvinceId } from './types';
 import { armySize, artilleryShare, type Units } from './units';
@@ -29,6 +30,13 @@ export function occupy(context: ExecuteContext, army: Army) {
   const provinceId = army.provinceId;
   const province = state.provinces[provinceId]!;
   if (province.ownerId === army.ownerId) return;
+  // Yalnızca savaştaki devletin (ya da sahipsiz) toprağı alınır; müttefikinki değil.
+  if (
+    province.ownerId !== null &&
+    !isHostile(state, army.ownerId, province.ownerId)
+  ) {
+    return;
+  }
 
   if ((world.provinces[provinceId]!.fortification ?? 0) === 0) {
     captureProvince(context, provinceId, army.ownerId);

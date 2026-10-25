@@ -2,6 +2,7 @@ import type { AiContext, AiController } from './ai';
 import { battleOdds, hostileArmiesIn } from './combat';
 import { legalMoves } from './commands';
 import type { ActionCommand } from './commands/types';
+import { militaryPower, relationBetween } from './diplomacy';
 import { incomeOf, upkeepOf } from './economy';
 import { RULES } from './rules';
 import type {
@@ -24,6 +25,11 @@ export interface HeuristicAiOptions {
    * tüketmeden orduyu yavaş yavaş büyütür (C10'da zorluğa göre ayarlanır).
    */
   recruitShare?: number;
+  /**
+   * Barışta olduğu, kendisinden çok zayıf bir komşuya tur başına savaş ilan
+   * etme olasılığı (0–1). 0 ise yapay zekâ kendiliğinden savaş açmaz.
+   */
+  warlike?: number;
 }
 
 /** Skorlar: büyük olan seçilir; "olduğu yerde kal" 0 sayılır. */
@@ -211,6 +217,53 @@ function planRecruitment(
   return commands;
 }
 
+/**
+ * Diplomasi (C7): kaybettiği savaşta barış ister; `warlike` olasılığıyla,
+ * barışta olduğu ve kendisinden çok zayıf bir komşusuna savaş açar.
+ */
+function planDiplomacy(
+  { world, state, factionId, random }: AiContext,
+  warlike: number,
+): ActionCommand[] {
+  const commands: ActionCommand[] = [];
+  const mine = militaryPower(state, factionId);
+  const others = Object.values(state.factions)
+    .filter((f) => f.alive && f.id !== factionId)
+    .map((f) => f.id)
+    .sort();
+
+  for (const other of others) {
+    if (relationBetween(state, factionId, other) !== 'war') continue;
+    if (mine < militaryPower(state, other) * RULES.aiPeaceThreshold) {
+      commands.push({ type: 'proposePeace', target: other });
+    }
+  }
+
+  // Zar yalnızca savaşçı kişilikte atılır; diğer oyunların akışı değişmez.
+  if (warlike > 0 && random() < warlike) {
+    const neighbours = new Set<FactionId>();
+    for (const province of Object.values(state.provinces)) {
+      if (province.ownerId !== factionId) continue;
+      for (const n of world.provinces[province.id]?.neighbors ?? []) {
+        const owner = state.provinces[n]?.ownerId;
+        if (owner && owner !== factionId) neighbours.add(owner);
+      }
+    }
+    const victim = [...neighbours]
+      .filter(
+        (id) =>
+          relationBetween(state, factionId, id) === 'peace' &&
+          mine >= militaryPower(state, id) * RULES.aiWarAdvantage,
+      )
+      .sort(
+        (a, b) =>
+          militaryPower(state, a) - militaryPower(state, b) || (a < b ? -1 : 1),
+      )[0];
+    if (victim) commands.push({ type: 'declareWar', target: victim });
+  }
+  return commands;
+}
+
 function bestAffordableUnit(
   year: number,
   budget: number,
@@ -236,6 +289,7 @@ export function createHeuristicAi(
   const defaults = {
     aggression: options.aggression ?? 1.6,
     recruitShare: options.recruitShare ?? 0.3,
+    warlike: options.warlike ?? 0,
   };
 
   return {
@@ -245,8 +299,9 @@ export function createHeuristicAi(
       const personality = world.factions[factionId]?.ai;
       const aggression = personality?.aggression ?? defaults.aggression;
       const recruitShare = personality?.recruitShare ?? defaults.recruitShare;
+      const warlike = personality?.warlike ?? defaults.warlike;
       const dist = distancesToTargets(world, state, factionId);
-      const commands: ActionCommand[] = [];
+      const commands: ActionCommand[] = planDiplomacy(context, warlike);
 
       const armies = Object.values(state.armies)
         .filter((a) => a.ownerId === factionId && a.movesLeft > 0)

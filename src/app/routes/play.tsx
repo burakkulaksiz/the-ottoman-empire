@@ -22,6 +22,7 @@ import {
 import { EventCard } from '@/features/events/components/event-card';
 import { ArmyPanel } from '@/features/game/components/army-panel';
 import { DecisionsPanel } from '@/features/game/components/decisions-panel';
+import { DiplomacyPanel } from '@/features/game/components/diplomacy-panel';
 import { GameHud } from '@/features/game/components/game-hud';
 import { GameLog } from '@/features/game/components/game-log';
 import { GameOverCard } from '@/features/game/components/game-over-card';
@@ -45,6 +46,11 @@ import { useGameStore } from '@/stores/game-store';
 
 import { buildArmyMarkers } from '../lib/army-markers';
 import { summarizeDecisions } from '../lib/decisions';
+import {
+  buildDiplomacyRows,
+  buildOffers,
+  diplomacyCommand,
+} from '../lib/diplomacy-rows';
 import { buildSlotRows } from '../lib/slot-rows';
 
 import type { Route } from './+types/play';
@@ -295,6 +301,24 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
   );
   const [gameOverDismissed, setGameOverDismissed] = useState(false);
 
+  // --- Diplomasi ---
+  const lastLog = useGameStore((s) => s.lastLog);
+  const diplomacyFeedback = useMemo(
+    () =>
+      lastLog
+        .filter((e) =>
+          [
+            'warDeclared',
+            'peaceMade',
+            'allianceFormed',
+            'proposalRefused',
+            'offerRejected',
+          ].includes(e.type),
+        )
+        .flatMap((e) => formatLogEntry(e, names) ?? []),
+    [lastLog, names],
+  );
+
   return (
     <main className="flex h-dvh flex-col">
       <GameHud
@@ -362,6 +386,18 @@ function GameScreen({ id, game }: { id: string; game: GameState }) {
                 )}
               </Panel>
             )}
+            <DiplomacyPanel
+              rows={buildDiplomacyRows(setup.world, game)}
+              offers={buildOffers(setup.world, game)}
+              feedback={diplomacyFeedback}
+              onAction={(target, actionId) => {
+                const command = diplomacyCommand(target, actionId);
+                if (command) void send(command);
+              }}
+              onRespond={(offerId, accept) =>
+                void send({ type: 'respondOffer', offerId, accept })
+              }
+            />
             <DecisionsPanel
               rows={decisions.rows.map((r) => ({ id: r.eventId, ...r }))}
             />

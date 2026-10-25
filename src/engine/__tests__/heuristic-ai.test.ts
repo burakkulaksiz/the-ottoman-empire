@@ -266,6 +266,84 @@ describe('heuristic AI recruitment', () => {
   });
 });
 
+describe('heuristic AI diplomacy', () => {
+  const diplomatic = (commands: ActionCommand[]) =>
+    commands.filter(
+      (c) => c.type === 'proposePeace' || c.type === 'declareWar',
+    );
+
+  it('asks for peace in a war it is losing', () => {
+    const state = gameWith([
+      ['a1', 'osmanli', 'sogut', { sipahi: 3000 }],
+      ['a2', 'bizans', 'bursa', { sipahi: 500 }],
+    ]);
+    expect(diplomatic(decide(state, 'bizans'))).toContainEqual({
+      type: 'proposePeace',
+      target: 'osmanli',
+    });
+  });
+
+  it('keeps fighting a war it is not losing', () => {
+    const state = gameWith([
+      ['a1', 'osmanli', 'sogut', { sipahi: 500 }],
+      ['a2', 'bizans', 'bursa', { sipahi: 500 }],
+    ]);
+    expect(diplomatic(decide(state, 'bizans'))).toEqual([]);
+  });
+
+  it('a warlike state attacks a much weaker neighbour it is at peace with', () => {
+    const base = gameWith([
+      ['a1', 'osmanli', 'sogut', { sipahi: 100 }],
+      ['a3', 'germiyan', 'kutahya', { sipahi: 2000 }],
+    ]);
+    const state: GameState = {
+      ...base,
+      diplomacy: {
+        ...base.diplomacy,
+        relations: { ...base.diplomacy.relations, 'germiyan|osmanli': 'peace' },
+      },
+    };
+    const warlike = createHeuristicAi({ warlike: 1 });
+    const peaceful = createHeuristicAi({ warlike: 0 });
+
+    expect(diplomatic(decide(state, 'germiyan', warlike))).toEqual([
+      { type: 'declareWar', target: 'osmanli' },
+    ]);
+    expect(diplomatic(decide(state, 'germiyan', peaceful))).toEqual([]);
+  });
+
+  it('does not attack a neighbour that is about as strong', () => {
+    const base = gameWith([
+      ['a1', 'osmanli', 'sogut', { sipahi: 1500 }],
+      ['a3', 'germiyan', 'kutahya', { sipahi: 2000 }],
+    ]);
+    const state: GameState = {
+      ...base,
+      diplomacy: {
+        ...base.diplomacy,
+        relations: { ...base.diplomacy.relations, 'germiyan|osmanli': 'peace' },
+      },
+    };
+    expect(
+      diplomatic(decide(state, 'germiyan', createHeuristicAi({ warlike: 1 }))),
+    ).toEqual([]);
+  });
+
+  it('does not march into the land of a state it is at peace with', () => {
+    const base = gameWith([['a1', 'osmanli', 'sogut', { sipahi: 5000 }]]);
+    const state: GameState = {
+      ...base,
+      diplomacy: {
+        ...base.diplomacy,
+        relations: Object.fromEntries(
+          Object.keys(base.diplomacy.relations).map((k) => [k, 'peace']),
+        ),
+      },
+    };
+    expect(moves(decide(state, 'osmanli'))).toEqual([]);
+  });
+});
+
 describe('heuristic AI in a full game', () => {
   const play = (seed: number) => {
     let state = createGame(testScenario, { seed });

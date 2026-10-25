@@ -16,12 +16,12 @@
 | ---------------- | ------ | ------ |
 | A. Altyapı       | 4      | 5      |
 | B. Harita        | 2      | 5      |
-| C. Mekanikler    | 6      | 10     |
+| C. Mekanikler    | 7      | 10     |
 | D. Tarih öğrenme | 2      | 7      |
 | E. Arayüz        | 1      | 5      |
 | F. Kalite        | 0      | 5      |
 | G. İleride       | 0      | 4      |
-| **Toplam**       | **15** | **41** |
+| **Toplam**       | **16** | **41** |
 
 > Tabloyu madde işaretlerken güncelleyin.
 
@@ -89,7 +89,8 @@ Böylece en kısa yoldan haritada birlik yürütüp savaş kazanılan ya da kayb
   - [ ] Cizye ve öşür ayrımı (nüfus/din verisi gerekir)
   - [ ] Ticaret yolu gelirinin gerçek akışı ve ablukası
   - [ ] Enflasyon (akçenin ayarı düşer, geç dönem)
-- [ ] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
+- [x] **C7. Diplomasi:** Venedik, Ceneviz, Bizans, Memlük, Safevi, Habsburg, Macar Krallığı, Lehistan ve Rusya. Savaş, barış, haraç ve evlilik ittifakları.
+  - _Yapıldı: savaş/barış/ittifak ilişkileri (senaryoda başlangıç ilişkileri), savaş ilanı, barış önerisi (haraç vererek ya da isteyerek), evlilik ittifakı (çeyiz karşılığı, ortak düşman şartı), tur başına haraç ödemesi, yapay zekânın barış teklifleri (oyuncu kabul/ret eder) ve savaşçı kişilikte savaş ilanı. Barıştaki devletin sınırı kapalı, müttefikinki açık. Diplomasi paneli. Not: 1299 ilişkileri sadeleştirilmiştir (`TODO(kaynak)`)._
 - [ ] **C8. İç siyaset:** padişah, şehzadeler, taht kavgası, sadrazam ve divan, yeniçeri isyanları, Celali isyanları ve sadakat.
 - [x] **C9. Rakip devletler için yapay zekâ.**
   - _Yapıldı: sezgisel yapay zekâ (`heuristic-ai.ts`): savunmasız düşman toprağını alır, güç oranı yeterliyse (`aggression`) saldırır, zayıf kalacağı savaştan kaçınır, kışın eve döner, düşman sınırına doğru ilerler. Sahipsiz bölgelere yayılmaz (diplomasi/diğer devletler modellenene kadar). Ordu devşirme, ekonomi ve diplomasi içermez (C6, C7); zorluk ayarı C10'da._
